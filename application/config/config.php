@@ -19,8 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 //$config['base_url'] = 'http://www.teamfreelancers.com/village';
 //define('SUB_ADMIN', 'http://www.teamfreelancers.com/village/vp/index.php');
-$config['base_url'] = 'http://localhost/village_ver2/';
-define('SUB_ADMIN', 'http://localhost/village_ver2/vp/index.php');
+$config['base_url'] = 'http://localhost/e-collector/';
+define('SUB_ADMIN', 'http://localhost/e-collector/vp/index.php');
 
 /*
 |--------------------------------------------------------------------------

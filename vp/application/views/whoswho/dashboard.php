@@ -34,8 +34,8 @@
                             'class' => 'required form-control',
                             'name' => 'txtWhoswhoDepartments',
                             'id' => 'txtWhoswhoDepartments',
-                            'multiple'=>'multiple',
-                            'style'=>'height: 150px; background: transparent; color: #000000; border: none',
+                            'size' => '7',
+                            'style'=>'background: transparent; color: #000000; border: none',
                             'value' => ''
                         );
                         $options = array();
@@ -49,7 +49,7 @@
             <div class="col-md-6" style="padding: 10px 10px 0px 10px">
                 <div class="form-group">
                     <label>Select Post</label>
-                    <select name="txtWhoswhome" id="txtWhoswhome" required="required" class="required form-control" multiple="multiple" style="height: 150px; background:  transparent; color: #000000; border: none">
+                    <select name="txtWhoswhome" id="txtWhoswhome" required="required" class="required form-control" size="7" style="background:  transparent; color: #000000; border: none">
 
                     </select>
                 </div>
