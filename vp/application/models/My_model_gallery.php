@@ -20,33 +20,8 @@ class My_model_gallery extends CI_Model {
             'DESC' => $this->input->post('txtDesc'),
             'STATUS' => 1,
         );
-        $query1 = $this->db->insert('c1_gallery_category', $data);
-        $id__ = $this->db->insert_id();
-
-        $config = array(
-            'upload_path' => './assets_/gallery',
-            'overwrite' => TRUE,
-            'max_size' => 5000,
-            'allowed_types' => 'jpg|jpeg',
-            'file_name' => $id__
-        );
-
-        $file_element_name = 'txtFile';
-        $this->load->library('upload', $config);
-
-        if ($this->upload->do_upload($file_element_name)) {
-            $path_ji = $this->upload->data();
-
-            $path_ = $path_ji['file_name'];
-
-            $data = array(
-                'PIC' => $path_
-            );
-            $this->db->where('CATEG_ID', $id__);
-            $query = $this->db->update('c1_gallery_category', $data);
-        } else {
-            $path_ = 'x';
-        }
+        $query = $this->db->insert('c1_gallery_category', $data);        
+       
 
         if ($query == TRUE) {
             $bool_ = array('res_' => TRUE, 'msg_' => 'Tourist Place Feeded Successfully');
@@ -60,58 +35,12 @@ class My_model_gallery extends CI_Model {
         $id__ = $this->input->post('txtID_edit');
 
         $data = array(
-            'CATEGORY' => $this->input->post('txtPlaceEdit'),
-            'DESC' => $this->input->post('txtDescEdit'),
+            'CATEGORY' => $this->input->post('txtCategory_edit'),
+            'DESC' => $this->input->post('txtDesc_edit'),
         );
 
         $this->db->where('CATEG_ID', $id__);
-        $query = $this->db->update('c1_gallery_category', $data);
-
-        if (!empty($_FILES['txtFileEdit']['name'])) {
-            //----------------------------------Delete Previous img
-            $this->db->where('CATEG_ID', $id__);
-            $query = $this->db->get('c1_gallery_category');
-
-            if ($query->num_rows() != 0) {
-                $item_ = $query->row();
-
-                if ($item_->PIC != 'x') {
-                    $file__ = $item_->PIC;
-                } else {
-                    $file__ = 'x';
-                }
-            }
-            if ($file__ != 'x') {
-                echo $full_path_ = FCPATH . 'assets_/gallery/' . $file__;
-                @unlink($full_path_);
-            }
-            //---------------------------------------
-
-            $config = array(
-                'upload_path' => './assets_/gallery',
-                'overwrite' => TRUE,
-                'max_size' => 5000,
-                'allowed_types' => 'jpg|jpeg',
-                'file_name' => $id__
-            );
-
-            $file_element_name = 'txtFileEdit';
-            $this->load->library('upload', $config);
-
-            if ($this->upload->do_upload($file_element_name)) {
-                $path_ji = $this->upload->data();
-
-                $path_ = $path_ji['file_name'];
-
-                $data = array(
-                    'PIC' => $path_
-                );
-                $this->db->where('CATEG_ID', $id__);
-                $query = $this->db->update('c1_gallery_category', $data);
-            } else {
-                $path_ = 'x';
-            }
-        }
+        $query = $this->db->update('c1_gallery_category', $data);        
 
         if ($query == TRUE) {
             $bool_ = array('res_' => TRUE, 'msg_' => 'Tourist Place editted Successfully');
@@ -122,23 +51,6 @@ class My_model_gallery extends CI_Model {
     }
 
     function deleteCategory_($id_) {
-        $this->db->where('CATEG_ID', $id_);
-        $query = $this->db->get('c1_gallery_category');
-
-        if ($query->num_rows() != 0) {
-            $item_ = $query->row();
-
-            if ($item_->PIC != 'x') {
-                $file__ = $item_->PIC;
-            } else {
-                $file__ = 'x';
-            }
-        }
-        if ($file__ != 'x') {
-            echo $full_path_ = FCPATH . 'assets_/gallery/' . $file__;
-            @unlink($full_path_);
-        }
-        
         $this->db->where('CATEG_ID', $id_);
         $query=$this->db->delete('c1_gallery_category');
         
@@ -157,5 +69,90 @@ class My_model_gallery extends CI_Model {
         $this->db->where('CATEG_ID', $id_);
         $query = $this->db->update('c1_gallery_category', $data);
     }
+    
+    function getmCategoryData($id_){
+        $this->db->where('CATEG_ID', $id_);
+        $query = $this->db->get('c1_gallery_category');
+        
+        if ($query->num_rows() != 0) {
+            foreach ($query->result() as $row) {
+                $data_ = array('catID' => $row->CATEG_ID, 'category' => $row->CATEGORY, 'desc' => $row->DESC);
+            }
+        } else {
+            $data_ = "NO DATA AVAILABLE";
+        }
+        $this->output->set_content_type('application/json');
+        return json_encode($data_);
+    }
+    
+    public function do_upload() {
+        $config['upload_path'] = './assets_/gallery';
+        $config['allowed_types'] = 'jpg|jpeg|png';
+        $config['max_size'] = '204800';
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload()) {
+            $error = array('error' => $this->upload->display_errors());
+            foreach ($error as $item => $value) {
+                echo'<ol class="alert alert-danger"><li>' . $value . '</ol></li>';
+            }
+            exit;
+        } else {
+            $upload_data = array('upload_data' => $this->upload->data());
+            foreach ($upload_data as $key => $value) {
 
+                $id_ = $this->input->post('txtCategory');
+
+                $image = $value['file_name'];
+                $name = preg_replace('/\\.[^.\\s]{3,4}$/', '', $value['file_name']);
+
+                $data = array(
+                    'CATEG_ID' => $id_,
+                    'PIC_PATH' => $image,                    
+                    'STATUS'    => 1                    
+                );
+                $this->db->insert('c2_gallery_picture', $data);
+            }
+            //echo'<h4 style="color:green">Image uploaded Succesfully</h4>';
+        }
+    }
+
+    function fillGallery($id_){
+        $data_ = '';
+        $uploadpath = base_url() . 'assets_/gallery/';
+
+        $this->db->where('CATEG_ID', $id_);
+        $rs = $this->db->get('c2_gallery_picture');
+
+        if ($rs->num_rows() != 0) {
+            foreach ($rs->result() as $row) {
+                $src = $uploadpath . $row->PIC_PATH;
+                $alt = $row->PIC_PATH;
+                $lid = $row->PIC_ID . 'g';
+                $data_ = $data_ .  "<li class='thumbnail' id='$lid'>
+                            <span id='$row->PIC_ID' class='btn btn-info btn-block btn-delete'><i class='glyphicon glyphicon-remove'></i>&nbsp;&nbsp;&nbsp;Delete</span>
+                            <img src='$src' alt='$alt' style='max-height:100px;'>";                
+            }
+        } else {
+            $data_ = "<li class='thumbnail' style='color:red'>
+                           No Images have been added to this gallery</li>";
+        }
+        return $data_;
+    }
+
+    function deleteimg($id) {
+        $this->db->where('PIC_ID', $id);
+        $query = $this->db->get('c2_gallery_picture');
+        
+        if($query->num_rows() != 0){
+            $row = $query->row();
+            $bool_ = array('res_'=>TRUE, 'photo__' => $row->PIC_PATH);
+
+            $this->db->where('PIC_ID', $id);
+            $this->db->delete('c2_gallery_picture');
+        } else {
+            $bool_ = array('res_'=>FALSE, 'photo__' => 'X');
+        }
+        return $bool_;
+    }
+        
 }

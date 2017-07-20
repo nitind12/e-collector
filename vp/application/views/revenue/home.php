@@ -35,7 +35,7 @@
                         'id' => 'villageName',
                         'style' => 'width:100%',
                         'required' => 'required',
-                        'onchange' => 'loadgallery(this);'
+                        'onchange' => 'loadRevenuePDF(this);'
                     );
                     $options = array();
                     $options['0'] = 'Select';
