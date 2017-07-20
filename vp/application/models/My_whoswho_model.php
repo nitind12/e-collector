@@ -63,9 +63,10 @@ class My_whoswho_model extends CI_Model{
 				'STATUS_'=>$status_,
 				);
 			}
-			$this->db->where('WW2ID', $WW2ID);
+			$this->db->where('WW3ID', $r->WW3ID);
 			$this->db->update('a0_whoswho3_whome_detail', $data);
-			$this->session->set_flashdata('_msgall_', 'Data updated <span style="color: #0000ff">'. $caseno . '</span> is successfully.');
+			$data['id_'] = $WW2ID;
+			$data['msg_'] = "<span style='color:#009000; background: #f0f0f0; padding: 3px; border-radius:5px'>Data updated is successfully</span>";
 		} else {
 			$data = array(
 				'NAME_' =>$name_,
@@ -86,17 +87,18 @@ class My_whoswho_model extends CI_Model{
 				);
 			$this->db->where('WW2ID', $WW2ID);
 			$this->db->update('a0_whoswho3_whome_detail', $data);
-			$this->session->set_flashdata('_msgall_', 'Data submitted <span style="color: #0000ff">'. $caseno . '</span> is successfully.');
+			$data['id_'] = $WW2ID;
+			$data['msg_'] = "<span style='color:#009000; background: #f0f0f0; padding: 3px; border-radius:5px'>Data submitted is successfully</span>";
 		}
-		//$this->session->set_flash()
-		
+		return $data;
 	}
 	function upload_post_name_photo($ww3id_){
+		clearstatcache();
 		$config = array(
             'upload_path' => './assets_/post_name_for_department',
             'allowed_types' => 'jpg|png',
             'overwrite' => TRUE,
-            'max_size' => 150,
+            'max_size' => 500,
             'file_name' => $ww3id_
         );
         $file_element_name = 'txtPhoto';

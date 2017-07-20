@@ -35,7 +35,10 @@ class Whoswho extends CI_Controller {
         echo json_encode($data);
     }
     function updatewhoswhodetail(){
-        $this->mwm->update_whoswho_detail();
-        redirect('whoswho');
+        $data = $this->mwm->update_whoswho_detail();
+        $data['_id_'] = $data['id_'];
+        $data['message'] = $data['msg_'];
+        $data['whos_who2_detail'] = $this->mwm->get_whoswho_whome_detail($data['id_']);
+        echo json_encode($data);
     }
 }

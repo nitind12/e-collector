@@ -140,8 +140,10 @@
                     ?>
                 </div>
                 <div class="form-group" style="text-align: right">
-                    <label></label><br />
+                    <div id="this_msg" style="float: left;color: #ff0000; font-weight: bold; font-style: italic; padding: 5px"></div>
+                    <div style="float: right">
                     <input type="submit" class="btn btn-success" value="Update" id="cmbWhoswhoSubmit" id="cmbWhoswhoSubmit" />
+                    </div>
                 </div>
                 <?php echo form_close(); ?>
             </div>

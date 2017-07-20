@@ -42,23 +42,25 @@ $(function(){
 		}
 	});
 	$("#frmWhoswho").on('submit',(function(e){
-		alert('agaya');
 		e.preventDefault();
 		url_ = site_url_ + "/whoswho/updatewhoswhodetail";
-
+		data_ = new FormData($(this)[0]);
 		$.ajax({
-			url: "upload.php",
+			url:url_,
 			type: "POST",
-			data:  new FormData(this),
-			contentType: false,
-			cache: false,
-			processData:false,
+			data:  data_,
+			async: false,
+	        cache: false,
+	        contentType: false,
+	        processData: false,
 			success: function(data){
-			$("#msg_").html(data);
-			},
-			error: function(xhr, status, error){
-				$('#msg_').html(error);
-	          }	        
+				var obj = JSON.parse(data);
+				$('#photo_').html('<img src="'+base_path+"assets_/post_name_for_department/"+obj.PHOTO_PATH+'" width="90" />')
+				$("#this_msg").html(obj.message);
+
+			}, error: function(xhr, status, error){
+				$('#this_msg').html("Some server error. Please try again !!");
+	        }	        
 		});
 	return false;
 	}));
