@@ -3,7 +3,7 @@
         <div class="row">
             <?php if($this->session->userdata('status__') == "ADMIN") { ?>
             <div class="col-md-8 col-xs-12">
-                <h1 class="head"><?php if($this->session->userdata('status__') == 'ADMIN'){?>DM OFFICE - NAINITAL<?php } else {?>SDM OFFICE<?php }?></h1>
+                <h1 class="head">DM OFFICE - NAINITAL</h1>
             </div>
             <div class="col-md-1" style="margin-top: 30px; text-align: right">
                 <a href="<?PHP echo site_url('createsdm'); ?>">
@@ -22,12 +22,13 @@
             </div>
             <?php } else if($this->session->userdata('status__') == "SDM"){ ?>
             <div class="col-md-8 col-xs-12">
-                <h1 class="head"><?php if($this->session->userdata('status__') == 'ADMIN'){?>DM OFFICE - NAINITAL<?php } else {?>SDM OFFICE<?php }?></h1>
+                <h1 class="head">SDM OFFICE</h1>
             </div>
             <div class="col-md-1" style="margin-top: 30px; text-align: right">
                 <a href="<?PHP echo site_url('Createuser'); ?>">
                     <span class="glyphicon glyphicon-user" style="font-size: 20px;color: #fff"></span>
                 </a>
+                
             </div>
             <div class="col-md-1" style="margin-top: 30px; text-align: right">
                 <a href="<?PHP echo site_url('c_pwd'); ?>">
@@ -132,7 +133,7 @@
                         </div>
                     </div>
                     <h4>PATWARI BASTA</h4>
-                    <a href="<?PHP echo site_url('web/patwariDasboard');?>" class="btn btn-default">ENTER</a>
+                    <a href="<?PHP echo site_url('web/patwariDashboardNew');?>" class="btn btn-default">ENTER</a>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12">
