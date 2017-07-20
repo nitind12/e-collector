@@ -48,7 +48,7 @@
             <div class="modal-content col-sm-9" style="background: #fff; float:right">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4>Login with Admin (SDM)/Patwari Account</h4>
+                    <h4>Login with Admin Account</h4>
                 </div>
                 <div class="modal-body">
                         <?php if ($this->session->flashdata('_msgall_')) { ?>
