@@ -41,10 +41,6 @@ $(function(){
 			});
 		}
 	});
-
-	$('#frmPatwari').submit(function(){
-		
-	});
 	
 	$("#frmWhoswho").on('submit',(function(e){
 		e.preventDefault();

@@ -9,7 +9,7 @@
     font-family: kruti dev; 
     font-size: 23px;
 }
-::-webkit-scrollbar {
+    ::-webkit-scrollbar {
         width: 12px;
     }
     ::-webkit-scrollbar-track {

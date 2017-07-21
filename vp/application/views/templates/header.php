@@ -19,7 +19,7 @@
     <!-- FONT AWESOME ICONS  -->
     <link href="<?php echo base_url('assets_/css/font-awesome.css');?>" rel="stylesheet" />
     <!-- CUSTOM STYLE  -->
-    <link href="<?php echo base_url('assets_/css/style.css');?>" rel="stylesheet" />
+    <link href="<?php echo base_url('assets_/css/style.css');?>?version=1.0" rel="stylesheet" />
      <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

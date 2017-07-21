@@ -70,6 +70,7 @@
                         $data = array(
                             'type' => 'text',
                             'placeholder' => 'Name here',
+                            'required' => 'required',
                             'class' => 'required form-control',
                             'name' => 'txtName_',
                             'id' => 'txtName_',
@@ -84,6 +85,7 @@
                         $data = array(
                             'type' => 'text',
                             'placeholder' => 'Contact here',
+                            'required' => 'required',
                             'class' => 'required form-control',
                             'name' => 'txtContact',
                             'id' => 'txtContact',
