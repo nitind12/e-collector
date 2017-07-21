@@ -1,10 +1,4 @@
-<div class="header-bottom">
-    <div class="container">
-        <div class="logo wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">            
-            <h1><a href="#">Tourist Gallery</a></h1>
-        </div>
-    </div>
-</div>
+
 <!-- banner -->
 <div class="technology">
     <div class="container">
@@ -60,6 +54,10 @@
                                         echo $catName->CATEGORY;
                                     }
                                     ?></h3>
+                            <?php } else { ?>
+                            <h3 align="center" style="margin-bottom: 10px; color: #006699; font-weight: bold; text-shadow: 2px 2px 2px #cccccc; font-family: cursive;">
+                                Tourist Gallery
+                            </h3>
                             <?php } ?>
                             <?php if ($galID == 0) { ?>
                                 <div id="myCarousel1" class="carousel slide" data-ride="carousel">
@@ -179,7 +177,7 @@
                                 }
                                 ?>
                             </div>                                
-                        <div id="long" style="display:none;margin-top: 50px;"><?php echo $catName->DESC; ?></div>
+                            <div id="long" style="display:none;margin-top: 50px;"><?php echo $catName->DESC; ?></div>
                         <?php } ?>
                     </div>
                     <div class="clearfix"></div>
