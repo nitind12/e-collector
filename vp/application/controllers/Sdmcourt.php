@@ -101,6 +101,13 @@ class Sdmcourt extends CI_Controller {
     function searchcase($active = 'x', $page_ = 'dashboard', $data_ = '', $id = 'x') {
         $this->check_login();
 
+        // Master Data
+        $data['act_'] = $this->mcm->get_acts();
+        $data['court_'] = $this->mcm->get_court();
+        $data['section_'] = $this->mcm->get_section();
+        $data['tehsil_'] = $this->mcm->get_tehsil();
+        // -----------
+
         if ($this->input->post('txtCaseNo')) {
             $caseno_ = $this->input->post('txtCaseNo');
             $data['view'] = '';
@@ -216,6 +223,13 @@ class Sdmcourt extends CI_Controller {
 
     function searching() {
         $this->check_login();
+        // Master Data
+        $data['act_'] = $this->mcm->get_acts();
+        $data['court_'] = $this->mcm->get_court();
+        $data['section_'] = $this->mcm->get_section();
+        $data['tehsil_'] = $this->mcm->get_tehsil();
+        // -----------
+
         if (isset($_POST['search_submit'])) {
             $data['actname_'] = $this->input->post('txtActName');
             $data['section_'] = $this->input->post('txtSection');
@@ -242,6 +256,12 @@ class Sdmcourt extends CI_Controller {
 
     function dmsearching() {
         $this->check_login();
+        // Master Data
+        $data['act_'] = $this->mcm->get_acts();
+        $data['court_'] = $this->mcm->get_court();
+        $data['section_'] = $this->mcm->get_section();
+        $data['tehsil_'] = $this->mcm->get_tehsil();
+        // -----------
         if (isset($_POST['search_submit'])) {
             $data['courtname_'] = $this->input->post('txtCourt');
             $data['actname_'] = $this->input->post('txtActName');

@@ -2,6 +2,7 @@
 	.orange{
 		color: #900000;
 	}
+	
 </style>
 <div class="row">
 	<div class="col-sm-12">
