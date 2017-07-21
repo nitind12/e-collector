@@ -41,6 +41,11 @@ $(function(){
 			});
 		}
 	});
+
+	$('#frmPatwari').submit(function(){
+		
+	});
+	
 	$("#frmWhoswho").on('submit',(function(e){
 		e.preventDefault();
 		url_ = site_url_ + "/whoswho/updatewhoswhodetail";

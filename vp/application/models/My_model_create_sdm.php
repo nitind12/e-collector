@@ -83,6 +83,7 @@ class My_model_create_sdm extends CI_Model {
         $this->db->where('UP_LINE', $this->session->userdata('user__'));
     	if($status != 'x') $this->db->where('STATUS', $status);
     	$query = $this->db->get('login');
+    	
     	return $query->result();
     }
     function active_inactive($USERSTATUS, $STATUS){

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
             <div class="panel-body">
-                <?php echo form_open_multipart('sdmcourt/submitnewcase', array('name' => 'frmCOurtNew', 'id' => 'frmCOurtNew', 'role' => 'form', 'class' => 'form-inline')); ?>
+                <?php echo form_open_multipart('sdmcourt/submitnewcase', array('name' => 'frmDM', 'id' => 'frmDM', 'role' => 'form', 'class' => 'form-inline')); ?>
                 <div class="form-group col-md-3 col-lg-3 col-xs-12">
                     <label>Case No.</label><br />
                     <?php
@@ -97,7 +97,6 @@
                         'type' => 'text',
                         'placeholder' => 'Type For',
                         'class' => 'required form-control hindiFont',
-                        'style' => 'width: 200px; background: #FFF195',
                         'name' => 'txtForType',
                         'id' => 'txtForType',
                         'value' => ''
@@ -124,24 +123,6 @@
                 </div>
                 <div class="form-group col-md-3 col-lg-3 col-xs-12">
                     <label>Court</label><br />
-                    <?php
-                    $data = array(
-                        'type' => 'text',
-                        'placeholder' => 'Court',
-                        'class' => 'required form-control hindiFont',
-                        'style' => 'width: 200px; background: #FFF195',
-                        'name' => 'txtForCourt',
-                        'id' => 'txtForCourt',
-                        'value' => ''
-                    );
-                    $options = array();
-                    $options[''] = "pqusa";
-                    foreach($court_ as $itemCourt){
-                        $options[$itemCourt->COURT] = $itemCourt->COURT;
-                    }
-
-                    echo form_dropdown($data, $options, '');
-                    ?>
                     <?php
                     $data = array(
                         'type' => 'text',
@@ -186,24 +167,6 @@
                     <?php
                     $data = array(
                         'type' => 'text',
-                        'placeholder' => 'Court',
-                        'class' => 'required form-control hindiFont',
-                        'style' => 'width: 200px; background: #FFF195',
-                        'name' => 'txtForTehsil',
-                        'id' => 'txtForTehsil',
-                        'value' => ''
-                    );
-                    $options = array();
-                    $options[''] = "pqusa";
-                    foreach($tehsil_ as $itemTehsil){
-                        $options[$itemTehsil->TEHSIL] = $itemTehsil->TEHSIL;
-                    }
-
-                    echo form_dropdown($data, $options, '');
-                    ?>
-                    <?php
-                    $data = array(
-                        'type' => 'text',
                         'class' => 'required form-control hindiFont',
                         'name' => 'txtTehsil',
                         'id' => 'txtTehsil',
@@ -243,24 +206,6 @@
                     <?php
                     $data = array(
                         'type' => 'text',
-                        'placeholder' => 'Act',
-                        'class' => 'required form-control hindiFont',
-                        'style' => 'width: 200px; background: #FFF195',
-                        'name' => 'txtForAct_',
-                        'id' => 'txtForAct_',
-                        'value' => ''
-                    );
-                    $options = array();
-                    $options[''] = "pqusa";
-                    foreach($act_ as $itemAct){
-                        $options[$itemAct->ACT] = $itemAct->ACT;
-                    }
-
-                    echo form_dropdown($data, $options, '');
-                    ?>
-                    <?php
-                    $data = array(
-                        'type' => 'text',
                         'class' => 'required form-control hindiFont',
                         'name' => 'txtActName',
                         'id' => 'txtActName',
@@ -271,24 +216,6 @@
                 </div>
                 <div class="form-group col-md-3 col-lg-3 col-xs-12">
                     <label>Section</label><br />
-                    <?php
-                    $data = array(
-                        'type' => 'text',
-                        'placeholder' => 'Act',
-                        'class' => 'required form-control hindiFont',
-                        'style' => 'width: 200px; background: #FFF195',
-                        'name' => 'txtForSection',
-                        'id' => 'txtForSection',
-                        'value' => ''
-                    );
-                    $options = array();
-                    $options[''] = "pqusa";
-                    foreach($section_ as $itemSection){
-                        $options[$itemSection->SECTION] = $itemSection->SECTION;
-                    }
-
-                    echo form_dropdown($data, $options, '');
-                    ?>
                     <?php
                     $data = array(
                         'type' => 'text',

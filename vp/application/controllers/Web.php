@@ -35,7 +35,6 @@ class Web extends CI_Controller {
         } else {
             $page_  = $result['path_'];
         }
-        
         redirect($page_);
     }
     function logout(){
@@ -43,13 +42,6 @@ class Web extends CI_Controller {
         $this->session->unset_userdata('status__');
         $this->session->set_flashdata('_msgall_', 'Successfully Logged Out !!');
         redirect(_ROOT_URL_);
-    }
-    function patwariDashboardNew(){
-        
-        $page_ = 'dashboard.php';
-        $this->load->view('templates/header');
-        $this->load->view('patwarinew/'.$page_, $data);
-        $this->load->view('templates/footer');
     }
     function patwariDasboard($page_ = 'dashboard', $data_ = '', $id = 'x', $active = 'x') {
         $this->check_login();

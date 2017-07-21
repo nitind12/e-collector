@@ -37,7 +37,7 @@
 <div class="row">
     <div class="col-sm-12">
             <div class="panel-body">
-                <?php echo form_open('sdmcourt/updatecaseNewrecord/'.$sno."/".$ref_sno, array('name' => 'frmCOurtNewUpdate', 'id' => 'frmCOurtNewUpdate', 'role' => 'form', 'class' => 'form-inline')); ?>
+                <?php echo form_open('sdmcourt/updatecaseNewrecord/'.$sno."/".$ref_sno, array('name' => 'frmDM', 'id' => 'frmDM', 'role' => 'form', 'class' => 'form-inline')); ?>
                 <div class="form-group col-md-3 col-lg-3 col-xs-12">
                     <label>Case No.</label><br />
                     <?php
@@ -218,27 +218,9 @@
                     <?php
                     $data = array(
                         'type' => 'text',
-                        'placeholder' => 'Act',
                         'class' => 'required form-control hindiFont',
-                        'style' => 'width: 200px; background: #FFF195',
-                        'name' => 'txtForAct_newupdate',
-                        'id' => 'txtForAct_newupdate',
-                        'value' => ''
-                    );
-                    $options = array();
-                    $options[''] = "pqusa";
-                    foreach($act_ as $itemAct){
-                        $options[$itemAct->ACT] = $itemAct->ACT;
-                    }
-
-                    echo form_dropdown($data, $options, $actname);
-                    ?>
-                    <?php
-                    $data = array(
-                        'type' => 'text',
-                        'class' => 'required form-control hindiFont',
-                        'name' => 'txtActNameNewUpdate',
-                        'id' => 'txtActNameNewUpdate',
+                        'name' => 'txtActName',
+                        'id' => 'txtActName',
                         'value' => $actname
                     );
                     echo form_input($data);
@@ -249,27 +231,9 @@
                     <?php
                     $data = array(
                         'type' => 'text',
-                        'placeholder' => 'Act',
                         'class' => 'required form-control hindiFont',
-                        'style' => 'width: 200px; background: #FFF195',
-                        'name' => 'txtForSectionUpdate',
-                        'id' => 'txtForSectionUpdate',
-                        'value' => ''
-                    );
-                    $options = array();
-                    $options[''] = "pqusa";
-                    foreach($section_ as $itemSection){
-                        $options[$itemSection->SECTION] = $itemSection->SECTION;
-                    }
-
-                    echo form_dropdown($data, $options, $section);
-                    ?>
-                    <?php
-                    $data = array(
-                        'type' => 'text',
-                        'class' => 'required form-control hindiFont',
-                        'name' => 'txtSectionUpdate',
-                        'id' => 'txtSectionUpdate',
+                        'name' => 'txtSection',
+                        'id' => 'txtSection',
                         'value' => $section
                     );
                     echo form_input($data);

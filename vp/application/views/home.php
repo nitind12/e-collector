@@ -133,7 +133,7 @@
                         </div>
                     </div>
                     <h4>PATWARI BASTA</h4>
-                    <a href="<?PHP echo site_url('web/patwariDashboardNew');?>" class="btn btn-default">ENTER</a>
+                    <a href="<?PHP echo site_url('patwari_village');?>" class="btn btn-default">ENTER</a>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12">

@@ -154,46 +154,6 @@ class My_court_model extends CI_Model{
 						$this->db->where('SNO', $id__);
 						$this->db->update('a96_sdm_court', $data);
 					// --------------------------------------------------
-
-						// Insert Act If not exists
-							$this->db->where('ACT', $actname);
-							$query = $this->db->get('a95_act_master');
-							if($query->num_rows()!=0){
-
-							} else {
-								$data = array(
-									'ACT' => $actname
-									);
-								$this->db->insert('a95_act_master', $data);
-							}
-						// ------------------------
-
-						// Insert Court If not exists
-							$this->db->where('COURT', $court);
-							$query = $this->db->get('a95_court_master');
-							if($query->num_rows()!=0){
-
-							} else {
-								$data = array(
-									'COURT' => $court
-									);
-								$this->db->insert('a95_court_master', $data);
-							}
-						// ------------------------
-
-						// Insert Section If not exists
-							$this->db->where('SECTION', $section);
-							$query = $this->db->get('a95_section_master');
-							if($query->num_rows()!=0){
-
-							} else {
-								$data = array(
-									'SECTION' => $section
-									);
-								$this->db->insert('a95_section_master', $data);
-							}
-						// ------------------------
-
 					$this->session->set_flashdata('_msgall_', 'New Case <span style="color: #0000ff">'. $caseno . '</span> is successfully submitted.');
 				} else {
 					$this->session->set_flashdata('_msgall_', 'Something goes wrong. Please try again !!');
@@ -239,14 +199,14 @@ class My_court_model extends CI_Model{
 		$year = $x[0];
 		$month = $x[1];
 		$type = $this->input->post('txteditType');
-		$court = $this->input->post('txtCourtEdit');
+		$court = $this->input->post('txtCourt');
 		$village = $this->input->post('txtVillage');
 		$subdiv = trim($this->input->post('txtSubDivision'));
-		$tehsil = $this->input->post('txtTehsilEdit');
+		$tehsil = $this->input->post('txtTehsil');
 		$patwariarea = $this->input->post('txtPatwariArea');
 		$policearea = $this->input->post('txtPoliceArea');
-		$actname = $this->input->post('txtActNameEdit');
-		$section = $this->input->post('txtSectionEdit');
+		$actname = $this->input->post('txtActName');
+		$section = $this->input->post('txtSection');
 		$first_party = $this->input->post('txtFirstName');
 		$second_party = $this->input->post('txtSecondParty');
 		$next_date = $this->input->post('txtNextDate');
@@ -291,43 +251,6 @@ class My_court_model extends CI_Model{
 			$query = $this->db->update('a97_sdm_court_detail', $data);
 
 			if($query == true){
-				// Insert Act If not exists
-					$this->db->where('ACT', $actname);
-					$query = $this->db->get('a95_act_master');
-					if($query->num_rows()!=0){
-
-					} else {
-						$data = array(
-							'ACT' => $actname
-							);
-						$this->db->insert('a95_act_master', $data);
-					}
-				// ------------------------
-				// Insert Court If not exists
-					$this->db->where('COURT', $court);
-					$query = $this->db->get('a95_court_master');
-					if($query->num_rows()!=0){
-
-					} else {
-						$data = array(
-							'COURT' => $court
-							);
-						$this->db->insert('a95_court_master', $data);
-					}
-				// ------------------------
-
-				// Insert Section If not exists
-					$this->db->where('SECTION', $section);
-					$query = $this->db->get('a95_section_master');
-					if($query->num_rows()!=0){
-
-					} else {
-						$data = array(
-							'SECTION' => $section
-							);
-						$this->db->insert('a95_section_master', $data);
-					}
-				// ------------------------
 				$this->session->set_flashdata('_msgall_', 'Case <span style="color: #0000ff">'. $caseno . '</span> is successfully updated.');
 			} else {
 				$this->session->set_flashdata('_msgall_', 'Something goes wrong. Please try again !!');
@@ -348,8 +271,8 @@ class My_court_model extends CI_Model{
 		$tehsil = $this->input->post('txtTehsil');
 		$patwariarea = $this->input->post('txtPatwariArea');
 		$policearea = $this->input->post('txtPoliceArea');
-		$actname = $this->input->post('txtActNameNewUpdate');
-		$section = $this->input->post('txtSectionUpdate');
+		$actname = $this->input->post('txtActName');
+		$section = $this->input->post('txtSection');
 		$first_party = $this->input->post('txtFirstName');
 		$second_party = $this->input->post('txtSecondParty');
 		$next_date = $this->input->post('txtNextDate');
@@ -396,33 +319,6 @@ class My_court_model extends CI_Model{
 					$this->db->where('SNO', $ref_sno);
 					$this->db->update('a96_sdm_court', $data);
 				// --------------------------------------------------
-
-					// Insert Act If not exists
-						$this->db->where('ACT', $actname);
-						$query = $this->db->get('a95_act_master');
-						if($query->num_rows()!=0){
-
-						} else {
-							$data = array(
-								'ACT' => $actname
-								);
-							$this->db->insert('a95_act_master', $data);
-						}
-					// ------------------------
-
-					// Insert Section If not exists
-						$this->db->where('SECTION', $section);
-						$query = $this->db->get('a95_section_master');
-						if($query->num_rows()!=0){
-
-						} else {
-							$data = array(
-								'SECTION' => $section
-								);
-							$this->db->insert('a95_section_master', $data);
-						}
-					// ------------------------
-
 				$this->session->set_flashdata('_msgall_', 'New Entry for the Case <span style="color: #0000ff">'. $caseno . '</span> is successfully submitted.');
 			} else {
 				$this->session->set_flashdata('_msgall_', 'Something goes wrong. Please try again !!');
@@ -706,23 +602,6 @@ class My_court_model extends CI_Model{
 			$this->db->order_by('a.SNO', 'asc');
 			$query = $this->db->get();
 		}
-		return $query->result();
-	}
-
-	function get_acts(){
-		$query = $this->db->get('a95_act_master');
-		return $query->result();
-	}
-	function get_court(){
-		$query = $this->db->get('a95_court_master');
-		return $query->result();
-	}
-	function get_section(){
-		$query = $this->db->get('a95_section_master');
-		return $query->result();
-	}
-	function get_tehsil(){
-		$query = $this->db->get('a95_tehsil_master');
 		return $query->result();
 	}
 }

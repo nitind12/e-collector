@@ -17,8 +17,10 @@ date_default_timezone_set('Asia/Kolkata');
 | environments.
 |
 */
+date_default_timezone_set("Asia/Kolkata");
+
 $config['base_url'] = 'http://localhost/e-collector/vp';
-define('_ROOT_URL_', 'http://localhost/e-collector');
+define('_ROOT_URL_', 'https://localhost/e-collector');
 //$config['base_url'] = 'http://teamfreelancers.com/village/vp';
 
 /*

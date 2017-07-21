@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2017 at 03:26 PM
+-- Generation Time: Jul 21, 2017 at 01:07 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -19,6 +19,245 @@ SET time_zone = "+00:00";
 --
 -- Database: `vportal`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `a0_patwari`
+--
+
+CREATE TABLE `a0_patwari` (
+  `PID` int(11) NOT NULL,
+  `NAME_` varchar(100) NOT NULL,
+  `PHONE_` varchar(75) NOT NULL COMMENT 'Max 5 mobile no can be entered',
+  `PHOTO_` varchar(50) NOT NULL,
+  `STATUS_` tinyint(1) NOT NULL,
+  `DATE_` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `USERNAME_` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `a0_patwari`
+--
+
+INSERT INTO `a0_patwari` (`PID`, `NAME_`, `PHONE_`, `PHOTO_`, `STATUS_`, `DATE_`, `USERNAME_`) VALUES
+(1, 'Aasha Saxena', '7500214079', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(3, 'Amit Shah', '9410337554', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(5, 'Arjun Bisht', '9456554535', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(6, 'Arjun Bisht', '9456554535', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(7, 'Bhuwan Chandra Bhandari', '9411043360', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(8, 'Bhuwan Chandra Bhandari', '9411043360', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(9, 'Ganga Datt Paladiya', '9411541065', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(10, 'Hem Paladiya', '9411323362', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(11, 'Hem Paladiya', '9411541065', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(12, 'Jagdish Chandra', '9675866502', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(13, 'Jagdish Chandra Arya', '9675866502', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(14, 'Lalit Mohan Goswami', '9411323362', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(15, 'Lokmani Arya', '9456378594', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(16, 'Om Prakash Arya', '9411787635', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(17, 'Om Prakash Arya', '9411787635', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(18, 'Radhe Singh Rana', '9412943330', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(19, 'Radhe Singh Rana', '9412943330', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(20, 'Suresh Chandra Sanwal', '8755195213', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(21, 'Suresh Chandra Sanwal', '8755195213', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `a0_whoswho1_department`
+--
+
+CREATE TABLE `a0_whoswho1_department` (
+  `WW1ID` int(11) NOT NULL,
+  `DEPARTMENT` varchar(200) NOT NULL,
+  `USERNAME` varchar(50) NOT NULL,
+  `DESC_` text NOT NULL,
+  `DATE_` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `STATUS` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `a0_whoswho1_department`
+--
+
+INSERT INTO `a0_whoswho1_department` (`WW1ID`, `DEPARTMENT`, `USERNAME`, `DESC_`, `DATE_`, `STATUS`) VALUES
+(1, 'District Administration and Revenue Department', 'admin', 'x', '2017-07-17 15:14:23', 1),
+(2, 'Police department', 'admin', 'x', '2017-07-17 15:14:23', 1),
+(3, 'Rural Development Department', 'admin', 'x', '2017-07-17 15:14:23', 1),
+(4, 'Tourism  (KMVN)/ Guest Houses', 'admin', 'x', '2017-07-17 15:14:23', 1),
+(5, 'Health Department ', 'admin', 'x', '2017-07-17 15:14:23', 1),
+(6, 'Social Welfare Department', 'admin', 'x', '2017-07-17 15:14:23', 1),
+(7, 'Education Department', 'admin', 'x', '2017-07-17 15:14:23', 1),
+(8, 'Irrigation Department', 'admin', 'x', '2017-07-17 15:14:23', 1),
+(9, 'Water Supply Department  (Jal Sansthan/Jal Nigam)', 'admin', 'x', '2017-07-17 15:14:23', 1),
+(10, 'Public Works Department ?PWD', 'admin', 'x', '2017-07-17 15:14:23', 1),
+(11, 'Forest Department', 'admin', 'x', '2017-07-17 15:14:23', 1),
+(12, 'Local Bodies', 'admin', 'x', '2017-07-17 15:14:23', 1),
+(13, 'Electricity Department', 'admin', 'x', '2017-07-17 15:14:23', 1),
+(14, 'District Agriculture Officer  Nainital', 'admin', 'x', '2017-07-17 15:14:23', 1),
+(15, 'District Horticulture Officer Nainital', 'admin', 'x', '2017-07-17 15:14:23', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `a0_whoswho2_whome`
+--
+
+CREATE TABLE `a0_whoswho2_whome` (
+  `WW2ID` int(11) NOT NULL,
+  `WHOME` varchar(200) NOT NULL,
+  `WW1ID` int(11) NOT NULL,
+  `USERNAME` varchar(50) NOT NULL,
+  `DESC_` text NOT NULL,
+  `DATE_` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `STATUS` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `a0_whoswho2_whome`
+--
+
+INSERT INTO `a0_whoswho2_whome` (`WW2ID`, `WHOME`, `WW1ID`, `USERNAME`, `DESC_`, `DATE_`, `STATUS`) VALUES
+(1, 'Commissioner Kumaun ', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(2, 'District Magistrate Nainital ', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(3, 'Additional District Magistrate FR Nainital ', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(4, 'Additional District Magistrate E Nainital', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(5, 'City Magistrate Haldwani ', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(6, 'Sub Divisional Magistrate Nainital ', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(7, 'Sub Divisional Magistrate Haldwani', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(8, 'Sub Divisional Magistrate  Dhari', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(9, 'Sub Divisional Magistrate  Koshyankutoli', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(10, 'Sub Divisional Magistrate Ramnagar', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(11, 'Sub Divisional Magistrate Kaladhungi', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(12, 'Tehsildar Nainital ', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(13, 'Tehsildar Haldwani ', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(14, 'Tehsildar Ramnagar ', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(15, 'Tehsildar  Lalkuan ', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(16, 'Tehsildar Betalghat ', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(17, 'Tehsildar  Dhari ', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(18, 'Tehsildar Koshyankutoli ', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(19, 'Tehsildar Kaladhungi ', 1, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(20, 'SSP Nainital ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(21, 'Additional SP Nainital', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(22, 'CO Nainital ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(23, 'CO Bhowali ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(24, 'CO Haldwani ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(25, 'CO Ramnagar ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(26, 'CO Lalkuan ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(27, 'SO Tallital Nainital ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(28, 'SO Mallital Nainital ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(29, 'SO Kathgodam ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(30, 'SO Haldwani ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(31, 'SO Betalghat ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(32, 'SO Kaladhungi ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(33, 'SO Bhimtal ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(34, 'SO Mukteshwar ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(35, 'SO Mukhani ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(36, 'SO Vanbhoolpura ', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(37, 'SO Bhowali', 2, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(38, 'Chief Development Officer Nainital ', 3, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(39, 'District Development Officer Nainital ', 3, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(40, 'District Panchayati Raj Officer Nainital ', 3, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(41, 'Block Development Officer Bhimtal ', 3, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(42, 'Block Development Officer Ramgarh ', 3, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(43, 'Block Development Officer Haldwani ', 3, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(44, 'Block Development officer Ramnagar ', 3, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(45, 'Block Development Officer Kotabagh ', 3, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(46, 'Block Development Officer Dhari ', 3, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(47, 'Block Development Officer Betalghat ', 3, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(48, 'Block Development Officer Okhalkanda', 3, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(49, 'Managing Director KMVN ', 4, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(50, 'General Manager KMVN ', 4, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(51, 'Deputy Director Tourism ', 4, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(52, 'Nainital Club State Guest House ', 4, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(53, 'Circuit House Kathgodam', 4, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(54, 'Chief Medical Officer Nainital ', 5, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(55, 'CMS B.D.Pandey (Male Hospital)', 5, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(56, 'CMS  B.D.Pandey (Female Hospital)', 5, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(57, 'CMS Base Hospital Haldwani', 5, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(58, 'District social welfare Officer', 6, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(59, 'Chief Education officer Nainital ', 7, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(60, 'Block Education Officer Bhimtal ', 7, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(61, 'Block Education Officer Ramgarh ', 7, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(62, 'Block Education Officer Haldwani ', 7, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(63, 'Block Education officer Ramnagar ', 7, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(64, 'Block Education Officer Kotabagh ', 7, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(65, 'Block Education Officer Dhari ', 7, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(66, 'Block Education Officer Betalghat ', 7, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(67, 'Block Education Officer Okhalkanda', 7, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(68, 'Executive Engineer Taraai Division Nainital ', 8, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(69, ' Executive Engineer  Sinchaai Division Haldwani ', 8, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(70, 'Executive Engineer Sinchaai Division Ramnagar ', 8, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(71, 'Executive Engineer Nalkoop Division Haldwani ', 8, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(72, 'Executive Engineer Nalkoop Division Ramnagar ', 8, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(73, 'Executive Engineer Miner Irrigation Nainital', 8, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(74, 'Executive Engineer Jal Sansthan Nainital', 9, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(75, 'Executive Engineer Jal  Sansthan Haldwani', 9, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(76, 'Executive Engineer  Jal Sansthan Ramnagar', 9, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(77, 'Executive Engineer Jal  Nigam Nainital', 9, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(78, 'Executive Engineer Jal  Nigam Haldwani', 9, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(79, 'Executive Engineer  Jal  Nigam Ramnagar', 9, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(80, 'Executive Engineer Construction Division Nainital ', 10, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(81, 'Executive Engineer Prantiya Division Nainital ', 10, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(82, 'Executive Engineer PMGSY  Kathgodam ', 10, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(83, 'Executive Engineer Construction Division Haldwani ', 10, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(84, 'Executive Engineer Construction Division Ramnagar', 10, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(85, 'Executive Engineer NH Division Haldwani ', 10, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(86, 'Executive Engineer Asthaai Division  Bhowali', 10, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(87, 'Divisional Forest Officer  Nainital ', 11, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(88, 'Divisional Forest officer Haldwani ', 11, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(89, 'Divisional Forest officer  Ramnagar', 11, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(90, 'MNA Nagar Nigam Haldwani ', 12, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(91, 'EO Nagar Palika Nainital', 12, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(92, 'EO Nagar Palika Bhowali ', 12, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(93, 'EO Nagar Palika Ramnagar ', 12, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(94, 'EO Nagar Panchayat Kaladhungi ', 12, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(95, 'EO Nagar Panchayat  Lalkuan ', 12, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(96, 'EO Nagar Panchayat Bhimtal', 12, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(97, 'Executive Engineer Nainital ', 13, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(98, 'Executive Engineer Ramnagar', 13, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(99, 'Executive Engineer Haldwani (Rural)', 13, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(100, 'Executive Engineer Haldwani (Urban)', 13, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(101, 'District Agriculture Officer  Nainital', 14, 'admin', 'x', '2017-07-17 15:38:23', 1),
+(102, 'District Horticulture Officer Nainital', 15, 'admin', 'x', '2017-07-17 15:38:23', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `a0_whoswho3_whome_detail`
+--
+
+CREATE TABLE `a0_whoswho3_whome_detail` (
+  `WW3ID` int(11) NOT NULL,
+  `NAME_` varchar(200) NOT NULL,
+  `CONTACT` varchar(50) NOT NULL,
+  `EMAIL` varchar(50) NOT NULL,
+  `PHOTO_PATH` varchar(100) NOT NULL,
+  `WW2ID` int(11) NOT NULL,
+  `USERNAME` varchar(50) NOT NULL,
+  `DESC_` text NOT NULL,
+  `DATE_` varchar(25) NOT NULL,
+  `STATUS_` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `a0_whoswho3_whome_detail`
+--
+
+INSERT INTO `a0_whoswho3_whome_detail` (`WW3ID`, `NAME_`, `CONTACT`, `EMAIL`, `PHOTO_PATH`, `WW2ID`, `USERNAME`, `DESC_`, `DATE_`, `STATUS_`) VALUES
+(1, 'Nitin Deepak Mathur', '9760020667', 'nitin.d12@gmail.com', '1.jpg', 41, 'nitin', 'x', '2017-07-18 16:11:44', 1),
+(2, 'Nitin Deepak', '9760020667', 'nitin.d12@gmail.com', '2.jpg', 54, 'nitin', 'x', '2017-07-19 22:28:39', 1),
+(3, 'Nitin Deepak', '9760020667', 'nitin.d12@gmail.com', '3.jpg', 56, 'nitin', 'ok', '2017-07-19 16:39:24', 1),
+(4, 'Dr Nitin Deepak', '9760020667', 'nitin.d12@amrapali.ac.in', '4.jpg', 59, 'nitin', 'xxxx', '2017-07-18 16:12:38', 1),
+(5, 'Harsh Pant', '9874563214', 'pant_vardhan@gmail.com', '5.jpg', 1, 'nitin', 'x', '2017-07-19 22:52:56', 1),
+(6, 'Dr naveen', '9874563214', 'naveen@gmail.com', '6.jpg', 49, 'nitin', 'nitin photo123', '2017-07-19 22:27:59', 1),
+(7, 'Dr Gopal Datt', '8745963214', 'gopal@gmail.com', '7.jpg', 73, 'nitin', 'Nitin photo', '2017-07-18 16:35:19', 1),
+(8, 'asd', 'asd', 'asd', '8.jpg', 51, 'nitin', 'asd', '2017-07-19 22:37:10', 1),
+(9, 'x', 'x', 'x', '9.jpg', 53, 'nitin', 'x', '2017-07-19 22:37:30', 1),
+(10, 'Gagan Pant', '8899665544', 'gagan@gmail.com', '10.jpg', 58, 'nitin', 'gagan', '2017-07-19 22:40:55', 1),
+(11, 'Ritesh Singh', '7788996655', 'ritesh@gmail.com', '11.JPG', 55, 'nitin', 'ritesh', '2017-07-19 21:45:30', 1),
+(12, 'sad', 'asd', 'asd', '12.JPG', 4, 'nitin', 'asd', '2017-07-19 22:14:56', 1),
+(13, 'xx', 'xx', 'xx', '13.jpg', 52, 'nitin', 'xx', '2017-07-19 22:40:29', 1);
 
 -- --------------------------------------------------------
 
@@ -300,7 +539,8 @@ INSERT INTO `a1_village` (`VILLAGEID`, `USERNAME`, `NAME_`, `PIC`, `STATUS`, `DA
 (261, 'Mallikutoli', 'Hartola', 'x', 1, '2017-04-01 11:27:24'),
 (262, 'Mallikutoli', 'Basgaon', 'x', 0, '2017-04-12 11:47:38'),
 (263, 'Ramgarh', 'Gagar', 'x', 1, '2017-04-07 17:28:25'),
-(264, 'neeraj', 'dhaari', 'x', 1, '2017-05-17 13:00:32');
+(264, 'neeraj', 'dhaari', 'x', 1, '2017-05-17 13:00:32'),
+(265, 'ok', 'Wah', 'x', 1, '2017-05-23 03:04:48');
 
 -- --------------------------------------------------------
 
@@ -3291,7 +3531,135 @@ INSERT INTO `a8_village_one_row_data` (`ONEROWID`, `USERNAME`, `VILLAGEID`, `DIS
 (272, 'Mallikutoli', 261, 'Nainital ', 'Deepak Rawat ', '9458977777', 'dm-nai-ua@nic.in', 'dmpic_260.jpg', 'Nainital ', 'Vandana Singh ', '9520848000', 'sdmpic_260.jpg', 'sdm.ntl@gmail.com', '', '157.666', 'Nil', 'Nil', 'Peach Apricoat Apple', '166.000H', 'Nainital ', 'Priyanka Rani ', '7310695037', 'tehsildarnainital@gmail.com', 'tehsildarpic_260.jpg', 'Deshraj Singh', '8650505251', 'Ramgarh', 'Malli Kutoli', 'Arjun Singh Bisht', '9456554535', 'x', 'Nathuwakhan', 'Vipin Chandra Joshi', '9639063109', 'Bhimtal ', 'Santosh Kumar Pant', '05942-281405', 'Hartola', 'Keshav dutt', '7500974441', '2.103 H', 'Revenue Police', 'Arjun Singh Bisht', '9456554535', 'Patti Malli Kutoli', 'Arjun Singh Bisht', '9456554535', 'Nathuwakhan', ' 1 Hartola   2 Satpuri ', '1 Nandi sharma   2 Rupa Bhatt', '9719257374', 'Hartola', 'Dinesh sharma', '8958781761', 'Umesh Chandra', '7351560441', 'Pawan Rawat', '9410587569', '4', '1 Satpuri\r\n2 Patali\r\n3 Sunderkhal\r\n4 Kabardhar', '2011', '355', '313', '668', 'Nathuwakhan ', 'Government', 'Indira bisht', '7830319911', 'Mohani pandey', '9410380816', 'Nil', 'Nil', 'Nil', '12 km', '4-Udham Singh Nagar Nainital ', 'Bhagat Singh Koshiyaari ', '58- Nainital ', 'Sanjeev Arya', '120 Govt Primary School Hartola ', '1  Hartola ', 'Dinesh Arya ', '9412982512', 'Nil', '', 'Nathuwakhan -Hartola ', 'P W D ', 'Pakka', '0KM', 'Nil', 'Via Roop Singh Dhoora', 'Kachcha', '0 KM', 'Yes', 1, '2017-04-05 12:10:19'),
 (273, 'Mallikutoli', 262, 'Nainital ', 'Deepak Rawat ', '9458977777', 'dm-nai-ua@nic.in', 'dmpic_260.jpg', 'Nainital ', 'Vandana Singh ', '9520848000', 'sdmpic_260.jpg', 'sdm.ntl@gmail.com', '', '68.743H', '89.240H', 'Nil', 'Vegetables Apple Peach Plom', '225.690H', 'Nainital ', 'Priyanka Rani ', '7310695037', 'tehsildarnainital@gmail.com', 'tehsildarpic_260.jpg', 'Deshraj Singh', '8650505251', 'Ramgarh', 'Malli Kutoli', 'Arjun Singh Bisht', '9456554535', 'x', 'Nathuwakhan', 'Vipin Chandra Joshi', '9639063109', 'Bhimtal ', 'Santosh Kumar Pant', '05942-281405', 'Basgaon', 'Bhuwan Chandra Pathak', '9411598014', '62.923H', 'Revenue Police', 'Arjun singh Bisht', '9456554535', 'Patti Malli Kutoli', 'Arjun Singh Bisht', '9456554535', 'Pathri', 'Basgaon', 'Vidhya Joshi', '9410333968', 'Basgaon', 'Mohan Joshi', '9411760053', 'Madan Chandra Melkani', '9411541920', 'Neeraj Tiwari', '8791423616', '14', '1 Kotuwa Dhar\r\n2 Beta\r\n3 Shemigair\r\n4 Khan\r\n5 Naula Akashkhan\r\n6 Kabhar Mehal \r\n7 Pani\r\n8 Mehaldhar\r\n9 Patauri\r\n10 Sariyapani\r\n11 Dador\r\n12 Kabadua\r\n13 Adhora\r\n14 Tawalekh', '2011', '200', '180', '380', 'Primary Health Center Suyalbari', 'Government', 'Sunita Arya', '9675209470', 'Kamla Bora', '7310901365', 'Nil', 'Nil', 'Nil ', '12 Km', '4-Udham Singh Nagar Nainital ', 'Bhagat Singh Koshiyaari ', '58- Nainital ', 'Sanjeev Arya', '121 Govt Junior High School Basgaon', '5  Basgaon Kastnauli Paldi Suyalgad Basanti', 'Sunita Pandey', '9761649657', 'S S Samiti Suyaldari', '9411368063', 'Odakhan Suyaldari', 'P W D', 'Kachcha', '1 Km', '', 'Via Hartola', 'Kachcha', '3km', 'Yes', 0, '2017-04-12 11:47:38'),
 (274, 'Ramgarh', 263, 'x', 'x', 'x', 'x', 'dmpic_134.jpg', '', 'x', 'x', 'sdmpic_134.jpg', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'tehsildarpic_134.jpg', 'x', 'x', 'x', 'x', 'x', 'x', 'patwaripic_134.jpg', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 1, '2017-04-07 17:28:25'),
-(275, 'neeraj', 264, 'x', 'x', 'x', 'x', 'x', '', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 1, '2017-05-17 13:00:33');
+(275, 'neeraj', 264, 'x', 'x', 'x', 'x', 'x', '', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 1, '2017-05-17 13:00:33'),
+(276, 'ok', 265, 'x', 'x', 'x', 'x', 'x', '', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 1, '2017-05-23 03:04:48');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `a95_act_master`
+--
+
+CREATE TABLE `a95_act_master` (
+  `ID` int(11) NOT NULL,
+  `ACT` varchar(200) NOT NULL,
+  `USERNAME` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `a95_act_master`
+--
+
+INSERT INTO `a95_act_master` (`ID`, `ACT`, `USERNAME`) VALUES
+(1, 'T;sM-,-,y-vkj-,DV', 'admin'),
+(2, ',y-vkj-,DV', 'admin'),
+(3, 'lh-vkj-ih-lh-', 'admin'),
+(4, '?kL= vf/kfu;e', 'admin'),
+(5, 'vkcdkjh vf/kfu;e', 'admin'),
+(6, 'vko?;d oLrq vf/kfu;e', 'admin'),
+(7, 'xq.Mk fu;a=.k vf/kfu;e', 'admin'),
+(8, '[kkn~; lqj{kk vf/kfu;e', 'admin'),
+(9, 'jftLV?s?ku vf/kfu;e', 'admin'),
+(10, 'fdjk;k fu;a=.k vf/kfu;e', 'admin'),
+(11, 'xoZesUV xzkUV ,DV', 'admin'),
+(12, 'voS/k [kuu ifjogu ,oa Hk.Mkj.k fuokj.k vf/kfu;e', 'admin'),
+(13, 'm-iz- ?kgjh Hkou ?fdjk;s ij nsus] fdjk;s rFkk csn[kyh dk fofu;eu?', 'admin'),
+(14, 'xq.Mk fu;a=.k vf/kfu;e', 'admin'),
+(15, 'cSad _.kksa dh olwyh vf/kfu;e &2002', 'admin'),
+(16, 'ih-ih- ,DV', 'admin'),
+(17, 'izdh.kZ okn', 'admin'),
+(18, 'dqek?a ,.M x<oky okVj ?dySD?ku jSVsU?ku ,.M fMLV?hC;w?ku? ,DV] 1975', 'admin'),
+(22, '', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `a95_court_master`
+--
+
+CREATE TABLE `a95_court_master` (
+  `ID` int(11) NOT NULL,
+  `COURT` varchar(200) NOT NULL,
+  `USERNAME` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `a95_court_master`
+--
+
+INSERT INTO `a95_court_master` (`ID`, `COURT`, `USERNAME`) VALUES
+(1, 'ftykf/kdkjh uSuhrky', 'admin'),
+(2, 'miftykf/kdkjh uSuhrky', 'admin'),
+(3, 'miftykf/kdkjh gY}kuh', 'admin'),
+(4, 'miftykf/kdkjh jkeuxj', 'admin'),
+(5, 'miftykf/kdkjh dkyk<waxh', 'admin'),
+(6, 'miftykf/kdkjh /kkjh', 'admin'),
+(7, 'miftykf/kdkjh dks?;kdqVkSyh', 'admin'),
+(8, 'uSuhrky', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `a95_section_master`
+--
+
+CREATE TABLE `a95_section_master` (
+  `ID` int(11) NOT NULL,
+  `SECTION` varchar(200) NOT NULL,
+  `USERNAME` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `a95_section_master`
+--
+
+INSERT INTO `a95_section_master` (`ID`, `SECTION`, `USERNAME`) VALUES
+(1, '/kkjk 3', 'admin'),
+(2, '/kkjk 04', 'admin'),
+(3, '/kkjk 6,', 'admin'),
+(4, '/kkjk 08', 'admin'),
+(5, '/kkjk 17', 'admin'),
+(6, '/kkjk 33@39', 'admin'),
+(7, '/kkjk 72', 'admin'),
+(8, '/kkjk 107@116', 'admin'),
+(9, '/kkjk 110 th', 'admin'),
+(10, '/kkjk 133', 'admin'),
+(11, '/kkjk 143', 'admin'),
+(12, '/kkjk 144', 'admin'),
+(13, '/kkjk 145', 'admin'),
+(14, '/kkjk 151', 'admin'),
+(15, '/kkjk 161', 'admin'),
+(16, '/kkjk 167', 'admin'),
+(17, '/kkjk 176', 'admin'),
+(18, '/kkjk 209', 'admin'),
+(19, '/kkjk 210', 'admin'),
+(20, '/kkjk 229 ch', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `a95_tehsil_master`
+--
+
+CREATE TABLE `a95_tehsil_master` (
+  `ID` int(11) NOT NULL,
+  `TEHSIL` varchar(200) NOT NULL,
+  `USERNAME` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `a95_tehsil_master`
+--
+
+INSERT INTO `a95_tehsil_master` (`ID`, `TEHSIL`, `USERNAME`) VALUES
+(1, 'rglhy uSuhrky', 'admin'),
+(2, 'rglhy gY}kuh', 'admin'),
+(3, 'rglhy jkeuxj', 'admin'),
+(4, 'rglhy /kkjh', 'admin'),
+(5, 'rglhy dkyk<awxh', 'admin'),
+(6, 'rglhy dks?;kdqVkSyh', 'admin'),
+(7, 'rglhy ykydqavk', 'admin'),
+(8, 'rglhy csrky?kkV', 'admin');
 
 -- --------------------------------------------------------
 
@@ -3952,10 +4320,16 @@ INSERT INTO `a96_sdm_court` (`SNO`, `CASENO`, `REG_DATE`, `YEAR_`, `MONTH`, `TYP
 (631, '2008-27/4', '2008-08-27', '2008', '08', 'jktLo okn', 'miftykf/kdkjh@ijxuk eftLVsªV uSuhrky', 'pukSrh', 'Deactivate DD', '', 'x', '', 'vandana', 638),
 (632, '2016-27/10', '2016-08-12', '2016', '08', 'jktLo okn', 'miftykf/kdkjh@ijxuk eftLVsªV uSuhrky', 'vk.kw', 'Deactivate DD', '', 'x', '', 'vandana', 639),
 (633, '2016-22/18', '2016-01-06', '2016', '01', 'jktLo okn', 'miftykf/kdkjh@ijxuk eftLVsªV uSuhrky', 'fctjkSyh', 'Deactivate DD', '', 'x', '', 'vandana', 640),
-(634, '2017-22/151', '2017-05-11', '2017', '05', 'QkStnkjh', 'uSuhrky', 'uxyk', 'Deactivate DD', '', 'x', '', 'nitin', 641),
+(634, '2017-22/151', '2017-05-11', '2017', '05', 'QkStnkjh', 'miftykf/kdkjh /kkjh', 'uxyk 23', 'Deactivate DD', '', 'x', '', 'nitin', 660),
 (635, '2017-22/152f', '2017-05-11', '2017', '05', 'QkStnkjh', 'ghfj', 'hf', 'Deactivate DD', '', 'x', '', 'vandana', 642),
 (636, '2017-251/251', '2017-05-16', '2017', '05', 'QkStnkjh', 'ihdw', 'asd', 'Deactivate DD', '', 'x', '', 'dmnainital', 643),
-(637, '2017-12/32', '2017-05-17', '2017', '05', 'QkStnkjh', '/kkjh', '/kkjh', 'Deactivate DD', '', 'x', '', 'gopal', 644);
+(637, '2017-12/32', '2017-05-17', '2017', '05', 'QkStnkjh', '/kkjh', '/kkjh', 'Deactivate DD', '', 'x', '', 'gopal', 644),
+(638, '2017-23/34', '2017-07-14', '2017', '07', 'QkStnkjh', 'asdzdc', 'zxc', 'Deactivate DD', '', 'x', '', 'nitin', 645),
+(639, '2017-23/45', '2017-07-14', '2017', '07', 'QkStnkjh', 'ftykf/kdkjh uSuhrky', 'dfg', 'Deactivate DD', '', 'x', '', 'nitin', 648),
+(640, '2017-4/2', '2017-07-15', '2017', '07', 'QkStnkjh', 'ftykf/kdkjh uSuhrky', 'SADFSDF', 'Deactivate DD', '', 'x', '', 'nitin', 650),
+(641, '2017-1/1', '2017-07-15', '2017', '07', 'jktLo okn', 'miftykf/kdkjh gY}kuh', 'dgh', 'Deactivate DD', '', 'x', '', 'nitin', 651),
+(642, '2017-22/22', '2017-07-15', '2017', '07', 'QkStnkjh', 'ftykf/kdkjh uSuhrky', 'pppp', 'Deactivate DD', '', 'x', '', 'nitin', 658),
+(643, '2017-', '2017-07-15', '2017', '07', 'jktLo okn', 'miftykf/kdkjh jkeuxj', 'RR', 'Deactivate DD', '', 'x', '', 'nitin', 661);
 
 -- --------------------------------------------------------
 
@@ -4601,10 +4975,27 @@ INSERT INTO `a97_sdm_court_detail` (`SNO`, `REF_SNO`, `CASENO`, `SUB_DIVISION`, 
 (638, 631, '2008-27/4', 'uSuhrky', 'uSuhrky', 'iwohZ N% [kkrk', '', ';w-ih-T;sM-,-,y-vkj-,DV', '176', 'jes\'k pUnz', 'gjh\'k pUnz', '2017-06-05', '', '2017-05-10 10:13:25', 'vandana'),
 (639, 632, '2016-27/10', 'uSuhrky', 'uSuhrky', 'iwohZ N% [kkrk', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'jktsUnz flg', 'ljLorh ', '2017-06-05', 'tokcnkok', '2017-05-10 10:13:25', 'vandana'),
 (640, 633, '2016-22/18', 'uSuhrky', 'uSuhrky', 'ik.Msxkao', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'd`".k flg', 'pUnz nRr', '2017-06-05', 'tokcnkok', '2017-05-10 10:13:25', 'vandana'),
-(641, 634, '2017-22/151', 'uxyk', 'uxyk', 'uxyk', 'uxyk', '251', '251', 'fufRru', 'nhid', '2017-05-11', 'ok', '2017-05-11 11:11:31', 'nitin'),
+(641, 634, '2017-22/151', 'uxyk', 'uxyk', 'uxyk', 'uxyk', '?kL= vf/kfu;e', '', 'fufRru', 'nhid', '2017-05-11', 'ok', '2017-07-15 07:27:22', 'nitin'),
 (642, 635, '2017-22/152f', 'hj', 'asdasd', 'asd', 'fghfgh', 'fghfgh', '254', 'ghjghj', 'asasdasd', '', 'asdasd', '2017-05-11 11:15:26', 'vandana'),
 (643, 636, '2017-251/251', 'asd', 'asd', 'sad', 'asd', 'asd', 'asd', 'asd', 'asd', '', '', '2017-05-16 10:35:53', 'dmnainital'),
-(644, 637, '2017-12/32', '/kkjh', '/kkjh', '/kkjh', '/kkjh', 'QkStnkjh', '588', 'yfyr', 'yfyrk', '2017-05-17', '', '2017-05-17 12:57:23', 'gopal');
+(644, 637, '2017-12/32', '/kkjh', '/kkjh', '/kkjh', '/kkjh', 'QkStnkjh', '588', 'yfyr', 'yfyrk', '2017-05-17', '', '2017-05-17 12:57:23', 'gopal'),
+(645, 638, '2017-23/34', 'zxc', 'zxc', 'zxc', 'zxc', 'izdh.kZ okn', 'asd', 'asd', 'asd', '2017-07-27', 'asd', '2017-07-14 17:11:58', 'nitin'),
+(646, 639, '2017-23/45', 'dfg', 'ghj', 'jkl', 'kls', 'izdh.kZ okn', 'dfg', 'dfg', 'dfg', '2017-07-15', 'dfg', '2017-07-15 06:12:57', 'nitin'),
+(647, 639, '2017-23/45', 'dfg', 'ghj', 'jkl', 'kls', 'izdh.kZ oknh bu', 'dfg', 'dfg', 'dfg', '2017-07-15', 'dfg', '2017-07-14 17:07:41', 'nitin'),
+(648, 639, '2017-23/45', 'dfg', 'ghj', 'jkl', 'kls', 'izdh.kZ okn', 'dfg', 'dfg', 'dfg', '2017-07-15', 'dfg', '2017-07-14 17:12:26', 'nitin'),
+(649, 634, '2017-22/151', 'uxyk', 'uxyk', 'uxyk', 'uxyk', 'cSad _.kksa dh olwyh vf/kfu;e &2002', '/kkjk 72', 'fufRru', 'nhid', '2017-05-11', 'ok', '2017-07-15 07:29:13', 'nitin'),
+(650, 640, '2017-4/2', 'SDFSDF', 'SDFSDF', 'SDFSDF', 'SDFSDF', 'vkcdkjh vf/kfu;e', 'SDFSDF', 'SDFSDF', 'SDFSDF', '2017-07-17', '', '2017-07-15 04:00:35', 'nitin'),
+(651, 641, '2017-1/1', 'fgh', 'fgh', 'fgh', 'fgh', 'izdh.kZ okn', '/kkjk 133', 'fgh', 'fgh', '2017-07-20', 'fgh', '2017-07-15 07:09:11', 'nitin'),
+(652, 634, '2017-22/151', 'uxyk', 'uxyk', 'uxyk', 'uxyk', 'cSad _.kksa dh olwyh vf/kfu;e &2002', '/kkjk 33@39', 'fufRru', 'nhid', '2017-05-11', 'ok', '2017-07-15 07:34:35', 'nitin'),
+(653, 634, '2017-22/151', 'uxyk', 'uxyk', 'uxyk', 'uxyk', 'cSad _.kksa dh olwyh vf/kfu;e &2002', '/kkjk 33@39', 'fufRru', 'nhid', '2017-05-11', 'ok', '2017-07-15 07:35:35', 'nitin'),
+(654, 634, '2017-22/151', 'uxyk', 'uxyk', 'uxyk', 'uxyk', 'cSad _.kksa dh olwyh vf/kfu;e &2002', '/kkjk 133', 'fufRru', 'nhid', '2017-05-11', 'ok', '2017-07-15 07:35:51', 'nitin'),
+(655, 634, '2017-22/151', 'uxyk 23', 'uxyk 23', 'uxyk 23', 'uxyk 23', 'cSad _.kksa dh olwyh vf/kfu;e &2002', '/kkjk 133', 'fufRru 23', 'nhid 23', '2017-05-11', 'ok 23', '2017-07-15 08:05:23', 'nitin'),
+(656, 634, '2017-22/151', 'uxyk 23', 'uxyk 23', 'uxyk 23', 'uxyk 23', 'xoZesUV xzkUV ,DV', '/kkjk 143', 'fufRru 23', 'nhid 23', '2017-05-11', 'ok 23', '2017-07-15 08:07:09', 'nitin'),
+(657, 642, '2017-22/22', 'pppp', 'ppp', 'pppp', 'pppp', 'lh-vkj-ih-lh-', '/kkjk 08', 'pp', 'pp', '2017-07-21', 'pp', '2017-07-15 08:16:47', 'nitin'),
+(658, 642, '2017-22/22', 'pppp', 'ppp', 'pppp', 'pppp', 'lh-vkj-ih-lh-', '/kkjk 143', 'pp', 'pp', '2017-07-21', 'pppp pp pp', '2017-07-15 08:18:15', 'nitin'),
+(659, 634, '2017-22/151', 'uxyk 23', 'uxyk 23', 'uxyk 23', 'uxyk 23', ',y-vkj-,DV', '/kkjk 133', 'fufRru 23', 'nhid 23', '2017-05-11', 'ok 23', '2017-07-15 08:19:39', 'nitin'),
+(660, 634, '2017-22/151', 'uxyk 23', 'uxyk 23', 'uxyk 23', 'uxyk 23', ',y-vkj-,DV', '/kkjk 04', 'fufRru 23', 'nhid 23', '2017-05-11', 'ok 23', '2017-07-15 08:20:11', 'nitin'),
+(661, 643, '2017-', 'RR', 'rglhy dks?;kdqVkSyh', 'RR', 'RR', 'jftLV?s?ku vf/kfu;e', '/kkjk 144', 'RR', 'RR', '2017-07-21', 'RR', '2017-07-15 08:54:06', 'nitin');
 
 -- --------------------------------------------------------
 
@@ -6378,19 +6769,57 @@ INSERT INTO `b1_revenue_map` (`MAPID`, `VILLAGEID`, `SHEETNO`, `MAP_PATH`, `USER
 CREATE TABLE `c1_gallery_category` (
   `CATEG_ID` int(11) NOT NULL,
   `CATEGORY` varchar(25) NOT NULL,
-  `DESC` varchar(500) NOT NULL,
+  `DESC` varchar(1000) NOT NULL,
   `STATUS` tinyint(1) NOT NULL,
-  `DATE_` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `PIC` varchar(200) NOT NULL
+  `DATE_` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `c1_gallery_category`
 --
 
-INSERT INTO `c1_gallery_category` (`CATEG_ID`, `CATEGORY`, `DESC`, `STATUS`, `DATE_`, `PIC`) VALUES
-(1, 'BHIMTAL', 'Bhimtal is an ancient place named after Bhima of Mahabharata. Bhimeshwara Mahadev Temple, an old Shiva temple in the bank of Bhimtal lake, is believed to have been built when Bhima visited the place during the banishment (vanvas) period of Pandavas. ', 1, '2017-05-09 00:08:58', '1.jpg'),
-(17, 'NAINITAL LAKE', 'It is believed that the Naini Lake is one of the 64\'s Shakti Peeths, or religious sites where parts of the charred body of Sati (Parvati) fell on earth while being carried by Lord Shiva. The spot where Satis eyes (or Nain) fell, came to be called Nain-tal or lake of the eye. The goddess Shakti is worshiped at the Naina Devi Temple, known by locals as Naini Mata Temple on the north shore of the present day lake.', 1, '2017-05-15 00:08:58', '17.jpg');
+INSERT INTO `c1_gallery_category` (`CATEG_ID`, `CATEGORY`, `DESC`, `STATUS`, `DATE_`) VALUES
+(1, 'BHIMTAL', 'Bhimtal is an ancient place named after Bhima of Mahabharata. Bhimeshwara Mahadev Temple, an old Shiva temple in the bank of Bhimtal lake, is believed to have been built when Bhima visited the place during the banishment (vanvas) period of Pandavas. ', 1, '2017-05-23 02:45:58'),
+(17, 'NAINITAL LAKE', 'It is believed that the Naini Lake is one of the 64\'s Shakti Peeths, or religious sites where parts of the charred body of Sati (Parvati) fell on earth while being carried by Lord Shiva. The spot where Satis eyes (or Nain) fell, came to be called Nain-tal or lake of the eye. The goddess Shakti is worshiped at the Naina Devi Temple, known by locals as Naini Mata Temple on the north shore of the present day lake.', 1, '2017-05-23 02:48:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `c2_gallery_picture`
+--
+
+CREATE TABLE `c2_gallery_picture` (
+  `PIC_ID` int(11) NOT NULL,
+  `CATEG_ID` int(11) NOT NULL,
+  `PIC_PATH` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `STATUS` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `c2_gallery_picture`
+--
+
+INSERT INTO `c2_gallery_picture` (`PIC_ID`, `CATEG_ID`, `PIC_PATH`, `STATUS`) VALUES
+(8, 17, 'banner1.jpg', 1),
+(10, 17, 'banner21.jpg', 1),
+(11, 17, 'banner3.jpg', 1),
+(12, 1, '5.jpg', 1),
+(13, 1, '2.jpg', 1),
+(14, 1, '7.jpg', 1),
+(15, 1, '12.jpg', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `c3_gallery_accomodation`
+--
+
+CREATE TABLE `c3_gallery_accomodation` (
+  `ACCO_ID` int(11) NOT NULL,
+  `CATEG_ID` int(11) NOT NULL,
+  `ACCOMO` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `STATUS` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -6428,7 +6857,8 @@ INSERT INTO `login` (`USERNAME`, `PASSWORD`, `USERSTATUS`, `STATUS`, `DATE_`, `N
 ('Mangoli', '9411787635', 2, 1, '2017-05-10 10:07:41', 'Om Prakash Arya', 'vandana'),
 ('Nathuakhan', '8755195213', 2, 1, '2017-05-10 10:07:41', 'Suresh Chandra Sanwal', 'vandana'),
 ('neeraj', '123', 2, 1, '2017-05-17 12:54:13', 'neeraj', 'gopal'),
-('nitin', '123', 3, 1, '2017-05-16 09:37:05', 'Nitin Deepak', 'dmnainital'),
+('nitin', '123', 1, 1, '2017-07-16 03:37:26', 'Nitin Deepak', 'dmnainital'),
+('ok', '123', 2, 1, '2017-05-23 02:59:46', 'ok', 'nitin'),
 ('P6Khata', '9411323362', 2, 1, '2017-05-10 10:07:41', 'Lalit Mohan Goswami', 'vandana'),
 ('Pandeygaon', '9412943330', 2, 1, '2017-05-10 10:07:41', 'Radhe Singh Rana', 'vandana'),
 ('Pinron', '9411323362', 2, 1, '2017-05-10 10:07:41', 'Hem Paladiya', 'vandana'),
@@ -6467,6 +6897,31 @@ INSERT INTO `user_status` (`STATUSID`, `USERSTATUS`, `PATH_`, `STATUS`, `DATE_`)
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `a0_patwari`
+--
+ALTER TABLE `a0_patwari`
+  ADD PRIMARY KEY (`PID`),
+  ADD KEY `USERNAME_` (`USERNAME_`);
+
+--
+-- Indexes for table `a0_whoswho1_department`
+--
+ALTER TABLE `a0_whoswho1_department`
+  ADD PRIMARY KEY (`WW1ID`);
+
+--
+-- Indexes for table `a0_whoswho2_whome`
+--
+ALTER TABLE `a0_whoswho2_whome`
+  ADD PRIMARY KEY (`WW2ID`);
+
+--
+-- Indexes for table `a0_whoswho3_whome_detail`
+--
+ALTER TABLE `a0_whoswho3_whome_detail`
+  ADD PRIMARY KEY (`WW3ID`);
 
 --
 -- Indexes for table `a1_village`
@@ -6601,6 +7056,34 @@ ALTER TABLE `a8_village_one_row_data`
   ADD PRIMARY KEY (`ONEROWID`);
 
 --
+-- Indexes for table `a95_act_master`
+--
+ALTER TABLE `a95_act_master`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `USERNAME` (`USERNAME`);
+
+--
+-- Indexes for table `a95_court_master`
+--
+ALTER TABLE `a95_court_master`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `USERNAME` (`USERNAME`);
+
+--
+-- Indexes for table `a95_section_master`
+--
+ALTER TABLE `a95_section_master`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `USERNAME` (`USERNAME`);
+
+--
+-- Indexes for table `a95_tehsil_master`
+--
+ALTER TABLE `a95_tehsil_master`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `USERNAME` (`USERNAME`);
+
+--
 -- Indexes for table `a96_sdm_court`
 --
 ALTER TABLE `a96_sdm_court`
@@ -6626,6 +7109,20 @@ ALTER TABLE `c1_gallery_category`
   ADD PRIMARY KEY (`CATEG_ID`);
 
 --
+-- Indexes for table `c2_gallery_picture`
+--
+ALTER TABLE `c2_gallery_picture`
+  ADD PRIMARY KEY (`PIC_ID`),
+  ADD KEY `CATEG_ID` (`CATEG_ID`);
+
+--
+-- Indexes for table `c3_gallery_accomodation`
+--
+ALTER TABLE `c3_gallery_accomodation`
+  ADD PRIMARY KEY (`ACCO_ID`),
+  ADD KEY `CATEG_ID` (`CATEG_ID`);
+
+--
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
@@ -6642,10 +7139,30 @@ ALTER TABLE `user_status`
 --
 
 --
+-- AUTO_INCREMENT for table `a0_patwari`
+--
+ALTER TABLE `a0_patwari`
+  MODIFY `PID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `a0_whoswho1_department`
+--
+ALTER TABLE `a0_whoswho1_department`
+  MODIFY `WW1ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `a0_whoswho2_whome`
+--
+ALTER TABLE `a0_whoswho2_whome`
+  MODIFY `WW2ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+--
+-- AUTO_INCREMENT for table `a0_whoswho3_whome_detail`
+--
+ALTER TABLE `a0_whoswho3_whome_detail`
+  MODIFY `WW3ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
 -- AUTO_INCREMENT for table `a1_village`
 --
 ALTER TABLE `a1_village`
-  MODIFY `VILLAGEID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=265;
+  MODIFY `VILLAGEID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=266;
 --
 -- AUTO_INCREMENT for table `a2_pension_pensioner_detail`
 --
@@ -6750,17 +7267,37 @@ ALTER TABLE `a7_village_industry_type`
 -- AUTO_INCREMENT for table `a8_village_one_row_data`
 --
 ALTER TABLE `a8_village_one_row_data`
-  MODIFY `ONEROWID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=276;
+  MODIFY `ONEROWID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=277;
+--
+-- AUTO_INCREMENT for table `a95_act_master`
+--
+ALTER TABLE `a95_act_master`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT for table `a95_court_master`
+--
+ALTER TABLE `a95_court_master`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `a95_section_master`
+--
+ALTER TABLE `a95_section_master`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT for table `a95_tehsil_master`
+--
+ALTER TABLE `a95_tehsil_master`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `a96_sdm_court`
 --
 ALTER TABLE `a96_sdm_court`
-  MODIFY `SNO` bigint(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=638;
+  MODIFY `SNO` bigint(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=644;
 --
 -- AUTO_INCREMENT for table `a97_sdm_court_detail`
 --
 ALTER TABLE `a97_sdm_court_detail`
-  MODIFY `SNO` bigint(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=645;
+  MODIFY `SNO` bigint(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=662;
 --
 -- AUTO_INCREMENT for table `b1_revenue_map`
 --
@@ -6771,6 +7308,16 @@ ALTER TABLE `b1_revenue_map`
 --
 ALTER TABLE `c1_gallery_category`
   MODIFY `CATEG_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT for table `c2_gallery_picture`
+--
+ALTER TABLE `c2_gallery_picture`
+  MODIFY `PIC_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `c3_gallery_accomodation`
+--
+ALTER TABLE `c3_gallery_accomodation`
+  MODIFY `ACCO_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user_status`
 --
