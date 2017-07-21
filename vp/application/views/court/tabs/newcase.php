@@ -20,6 +20,7 @@
                         'placeholder' => 'Case No',
                         'class' => 'required form-control',
                         'name' => 'txtCaseNo',
+                        'required' => 'required',
                         'id' => 'txtCaseNo',
                         'style' => 'font-size: 18px; width: 185px; color: #ff0000',
                         'value' => ''
