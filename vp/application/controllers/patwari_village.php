@@ -20,7 +20,7 @@ class Patwari_village extends CI_Controller {
     }
 
     function submitPatwari(){
-        $message = $this->pvm->submitPatwari($this->session->userdata('user__'));
+        $message = $this->pvm->submitPatwari();
         echo $message;
     }
 }

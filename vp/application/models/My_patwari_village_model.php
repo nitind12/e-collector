@@ -14,4 +14,9 @@ class My_patwari_village_model extends CI_Model{
 
 		return $query->result();
 	}
+
+	function submitPatwari(){
+		$name_ = $this->input->post('txtpatwariName');
+		
+	}
 }

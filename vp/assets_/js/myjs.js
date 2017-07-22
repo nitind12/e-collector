@@ -41,7 +41,9 @@ $(function(){
 			});
 		}
 	});
-	
+	$('#frmPatwari').submit(function(){
+		
+	});
 	$("#frmWhoswho").on('submit',(function(e){
 		e.preventDefault();
 		url_ = site_url_ + "/whoswho/updatewhoswhodetail";
@@ -103,6 +105,7 @@ $(function(){
 		$('#post_name').html("| "+$('#txtWhoswhome').find('option:selected').text());
 		ww2id = $('#txtWhoswhome').val();
 		url_ = site_url_ + "/whoswho/get_whos_whome_detail/"+ww2id;
+		$('#photo_').html('<img src="'+base_path+'/assets_/img/load.GIF" width="20" />');
 		$.ajax({
 			type:'POST',
 			url: url_,
