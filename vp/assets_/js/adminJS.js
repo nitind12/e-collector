@@ -50,7 +50,7 @@ function  loadgallery(dataCmb) {
             e.preventDefault();
             var id = $(this).attr('id');
             //$("#" + id + "g").hide();
-            alert(id);
+            //alert(id);
             $.ajax({
                 url: site_url_ + "/gallery/deleteimg/" + id,
                 //data: 'id=' + id,

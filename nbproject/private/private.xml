@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/H:/xampp/htdocs/e-collector/vp/application/controllers/Web.php</file>
-            <file>file:/H:/xampp/htdocs/e-collector/vp/application/views/home.php</file>
+            <file>file:/H:/xampp/htdocs/e-collector/nitnav/css/style.css</file>
+            <file>file:/H:/xampp/htdocs/e-collector/application/views/touristGallery.php</file>
+            <file>file:/H:/xampp/htdocs/e-collector/application/models/My_model.php</file>
+            <file>file:/H:/xampp/htdocs/e-collector/application/controllers/Web.php</file>
+            <file>file:/H:/xampp/htdocs/e-collector/application/views/home.php</file>
+            <file>file:/H:/xampp/htdocs/e-collector/nitnav/css/bootstrap.css</file>
+            <file>file:/H:/xampp/htdocs/e-collector/application/views/court-view.php</file>
+            <file>file:/H:/xampp/htdocs/e-collector/nitnav/js/bootstrap.min.js</file>
         </group>
     </open-files>
 </project-private>

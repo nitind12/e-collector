@@ -81,7 +81,7 @@ class Web extends CI_Controller {
         $this->load->view('templates/header');
         $this->load->view('templates/menu', $data);
         $this->load->view('court-view', $data);
-        $this->load->view('templates/footerCourt', $data);
+        $this->load->view('templates/footer', $data);
     }
 
     public function searchVillage($villageID = 0) {

@@ -1,4 +1,3 @@
-
 <!--start-main-->
 <div class="header-bottom">
     <div class="container">
@@ -8,8 +7,35 @@
     </div>
 </div>
 <!-- banner -->
-
-<div class="banner">
+<div style='position: absolute; top: 180px; left:90px;z-index:999;height:50px;color: #fff;' class='visible-lg'>
+    <a href="<?PHP echo site_url('web/searchDashboard'); ?>">          
+        <div class="p-maskTop">
+            <p><i class="fa fa-empire fa-spin fa-2x" style='color:#ff3300;'></i> REVENUE VILLAGE</p>
+        </div>
+    </a>
+</div>
+<div style='position: absolute; top: 180px; left:380px;z-index:999;height:50px;color: #fff;' class='visible-lg'>
+    <a href="<?PHP echo site_url('web/court_view'); ?>">          
+        <div class="p-maskTop">
+            <p><i class="fa fa-gavel faa-pulse animated fa-2x" style='color:#ff3300;'></i> REVENUE COURT</p>
+        </div>
+    </a>
+</div>
+<div style='position: absolute; top: 180px; left:680px;z-index:999;height:50px;color: #fff;' class='visible-lg'>
+    <a href="<?PHP echo site_url('web/revenue_view'); ?>">          
+        <div class="p-maskTop">
+            <p><i class="fa fa-map-marker faa-pulse animated fa-2x" style='color:#ff3300;'></i> REVENUE MAP</p>
+        </div>
+    </a>
+</div>
+<div style='position: absolute; top: 180px; left:980px;z-index:999;height:50px;color: #fff;' class='visible-lg'>
+    <a href="<?PHP echo site_url('web/touristGallery'); ?>">          
+        <div class="p-maskTop">
+            <p><i class="fa fa-camera-retro faa-horizontal animated fa-2x" style='color:#ff3300;'></i> PLACES TO VISIT</p>
+        </div>
+    </a>
+</div>
+<div class="banner">    
     <div id="myCarousel" class="carousel slide" data-ride="carousel" style="max-height: 400px;">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -21,7 +47,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" style="max-height: 400px;">
             <div class="item active">
-                <img src="<?PHP echo base_url() . 'nitnav/images/ban1.jpg'; ?>" alt="Nainital">
+                <img src="<?PHP echo base_url() . 'nitnav/images/ban1.jpg'; ?>" alt="Nainital">                
             </div>
 
             <div class="item">
@@ -61,12 +87,11 @@
                     </div>
                     <div class="col-md-3 team-grid">
                         <div class="team-grid1">
-                            <a href="#">   
+                            <a href="<?PHP echo site_url('web/court_view'); ?>">   
                                 <img src="<?PHP echo base_url() . 'nitnav/images/3.jpg'; ?>" alt=" " class="img-responsive">
-                                <a href="#"><div class="p-mask">
-                                        <p><i class="fa fa-gavel fa-2x" style='color:#fff'></i> REVENUE COURT</p>
-                                    </div>
-                                </a>
+                                <div class="p-mask">
+                                    <p><i class="fa fa-gavel fa-2x" style='color:#fff'></i> REVENUE COURT</p>
+                                </div>                                
                         </div>                                
                     </div>
                     <div class="col-md-3 team-grid">
@@ -132,7 +157,7 @@
             </div>
         </div>
         <div class="clearfix"></div>
-        
+
         <div class="col-md-12">
             <div class="tech-no">
                 <!-- technology-top -->                
@@ -141,9 +166,9 @@
                     <div class="col-md-4 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
                         <h3><a href="#">Notice Board</a></h3>
                         <marquee direction='up' scrollamount='2' height='120'>
-                        <p>Ut enim ad minim veniam, quis nostrud eiusmod tempor incididunt ut.</p>
-                        <p>Ut enim ad minim veniam, quis nostrud eiusmod tempor incididunt ut.</p>
-                        <p>Ut enim ad minim veniam, quis nostrud eiusmod tempor incididunt ut.</p>
+                            <p>Ut enim ad minim veniam, quis nostrud eiusmod tempor incididunt ut.</p>
+                            <p>Ut enim ad minim veniam, quis nostrud eiusmod tempor incididunt ut.</p>
+                            <p>Ut enim ad minim veniam, quis nostrud eiusmod tempor incididunt ut.</p>
                         </marquee>
                         <div class="clearfix"></div>
                     </div>
