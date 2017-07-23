@@ -2,7 +2,184 @@ $(function(){
 	$('#old_pwd').focus(function(){$('#msg_').html('');});
 	$('#new_pwd').focus(function(){$('#msg_').html('');});
 	$('#new_re-pwd').focus(function(){$('#msg_').html('');});
-	
+
+	$( window ).on( "load", function(){
+		$('#patwari_list_here').change();
+	});
+	$('body').on('click', '.patwariIDActiveInactive', function(){
+		var url_ = site_url_ + "/patwari_village/activeInactivePatwari/"+this.id;
+		$.ajax({
+			type: "POST",
+			url: url_,
+			success: function(data){
+				var obj = JSON.parse(data);
+				//$('#error_').html(obj.message.msg_);
+				$('#patwari_list_here').change();
+			}
+		});
+	});
+	$('body').on('click', '.patwariID', function(){
+		var url_ = site_url_ + "/patwari_village/getPatwari/"+this.id;
+		$.ajax({
+			type: "POST",
+			url: url_,
+			success: function(data){
+				var obj = JSON.parse(data);
+				if(obj.patwari.length != 0){
+					$('#editPatwari').css("display","block");
+					$('#txtpatwariName_edit').val(obj.patwari.NAME_);
+					$('#txtpaContact_edit').val(obj.patwari.PHONE_);
+					$('#edit_photo_here').html("<img src='"+base_path+"/assets_/patwari_pics/"+obj.patwari.PHOTO_+"' width='50' />");
+					$('#txtPID').val(obj.patwari.PID);
+					$('#error_').html("");
+				} else {
+					$('#editPatwari').css("display","none");
+					$('#error_').html("");
+				}
+			}, error: function(xhr, status, error){
+				//$('#error_').html(error);
+				$('#error_').html("<span style='background: #ffff00; padding: 3px; border-radius: 5px'>Server Error!!. Please trya again.</span>");
+	        }
+		});
+	});
+	$('#cmbPatwariUpdateCancel').click(function(){
+		$('#editPatwari').css("display","none");
+	});
+	$('#frmPatwariUpdate').submit(function(e){
+		e.preventDefault();
+		pid = $('#txtPID').val();
+		url_ = site_url_ + "/patwari_village/updatePatwari/"+pid;
+		data_ = new FormData($(this)[0]);
+		$.ajax({
+			url: url_,
+			type: "POST",
+			data: data_,
+			async: false,
+	        cache: false,
+	        contentType: false,
+	        processData: false,
+			success: function(data){
+				var obj = JSON.parse(data);
+				if(obj.message.res_ == 'true'){
+					$('#txtpatwariName_edit').val('');
+					$('#txtpaContact_edit').val('');
+					$('#txtpaPhoto_edit').val('');
+				}
+				$('#patwari_list_here').change();
+				$('#editPatwari').css("display","none");
+				$("#error_").html(obj.message.msg_);
+
+			}, error: function(xhr, status, error){
+				//$('#error_').html(xhr.responseText);
+				$('#error_').html("Some server error. Please try again !!");
+	        }	
+	    });
+	});
+	$('#patwari_list_here').change(function(){
+		url_ = site_url_ + "/patwari_village/getPatwaris";
+		$.ajax({
+			url:url_,
+			type: "POST",
+			success: function(data){
+				var obj = JSON.parse(data);
+				var str_html = '';
+				var k=0;
+				len__ = obj.patwaris.length;
+				for(i=0; i<len__; i++){ 
+						if(k == 0){ 
+							color = "#ECFFE4";
+							k=1;
+						} else {
+							color = "#FFFFE4";
+							k=0;
+						}
+						if(obj.patwaris[i].STATUS_ == 0){
+							icon_ = "eye-close";
+							status = "opacity: .1";
+						} else {
+							icon_ = "eye-open";
+							status = "";
+						}
+					str_html = str_html + '<div class="col-sm-12" style="background: '+color+'; padding: 3px; border: #f0f0f0 solid 1px; border-radius: 10px;'+status+'">';
+					str_html = str_html + '<div class="col-sm-2" style="border:#AAAAAA solid 1px; margin: 0px; text-align: left; overflow: hidden; border-radius: 10px; padding: 0px">';
+					str_html = str_html + '<img src="'+base_path+'assets_/patwari_pics/'+obj.patwaris[i].PHOTO_+'" style="float: left" width="60" />';
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div class="col-sm-10">';
+					str_html = str_html + '<div style="float: left; padding: 0px;">';
+					str_html = str_html + '<i class="glyphicon glyphicon-user"></i>&nbsp;'+obj.patwaris[i].NAME_;
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div style="float: right; padding: 0px;">';
+					str_html = str_html + '<a href="#" class="patwariID" title="Edit Patwari" id="'+obj.patwaris[i].PID+'">';
+					str_html = str_html + '<i class="glyphicon glyphicon-edit"></i>';
+					str_html = str_html + '</a>';
+					str_html = str_html + '&nbsp;<a href="#" title="Active-Inactive Patwari" class="patwariIDActiveInactive" id="'+obj.patwaris[i].PID+'/'+obj.patwaris[i].STATUS_+'">';
+					str_html = str_html + '<i class="glyphicon glyphicon-'+icon_+'" style="color: #000000"></i>';
+					str_html = str_html + '</a>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div style="clear: both"></div>';
+					str_html = str_html + '<div style="float: left; padding: 0px; margin-top: 0px">';
+					str_html = str_html + '<i class="glyphicon glyphicon-earphone"></i>&nbsp;'+obj.patwaris[i].PHONE_;
+					str_html = str_html + '</div>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div style="clear: both; padding: 5px"></div>';
+
+				}
+				$('#patwari_list_here').html(str_html);
+			}, error: function(xhr, status, error){
+				$('#patwari_list_here').html("Some server error. Please try again !!");
+	        }
+	    });
+	});
+	$('#frmPatwari').submit(function(e){
+		e.preventDefault();
+		url_ = site_url_ + "/patwari_village/submitPatwari";
+		data_ = new FormData($(this)[0]);
+
+		$.ajax({
+			url:url_,
+			type: "POST",
+			data:  data_,
+			async: false,
+	        cache: false,
+	        contentType: false,
+	        processData: false,
+			success: function(data){
+				var obj = JSON.parse(data);
+				if(obj.message.res_ == 'true'){
+					$('#txtpatwariName').val('');
+					$('#txtpaContact').val('');
+					$('#txtpaPhoto').val('');
+				}
+				$("#this_msg").html(obj.message.msg_);
+
+			}, error: function(xhr, status, error){
+				$('#this_msg').html("Some server error. Please try again !!");
+	        }	
+	    });
+	});
+	$("#frmWhoswho").on('submit',(function(e){
+		e.preventDefault();
+		url_ = site_url_ + "/whoswho/updatewhoswhodetail";
+		data_ = new FormData($(this)[0]);
+		$.ajax({
+			url:url_,
+			type: "POST",
+			data:  data_,
+			async: false,
+	        cache: false,
+	        contentType: false,
+	        processData: false,
+			success: function(data){
+				var obj = JSON.parse(data);
+				$('#photo_').html('<img src="'+base_path+"assets_/post_name_for_department/"+obj.PHOTO_PATH+'" width="90" />')
+				$("#this_msg").html(obj.message);
+			}, error: function(xhr, status, error){
+				$('#this_msg').html("Some server error. Please try again !!");
+	        }	        
+		});
+	return false;
+	}));
 	$('#changepwdbutt').click(function(){
 		if($.trim($('#old_pwd').val()) == ''){
 			$('#msg_').html("X: Please mention your old password");
@@ -41,32 +218,6 @@ $(function(){
 			});
 		}
 	});
-	$('#frmPatwari').submit(function(){
-		
-	});
-	$("#frmWhoswho").on('submit',(function(e){
-		e.preventDefault();
-		url_ = site_url_ + "/whoswho/updatewhoswhodetail";
-		data_ = new FormData($(this)[0]);
-		$.ajax({
-			url:url_,
-			type: "POST",
-			data:  data_,
-			async: false,
-	        cache: false,
-	        contentType: false,
-	        processData: false,
-			success: function(data){
-				var obj = JSON.parse(data);
-				$('#photo_').html('<img src="'+base_path+"assets_/post_name_for_department/"+obj.PHOTO_PATH+'" width="90" />')
-				$("#this_msg").html(obj.message);
-
-			}, error: function(xhr, status, error){
-				$('#this_msg').html("Some server error. Please try again !!");
-	        }	        
-		});
-	return false;
-	}));
 	$('#txtWhoswhoDepartments').change(function(){
 		dept_ = $('#txtWhoswhoDepartments').val();
 		url_ = site_url_ + "/whoswho/get_whos_whome/"+dept_;

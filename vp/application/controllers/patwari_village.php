@@ -18,9 +18,24 @@ class Patwari_village extends CI_Controller {
         $this->load->view('patwarinew/dashboard', $data);
         $this->load->view('templates/footer');
     }
-
+    function getPatwaris(){
+        $data['patwaris'] = $this->pvm->getPatwaris($this->session->userdata('user__'));
+        echo json_encode($data);
+    }
+    function getPatwari($pid){
+        $data['patwari'] = $this->pvm->getPatwari($pid, $this->session->userdata('user__'));
+        echo json_encode($data);
+    }
     function submitPatwari(){
-        $message = $this->pvm->submitPatwari();
-        echo $message;
+        $data = $this->pvm->submitPatwari();
+        echo json_encode($data);
+    }
+    function updatePatwari($pid){
+        $data = $this->pvm->updatePatwari($pid);
+        echo json_encode($data);
+    }
+    function activeInactivePatwari($pid, $status){
+        $data['message'] = $this->pvm->activeInactivePatwari($pid, $status);
+        echo json_encode($data);
     }
 }
