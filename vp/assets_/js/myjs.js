@@ -152,6 +152,7 @@ $(function(){
 					$('#txtpaPhoto').val('');
 				}
 				$("#this_msg").html(obj.message.msg_);
+				$('#patwari_list_here').change();
 
 			}, error: function(xhr, status, error){
 				$('#this_msg').html("Some server error. Please try again !!");
