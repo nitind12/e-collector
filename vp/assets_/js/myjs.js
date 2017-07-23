@@ -8,18 +8,21 @@ $(function(){
 	});
 	$('body').on('click', '.patwariIDActiveInactive', function(){
 		var url_ = site_url_ + "/patwari_village/activeInactivePatwari/"+this.id;
+		$('#load_here_edit_actinact').html('<img src="'+base_path+'/assets_/img/load.GIF" width="10" />');
 		$.ajax({
 			type: "POST",
 			url: url_,
 			success: function(data){
 				var obj = JSON.parse(data);
-				//$('#error_').html(obj.message.msg_);
+				//$('#load_here_edit_actinact').html(obj.message.msg_);
+				$('#load_here_edit_actinact').html('');
 				$('#patwari_list_here').change();
 			}
 		});
 	});
 	$('body').on('click', '.patwariID', function(){
 		var url_ = site_url_ + "/patwari_village/getPatwari/"+this.id;
+		$('#load_here_edit_actinact').html('<img src="'+base_path+'/assets_/img/load.GIF" width="10" />');
 		$.ajax({
 			type: "POST",
 			url: url_,
@@ -31,14 +34,15 @@ $(function(){
 					$('#txtpaContact_edit').val(obj.patwari.PHONE_);
 					$('#edit_photo_here').html("<img src='"+base_path+"/assets_/patwari_pics/"+obj.patwari.PHOTO_+"' width='50' />");
 					$('#txtPID').val(obj.patwari.PID);
-					$('#error_').html("");
+					$('#load_here_edit_actinact').html("");
 				} else {
 					$('#editPatwari').css("display","none");
-					$('#error_').html("");
+					$('#load_here_edit_actinact').html("");
 				}
+				$('#load_here_edit_actinact').html('');
 			}, error: function(xhr, status, error){
-				//$('#error_').html(error);
-				$('#error_').html("<span style='background: #ffff00; padding: 3px; border-radius: 5px'>Server Error!!. Please trya again.</span>");
+				//$('#load_here_edit_actinact').html(error);
+				$('#load_here_edit_actinact').html("<span style='background: #ffff00; padding: 3px; border-radius: 5px'>Server Error!!. Please trya again.</span>");
 	        }
 		});
 	});
@@ -67,11 +71,11 @@ $(function(){
 				}
 				$('#patwari_list_here').change();
 				$('#editPatwari').css("display","none");
-				$("#error_").html(obj.message.msg_);
+				$("#load_here_edit_actinact").html(obj.message.msg_);
 
 			}, error: function(xhr, status, error){
-				//$('#error_').html(xhr.responseText);
-				$('#error_').html("Some server error. Please try again !!");
+				//$('#load_here_edit_actinact').html(xhr.responseText);
+				$('#load_here_edit_actinact').html("<span style='color: #0000ff'>X: Please try again !!</span>");
 	        }	
 	    });
 	});

@@ -4,7 +4,6 @@
 	}
 	
 </style>
-<div class="col-sm-12" style="text-align: center; color: #ff0000;" id="error_"></div>
 <div class="row">
 	<div class="col-sm-12">
 		<div class="col-sm-4">
@@ -84,6 +83,7 @@
 		</div>
 		<div class="col-sm-4">
 			<label>Patwari's List</label>
+            <div id="load_here_edit_actinact" style="float: right"></div>
 			<hr />
 			<div class="input-group" style="width: 100%">
 				<div class="col-sm-12" style="overflow: auto; height: 200px; width: 100%" id="patwari_list_here">

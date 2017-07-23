@@ -95,7 +95,7 @@ class My_patwari_village_model extends CI_Model{
 		$query = $this->db->get('a0_patwari');
 
 		if($query->num_rows()!=0){
-			$data['message'] = array('res_'=>false, 'msg_'=>"<span style='padding: 3px; border-radius: 5px; background: #ffff00; color: #ff0000; font-weight: bold'>X: This Name and Contact combination is already exists.</span>");
+			$data['message'] = array('res_'=>false, 'msg_'=>"<span style='padding: 3px; border-radius: 5px; background: #ffff00; color: #ff0000; font-weight: bold'>X: Already exists.</span>");
 		} else {
 			$path_ = $this->upload_patwari_name_photo($pid);
 
@@ -118,9 +118,9 @@ class My_patwari_village_model extends CI_Model{
 				$this->db->where('PID', $pid);
 				$query = $this->db->update('a0_patwari', $data);
 				if($query == true){
-					$data['message'] = array('res_'=>true, 'msg_'=>"<span style='padding: 3px; border-radius: 5px; background: #f0f0f0; color: #009000; font-weight: bold'>Patwari's Detail updated successfully.</span>");
+					$data['message'] = array('res_'=>true, 'msg_'=>"<span style='padding: 3px; border-radius: 5px; background: #f0f0f0; color: #009000; font-weight: bold'>update successfully.</span>");
 				} else {
-					$data['message'] = array('res_'=>false, 'msg_'=>"<span style='padding: 3px; border-radius: 5px; background: #ffff00; color: #ff0000; font-weight: bold'>X: Some Server error!! Please try again.</span>");
+					$data['message'] = array('res_'=>false, 'msg_'=>"<span style='padding: 3px; border-radius: 5px; background: #ffff00; color: #ff0000; font-weight: bold'>X: Please try again.</span>");
 				}
 			}
 		return $data;
