@@ -92,12 +92,12 @@
                                 <div class="p-mask">
                                     <p><i class="fa fa-gavel fa-2x" style='color:#fff'></i> REVENUE COURT</p>
                                 </div>                                
-                        </div>                                
+                        </div>
                     </div>
                     <div class="col-md-3 team-grid">
                         <div class="team-grid1">
                             <a href="<?PHP echo site_url('web/revenue_view'); ?>">   
-                                <img src="<?PHP echo base_url() . 'nitnav/images/4.jpg'; ?>" alt=" " class="img-responsive">
+                                <img src="<?PHP echo base_url() . 'nitnav/images/4.jpg'; ?>" alt=" " class="img-responsive"/>
                                 <div class="p-mask">
                                     <p><i class="fa fa-map-marker fa-2x" style='color:#fff'></i>  REVENUE MAP</p>
                                 </div>

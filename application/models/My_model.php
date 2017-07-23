@@ -502,5 +502,25 @@ class My_model extends CI_Model {
         //exit(0);
         return $query->result();
     }
+    
+    function get_whoswhoDept($limit, $start) {        
+        $this->db->where('STATUS', 1);
+        $this->db->limit($limit, $start);
+        $this->db->order_by('WW1ID', 'ASC');
+        $query = $this->db->get('a0_whoswho1_department');
+        return $query->result();
+    }
+    function get_whoswhohome() {        
+        $this->db->where('STATUS', 1);
+        $this->db->order_by('WW2ID', 'ASC');
+        $query = $this->db->get('a0_whoswho2_whome');
+        return $query->result();
+    }
+    function get_whoswhodetail() {        
+        $this->db->where('STATUS_', 1);
+        $this->db->order_by('WW3ID', 'ASC');
+        $query = $this->db->get('a0_whoswho3_whome_detail');
+        return $query->result();
+    }
 
 }

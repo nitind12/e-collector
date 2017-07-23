@@ -23,7 +23,7 @@
                                 }
                                 ?>"><a href="<?PHP echo site_url('web/'); ?>"><i class="fa fa-home"></i> Home</a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModalNumber"><i class="fa fa-eye"></i> Disaster Control Room</a></li>
-                                <li><a href="#"><i class="fa fa-users"></i> Who's Who</a></li>                                   
+                                <li><a href="<?PHP echo site_url('web/whos_who'); ?>"><i class="fa fa-users"></i> Who's Who</a></li>                                   
                                 <li><a href="#" data-toggle="modal" data-target="#myModalContact"><i class="fa fa-phone"></i> Contact</a></li>
                                 <li><a href="" data-toggle="modal" data-target="#myModal1"><i class="fa fa-sign-in"></i>  Login</a></li>
                             </ul>

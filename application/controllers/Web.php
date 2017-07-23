@@ -200,4 +200,16 @@ class Web extends CI_Controller {
         $this->load->view('todayscases', $data);
     }
 
+    public function whos_who() {       
+        $data['menu'] = 0;
+        $data['dept'] = $this->mm->get_whoswhoDept(8,0);
+        $data['dept1'] = $this->mm->get_whoswhoDept(7,8);
+        $data['home'] = $this->mm->get_whoswhohome();
+        $data['detail'] = $this->mm->get_whoswhodetail();
+        $this->load->view('templates/header');
+        $this->load->view('templates/menu', $data);
+        $this->load->view('who-who', $data);
+        $this->load->view('templates/footer', $data);
+    }
+
 }

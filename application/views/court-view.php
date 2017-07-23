@@ -233,7 +233,7 @@
                                                                                 ?>
                                                                             </td>
                                                                         </tr>
-                                                                    <?php
+                                                                        <?php
                                                                     }
                                                                 }
                                                                 ?>
@@ -259,11 +259,11 @@
                                     <div class='col-md-12' style="background: #F94C4C; border:1px #F94C4C solid; border-radius: 8px; color:#fff; padding:5px;">
                                         <i class="fa fa-info-circle fa-2x" aria-hidden="true"></i> NO DATA FOUND PLEASE SEARCH AGAIN WITH DIFFERENT CRITERIA
                                     </div>
-    <?php } ?>                                              
+                                <?php } ?>                                              
                             </div>
                         </div>                                                
                     </div>
-<?php } else { ?>
+                <?php } else { ?>
                     <div class="col-sm-12" id="displayCourt" style="min-height:450px;">
                         <div class="col-sm-12">
                             <div class="row clear-fix">
@@ -275,7 +275,7 @@
                             </div>                        
                         </div>
                     </div>
-<?php } ?>
+                <?php } ?>
                 <div class="clearfix"></div>                
             </div>
         </div>
