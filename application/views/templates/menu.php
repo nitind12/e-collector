@@ -1,5 +1,5 @@
 <body>
-    <div class="header" id="ban">
+    <div class="header" id="ban" style="position: relative; z-index: 9999;">
         <div class="container">                
             <div class="header_right wow fadeInLeft animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
                 <nav class="navbar navbar-default">
@@ -15,15 +15,33 @@
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-                        <nav class="link-effect-7" id="link-effect-7">
+                        <nav class="link-effect-7" id="link-effect-7" style="z-index: 999999;">
                             <ul class="nav navbar-nav">
+                                <li class="<?php
+                                if ($menu == 2) {
+                                    echo "dropdown active act";
+                                }else{echo "dropdown";}
+                                ?>">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-gears"></i> Services
+                                        <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="<?PHP echo site_url('web/searchDashboard'); ?>"><i class="fa fa-empire"></i> Revenue Village</a></li>
+                                        <li><a href="<?PHP echo site_url('web/court_view'); ?>"><i class="fa fa-gavel"></i> Revenue Court</a></li>
+                                        <li><a href="<?PHP echo site_url('web/revenue_view'); ?>"><i class="fa fa-map-marker"></i> Revenue Map</a></li>
+                                        <li><a href="<?PHP echo site_url('web/touristGallery'); ?>"><i class="fa fa-camera-retro"></i> Places to visit</a></li>
+                                    </ul>
+                                </li>
                                 <li class="<?php
                                 if ($menu == 1) {
                                     echo "active act";
                                 }
                                 ?>"><a href="<?PHP echo site_url('web/'); ?>"><i class="fa fa-home"></i> Home</a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#myModalNumber"><i class="fa fa-eye"></i> Disaster Control Room</a></li>
-                                <li><a href="<?PHP echo site_url('web/whos_who'); ?>"><i class="fa fa-users"></i> Who's Who</a></li>                                   
+                                <li class="<?php
+                                if ($menu == 3) {
+                                    echo "active act";
+                                }
+                                ?>"><a href="<?PHP echo site_url('web/whos_who'); ?>"><i class="fa fa-users"></i> Who's Who</a></li>                                   
                                 <li><a href="#" data-toggle="modal" data-target="#myModalContact"><i class="fa fa-phone"></i> Contact</a></li>
                                 <li><a href="" data-toggle="modal" data-target="#myModal1"><i class="fa fa-sign-in"></i>  Login</a></li>
                             </ul>
@@ -51,13 +69,13 @@
                     <h4>Login with Admin Account</h4>
                 </div>
                 <div class="modal-body">
-                        <?php if ($this->session->flashdata('_msgall_')) { ?>
+                    <?php if ($this->session->flashdata('_msgall_')) { ?>
                         <div class="col-sm-12" style="color: #ff0000; background: #ffff00">
-                        <?php echo $this->session->flashdata('_msgall_'); ?>
+                            <?php echo $this->session->flashdata('_msgall_'); ?>
                         </div>
                     <?php } ?>
                     <br />
-                        <?php echo form_open(SUB_ADMIN . '/web/checkAuthentication', array('name' => 'frmLogin', 'id' => 'frmLogin', 'role' => 'form')); ?>
+                    <?php echo form_open(SUB_ADMIN . '/web/checkAuthentication', array('name' => 'frmLogin', 'id' => 'frmLogin', 'role' => 'form')); ?>
                     <div class="form-group">
                         <label>Username</label>
                         <?php
@@ -91,7 +109,7 @@
                         ?>
                     </div>
                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> &nbsp;Log Me In </button>
-<?php echo form_close(); ?>
+                    <?php echo form_close(); ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -23,7 +23,7 @@ class Web extends CI_Controller {
         $data['gal'] = $this->mm->get_all_pics();
         $data['gal_p'] = $this->mm->get_all_pics($id);
         $data['Allgal'] = $this->mm->get_all_pics_cat();
-        $data['menu'] = 0;
+        $data['menu'] = 2;
         if ($id == 0) {
             $data['galID'] = 0;
         } else {
@@ -38,7 +38,7 @@ class Web extends CI_Controller {
     public function searchDashboard() {
         $data['village_name'] = $this->mm->getVillages();
         $data['Tehsil_name'] = $this->mm->getDistinctTehsil();
-        $data['menu'] = 0;
+        $data['menu'] = 2;
 
         $this->load->view('templates/header');
         $this->load->view('templates/menu', $data);
@@ -60,7 +60,7 @@ class Web extends CI_Controller {
     public function revenue_view() {
         $data['village_name'] = $this->mm->getVillages();
         $data['Tehsil_name'] = $this->mm->getDistinctTehsil();
-        $data['menu'] = 0;
+        $data['menu'] = 2;
 
         $this->load->view('templates/header');
         $this->load->view('templates/menu', $data);
@@ -201,7 +201,7 @@ class Web extends CI_Controller {
     }
 
     public function whos_who() {       
-        $data['menu'] = 0;
+        $data['menu'] = 3;
         $data['dept'] = $this->mm->get_whoswhoDept(8,0);
         $data['dept1'] = $this->mm->get_whoswhoDept(7,8);
         $data['home'] = $this->mm->get_whoswhohome();

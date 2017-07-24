@@ -1,5 +1,5 @@
 <!--start-main-->
-<div class="header-bottom">
+<div class="header-bottom"  style="z-index: 9;">
     <div class="container">
         <div class="logo wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
             <h1><a href="#">e-collector Nainital</a></h1>
@@ -7,34 +7,6 @@
     </div>
 </div>
 <!-- banner -->
-<div style='position: absolute; top: 180px; left:90px;z-index:999;height:50px;color: #fff;' class='visible-lg'>
-    <a href="<?PHP echo site_url('web/searchDashboard'); ?>">          
-        <div class="p-maskTop">
-            <p><i class="fa fa-empire faa-ring animated fa-2x" style='color:#ff3300;'></i> REVENUE VILLAGE</p>
-        </div>
-    </a>
-</div>
-<div style='position: absolute; top: 180px; left:380px;z-index:999;height:50px;color: #fff;' class='visible-lg'>
-    <a href="<?PHP echo site_url('web/court_view'); ?>">          
-        <div class="p-maskTop">
-            <p><i class="fa fa-gavel faa-float animated fa-2x" style='color:#ff3300;'></i> REVENUE COURT</p>
-        </div>
-    </a>
-</div>
-<div style='position: absolute; top: 180px; left:680px;z-index:999;height:50px;color: #fff;' class='visible-lg'>
-    <a href="<?PHP echo site_url('web/revenue_view'); ?>">          
-        <div class="p-maskTop">
-            <p><i class="fa fa-map-marker faa-wrench animated fa-2x" style='color:#ff3300;'></i> REVENUE MAP</p>
-        </div>
-    </a>
-</div>
-<div style='position: absolute; top: 180px; left:980px;z-index:999;height:50px;color: #fff;' class='visible-lg'>
-    <a href="<?PHP echo site_url('web/touristGallery'); ?>">          
-        <div class="p-maskTop">
-            <p><i class="fa fa-camera-retro faa-horizontal animated fa-2x" style='color:#ff3300;'></i> PLACES TO VISIT</p>
-        </div>
-    </a>
-</div>
 <div class="banner">    
     <div id="myCarousel" class="carousel slide" data-ride="carousel" style="max-height: 400px;">
         <!-- Indicators -->
