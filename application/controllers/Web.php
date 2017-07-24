@@ -211,5 +211,13 @@ class Web extends CI_Controller {
         $this->load->view('who-who', $data);
         $this->load->view('templates/footer', $data);
     }
+    
+    public function aboutNainital() {       
+        $data['menu'] = 0;       
+        $this->load->view('templates/header');
+        $this->load->view('templates/menu', $data);
+        $this->load->view('aboutNainital', $data);
+        $this->load->view('templates/footer', $data);
+    }
 
 }

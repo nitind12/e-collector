@@ -103,9 +103,8 @@
                         <a href="#"><img src="<?PHP echo base_url() . 'nitnav/images/t5.jpg'; ?>" class="img-responsive" alt=""></a>
                     </div>
 
-                    <h3><a href="#">Nainital</a></h3>
-                    <p align="justify">Nainital is a Himalayan resort town in the Kumaon region of India’s Uttarakhand state, at an elevation of roughly 2,000m. Formerly a British hill station, it’s set around Nainital Lake, a popular boating site with Naina Devi Hindu Temple on its north shore. A cable car runs to Snow View observation point (at 2,270m), with vistas over the town and mountains including Nanda Devi, Uttarakhand’s highest peak.</p>
-                    <h6><a href="#">Elevation: </a>2,084 m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">Population: </a>41,377 (2011) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">Nearest railway station: </a>Kathgodam</h6>                                                           
+                    <h3><a href="<?PHP echo site_url('web/aboutNainital'); ?>">Nainital - an Introduction</a> <span style="font-size: 14px;">(Content Courtesy -  Ajay S. Rawat)</span></h3>                    
+                    <p align="justify">Ensconced snugly at an altitude of 1938 metres above sea level, Nainital has made a tryst with fame as a popular hill station. The ancient name of Naini Tal is Tri- Rishi Sarovar, after the three sages, Atri, Agastya and Pulaha. It is believed that they came here on a penitential pilgrimage while going to Mansarovar, the holy lake in Tibet. <a href="<?PHP echo site_url('web/aboutNainital'); ?>">Read more ...</a></p>                    
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>                                                                     
