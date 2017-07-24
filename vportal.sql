@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2017 at 01:07 PM
+-- Generation Time: Jul 24, 2017 at 12:31 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -41,25 +41,88 @@ CREATE TABLE `a0_patwari` (
 --
 
 INSERT INTO `a0_patwari` (`PID`, `NAME_`, `PHONE_`, `PHOTO_`, `STATUS_`, `DATE_`, `USERNAME_`) VALUES
-(1, 'Aasha Saxena', '7500214079', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(1, 'Gunjan Mathur', '9634944223', '1.jpg', 1, '2017-07-23 19:35:44', 'vandana'),
 (3, 'Amit Shah', '9410337554', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(5, 'Arjun Bisht', '9456554535', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
 (6, 'Arjun Bisht', '9456554535', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(7, 'Bhuwan Chandra Bhandari', '9411043360', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
 (8, 'Bhuwan Chandra Bhandari', '9411043360', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
 (9, 'Ganga Datt Paladiya', '9411541065', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(10, 'Hem Paladiya', '9411323362', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
 (11, 'Hem Paladiya', '9411541065', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
 (12, 'Jagdish Chandra', '9675866502', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
 (13, 'Jagdish Chandra Arya', '9675866502', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
 (14, 'Lalit Mohan Goswami', '9411323362', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
 (15, 'Lokmani Arya', '9456378594', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(16, 'Om Prakash Arya', '9411787635', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
 (17, 'Om Prakash Arya', '9411787635', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(18, 'Radhe Singh Rana', '9412943330', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
 (19, 'Radhe Singh Rana', '9412943330', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(20, 'Suresh Chandra Sanwal', '8755195213', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(21, 'Suresh Chandra Sanwal', '8755195213', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana');
+(21, 'Nitin Deepak', '9760020667', '21.jpg', 1, '2017-07-24 09:53:53', 'vandana'),
+(27, 'Harsh Wardhan Pant', '8192850007', '27.JPG', 1, '2017-07-23 04:31:39', 'vandana'),
+(28, 'Suraj Sanwal', '9874663210', 'no-image.jpg', 1, '2017-07-23 19:35:01', 'vandana'),
+(29, 'Pankaj Pant', '8529631478', 'no-image.jpg', 1, '2017-07-23 19:34:41', 'vandana');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `a0_village`
+--
+
+CREATE TABLE `a0_village` (
+  `VILLAGEID` int(11) NOT NULL,
+  `PID` int(11) NOT NULL,
+  `NAME_` varchar(120) NOT NULL,
+  `DISTRICT` varchar(150) NOT NULL,
+  `KANOONGO_AREA` varchar(250) NOT NULL,
+  `GRAM_PANCHAYAT` varchar(250) NOT NULL,
+  `NYAY_PANCHAYAT` varchar(250) NOT NULL,
+  `VAN_PANCHAYAT` varchar(250) NOT NULL,
+  `PARLIAMENTARY_CONS` varchar(250) NOT NULL,
+  `ASSEMBLY_CONS` varchar(250) NOT NULL,
+  `POLLING_BOOTH` varchar(250) NOT NULL,
+  `REGULAR_REVENUE_POLICE` varchar(250) NOT NULL,
+  `DATE_` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `STATUS_` tinyint(1) NOT NULL,
+  `USERNAME_` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `a0_village`
+--
+
+INSERT INTO `a0_village` (`VILLAGEID`, `PID`, `NAME_`, `DISTRICT`, `KANOONGO_AREA`, `GRAM_PANCHAYAT`, `NYAY_PANCHAYAT`, `VAN_PANCHAYAT`, `PARLIAMENTARY_CONS`, `ASSEMBLY_CONS`, `POLLING_BOOTH`, `REGULAR_REVENUE_POLICE`, `DATE_`, `STATUS_`, `USERNAME_`) VALUES
+(4, 27, 'Amgarhi', 'Nainital', '', '', '', 'x', 'Haldwani', 'Haldwani', 'Gandhi School1', 'Haldwani Chawki', '2017-07-24 03:34:02', 1, 'vandana'),
+(11, 27, 'Beni', 'Nainital', 'x', 'x', 'x', 'xx', 'xxx', 'xx', 'x', 'x', '2017-07-24 09:45:13', 1, 'vandana'),
+(12, 27, 'Nagla', 'Nainital', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', '2017-07-24 09:50:15', 1, 'vandana'),
+(13, 21, 'Guron', 'Nainital', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', '2017-07-24 09:52:59', 1, 'vandana'),
+(14, 21, 'Fatehpur', 'Nainital', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', '2017-07-24 09:53:19', 1, 'vandana');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `a0_village_info_master`
+--
+
+CREATE TABLE `a0_village_info_master` (
+  `INFO_ID` int(11) NOT NULL,
+  `INFO_ICON` varchar(25) NOT NULL,
+  `INFO_NAME` varchar(250) NOT NULL,
+  `PRIORITY` int(11) NOT NULL,
+  `STATUS_` tinyint(1) NOT NULL,
+  `USERNAME_` varchar(50) NOT NULL,
+  `DATE_` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `INSTANCE` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `a0_village_info_master`
+--
+
+INSERT INTO `a0_village_info_master` (`INFO_ID`, `INFO_ICON`, `INFO_NAME`, `PRIORITY`, `STATUS_`, `USERNAME_`, `DATE_`, `INSTANCE`) VALUES
+(1, '', 'Kanoongo Area', 1, 1, 'admin', '0000-00-00 00:00:00', 'txtKanoongoArea'),
+(2, '', 'Gram Panchayat', 2, 1, 'admin', '0000-00-00 00:00:00', 'txtGramPanchayat'),
+(3, '', 'Nyay Panchayat', 3, 1, 'admin', '0000-00-00 00:00:00', 'txtNyayPanchayat'),
+(4, '', 'Van Panchayat', 4, 1, 'admin', '0000-00-00 00:00:00', 'txtVanPanchayat'),
+(5, '', 'Parliamentary Constituency', 5, 1, 'admin', '0000-00-00 00:00:00', 'txtParliamentaryCons'),
+(6, '', 'Assembly Constituency ', 6, 1, 'admin', '0000-00-00 00:00:00', 'txtAssemblyCons'),
+(7, '', 'Polling Booth Name', 7, 1, 'admin', '0000-00-00 00:00:00', 'txtPollingBoothName'),
+(8, '', 'Regular/Revenue Police', 8, 1, 'admin', '0000-00-00 00:00:00', 'txtRegularRevenuePolice');
 
 -- --------------------------------------------------------
 
@@ -247,7 +310,7 @@ CREATE TABLE `a0_whoswho3_whome_detail` (
 INSERT INTO `a0_whoswho3_whome_detail` (`WW3ID`, `NAME_`, `CONTACT`, `EMAIL`, `PHOTO_PATH`, `WW2ID`, `USERNAME`, `DESC_`, `DATE_`, `STATUS_`) VALUES
 (1, 'Nitin Deepak Mathur', '9760020667', 'nitin.d12@gmail.com', '1.jpg', 41, 'nitin', 'x', '2017-07-18 16:11:44', 1),
 (2, 'Nitin Deepak', '9760020667', 'nitin.d12@gmail.com', '2.jpg', 54, 'nitin', 'x', '2017-07-19 22:28:39', 1),
-(3, 'Nitin Deepak', '9760020667', 'nitin.d12@gmail.com', '3.jpg', 56, 'nitin', 'ok', '2017-07-19 16:39:24', 1),
+(3, 'Nitin Deepak', '9760020667', 'nitin.d12@gmail.com', '3.JPG', 56, 'nitin', 'ok', '2017-07-21 22:14:06', 1),
 (4, 'Dr Nitin Deepak', '9760020667', 'nitin.d12@amrapali.ac.in', '4.jpg', 59, 'nitin', 'xxxx', '2017-07-18 16:12:38', 1),
 (5, 'Harsh Pant', '9874563214', 'pant_vardhan@gmail.com', '5.jpg', 1, 'nitin', 'x', '2017-07-19 22:52:56', 1),
 (6, 'Dr naveen', '9874563214', 'naveen@gmail.com', '6.jpg', 49, 'nitin', 'nitin photo123', '2017-07-19 22:27:59', 1),
@@ -257,7 +320,9 @@ INSERT INTO `a0_whoswho3_whome_detail` (`WW3ID`, `NAME_`, `CONTACT`, `EMAIL`, `P
 (10, 'Gagan Pant', '8899665544', 'gagan@gmail.com', '10.jpg', 58, 'nitin', 'gagan', '2017-07-19 22:40:55', 1),
 (11, 'Ritesh Singh', '7788996655', 'ritesh@gmail.com', '11.JPG', 55, 'nitin', 'ritesh', '2017-07-19 21:45:30', 1),
 (12, 'sad', 'asd', 'asd', '12.JPG', 4, 'nitin', 'asd', '2017-07-19 22:14:56', 1),
-(13, 'xx', 'xx', 'xx', '13.jpg', 52, 'nitin', 'xx', '2017-07-19 22:40:29', 1);
+(13, 'xx', 'xx', 'xx', '13.jpg', 52, 'nitin', 'xx', '2017-07-19 22:40:29', 1),
+(14, '', '', '', 'no-image.jpg', 38, 'nitin', '', '2017-07-21 22:11:18', 1),
+(15, 'nitin', '9874662125', '', '15.jpg', 57, 'nitin', '', '2017-07-21 22:13:56', 1);
 
 -- --------------------------------------------------------
 
@@ -3569,7 +3634,8 @@ INSERT INTO `a95_act_master` (`ID`, `ACT`, `USERNAME`) VALUES
 (16, 'ih-ih- ,DV', 'admin'),
 (17, 'izdh.kZ okn', 'admin'),
 (18, 'dqek?a ,.M x<oky okVj ?dySD?ku jSVsU?ku ,.M fMLV?hC;w?ku? ,DV] 1975', 'admin'),
-(22, '', 'admin');
+(22, '', 'admin'),
+(23, ';w-ih-T;sM-,-,y-vkj-,DV', '');
 
 -- --------------------------------------------------------
 
@@ -3633,7 +3699,8 @@ INSERT INTO `a95_section_master` (`ID`, `SECTION`, `USERNAME`) VALUES
 (17, '/kkjk 176', 'admin'),
 (18, '/kkjk 209', 'admin'),
 (19, '/kkjk 210', 'admin'),
-(20, '/kkjk 229 ch', 'admin');
+(20, '/kkjk 229 ch', 'admin'),
+(21, '229 ch', '');
 
 -- --------------------------------------------------------
 
@@ -3768,7 +3835,7 @@ INSERT INTO `a96_sdm_court` (`SNO`, `CASENO`, `REG_DATE`, `YEAR_`, `MONTH`, `TYP
 (79, '2008-22/48', '2008-06-19', '2008', '06', 'jktLo okn', '', 'flek;y', 'Deactivate DD', '', 'x', '', 'vandana', 81),
 (80, '2013-22/34', '2013-01-21', '2013', '01', 'jktLo okn', '', 'uxkjhxkao', 'Deactivate DD', '', 'x', '', 'vandana', 82),
 (81, '2015-52/1', '2015-06-18', '2015', '06', 'jktLo okn', '', 'egjkxkao', 'Deactivate DD', '', 'x', '', 'vandana', 83),
-(82, '1998-22/11', '1998-02-14', '1998', '02', 'jktLo okn', '', 'pksiMk', 'Deactivate DD', '', 'x', '', 'vandana', 84),
+(82, '1998-22/11', '1998-02-14', '1998', '02', 'jktLo okn', 'ftykf/kdkjh uSuhrky', 'pksiMk', 'Deactivate DD', '2017-07-23', 'x', '', 'vandana', 84),
 (83, '2010-22/22', '2010-04-06', '2010', '04', 'jktLo okn', '', 'csyqok[kku', 'Deactivate DD', '', 'x', '', 'vandana', 85),
 (84, '2002-22/20', '2002-06-24', '2002', '06', 'jktLo okn', '', 'uxkjhxkao', 'Deactivate DD', '', 'x', '', 'vandana', 86),
 (85, '2003-22/2', '2003-03-03', '2003', '03', 'jktLo okn', 'miftykf/kdkjh@ijxuk eftLVsªV uSuhrky', 'ik.Msxkao', 'Deactivate DD', '', 'x', '', 'vandana', 87),
@@ -4329,7 +4396,8 @@ INSERT INTO `a96_sdm_court` (`SNO`, `CASENO`, `REG_DATE`, `YEAR_`, `MONTH`, `TYP
 (640, '2017-4/2', '2017-07-15', '2017', '07', 'QkStnkjh', 'ftykf/kdkjh uSuhrky', 'SADFSDF', 'Deactivate DD', '', 'x', '', 'nitin', 650),
 (641, '2017-1/1', '2017-07-15', '2017', '07', 'jktLo okn', 'miftykf/kdkjh gY}kuh', 'dgh', 'Deactivate DD', '', 'x', '', 'nitin', 651),
 (642, '2017-22/22', '2017-07-15', '2017', '07', 'QkStnkjh', 'ftykf/kdkjh uSuhrky', 'pppp', 'Deactivate DD', '', 'x', '', 'nitin', 658),
-(643, '2017-', '2017-07-15', '2017', '07', 'jktLo okn', 'miftykf/kdkjh jkeuxj', 'RR', 'Deactivate DD', '', 'x', '', 'nitin', 661);
+(643, '2017-', '2017-07-15', '2017', '07', 'jktLo okn', 'miftykf/kdkjh jkeuxj', 'RR', 'Deactivate DD', '', 'x', '', 'nitin', 661),
+(644, '2017-', '2017-07-21', '2017', '07', 'jktLo okn', 'miftykf/kdkjh uSuhrky', 'x', 'Deactivate DD', '', 'x', '', 'vandana', 662);
 
 -- --------------------------------------------------------
 
@@ -4436,7 +4504,7 @@ INSERT INTO `a97_sdm_court_detail` (`SNO`, `REF_SNO`, `CASENO`, `SUB_DIVISION`, 
 (81, 79, '2008-22/48', 'uSuhrky', 'uSuhrky', 'eYyh dqVkSyh', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'pUnu flg', 'ljdkj mRrjk[k.M ', '2017-11-05', 'i=koyh okLrs', '2017-05-10 10:13:25', 'vandana'),
 (82, 80, '2013-22/34', 'uSuhrky', 'uSuhrky', 'Hkokyh', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'jktho flg', 'ukjk;.k flg', '2017-11-05', '', '2017-05-10 10:13:25', 'vandana'),
 (83, 81, '2015-52/1', 'uSuhrky', 'uSuhrky', 'if\'peh N%[kkrk', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'nhoku flg', 'vejukFk flg', '2017-11-05', 'lquokbZ', '2017-05-10 10:13:25', 'vandana'),
-(84, 82, '1998-22/11', 'uSuhrky', 'uSuhrky', 'pksiMk', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'fd\'ku flg', 'mRrjk[k.M ljdkj', '', '', '2017-05-10 10:13:25', 'vandana'),
+(84, 82, '1998-22/11', 'uSuhrky', 'rglhy uSuhrky', 'pksiMk', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'fd\'ku flg', 'mRrjk[k.M ljdkj', '', '', '2017-07-23 06:08:07', 'vandana'),
 (85, 83, '2010-22/22', 'uSuhrky', 'uSuhrky', 'jkex<', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'txnh\'k flg', 'mRrjk[k.M ljdkj', '', '', '2017-05-10 10:13:25', 'vandana'),
 (86, 84, '2002-22/20', 'uSuhrky', 'uSuhrky', 'Hkokyh', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'lqjs\'k pUnz', 'vkbZ0bZ0lsQkbZ', '2017-04-25', 'lquokbZ', '2017-05-10 10:13:25', 'vandana'),
 (87, 85, '2003-22/2', 'uSuhrky', 'uSuhrky', 'ik.Msxkao', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'lqHkk"k pUnz', 'vlye [kka vkfn', '2017-06-01', 'lk{;', '2017-05-10 10:13:25', 'vandana'),
@@ -4995,7 +5063,8 @@ INSERT INTO `a97_sdm_court_detail` (`SNO`, `REF_SNO`, `CASENO`, `SUB_DIVISION`, 
 (658, 642, '2017-22/22', 'pppp', 'ppp', 'pppp', 'pppp', 'lh-vkj-ih-lh-', '/kkjk 143', 'pp', 'pp', '2017-07-21', 'pppp pp pp', '2017-07-15 08:18:15', 'nitin'),
 (659, 634, '2017-22/151', 'uxyk 23', 'uxyk 23', 'uxyk 23', 'uxyk 23', ',y-vkj-,DV', '/kkjk 133', 'fufRru 23', 'nhid 23', '2017-05-11', 'ok 23', '2017-07-15 08:19:39', 'nitin'),
 (660, 634, '2017-22/151', 'uxyk 23', 'uxyk 23', 'uxyk 23', 'uxyk 23', ',y-vkj-,DV', '/kkjk 04', 'fufRru 23', 'nhid 23', '2017-05-11', 'ok 23', '2017-07-15 08:20:11', 'nitin'),
-(661, 643, '2017-', 'RR', 'rglhy dks?;kdqVkSyh', 'RR', 'RR', 'jftLV?s?ku vf/kfu;e', '/kkjk 144', 'RR', 'RR', '2017-07-21', 'RR', '2017-07-15 08:54:06', 'nitin');
+(661, 643, '2017-', 'RR', 'rglhy dks?;kdqVkSyh', 'RR', 'RR', 'jftLV?s?ku vf/kfu;e', '/kkjk 144', 'RR', 'RR', '2017-07-21', 'RR', '2017-07-15 08:54:06', 'nitin'),
+(662, 644, '2017-', 'ZXxzX', 'rglhy jkeuxj', 'ZX', 'ZX', 'voS/k [kuu ifjogu ,oa Hk.Mkj.k fuokj.k vf/kfu;e', '/kkjk 110 th', 'ZX', 'ZX', '2017-07-29', 'ZX', '2017-07-21 15:03:27', 'vandana');
 
 -- --------------------------------------------------------
 
@@ -6906,6 +6975,19 @@ ALTER TABLE `a0_patwari`
   ADD KEY `USERNAME_` (`USERNAME_`);
 
 --
+-- Indexes for table `a0_village`
+--
+ALTER TABLE `a0_village`
+  ADD PRIMARY KEY (`VILLAGEID`),
+  ADD KEY `PID` (`PID`);
+
+--
+-- Indexes for table `a0_village_info_master`
+--
+ALTER TABLE `a0_village_info_master`
+  ADD PRIMARY KEY (`INFO_ID`);
+
+--
 -- Indexes for table `a0_whoswho1_department`
 --
 ALTER TABLE `a0_whoswho1_department`
@@ -7142,7 +7224,17 @@ ALTER TABLE `user_status`
 -- AUTO_INCREMENT for table `a0_patwari`
 --
 ALTER TABLE `a0_patwari`
-  MODIFY `PID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `PID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+--
+-- AUTO_INCREMENT for table `a0_village`
+--
+ALTER TABLE `a0_village`
+  MODIFY `VILLAGEID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `a0_village_info_master`
+--
+ALTER TABLE `a0_village_info_master`
+  MODIFY `INFO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `a0_whoswho1_department`
 --
@@ -7157,7 +7249,7 @@ ALTER TABLE `a0_whoswho2_whome`
 -- AUTO_INCREMENT for table `a0_whoswho3_whome_detail`
 --
 ALTER TABLE `a0_whoswho3_whome_detail`
-  MODIFY `WW3ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `WW3ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `a1_village`
 --
@@ -7272,7 +7364,7 @@ ALTER TABLE `a8_village_one_row_data`
 -- AUTO_INCREMENT for table `a95_act_master`
 --
 ALTER TABLE `a95_act_master`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `a95_court_master`
 --
@@ -7282,7 +7374,7 @@ ALTER TABLE `a95_court_master`
 -- AUTO_INCREMENT for table `a95_section_master`
 --
 ALTER TABLE `a95_section_master`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `a95_tehsil_master`
 --
@@ -7292,12 +7384,12 @@ ALTER TABLE `a95_tehsil_master`
 -- AUTO_INCREMENT for table `a96_sdm_court`
 --
 ALTER TABLE `a96_sdm_court`
-  MODIFY `SNO` bigint(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=644;
+  MODIFY `SNO` bigint(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=645;
 --
 -- AUTO_INCREMENT for table `a97_sdm_court_detail`
 --
 ALTER TABLE `a97_sdm_court_detail`
-  MODIFY `SNO` bigint(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=662;
+  MODIFY `SNO` bigint(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=663;
 --
 -- AUTO_INCREMENT for table `b1_revenue_map`
 --

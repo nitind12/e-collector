@@ -5,6 +5,7 @@ $(function(){
 
 	$( window ).on( "load", function(){
 		$('#patwari_list_here').change();
+		$('#patwari_list_for_villages_here').change();
 	});
 	$('body').on('click', '.patwariIDActiveInactive', function(){
 		var url_ = site_url_ + "/patwari_village/activeInactivePatwari/"+this.id;
@@ -16,7 +17,12 @@ $(function(){
 				var obj = JSON.parse(data);
 				//$('#load_here_edit_actinact').html(obj.message.msg_);
 				$('#load_here_edit_actinact').html('');
+				// affected ones
 				$('#patwari_list_here').change();
+				$('#village_list_here').change();
+				$('#patwari_list_for_villages_here').change();
+				$('#patwari_name_for_village').html('| -');
+				// -------------
 			}
 		});
 	});
@@ -69,7 +75,12 @@ $(function(){
 					$('#txtpaContact_edit').val('');
 					$('#txtpaPhoto_edit').val('');
 				}
+				// affected ones
 				$('#patwari_list_here').change();
+				$('#village_list_here').change();
+				$('#patwari_list_for_villages_here').change();
+				$('#patwari_name_for_village').html('| -');
+				// -------------
 				$('#editPatwari').css("display","none");
 				$("#load_here_edit_actinact").html(obj.message.msg_);
 
@@ -156,11 +167,324 @@ $(function(){
 					$('#txtpaPhoto').val('');
 				}
 				$("#this_msg").html(obj.message.msg_);
+				// affected ones
 				$('#patwari_list_here').change();
-
+				$('#village_list_here').change();
+				$('#patwari_list_for_villages_here').change();
+				$('#patwari_name_for_village').html('| -');
+				// -------------
 			}, error: function(xhr, status, error){
 				$('#this_msg').html("Some server error. Please try again !!");
 	        }	
+	    });
+	});
+
+	/*Village Code below*/
+	$('#village_list_here').change(function(){
+		$('#village_list_here').html("");
+	});
+	$('body').on('click', '.patwariIDForVillage', function(){
+		$('#this_msg_for_village').html("");
+		var str;
+		str = this.id;
+		data_ = str.split("-");
+		pid_ = '#PID_'+data_[0]+"_";
+		p_name = data_[1];
+		$('#txtPatwariID').val(data_[0]);
+		$('#patwari_name_for_village').html('| - '+p_name);
+		$('#vlist_').html("for "+p_name);
+		$(".pid_pallets").css("border","#f0f0f0 solid 1px");
+		$(pid_).css('border','#dd0379 solid 2px');
+
+		url_ = site_url_ + "/patwari_village/getVillages/"+data_[0];
+		
+		$.ajax({
+			type: "POST",
+			url: url_,
+			success:  function(data){
+				var obj = JSON.parse(data);
+
+				var str_html = '';
+				var k=0;
+				len__ = obj.villages_.length;
+				for(i=0; i<len__; i++){ 
+						if(k == 0){ 
+							color = "#fbefe9";
+							k=1;
+						} else {
+							color = "#effefe";
+							k=0;
+						}
+						if(obj.villages_[i].STATUS_ == 0){
+							icon_ = "eye-close";
+							status = "opacity: .1";
+						} else {
+							icon_ = "eye-open";
+							status = "";
+						}
+					str_html = str_html + '<div class="col-sm-12" style="width:95%;background: '+color+'; padding: 3px; border: #f0f0f0 solid 1px; border-radius: 10px;'+status+'">';
+					str_html = str_html + '<div class="col-sm-12">';
+					str_html = str_html + '<div style="float: left; padding: 0px;">';
+					str_html = str_html + '<i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;'+obj.villages_[i].NAME_+', <span style="color: #D0D0D0; font-size: 13px">('+obj.villages_[i].DISTRICT+')</span>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div style="float: right; padding: 0px;">';
+					str_html = str_html + '<a href="#" class="updateVillage" title="Edit Village" id="'+obj.villages_[i].VILLAGEID+"-"+obj.villages_[i].NAME_+'">';
+					str_html = str_html + '<i class="glyphicon glyphicon-edit"></i>';
+					str_html = str_html + '</a>';
+					str_html = str_html + '&nbsp;<a href="#" title="Active-Inactive Village" class="VillageIDActiveInactive" id="'+obj.villages_[i].PID+'/'+obj.villages_[i].STATUS_+'">';
+					str_html = str_html + '<i class="glyphicon glyphicon-'+icon_+'" style="color: #000000"></i>';
+					str_html = str_html + '</a>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div style="clear: both; padding: 5px"></div>';
+				}
+				$('#village_list_here').html(str_html);
+			},error: function(xhr, status, error){
+				alert(error);
+	        }
+		});
+	});
+	$('#villageListofPatwari').change(function(){
+		var str;
+		str = $('#txtVillageID').val();
+		data_ = str.split("-");
+		pid_ = '#PID_'+data_[0]+"_";
+		p_name = data_[1];
+		$('#txtPatwariID').val(data_[0]);
+		$('#patwari_name_for_village').html('| - '+p_name);
+		$('#vlist_').html("for "+p_name);
+		$(".pid_pallets").css("border","#f0f0f0 solid 1px");
+		$(pid_).css('border','#dd0379 solid 2px');
+
+		url_ = site_url_ + "/patwari_village/getVillages/"+data_[0];
+		
+		$.ajax({
+			type: "POST",
+			url: url_,
+			success:  function(data){
+				var obj = JSON.parse(data);
+
+				var str_html = '';
+				var k=0;
+				len__ = obj.villages_.length;
+				for(i=0; i<len__; i++){ 
+						if(k == 0){ 
+							color = "#fbefe9";
+							k=1;
+						} else {
+							color = "#effefe";
+							k=0;
+						}
+						if(obj.villages_[i].STATUS_ == 0){
+							icon_ = "eye-close";
+							status = "opacity: .1";
+						} else {
+							icon_ = "eye-open";
+							status = "";
+						}
+					str_html = str_html + '<div class="col-sm-12" style="width:95%;background: '+color+'; padding: 3px; border: #f0f0f0 solid 1px; border-radius: 10px;'+status+'">';
+					str_html = str_html + '<div class="col-sm-12">';
+					str_html = str_html + '<div style="float: left; padding: 0px;">';
+					str_html = str_html + '<i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;'+obj.villages_[i].NAME_+', <span style="color: #D0D0D0; font-size: 13px">('+obj.villages_[i].DISTRICT+')</span>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div style="float: right; padding: 0px;">';
+					str_html = str_html + '<a href="#" class="updateVillage" title="Edit Village" id="'+obj.villages_[i].VILLAGEID+"-"+obj.villages_[i].NAME_+'">';
+					str_html = str_html + '<i class="glyphicon glyphicon-edit"></i>';
+					str_html = str_html + '</a>';
+					str_html = str_html + '&nbsp;<a href="#" title="Active-Inactive Village" class="VillageIDActiveInactive" id="'+obj.villages_[i].PID+'/'+obj.villages_[i].STATUS_+'">';
+					str_html = str_html + '<i class="glyphicon glyphicon-'+icon_+'" style="color: #000000"></i>';
+					str_html = str_html + '</a>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div style="clear: both; padding: 5px"></div>';
+				}
+				$('#village_list_here').html(str_html);
+			},error: function(xhr, status, error){
+				alert(error);
+	        }
+		});
+	});
+	$('#frmVillage').submit(function(){
+		if($('#txtPatwariID').val() != ""){
+			data_ = $('#frmVillage').serialize();
+			url_ = site_url_ + "/patwari_village/UpdateVillage";
+			$('#this_msg_for_village').html('Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" />');
+
+			$.ajax({
+				type: "POST",
+				url: url_,
+				data: data_,
+				success: function(data){
+					$('#txtVillageName').val("");
+					$('#txtKanoongoArea').val("");
+					$('#txtGramPanchayat').val("");
+					$('#txtNyayPanchayat').val("");
+					$('#txtVanPanchayat').val("");
+					$('#txtParliamentaryCons').val("");
+					$('#txtAssemblyCons').val("");
+					$('#txtPollingBoothName').val("");
+					$('#txtRegularRevenuePolice').val("");
+					$('#cmbVillageReset').click();
+
+					$('#this_msg_for_village').html(data);
+				}, error: function(xhr, status, error){
+					alert(error);
+		        }
+			});
+		} else {
+			alert("Select Patwari Name First.");
+		}
+		return false;
+	});
+	$('body').on('click', '.updateVillage', function(){
+		$('#this_msg_for_village').html("");
+		id = this.id;
+		$('.disableInputVillageArea').removeAttr('disabled');
+		if(id != "newVillage"){
+			str = id;
+			idarr = str.split("-");
+			name_ = idarr[1];
+			id = idarr[0];
+			$('#village_name_for_village').html('| -'+name_);
+			$('.disableInputVillageArea').addClass('orange_');
+			$('#cmbVillageSubmit').addClass('btn btn-danger');
+			$('#cmbVillageSubmit').val(" Update ");
+
+			url_ = site_url_ + "/patwari_village/getVillageData/"+id;
+
+			$.ajax({
+				type: 'POST',
+				url: url_,
+				success: function(data){
+					var obj = JSON.parse(data);
+					$('#txtDistrict').val(obj.village[0].DISTRICT);
+					$('#txtVillageName').val(obj.village[0].NAME_);
+					$('#txtKanoongoArea').val(obj.village[0].KANOONGO_AREA);
+					$('#txtGramPanchayat').val(obj.village[0].GRAM_PANCHAYAT);
+					$('#txtNyayPanchayat').val(obj.village[0].NYAY_PANCHAYAT);
+					$('#txtVanPanchayat').val(obj.village[0].VAN_PANCHAYAT);
+					$('#txtParliamentaryCons').val(obj.village[0].PARLIAMENTARY_CONS);
+					$('#txtAssemblyCons').val(obj.village[0].ASSEMBLY_CONS);
+					$('#txtPollingBoothName').val(obj.village[0].POLLING_BOOTH);
+					$('#txtRegularRevenuePolice').val(obj.village[0].REGULAR_REVENUE_POLICE);
+				}, error: function(xhr, status, error){
+					alert(error);
+		        }
+			})
+		} else {
+			name_ = "";
+			$('#village_name_for_village').html('| -'+name_);
+			$('#cmbVillageSubmit').removeClass('btn btn-danger');
+			$('#cmbVillageSubmit').addClass('btn btn-success');
+			$('#cmbVillageSubmit').val(" Submit ");
+			$('#cmbVillageReset').click();
+			$('.disableInputVillageArea').removeClass('orange_');
+			$('#txtVillageName').focus();
+		}
+		$('#txtVillageID').val(id);
+	});
+	$('#cmbVillageReset').click(function(){
+		$('#cmbVillageSubmit').removeClass('btn btn-danger');
+		$('#cmbVillageSubmit').addClass('btn btn-success');
+		$('#cmbVillageSubmit').val(" Submit ");
+		$('.disableInputVillageArea').removeClass('orange_');
+	});
+	$('#village_list_here').change(function(){
+		url_ = site_url_ + "/patwari_village/getActivePatwaris";
+		$.ajax({
+			url:url_,
+			type: "POST",
+			success: function(data){
+				var obj = JSON.parse(data);
+				var str_html = '';
+				var k=0;
+				len__ = obj.patwaris.length;
+				for(i=0; i<len__; i++){ 
+						if(k == 0){ 
+							color = "#ECFFE4";
+							k=1;
+						} else {
+							color = "#FFFFE4";
+							k=0;
+						}
+						icon_ = "eye-open";
+						status = "";
+					str_html = str_html + '<div class="col-sm-12" style="padding: 0px"><div style="overflow: hidden; width:100%; background: '+color+'; padding: 3px; border: #f0f0f0 solid 1px; border-radius: 10px;'+status+'" id="PID_'+obj.patwaris[i].PID+'_" class="pid_pallets">';
+					str_html = str_html + '<div class="col-sm-2" style="border:#AAAAAA solid 1px; margin: 0px; text-align: left; overflow: hidden; border-radius: 10px; padding: 0px">';
+					str_html = str_html + '<img src="'+base_path+'assets_/patwari_pics/'+obj.patwaris[i].PHOTO_+'" style="float: left" width="60" />';
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div class="col-sm-10">';
+					str_html = str_html + '<div style="float: left; padding: 0px;">';
+					str_html = str_html + '<i class="glyphicon glyphicon-user"></i><span class="patwari_name_">&nbsp;'+obj.patwaris[i].NAME_+'</span>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div style="float: right; padding: 0px;">';
+					str_html = str_html + '<a href="#" class="patwariIDForVillage" title="Call Patwari for Village Entry" id="'+obj.patwaris[i].PID+'-'+obj.patwaris[i].NAME_+'">';
+					str_html = str_html + '<i class="glyphicon glyphicon-share-alt"></i>';
+					str_html = str_html + '</a>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div style="clear: both"></div>';
+					str_html = str_html + '<div style="float: left; padding: 0px; margin-top: 0px">';
+					str_html = str_html + '<i class="glyphicon glyphicon-earphone"></i>&nbsp;'+obj.patwaris[i].PHONE_;
+					str_html = str_html + '</div>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '</div></div>';
+					str_html = str_html + '<div style="clear: both; padding: 5px"></div>';
+
+				}
+				$('#patwari_list_for_villages_here').html(str_html);
+			}, error: function(xhr, status, error){
+				$('#patwari_list_for_villages_here').html("Some server error. Please try again !!");
+	        }
+	    });
+	});
+	$('#patwari_list_for_villages_here').change(function(){
+		url_ = site_url_ + "/patwari_village/getActivePatwaris";
+		$.ajax({
+			url:url_,
+			type: "POST",
+			success: function(data){
+				var obj = JSON.parse(data);
+				var str_html = '';
+				var k=0;
+				len__ = obj.patwaris.length;
+				for(i=0; i<len__; i++){ 
+						if(k == 0){ 
+							color = "#ECFFE4";
+							k=1;
+						} else {
+							color = "#FFFFE4";
+							k=0;
+						}
+						icon_ = "eye-open";
+						status = "";
+					str_html = str_html + '<div class="col-sm-12" style="padding: 0px"><div style="overflow: hidden; width:100%; background: '+color+'; padding: 3px; border: #f0f0f0 solid 1px; border-radius: 10px;'+status+'" id="PID_'+obj.patwaris[i].PID+'_" class="pid_pallets">';
+					str_html = str_html + '<div class="col-sm-2" style="border:#AAAAAA solid 1px; margin: 0px; text-align: left; overflow: hidden; border-radius: 10px; padding: 0px">';
+					str_html = str_html + '<img src="'+base_path+'assets_/patwari_pics/'+obj.patwaris[i].PHOTO_+'" style="float: left" width="60" />';
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div class="col-sm-10">';
+					str_html = str_html + '<div style="float: left; padding: 0px;">';
+					str_html = str_html + '<i class="glyphicon glyphicon-user"></i><span class="patwari_name_">&nbsp;'+obj.patwaris[i].NAME_+'</span>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div style="float: right; padding: 0px;">';
+					str_html = str_html + '<a href="#" class="patwariIDForVillage" title="Call Patwari for Village Entry" id="'+obj.patwaris[i].PID+'-'+obj.patwaris[i].NAME_+'">';
+					str_html = str_html + '<i class="glyphicon glyphicon-share-alt"></i>';
+					str_html = str_html + '</a>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div style="clear: both"></div>';
+					str_html = str_html + '<div style="float: left; padding: 0px; margin-top: 0px">';
+					str_html = str_html + '<i class="glyphicon glyphicon-earphone"></i>&nbsp;'+obj.patwaris[i].PHONE_;
+					str_html = str_html + '</div>';
+					str_html = str_html + '</div>';
+					str_html = str_html + '</div></div>';
+					str_html = str_html + '<div style="clear: both; padding: 5px"></div>';
+
+				}
+				$('#patwari_list_for_villages_here').html(str_html);
+			}, error: function(xhr, status, error){
+				$('#patwari_list_for_villages_here').html("Some server error. Please try again !!");
+	        }
 	    });
 	});
 	$("#frmWhoswho").on('submit',(function(e){

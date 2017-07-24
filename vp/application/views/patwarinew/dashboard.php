@@ -1,13 +1,13 @@
 <div class="navbar navbar-inverse set-radius-zero" style="background-color: #4586d6">
     <div class="container">      
         <div class="row">
-            <?php if($this->session->userdata('status__') == "ADMIN" || $this->session->userdata('status__') == "SDM") { ?>
+            <?php if($this->session->userdata('status__') == "SDM") { ?>
             <div class="col-md-8 col-xs-12">
                 <h1 class="head"><?php if($this->session->userdata('status__') == 'ADMIN'){?>DM PATWARI BASTA<?php } else {?>SDM PATWARI BASTA<?php }?> DASHBOARD</h1>
             </div>
             <div class="col-md-4" style="margin-top: 30px; text-align: right">
                 <a href="<?PHP echo site_url('web/'); ?>" style="font-size: 16px;color: #fff">
-                        Back to <?php if($this->session->userdata('status__') == 'ADMIN'){?>DM OFFICE NAINITAL<?php } else {?>SDM<?php }?> Portal <i class="fa fa-sign-out"></i>
+                        Back to SDM Portal <i class="fa fa-sign-out"></i>
                 </a>
             </div>
         </div>

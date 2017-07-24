@@ -15,7 +15,16 @@ class My_patwari_village_model extends CI_Model{
 
 		return $query->result();
 	}
+	function getActivePatwaris($user=''){
+		$this->db->order_by('PID', 'desc');
+		if($user != ''){
+			$this->db->where('USERNAME_', $user);
+		}
+		$this->db->where('STATUS_', 1);
+		$query = $this->db->get('a0_patwari');
 
+		return $query->result();
+	}
 	function getPatwari($pid, $user = ''){
 		$this->db->where('PID', $pid);
 		if($user != ''){
@@ -145,5 +154,111 @@ class My_patwari_village_model extends CI_Model{
             $path_ = 'no-image.jpg';
         }
         return $path_;
+	}
+
+	/* village Model below */
+
+	function getVillageMaster(){
+		$this->db->order_by('INFO_ID');
+		$query = $this->db->get('a0_village_info_master');
+		return $query->result();
+	}
+
+	function getVillages($user, $pid=''){
+		$this->db->group_by('NAME_');
+		$this->db->order_by('NAME_');
+		$this->db->where('USERNAME_', $user);
+		if($pid != ''){
+			$this->db->where('PID', $pid);
+		}
+		$query = $this->db->get('a0_village');
+		return $query->result();
+	}
+
+	function UpdateVillage($user){
+		$villageID = $this->input->post('txtVillageID');
+		$pid = $this->input->post('txtPatwariID');
+		$villageName = $this->input->post('txtVillageName');
+		$KANOONGO_AREA = $this->input->post('txtKanoongoArea');
+		$GRAM_PANCHAYAT =  $this->input->post('txtGramPanchayat');
+		$NYAY_PANCHAYAT =  $this->input->post('txtNyayPanchayat');
+		$VAN_PANCHAYAT =  $this->input->post('txtVanPanchayat');
+		$PARLIAMENTARY_CONS =  $this->input->post('txtParliamentaryCons');
+		$ASSEMBLY_CONS =  $this->input->post('txtAssemblyCons');
+		$POLLING_BOOTH =  $this->input->post('txtPollingBoothName');
+		$REGULAR_REVENUE_POLICE =  $this->input->post('txtRegularRevenuePolice');
+		$dist = $this->input->post('txtDistrict');
+
+		if($villageID == 'newVillage'){
+			$this->db->where('NAME_', $villageName);
+			$this->db->where('USERNAME_', $user);
+			$query = $this->db->get('a0_village');
+			if($query->num_rows()!=0){
+				$data['msg_'] = "Village already exists!!";
+			} else {
+			// Insert new Village
+				$data = array(
+					'PID' => $pid,
+					'NAME_' => $villageName,
+					'DISTRICT'=> $dist,
+					'KANOONGO_AREA'=>$KANOONGO_AREA,
+					'GRAM_PANCHAYAT'=>$GRAM_PANCHAYAT,
+					'NYAY_PANCHAYAT'=>$NYAY_PANCHAYAT,
+					'VAN_PANCHAYAT'=>$VAN_PANCHAYAT,
+					'PARLIAMENTARY_CONS'=>$PARLIAMENTARY_CONS,
+					'ASSEMBLY_CONS'=>$ASSEMBLY_CONS,
+					'POLLING_BOOTH'=>$POLLING_BOOTH,
+					'REGULAR_REVENUE_POLICE'=>$REGULAR_REVENUE_POLICE,
+					'DATE_' => date('Y-m-d H:i:s'),
+					'STATUS_' => 1,
+					'USERNAME_'=>$user
+					);
+				$query = $this->db->insert('a0_village', $data);
+				if($query == true){
+					$data['msg_'] = "Successfully submitted.";
+				} else {
+					$data['msg_'] = "Please try again.";
+				}
+			}
+			// ------------------
+		} else {
+			// Update Village
+				$this->db->where('VILLAGEID<>', $villageID);
+				$this->db->where('NAME_', $villageName);
+				$this->db->where('USERNAME_', $user);
+				$query = $this->db->get('a0_village');
+				if($query->num_rows()!=0){
+					$data['msg_'] = "Village already exists!!";
+				} else {
+					$data = array(
+						'NAME_' => $villageName,
+						'DISTRICT'=> $dist,
+						'KANOONGO_AREA'=>$KANOONGO_AREA,
+						'GRAM_PANCHAYAT'=>$GRAM_PANCHAYAT,
+						'NYAY_PANCHAYAT'=>$NYAY_PANCHAYAT,
+						'VAN_PANCHAYAT'=>$VAN_PANCHAYAT,
+						'PARLIAMENTARY_CONS'=>$PARLIAMENTARY_CONS,
+						'ASSEMBLY_CONS'=>$ASSEMBLY_CONS,
+						'POLLING_BOOTH'=>$POLLING_BOOTH,
+						'REGULAR_REVENUE_POLICE'=>$REGULAR_REVENUE_POLICE,
+						'STATUS_' => 1,
+						'USERNAME_'=>$user
+						);
+					$this->db->where('VILLAGEID', $villageID);
+					$query = $this->db->update('a0_village', $data);
+					if($query == true){
+						$data['msg_'] = "Successfully updated.";
+					} else {
+						$data['msg_'] = "Please try again.";
+					}
+				}
+			// --------------
+		}
+		return $data;
+	}
+	function getVillageData($vid){
+		$this->db->where('VILLAGEID',$vid);
+		$query = $this->db->get('a0_village');
+		return $query->result();
 	}
 }
