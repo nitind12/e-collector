@@ -521,6 +521,6 @@ class My_model extends CI_Model {
         $this->db->order_by('WW3ID', 'ASC');
         $query = $this->db->get('a0_whoswho3_whome_detail');
         return $query->result();
-    }
+    }        
 
 }

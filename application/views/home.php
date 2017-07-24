@@ -10,21 +10,21 @@
 <div style='position: absolute; top: 180px; left:90px;z-index:999;height:50px;color: #fff;' class='visible-lg'>
     <a href="<?PHP echo site_url('web/searchDashboard'); ?>">          
         <div class="p-maskTop">
-            <p><i class="fa fa-empire fa-spin fa-2x" style='color:#ff3300;'></i> REVENUE VILLAGE</p>
+            <p><i class="fa fa-empire faa-ring animated fa-2x" style='color:#ff3300;'></i> REVENUE VILLAGE</p>
         </div>
     </a>
 </div>
 <div style='position: absolute; top: 180px; left:380px;z-index:999;height:50px;color: #fff;' class='visible-lg'>
     <a href="<?PHP echo site_url('web/court_view'); ?>">          
         <div class="p-maskTop">
-            <p><i class="fa fa-gavel faa-pulse animated fa-2x" style='color:#ff3300;'></i> REVENUE COURT</p>
+            <p><i class="fa fa-gavel faa-float animated fa-2x" style='color:#ff3300;'></i> REVENUE COURT</p>
         </div>
     </a>
 </div>
 <div style='position: absolute; top: 180px; left:680px;z-index:999;height:50px;color: #fff;' class='visible-lg'>
     <a href="<?PHP echo site_url('web/revenue_view'); ?>">          
         <div class="p-maskTop">
-            <p><i class="fa fa-map-marker faa-pulse animated fa-2x" style='color:#ff3300;'></i> REVENUE MAP</p>
+            <p><i class="fa fa-map-marker faa-wrench animated fa-2x" style='color:#ff3300;'></i> REVENUE MAP</p>
         </div>
     </a>
 </div>
@@ -144,15 +144,15 @@
             <div class="blo-top1">
                 <div class="tech-btm">    
                     <h4>External Links</h4>
-                    <p style="color: #0099cc"><i class="fa fa-arrow-circle-right"></i> Certificates</p>
-                    <p style="color: #0099cc"><i class="fa fa-arrow-circle-right"></i> Khata Khatauni</p>
-                    <p style="color: #0099cc"><i class="fa fa-arrow-circle-right"></i> District NIC website</p>   
-                    <p style="color: #0099cc"><i class="fa fa-arrow-circle-right"></i> Kumaoun University</p>                                          
+                    <p style="color: #0099cc"><a href="http://edistrict.uk.gov.in" target="_blank"><i class="fa fa-arrow-circle-right"></i> Certificates</a></p>
+                    <p style="color: #0099cc"><a href="http://devbhoomi.uk.gov.in" target="_blank"><i class="fa fa-arrow-circle-right"></i> Khata Khatauni</a></p>
+                    <p style="color: #0099cc"><a href="http://nainital.nic.in/" target="_blank"><i class="fa fa-arrow-circle-right"></i> District NIC website</a></p>   
+                    <p style="color: #0099cc"><a href="http://kunainital.ac.in/" target="_blank"><i class="fa fa-arrow-circle-right"></i> Kumaun University</a></p>                                          
                     <p>&nbsp;</p>
                     <hr>                    
                     <h4>Downloads</h4>
-                    <p style="color: #0099cc"><i class="fa fa-arrow-circle-right"></i> Circle Rates</p>
-                    <p style="color: #0099cc"><i class="fa fa-arrow-circle-right"></i> Aadhar Centers Information</p>                                                                                                                                                                           
+                    <p style="color: #0099cc"><a href="<?PHP echo base_url() . 'nitnav/download/CircleRate-2016.pdf'; ?>" target="_blank"><i class="fa fa-arrow-circle-right"></i> Circle Rates</a></p>
+                    <p style="color: #0099cc"><a href="<?PHP echo base_url() . 'nitnav/download/adhar-updated-details.pdf'; ?>" target="_blank"><i class="fa fa-arrow-circle-right"></i> Aadhar Centers Information</a></p>
                 </div>
             </div>
         </div>
