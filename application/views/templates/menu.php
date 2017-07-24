@@ -1,5 +1,5 @@
 <body>
-    <div class="header" id="ban" style="position: relative; z-index: 9999;">
+    <div class="header" id="ban" style="position: relative; z-index: 99;">
         <div class="container">                
             <div class="header_right wow fadeInLeft animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
                 <nav class="navbar navbar-default">
