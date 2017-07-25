@@ -92,6 +92,7 @@
                 <label style="min-width: 60px; color: #000090">Village </label>
                 <label style="color: #dd0379" id="village_name_for_village">| -</label>
 			</div>
+			<div style="clear: both; padding: 5px"></div>
 			<div class="input-group">
 				<?php
 					$data = array(

@@ -22,6 +22,7 @@ $(function(){
 				$('#village_list_here').change();
 				$('#patwari_list_for_villages_here').change();
 				$('#patwari_name_for_village').html('| -');
+				$('#cmbVillageReset').click();
 				// -------------
 			}
 		});
@@ -225,7 +226,7 @@ $(function(){
 					str_html = str_html + '<div class="col-sm-12" style="width:95%;background: '+color+'; padding: 3px; border: #f0f0f0 solid 1px; border-radius: 10px;'+status+'">';
 					str_html = str_html + '<div class="col-sm-12">';
 					str_html = str_html + '<div style="float: left; padding: 0px;">';
-					str_html = str_html + '<i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;'+obj.villages_[i].NAME_+', <span style="color: #D0D0D0; font-size: 13px">('+obj.villages_[i].DISTRICT+')</span>';
+					str_html = str_html + '<i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;<span style="font-size:11px; background:#505050; border-radius:3px; color:#ffffff; padding: 3px">'+obj.villages_[i].TEHSIL+'</span>&nbsp;&nbsp;'+obj.villages_[i].NAME_+', <span style="color: #D0D0D0; font-size: 13px">('+obj.villages_[i].DISTRICT+')</span>';
 					str_html = str_html + '</div>';
 					str_html = str_html + '<div style="float: right; padding: 0px;">';
 					str_html = str_html + '<a href="#" class="updateVillage" title="Edit Village" id="'+obj.villages_[i].VILLAGEID+"-"+obj.villages_[i].NAME_+'">';
@@ -245,19 +246,11 @@ $(function(){
 	        }
 		});
 	});
-	$('#villageListofPatwari').change(function(){
-		var str;
-		str = $('#txtVillageID').val();
-		data_ = str.split("-");
-		pid_ = '#PID_'+data_[0]+"_";
-		p_name = data_[1];
-		$('#txtPatwariID').val(data_[0]);
-		$('#patwari_name_for_village').html('| - '+p_name);
-		$('#vlist_').html("for "+p_name);
-		$(".pid_pallets").css("border","#f0f0f0 solid 1px");
-		$(pid_).css('border','#dd0379 solid 2px');
+	function villageListofPatwari(){
+		var pid_;
+		pid_ = $('#txtPatwariID').val();
 
-		url_ = site_url_ + "/patwari_village/getVillages/"+data_[0];
+		url_ = site_url_ + "/patwari_village/getVillages/"+pid_;
 		
 		$.ajax({
 			type: "POST",
@@ -286,7 +279,7 @@ $(function(){
 					str_html = str_html + '<div class="col-sm-12" style="width:95%;background: '+color+'; padding: 3px; border: #f0f0f0 solid 1px; border-radius: 10px;'+status+'">';
 					str_html = str_html + '<div class="col-sm-12">';
 					str_html = str_html + '<div style="float: left; padding: 0px;">';
-					str_html = str_html + '<i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;'+obj.villages_[i].NAME_+', <span style="color: #D0D0D0; font-size: 13px">('+obj.villages_[i].DISTRICT+')</span>';
+					str_html = str_html + '<i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;<span style="font-size:11px; background:#505050; border-radius:3px; color:#ffffff; padding: 3px">'+obj.villages_[i].TEHSIL+'</span>&nbsp;&nbsp;'+obj.villages_[i].NAME_+', <span style="color: #D0D0D0; font-size: 13px">('+obj.villages_[i].DISTRICT+')</span>';
 					str_html = str_html + '</div>';
 					str_html = str_html + '<div style="float: right; padding: 0px;">';
 					str_html = str_html + '<a href="#" class="updateVillage" title="Edit Village" id="'+obj.villages_[i].VILLAGEID+"-"+obj.villages_[i].NAME_+'">';
@@ -305,7 +298,7 @@ $(function(){
 				alert(error);
 	        }
 		});
-	});
+	}
 	$('#frmVillage').submit(function(){
 		if($('#txtPatwariID').val() != ""){
 			data_ = $('#frmVillage').serialize();
@@ -317,18 +310,20 @@ $(function(){
 				url: url_,
 				data: data_,
 				success: function(data){
-					$('#txtVillageName').val("");
-					$('#txtKanoongoArea').val("");
-					$('#txtGramPanchayat').val("");
-					$('#txtNyayPanchayat').val("");
-					$('#txtVanPanchayat').val("");
-					$('#txtParliamentaryCons').val("");
-					$('#txtAssemblyCons').val("");
-					$('#txtPollingBoothName').val("");
-					$('#txtRegularRevenuePolice').val("");
-					$('#cmbVillageReset').click();
-
+					if(data != 'Village already exists!!'){
+						$('#txtVillageName').val("");
+						$('#txtKanoongoArea').val("");
+						$('#txtGramPanchayat').val("");
+						$('#txtNyayPanchayat').val("");
+						$('#txtVanPanchayat').val("");
+						$('#txtParliamentaryCons').val("");
+						$('#txtAssemblyCons').val("");
+						$('#txtPollingBoothName').val("");
+						$('#txtRegularRevenuePolice').val("");
+						$('#cmbVillageReset').click();
+					}
 					$('#this_msg_for_village').html(data);
+					villageListofPatwari();
 				}, error: function(xhr, status, error){
 					alert(error);
 		        }
@@ -360,6 +355,7 @@ $(function(){
 				success: function(data){
 					var obj = JSON.parse(data);
 					$('#txtDistrict').val(obj.village[0].DISTRICT);
+					$('#cmbTehsilForVillage').val(obj.village[0].TEHSIL);
 					$('#txtVillageName').val(obj.village[0].NAME_);
 					$('#txtKanoongoArea').val(obj.village[0].KANOONGO_AREA);
 					$('#txtGramPanchayat').val(obj.village[0].GRAM_PANCHAYAT);
@@ -381,7 +377,7 @@ $(function(){
 			$('#cmbVillageSubmit').val(" Submit ");
 			$('#cmbVillageReset').click();
 			$('.disableInputVillageArea').removeClass('orange_');
-			$('#txtVillageName').focus();
+			$('#cmbTehsilForVillage').focus();
 		}
 		$('#txtVillageID').val(id);
 	});

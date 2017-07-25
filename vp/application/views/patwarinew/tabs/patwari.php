@@ -18,6 +18,29 @@
 					);
 				echo form_open('', $data);
 			?>
+            <div class="input-group">
+                <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'btn btn-success dropdown-toggle required form-control',
+                        'disabled'=>'disabled',
+                        'required' => 'required',
+                        'name' => 'cmbTehsilForVillage',
+                        'id' => 'cmbTehsilForVillage',
+                        'value' => '',
+                    );
+                    $options = array();
+                    $options[''] = "Select Tehsil";
+                    foreach ($tehsilEnglish as $tehsilItem) {
+                        $options[$tehsilItem->TEHSIL] = $tehsilItem->TEHSIL;
+                    }
+                    ?>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i> Tehsil</span>
+                <?php
+                    echo form_dropdown($data, $options);
+                ?>
+            </div>
+            <div style="clear: both; padding: 5px"></div>
 			<div class="input-group">
 				<?php
 					$data = array(

@@ -15,7 +15,7 @@
     <script src="<?php echo base_url('assets_/js/jquery-1.11.1.js');?>"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
     <script src="<?php echo base_url('assets_/js/bootstrap.js');?>"></script>
-    <script src="<?php echo base_url('assets_/js/myjs.js');?>?version=1.2"></script>
+    <script src="<?php echo base_url('assets_/js/myjs.js');?>?version=1.1"></script>
     <script src="<?php echo base_url('assets_/js/adminJS.js');?>"></script>
 </body>
 </html>

@@ -163,10 +163,13 @@ class My_patwari_village_model extends CI_Model{
 		$query = $this->db->get('a0_village_info_master');
 		return $query->result();
 	}
-
+	function getTehsilMasterEnglish(){
+		$this->db->order_by('ID');
+		$query = $this->db->get('a95_tehsil_master_english');
+		return $query->result();	
+	}
 	function getVillages($user, $pid=''){
-		$this->db->group_by('NAME_');
-		$this->db->order_by('NAME_');
+		$this->db->order_by('VILLAGEID', 'desc');
 		$this->db->where('USERNAME_', $user);
 		if($pid != ''){
 			$this->db->where('PID', $pid);
@@ -178,6 +181,7 @@ class My_patwari_village_model extends CI_Model{
 	function UpdateVillage($user){
 		$villageID = $this->input->post('txtVillageID');
 		$pid = $this->input->post('txtPatwariID');
+		$tehsil_ = $this->input->post('cmbTehsilForVillage');
 		$villageName = $this->input->post('txtVillageName');
 		$KANOONGO_AREA = $this->input->post('txtKanoongoArea');
 		$GRAM_PANCHAYAT =  $this->input->post('txtGramPanchayat');
@@ -190,6 +194,7 @@ class My_patwari_village_model extends CI_Model{
 		$dist = $this->input->post('txtDistrict');
 
 		if($villageID == 'newVillage'){
+			$this->db->where('TEHSIL', $tehsil_);
 			$this->db->where('NAME_', $villageName);
 			$this->db->where('USERNAME_', $user);
 			$query = $this->db->get('a0_village');
@@ -199,6 +204,7 @@ class My_patwari_village_model extends CI_Model{
 			// Insert new Village
 				$data = array(
 					'PID' => $pid,
+					'TEHSIL'=>$tehsil_,
 					'NAME_' => $villageName,
 					'DISTRICT'=> $dist,
 					'KANOONGO_AREA'=>$KANOONGO_AREA,
@@ -224,6 +230,7 @@ class My_patwari_village_model extends CI_Model{
 		} else {
 			// Update Village
 				$this->db->where('VILLAGEID<>', $villageID);
+				$this->db->where('TEHSIL', $tehsil_);
 				$this->db->where('NAME_', $villageName);
 				$this->db->where('USERNAME_', $user);
 				$query = $this->db->get('a0_village');
@@ -231,6 +238,7 @@ class My_patwari_village_model extends CI_Model{
 					$data['msg_'] = "Village already exists!!";
 				} else {
 					$data = array(
+						'TEHSIL'=>$tehsil_,
 						'NAME_' => $villageName,
 						'DISTRICT'=> $dist,
 						'KANOONGO_AREA'=>$KANOONGO_AREA,
