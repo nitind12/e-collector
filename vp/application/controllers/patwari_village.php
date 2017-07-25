@@ -11,8 +11,8 @@ class Patwari_village extends CI_Controller {
 
     function index(){
         $this->check_login();
-    	$data['patwari'] = '';
-        $data['village'] = 'active';
+    	$data['patwari'] = 'active';
+        $data['village'] = '';
         $data['tehsilEnglish'] = $this->pvm->getTehsilMasterEnglish();
         $this->load->view('templates/header');
         $this->load->view('patwarinew/dashboard', $data);
@@ -61,6 +61,10 @@ class Patwari_village extends CI_Controller {
     }
     function getVillageData($vid){
         $data['village'] = $this->pvm->getVillageData($vid);
+        echo json_encode($data);
+    }
+    function activeInactiveVillage($vid, $status){
+        $data['message'] = $this->pvm->activeInactiveVillage($vid, $status);
         echo json_encode($data);
     }
 

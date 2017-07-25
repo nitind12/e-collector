@@ -1,3 +1,28 @@
+<style>
+    .orange{
+        color: #900000;
+    }
+    .tehsil_label{
+        font-size:11px; 
+        background:#505050; 
+        border-top-left-radius:3px; 
+        border-bottom-left-radius:3px;  
+        color:#ffffff; 
+        padding: 3px
+    }
+    .tehsil_name{
+        font-size:11px; 
+        border-left: #000000 solid 0px; 
+        border-right: #000000 solid 1px; 
+        border-top: #000000 solid 1px; 
+        border-bottom: #000000 solid 1px; 
+        background:transparent; 
+        border-top-right-radius:3px; 
+        border-bottom-right-radius:3px;  
+        color:#000000; 
+        padding: 2px
+    }
+</style>
 <div class="navbar navbar-inverse set-radius-zero" style="background-color: #4586d6">
     <div class="container">      
         <div class="row">

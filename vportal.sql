@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2017 at 11:06 AM
+-- Generation Time: Jul 25, 2017 at 12:50 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `a0_patwari` (
   `PID` int(11) NOT NULL,
+  `TEHSIL` varchar(150) NOT NULL,
   `NAME_` varchar(100) NOT NULL,
   `PHONE_` varchar(75) NOT NULL COMMENT 'Max 5 mobile no can be entered',
   `PHOTO_` varchar(50) NOT NULL,
@@ -40,23 +41,23 @@ CREATE TABLE `a0_patwari` (
 -- Dumping data for table `a0_patwari`
 --
 
-INSERT INTO `a0_patwari` (`PID`, `NAME_`, `PHONE_`, `PHOTO_`, `STATUS_`, `DATE_`, `USERNAME_`) VALUES
-(1, 'Gunjan Mathur Ji', '9634944223', '1.jpg', 1, '2017-07-25 04:41:07', 'vandana'),
-(3, 'Amit Shah', '9410337554', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(6, 'Arjun Bisht', '9456554535', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(8, 'Bhuwan Chandra Bhandari', '9411043360', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(9, 'Ganga Datt Paladiya', '9411541065', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(11, 'Hem Paladiya ji', '9411541065', 'no-image.jpg', 1, '2017-07-25 04:41:46', 'vandana'),
-(12, 'Jagdish Chandra', '9675866502', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(13, 'Jagdish Chandra Arya', '9675866502', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(14, 'Lalit Mohan Goswami', '9411323362', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(15, 'Lokmani Arya', '9456378594', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(17, 'Om Prakash Arya', '9411787635', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(19, 'Radhe Singh Rana', '9412943330', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(21, 'Nitin Deepak', '9760020667', '21.jpg', 1, '2017-07-24 09:53:53', 'vandana'),
-(27, 'Harsh Wardhan Pant', '8192850007', '27.JPG', 0, '2017-07-23 04:31:39', 'vandana'),
-(28, 'Suraj Sanwal', '9874663210', 'no-image.jpg', 1, '2017-07-23 19:35:01', 'vandana'),
-(29, 'Pankaj Pant', '8529631478', 'no-image.jpg', 1, '2017-07-23 19:34:41', 'vandana');
+INSERT INTO `a0_patwari` (`PID`, `TEHSIL`, `NAME_`, `PHONE_`, `PHOTO_`, `STATUS_`, `DATE_`, `USERNAME_`) VALUES
+(1, 'Nainital', 'Gunjan Mathur Ji', '9634944223', '1.jpg', 1, '2017-07-25 04:41:07', 'vandana'),
+(3, 'Nainital', 'Amit Shah', '9410337554', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(6, 'Nainital', 'Arjun Bisht', '9456554535', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(8, 'Nainital', 'Bhuwan Chandra Bhandari', '9411043360', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(9, 'Nainital', 'Ganga Datt Paladiya', '9411541065', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(11, 'Nainital', 'Hem Paladiya ji', '9411541065', 'no-image.jpg', 1, '2017-07-25 04:41:46', 'vandana'),
+(12, 'Nainital', 'Jagdish Chandra', '9675866502', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(13, 'Nainital', 'Jagdish Chandra Arya', '9675866502', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(14, 'Nainital', 'Lalit Mohan Goswami', '9411323362', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(15, 'Nainital', 'Lokmani Arya', '9456378594', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(17, 'Nainital', 'Om Prakash Arya', '9411787635', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(19, 'Nainital', 'Radhe Singh Rana', '9412943330', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(21, 'Nainital', 'Nitin Deepak', '9760020667', '21.jpg', 1, '2017-07-24 09:53:53', 'vandana'),
+(27, 'Nainital', 'Harsh Wardhan Pant', '8192850007', '27.JPG', 1, '2017-07-23 04:31:39', 'vandana'),
+(28, 'Nainital', 'Suraj Sanwal', '9874663210', 'no-image.jpg', 1, '2017-07-25 09:47:29', 'vandana'),
+(29, 'Koshyan Kutoli', 'Pankaj Pant', '8529631478', 'no-image.jpg', 1, '2017-07-25 09:59:51', 'vandana');
 
 -- --------------------------------------------------------
 
@@ -67,7 +68,6 @@ INSERT INTO `a0_patwari` (`PID`, `NAME_`, `PHONE_`, `PHOTO_`, `STATUS_`, `DATE_`
 CREATE TABLE `a0_village` (
   `VILLAGEID` int(11) NOT NULL,
   `PID` int(11) NOT NULL,
-  `TEHSIL` varchar(150) NOT NULL,
   `NAME_` varchar(120) NOT NULL,
   `DISTRICT` varchar(150) NOT NULL,
   `KANOONGO_AREA` varchar(250) NOT NULL,
@@ -87,18 +87,21 @@ CREATE TABLE `a0_village` (
 -- Dumping data for table `a0_village`
 --
 
-INSERT INTO `a0_village` (`VILLAGEID`, `PID`, `TEHSIL`, `NAME_`, `DISTRICT`, `KANOONGO_AREA`, `GRAM_PANCHAYAT`, `NYAY_PANCHAYAT`, `VAN_PANCHAYAT`, `PARLIAMENTARY_CONS`, `ASSEMBLY_CONS`, `POLLING_BOOTH`, `REGULAR_REVENUE_POLICE`, `DATE_`, `STATUS_`, `USERNAME_`) VALUES
-(4, 27, 'Nainital', 'Amgarhi', 'Nainital', '', '', '', 'x', 'Haldwani', 'Haldwani', 'Gandhi School1', 'Haldwani Chawki', '2017-07-24 03:34:02', 1, 'vandana'),
-(11, 27, 'Nainital', 'Beni', 'Nainital', 'x', 'x', 'x', 'xx', 'xxx', 'xx', 'x', 'x', '2017-07-24 09:45:13', 1, 'vandana'),
-(12, 27, 'Nainital', 'Nagla', 'Nainital', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', '2017-07-24 09:50:15', 1, 'vandana'),
-(13, 21, 'Nainital', 'Guron', 'Nainital', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', '2017-07-24 09:52:59', 1, 'vandana'),
-(14, 21, 'Nainital', 'Fatehpur', 'Nainital', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', '2017-07-24 09:53:19', 1, 'vandana'),
-(15, 27, 'Nainital', 'Phholbagh', 'Nainital', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '2017-07-25 04:26:45', 1, 'vandana'),
-(16, 27, 'Nainital', 'Lalkuan', 'Nainital', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '2017-07-25 04:27:30', 1, 'vandana'),
-(17, 27, 'Nainital', 'Phutkuan', 'Nainital', 'x', 'x', 'x', 'x', 'x', 'x', 'xx', 'x', '2017-07-25 04:28:53', 1, 'vandana'),
-(18, 27, 'Nainital', 'Kichha', 'Nainital', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '2017-07-25 04:29:31', 1, 'vandana'),
-(19, 27, 'Nainital', 'Haldwani', 'Nainital', '', '', '', '', '', '', '', '', '2017-07-25 04:31:25', 1, 'vandana'),
-(20, 21, 'Nainital', 'nagla1', 'Nainital', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '2017-07-25 05:27:21', 1, 'vandana');
+INSERT INTO `a0_village` (`VILLAGEID`, `PID`, `NAME_`, `DISTRICT`, `KANOONGO_AREA`, `GRAM_PANCHAYAT`, `NYAY_PANCHAYAT`, `VAN_PANCHAYAT`, `PARLIAMENTARY_CONS`, `ASSEMBLY_CONS`, `POLLING_BOOTH`, `REGULAR_REVENUE_POLICE`, `DATE_`, `STATUS_`, `USERNAME_`) VALUES
+(4, 27, 'Amgarhi', 'Nainital', '', '', '', 'x', 'Haldwani', 'Haldwani', 'Gandhi School1', 'Haldwani Chawki', '2017-07-24 03:34:02', 1, 'vandana'),
+(11, 27, 'Beni', 'Nainital', 'x', 'x', 'x', 'xx', 'xxx', 'xx', 'x', 'x', '2017-07-24 09:45:13', 1, 'vandana'),
+(12, 27, 'Nagla', 'Nainital', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', '2017-07-24 09:50:15', 1, 'vandana'),
+(13, 21, 'Guron', 'Nainital', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', '2017-07-24 09:52:59', 1, 'vandana'),
+(14, 21, 'Fatehpur', 'Nainital', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', '2017-07-24 09:53:19', 1, 'vandana'),
+(15, 27, 'Phholbagh', 'Nainital', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '2017-07-25 04:26:45', 1, 'vandana'),
+(16, 27, 'Lalkuan', 'Nainital', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '2017-07-25 04:27:30', 1, 'vandana'),
+(17, 27, 'Phutkuan1', 'Nainital', 'x', 'x', 'x', 'x', 'x', 'x', 'xx', 'x', '2017-07-25 04:28:53', 1, 'vandana'),
+(18, 27, 'Kichha', 'Nainital', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '2017-07-25 04:29:31', 1, 'vandana'),
+(19, 27, 'Haldwani', 'Nainital', '', '', '', '', '', '', '', '', '2017-07-25 04:31:25', 1, 'vandana'),
+(20, 21, 'nagla', 'Nainital', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '2017-07-25 05:27:21', 1, 'vandana'),
+(21, 28, 'Nagla', 'Nainital', '', '', '', '', '', '', '', '', '2017-07-25 10:28:35', 1, 'vandana'),
+(22, 27, 'Badaut', 'Nainital', '', '', '', '', '', '', '', '', '2017-07-25 10:29:10', 1, 'vandana'),
+(23, 27, 'harraut', 'Nainital', '', '', '', '', '', '', '', '', '2017-07-25 10:29:19', 0, 'vandana');
 
 -- --------------------------------------------------------
 
@@ -6870,8 +6873,8 @@ INSERT INTO `b1_revenue_map` (`MAPID`, `VILLAGEID`, `SHEETNO`, `MAP_PATH`, `USER
 
 CREATE TABLE `c1_gallery_category` (
   `CATEG_ID` int(11) NOT NULL,
-  `CATEGORY` varchar(25) NOT NULL,
-  `DESC` varchar(1000) NOT NULL,
+  `CATEGORY` varchar(500) NOT NULL,
+  `DESCR` text NOT NULL,
   `STATUS` tinyint(1) NOT NULL,
   `DATE_` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -6880,7 +6883,7 @@ CREATE TABLE `c1_gallery_category` (
 -- Dumping data for table `c1_gallery_category`
 --
 
-INSERT INTO `c1_gallery_category` (`CATEG_ID`, `CATEGORY`, `DESC`, `STATUS`, `DATE_`) VALUES
+INSERT INTO `c1_gallery_category` (`CATEG_ID`, `CATEGORY`, `DESCR`, `STATUS`, `DATE_`) VALUES
 (1, 'BHIMTAL', 'Bhimtal is an ancient place named after Bhima of Mahabharata. Bhimeshwara Mahadev Temple, an old Shiva temple in the bank of Bhimtal lake, is believed to have been built when Bhima visited the place during the banishment (vanvas) period of Pandavas. ', 1, '2017-05-23 02:45:58'),
 (17, 'NAINITAL LAKE', 'It is believed that the Naini Lake is one of the 64\'s Shakti Peeths, or religious sites where parts of the charred body of Sati (Parvati) fell on earth while being carried by Lord Shiva. The spot where Satis eyes (or Nain) fell, came to be called Nain-tal or lake of the eye. The goddess Shakti is worshiped at the Naina Devi Temple, known by locals as Naini Mata Temple on the north shore of the present day lake.', 1, '2017-05-23 02:48:58');
 
@@ -7264,12 +7267,12 @@ ALTER TABLE `user_status`
 -- AUTO_INCREMENT for table `a0_patwari`
 --
 ALTER TABLE `a0_patwari`
-  MODIFY `PID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `PID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `a0_village`
 --
 ALTER TABLE `a0_village`
-  MODIFY `VILLAGEID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `VILLAGEID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `a0_village_info_master`
 --

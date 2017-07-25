@@ -24,7 +24,32 @@ $(function(){
 				$('#patwari_name_for_village').html('| -');
 				$('#cmbVillageReset').click();
 				// -------------
-			}
+			}, error: function(xhr, status, error){
+				//$('#load_here_edit_actinact').html(error);
+				$('#load_here_edit_actinact').html("<span style='font-size: 10px; background: #ffff00; padding: 3px; border-radius: 5px'>X: Server Error!!. Please trya again.</span>");
+	        }
+		});
+	});
+	$('body').on('click', '.VillageIDActiveInactive', function(){
+		var url_ = site_url_ + "/patwari_village/activeInactiveVillage/"+this.id;
+		$('#load_here_edit_actinact_village').html('<img src="'+base_path+'/assets_/img/load.GIF" width="10" />');
+		$.ajax({
+			type: "POST",
+			url: url_,
+			success: function(data){
+				var obj = JSON.parse(data);
+				//$('#load_here_edit_actinact').html(obj.message.msg_);
+				$('#load_here_edit_actinact_village').html('');
+				// affected ones
+				//$('#village_list_here').change();
+				//$('#patwari_list_for_villages_here').change();
+				villageListofPatwari();
+				//$('#cmbVillageReset').click();
+				// -------------
+			}, error: function(xhr, status, error){
+				//$('#load_here_edit_actinact').html(error);
+				$('#load_here_edit_actinact_village').html("<span style='font-size: 10px; background: #ffff00; padding: 3px; border-radius: 5px'>X: Server Error!!. Please trya again.</span>");
+	        }
 		});
 	});
 	$('body').on('click', '.patwariID', function(){
@@ -37,6 +62,7 @@ $(function(){
 				var obj = JSON.parse(data);
 				if(obj.patwari.length != 0){
 					$('#editPatwari').css("display","block");
+					$('#cmbTehsilForVillage_edit').val(obj.patwari.TEHSIL);
 					$('#txtpatwariName_edit').val(obj.patwari.NAME_);
 					$('#txtpaContact_edit').val(obj.patwari.PHONE_);
 					$('#edit_photo_here').html("<img src='"+base_path+"/assets_/patwari_pics/"+obj.patwari.PHOTO_+"' width='50' />");
@@ -80,7 +106,6 @@ $(function(){
 				$('#patwari_list_here').change();
 				$('#village_list_here').change();
 				$('#patwari_list_for_villages_here').change();
-				$('#patwari_name_for_village').html('| -');
 				// -------------
 				$('#editPatwari').css("display","none");
 				$("#load_here_edit_actinact").html(obj.message.msg_);
@@ -116,11 +141,11 @@ $(function(){
 							icon_ = "eye-open";
 							status = "";
 						}
-					str_html = str_html + '<div class="col-sm-12" style="background: '+color+'; padding: 3px; border: #f0f0f0 solid 1px; border-radius: 10px;'+status+'">';
-					str_html = str_html + '<div class="col-sm-2" style="border:#AAAAAA solid 1px; margin: 0px; text-align: left; overflow: hidden; border-radius: 10px; padding: 0px">';
+					str_html = str_html + '<div class="col-sm-12" style="overflow: hidden; background: '+color+'; padding: 3px; border: #f0f0f0 solid 1px; border-radius: 10px;'+status+'">';
+					str_html = str_html + '<div class="col-sm-2 col-xs-2" style="border:#AAAAAA solid 1px; margin: 0px; text-align: left; overflow: hidden; border-radius: 10px; padding: 0px">';
 					str_html = str_html + '<img src="'+base_path+'assets_/patwari_pics/'+obj.patwaris[i].PHOTO_+'" style="float: left" width="60" />';
 					str_html = str_html + '</div>';
-					str_html = str_html + '<div class="col-sm-10">';
+					str_html = str_html + '<div class="col-sm-10 col-xs-10" style="border: #ff0000 solid 0px">';
 					str_html = str_html + '<div style="float: left; padding: 0px;">';
 					str_html = str_html + '<i class="glyphicon glyphicon-user"></i>&nbsp;'+obj.patwaris[i].NAME_;
 					str_html = str_html + '</div>';
@@ -135,6 +160,10 @@ $(function(){
 					str_html = str_html + '<div style="clear: both"></div>';
 					str_html = str_html + '<div style="float: left; padding: 0px; margin-top: 0px">';
 					str_html = str_html + '<i class="glyphicon glyphicon-earphone"></i>&nbsp;'+obj.patwaris[i].PHONE_;
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div style="clear: both"></div>';
+					str_html = str_html + '<div style="float: right; padding: 0px; margin-top: 0px">';
+					str_html = str_html + '<span class="tehsil_label">Tehsil</span><span class="tehsil_name">'+obj.patwaris[i].TEHSIL+'</span>';
 					str_html = str_html + '</div>';
 					str_html = str_html + '</div>';
 					str_html = str_html + '</div>';
@@ -172,7 +201,6 @@ $(function(){
 				$('#patwari_list_here').change();
 				$('#village_list_here').change();
 				$('#patwari_list_for_villages_here').change();
-				$('#patwari_name_for_village').html('| -');
 				// -------------
 			}, error: function(xhr, status, error){
 				$('#this_msg').html("Some server error. Please try again !!");
@@ -226,13 +254,13 @@ $(function(){
 					str_html = str_html + '<div class="col-sm-12" style="width:95%;background: '+color+'; padding: 3px; border: #f0f0f0 solid 1px; border-radius: 10px;'+status+'">';
 					str_html = str_html + '<div class="col-sm-12">';
 					str_html = str_html + '<div style="float: left; padding: 0px;">';
-					str_html = str_html + '<i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;<span style="font-size:11px; background:#505050; border-radius:3px; color:#ffffff; padding: 3px">'+obj.villages_[i].TEHSIL+'</span>&nbsp;&nbsp;'+obj.villages_[i].NAME_+', <span style="color: #D0D0D0; font-size: 13px">('+obj.villages_[i].DISTRICT+')</span>';
+					str_html = str_html + '<i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;'+obj.villages_[i].NAME_;
 					str_html = str_html + '</div>';
 					str_html = str_html + '<div style="float: right; padding: 0px;">';
 					str_html = str_html + '<a href="#" class="updateVillage" title="Edit Village" id="'+obj.villages_[i].VILLAGEID+"-"+obj.villages_[i].NAME_+'">';
 					str_html = str_html + '<i class="glyphicon glyphicon-edit"></i>';
 					str_html = str_html + '</a>';
-					str_html = str_html + '&nbsp;<a href="#" title="Active-Inactive Village" class="VillageIDActiveInactive" id="'+obj.villages_[i].PID+'/'+obj.villages_[i].STATUS_+'">';
+					str_html = str_html + '&nbsp;<a href="#" title="Active-Inactive Village" class="VillageIDActiveInactive" id="'+obj.villages_[i].VILLAGEID+'/'+obj.villages_[i].STATUS_+'">';
 					str_html = str_html + '<i class="glyphicon glyphicon-'+icon_+'" style="color: #000000"></i>';
 					str_html = str_html + '</a>';
 					str_html = str_html + '</div>';
@@ -279,13 +307,13 @@ $(function(){
 					str_html = str_html + '<div class="col-sm-12" style="width:95%;background: '+color+'; padding: 3px; border: #f0f0f0 solid 1px; border-radius: 10px;'+status+'">';
 					str_html = str_html + '<div class="col-sm-12">';
 					str_html = str_html + '<div style="float: left; padding: 0px;">';
-					str_html = str_html + '<i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;<span style="font-size:11px; background:#505050; border-radius:3px; color:#ffffff; padding: 3px">'+obj.villages_[i].TEHSIL+'</span>&nbsp;&nbsp;'+obj.villages_[i].NAME_+', <span style="color: #D0D0D0; font-size: 13px">('+obj.villages_[i].DISTRICT+')</span>';
+					str_html = str_html + '<i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;'+obj.villages_[i].NAME_;
 					str_html = str_html + '</div>';
 					str_html = str_html + '<div style="float: right; padding: 0px;">';
 					str_html = str_html + '<a href="#" class="updateVillage" title="Edit Village" id="'+obj.villages_[i].VILLAGEID+"-"+obj.villages_[i].NAME_+'">';
 					str_html = str_html + '<i class="glyphicon glyphicon-edit"></i>';
 					str_html = str_html + '</a>';
-					str_html = str_html + '&nbsp;<a href="#" title="Active-Inactive Village" class="VillageIDActiveInactive" id="'+obj.villages_[i].PID+'/'+obj.villages_[i].STATUS_+'">';
+					str_html = str_html + '&nbsp;<a href="#" title="Active-Inactive Village" class="VillageIDActiveInactive" id="'+obj.villages_[i].VILLAGEID+'/'+obj.villages_[i].STATUS_+'">';
 					str_html = str_html + '<i class="glyphicon glyphicon-'+icon_+'" style="color: #000000"></i>';
 					str_html = str_html + '</a>';
 					str_html = str_html + '</div>';
@@ -455,22 +483,26 @@ $(function(){
 						}
 						icon_ = "eye-open";
 						status = "";
-					str_html = str_html + '<div class="col-sm-12" style="padding: 0px"><div style="overflow: hidden; width:100%; background: '+color+'; padding: 3px; border: #f0f0f0 solid 1px; border-radius: 10px;'+status+'" id="PID_'+obj.patwaris[i].PID+'_" class="pid_pallets">';
-					str_html = str_html + '<div class="col-sm-2" style="border:#AAAAAA solid 1px; margin: 0px; text-align: left; overflow: hidden; border-radius: 10px; padding: 0px">';
+					str_html = str_html + '<div class="col-sm-12" style="border: #ff0000 solid 0px; padding: 0px"><div style="overflow: hidden; width:100%; background: '+color+'; padding: 3px; border: #f0f0f0 solid 1px; border-radius: 10px;'+status+'" id="PID_'+obj.patwaris[i].PID+'_" class="pid_pallets">';
+					str_html = str_html + '<div class="col-sm-2 col-xs-2" style="border:#AAAAAA solid 1px; margin: 0px; text-align: left; overflow: hidden; border-radius: 10px; padding: 0px">';
 					str_html = str_html + '<img src="'+base_path+'assets_/patwari_pics/'+obj.patwaris[i].PHOTO_+'" style="float: left" width="60" />';
 					str_html = str_html + '</div>';
-					str_html = str_html + '<div class="col-sm-10">';
-					str_html = str_html + '<div style="float: left; padding: 0px;">';
+					str_html = str_html + '<div class="col-sm-10 col-xs-10" style="border: #000000 solid 0px; ">';
+					str_html = str_html + '<div style="float: left; padding: 0px;border: #000000 solid 0px;">';
 					str_html = str_html + '<i class="glyphicon glyphicon-user"></i><span class="patwari_name_">&nbsp;'+obj.patwaris[i].NAME_+'</span>';
 					str_html = str_html + '</div>';
-					str_html = str_html + '<div style="float: right; padding: 0px;">';
+					str_html = str_html + '<div style="float: right; padding: 0px;border: #000000 solid 0px;">';
 					str_html = str_html + '<a href="#" class="patwariIDForVillage" title="Call Patwari for Village Entry" id="'+obj.patwaris[i].PID+'-'+obj.patwaris[i].NAME_+'">';
 					str_html = str_html + '<i class="glyphicon glyphicon-share-alt"></i>';
 					str_html = str_html + '</a>';
 					str_html = str_html + '</div>';
 					str_html = str_html + '<div style="clear: both"></div>';
-					str_html = str_html + '<div style="float: left; padding: 0px; margin-top: 0px">';
+					str_html = str_html + '<div style="float: left; padding: 0px; margin-top: 0px; border: #000000 solid 0px; ">';
 					str_html = str_html + '<i class="glyphicon glyphicon-earphone"></i>&nbsp;'+obj.patwaris[i].PHONE_;
+					str_html = str_html + '</div>';
+					str_html = str_html + '<div style="clear: both"></div>';
+					str_html = str_html + '<div style="float: right; padding: 0px; margin-top: 0px">';
+					str_html = str_html + '<span class="tehsil_label">Tehsil</span><span class="tehsil_name">'+obj.patwaris[i].TEHSIL+'</span>';
 					str_html = str_html + '</div>';
 					str_html = str_html + '</div>';
 					str_html = str_html + '</div></div>';
