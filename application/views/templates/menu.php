@@ -29,6 +29,8 @@
                                         <li><a href="<?PHP echo site_url('web/court_view'); ?>"><i class="fa fa-gavel"></i> Revenue Court</a></li>
                                         <li><a href="<?PHP echo site_url('web/revenue_view'); ?>"><i class="fa fa-map-marker"></i> Revenue Map</a></li>
                                         <li><a href="<?PHP echo site_url('web/touristGallery'); ?>"><i class="fa fa-camera-retro"></i> Places to visit</a></li>
+                                        <li><a href="http://edistrict.uk.gov.in" target="_blank"><i class="fa fa-arrow-circle-right"></i> Certificates</a></li>
+                                        <li><a href="http://devbhoomi.uk.gov.in" target="_blank"><i class="fa fa-arrow-circle-right"></i> Khata Khatauni</a></li>
                                     </ul>
                                 </li>
                                 <li class="<?php

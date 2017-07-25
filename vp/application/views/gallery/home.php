@@ -146,7 +146,7 @@
                                                         <?PHP } ?>
                                                     </td>
                                                     <td style="width:20%"><?php echo strtoupper($item_->CATEGORY); ?></td>
-                                                    <td style="font-size:11px;"><?php echo strtoupper($item_->DESC); ?></td>
+                                                    <td style="font-size:11px;"><?php echo strtoupper($item_->DESCR); ?></td>
                                                     <td align="right" style="width:15%">
                                                         <a href="#" id="changeHead_<?php echo $item_->CATEG_ID; ?>" onclick="change_Cat('<?php echo $item_->CATEG_ID; ?>');"><i class="fa fa-pencil-square-o" style="color:#0066cc; font-size: 20px;"></i></a> | 
                                                         <a href="<?php echo site_url('gallery/deleteCat/' . $item_->CATEG_ID); ?>"><i class="fa fa-times" style="color:#E13300; font-size: 20px;"></i></a>

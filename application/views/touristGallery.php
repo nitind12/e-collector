@@ -167,7 +167,7 @@
                         <?php if ($galID != 0) { ?>
                             <div style="margin-top: 50px;" id="short"><?php
                                 foreach ($cat_p as $catName) {
-                                    $string = strip_tags($catName->DESC);
+                                    $string = strip_tags($catName->DESCR);
                                     if (strlen($string) > 100) {
                                         // truncate string
                                         $stringCut = substr($string, 0, 100);
@@ -177,7 +177,7 @@
                                 }
                                 ?>
                             </div>                                
-                            <div id="long" style="display:none;margin-top: 50px;"><?php echo $catName->DESC; ?></div>
+                            <div id="long" style="display:none;margin-top: 50px;"><?php echo $catName->DESCR; ?></div>
                         <?php } ?>
                     </div>
                     <div class="clearfix"></div>

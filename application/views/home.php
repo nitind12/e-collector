@@ -45,7 +45,7 @@
 <div class="services w3l wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
     <div class="container">
         <div class="col-md-12">
-            <div class="team">                       
+            <div class="team">
                 <div class="team-grids">
                     <div class="col-md-3 team-grid">
                         <div class="team-grid1">
@@ -103,7 +103,7 @@
                         <a href="#"><img src="<?PHP echo base_url() . 'nitnav/images/t5.jpg'; ?>" class="img-responsive" alt=""></a>
                     </div>
 
-                    <h3><a href="<?PHP echo site_url('web/aboutNainital'); ?>">Nainital - an Introduction</a> <span style="font-size: 14px;">(Content Courtesy -  Ajay S. Rawat)</span></h3>                    
+                    <h3><a href="<?PHP echo site_url('web/aboutNainital'); ?>">Nainital - an Introduction</a></h3>                    
                     <p align="justify">Ensconced snugly at an altitude of 1938 metres above sea level, Nainital has made a tryst with fame as a popular hill station. The ancient name of Naini Tal is Tri- Rishi Sarovar, after the three sages, Atri, Agastya and Pulaha. It is believed that they came here on a penitential pilgrimage while going to Mansarovar, the holy lake in Tibet. <a href="<?PHP echo site_url('web/aboutNainital'); ?>">Read more ...</a></p>                    
                     <div class="clearfix"></div>
                 </div>
@@ -114,16 +114,16 @@
         <div class="col-md-4">
             <div class="blo-top1">
                 <div class="tech-btm">    
+                    <h4>Downloads</h4>
+                    <p style="color: #0099cc"><a href="<?PHP echo base_url() . 'nitnav/download/CircleRate-2016.pdf'; ?>" target="_blank"><i class="fa fa-arrow-circle-right"></i> Circle Rates</a></p>
+                    <p style="color: #0099cc"><a href="<?PHP echo base_url() . 'nitnav/download/adhar-updated-details.pdf'; ?>" target="_blank"><i class="fa fa-arrow-circle-right"></i> Aadhar Centers Information</a></p>
+                    <hr>
+                    <p>&nbsp;</p>
                     <h4>External Links</h4>
                     <p style="color: #0099cc"><a href="http://edistrict.uk.gov.in" target="_blank"><i class="fa fa-arrow-circle-right"></i> Certificates</a></p>
                     <p style="color: #0099cc"><a href="http://devbhoomi.uk.gov.in" target="_blank"><i class="fa fa-arrow-circle-right"></i> Khata Khatauni</a></p>
                     <p style="color: #0099cc"><a href="http://nainital.nic.in/" target="_blank"><i class="fa fa-arrow-circle-right"></i> District NIC website</a></p>   
                     <p style="color: #0099cc"><a href="http://kunainital.ac.in/" target="_blank"><i class="fa fa-arrow-circle-right"></i> Kumaun University</a></p>                                          
-                    <p>&nbsp;</p>
-                    <hr>                    
-                    <h4>Downloads</h4>
-                    <p style="color: #0099cc"><a href="<?PHP echo base_url() . 'nitnav/download/CircleRate-2016.pdf'; ?>" target="_blank"><i class="fa fa-arrow-circle-right"></i> Circle Rates</a></p>
-                    <p style="color: #0099cc"><a href="<?PHP echo base_url() . 'nitnav/download/adhar-updated-details.pdf'; ?>" target="_blank"><i class="fa fa-arrow-circle-right"></i> Aadhar Centers Information</a></p>
                 </div>
             </div>
         </div>

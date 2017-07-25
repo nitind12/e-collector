@@ -17,7 +17,7 @@ class My_model_gallery extends CI_Model {
     function feedCategory_() {
         $data = array(
             'CATEGORY' => $this->input->post('txtPlace'),
-            'DESC' => $this->input->post('txtDesc'),
+            'DESCR' => $this->input->post('txtDesc'),
             'STATUS' => 1,
         );
         $query = $this->db->insert('c1_gallery_category', $data);        
@@ -36,7 +36,7 @@ class My_model_gallery extends CI_Model {
 
         $data = array(
             'CATEGORY' => $this->input->post('txtCategory_edit'),
-            'DESC' => $this->input->post('txtDesc_edit'),
+            'DESCR' => $this->input->post('txtDesc_edit'),
         );
 
         $this->db->where('CATEG_ID', $id__);
@@ -76,7 +76,7 @@ class My_model_gallery extends CI_Model {
         
         if ($query->num_rows() != 0) {
             foreach ($query->result() as $row) {
-                $data_ = array('catID' => $row->CATEG_ID, 'category' => $row->CATEGORY, 'desc' => $row->DESC);
+                $data_ = array('catID' => $row->CATEG_ID, 'category' => $row->CATEGORY, 'desc' => $row->DESCR);
             }
         } else {
             $data_ = "NO DATA AVAILABLE";
