@@ -41,7 +41,7 @@
                     ?>
                     <table class="table table-striped table-bordered table-hover">
                         <tr>
-                            <td style="color: #540000; width:50%font-size:14px;">GRAM PANCHAYAT</td><td><?php echo $homedata->GRAM_PANCHAYAT; ?></h4></td>                            
+                            <td style="color: #540000; width:50%;font-size:14px;">GRAM PANCHAYAT</td><td><?php echo $homedata->GRAM_PANCHAYAT; ?></h4></td>                            
                         </tr>
                         <tr>
                             <td style="color: #540000;font-size:14px;">VAN PANCHAYAT</td><td><?php echo $homedata->VAN_PANCHAYAT; ?></h4></td>                            

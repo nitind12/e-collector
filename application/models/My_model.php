@@ -34,15 +34,15 @@ class My_model extends CI_Model {
     }
 
     function get_village_by_tehsil_($tehsilName) {
-        $this->db->select('b.*');                
-        $this->db->from('a0_patwari a');        
+        $this->db->select('b.*');
+        $this->db->from('a0_patwari a');
         $this->db->join('a0_village b', 'a.PID = b.PID');
         $this->db->where('a.TEHSILID', $tehsilName);
         $this->db->order_by('b.NAME_', 'asc');
-        
+
         $query = $this->db->get();
-       //$output= $this->db->last_query();
-       
+        //$output= $this->db->last_query();
+
         $output = "<option value='0'>SELECT VILLAGE</option>";
         foreach ($query->result() as $row) {
             $output .= "<option value='" . $row->VILLAGEID . "'>" . $row->NAME_ . "</option>";
@@ -60,9 +60,9 @@ class My_model extends CI_Model {
     function getVillageData($villID) {
         if ($villID == 0) {
             $villID = $this->input->post('cmbVillage');
-        }        
+        }
         $this->db->where('VILLAGEID', $villID);
-        $this->db->from('a0_village');        
+        $this->db->from('a0_village');
 
         $query = $this->db->get();
         return $query->result();
@@ -85,12 +85,12 @@ class My_model extends CI_Model {
     }
 
     function getVillageOneRowData_textBox($villID) {
-               
+
         $this->db->where('VILLAGEID', $villID);
-        $this->db->from('a0_village');        
+        $this->db->from('a0_village');
 
         $query = $this->db->get();
-        return $query->result();        
+        return $query->result();
     }
 
     function searchVillageAjax_($key) {
@@ -103,7 +103,7 @@ class My_model extends CI_Model {
 
         $query = $this->db->get();
         return $query->result();
-    }     
+    }
 
     function fillMapView_($id_) {
         $data_ = '';
@@ -259,6 +259,31 @@ class My_model extends CI_Model {
         $this->db->order_by('WW3ID', 'ASC');
         $query = $this->db->get('a0_whoswho3_whome_detail');
         return $query->result();
+    }
+
+    function get_all_downloads() {
+        $this->db->where('STATUS_', 1);
+        $this->db->order_by('PDFID', 'ASC');
+        $query = $this->db->get('b2_pdf');
+        return $query->result();
+    }
+
+    function get_pdf_to_download() {
+        $pdfID = $this->input->post('cmbPdf');
+        $this->db->select('PATH_');
+        $this->db->where('PDFID',$pdfID);
+        $query = $this->db->get('b2_pdf');
+        
+        if ($query->num_rows() != 0) {
+            foreach ($query->result() as $row) {               
+                $data_ = $row->PATH_;               
+            }
+        } else {
+            $data_ = 'No Data';
+        }
+        
+        return $data_;
+        
     }
 
 }

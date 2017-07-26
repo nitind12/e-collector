@@ -11,6 +11,8 @@ class Web extends CI_Controller {
 
     public function index() {
         $data['menu'] = 1;
+        $data['download'] = $this->mm->get_all_downloads();
+
         $this->load->view('templates/header');
         $this->load->view('templates/menu', $data);
         $this->load->view('home');
@@ -86,9 +88,9 @@ class Web extends CI_Controller {
 
     public function searchVillage($villageID = 0) {
         $villageID = $this->mm->getVillageID_Search($villageID);
-        
+
         $data['village_Data'] = $this->mm->getVillageData($villageID);
-        
+
         $data['menu'] = 2;
 
         $this->load->view('templates/header');
@@ -137,7 +139,6 @@ class Web extends CI_Controller {
             $this->load->view('index', $data); //Load html view of search results  
         }
     }
-    
 
     function fillMapView($id_) {
         $data_to_ajax = $this->mm->fillMapView_($id_);
@@ -149,10 +150,10 @@ class Web extends CI_Controller {
         $this->load->view('todayscases', $data);
     }
 
-    public function whos_who() {       
+    public function whos_who() {
         $data['menu'] = 3;
-        $data['dept'] = $this->mm->get_whoswhoDept(8,0);
-        $data['dept1'] = $this->mm->get_whoswhoDept(7,8);
+        $data['dept'] = $this->mm->get_whoswhoDept(8, 0);
+        $data['dept1'] = $this->mm->get_whoswhoDept(7, 8);
         $data['home'] = $this->mm->get_whoswhohome();
         $data['detail'] = $this->mm->get_whoswhodetail();
         $this->load->view('templates/header');
@@ -160,13 +161,21 @@ class Web extends CI_Controller {
         $this->load->view('who-who', $data);
         $this->load->view('templates/footer', $data);
     }
-    
-    public function aboutNainital() {       
-        $data['menu'] = 0;       
+
+    public function aboutNainital() {
+        $data['menu'] = 0;
         $this->load->view('templates/header');
         $this->load->view('templates/menu', $data);
         $this->load->view('aboutNainital', $data);
         $this->load->view('templates/footer', $data);
+    }
+
+    public function pdfDownload() {
+        $pdfPath = $this->mm->get_pdf_to_download();
+        
+        $data['urlPath'] = base_url() . 'vp/assets_/pdf_others/'. $pdfPath;
+       
+        $this->load->view('ePDF', $data);
     }
 
 }

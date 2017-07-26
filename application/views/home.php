@@ -114,11 +114,29 @@
         <div class="col-md-4">
             <div class="blo-top1">
                 <div class="tech-btm">    
-                    <h4>Downloads</h4>
-                    <p style="color: #0099cc"><a href="<?PHP echo base_url() . 'nitnav/download/CircleRate-2016.pdf'; ?>" target="_blank"><i class="fa fa-arrow-circle-right"></i> Circle Rates</a></p>
-                    <p style="color: #0099cc"><a href="<?PHP echo base_url() . 'nitnav/download/adhar-updated-details.pdf'; ?>" target="_blank"><i class="fa fa-arrow-circle-right"></i> Aadhar Centers Information</a></p>
+                    <h4>Downloads</h4>                      
+                    <?php echo form_open('web/pdfDownload', array('name' => 'frmSelect', 'id' => 'frmSelect', 'role' => 'form', 'class' => 'form-inline', 'target'=> '_blank')); ?>                    
+                        <?php
+                        $data = array(
+                            'type' => 'text',
+                            'name' => 'cmbPdf',
+                            'id' => 'cmbPdf',
+                            'required' => 'required',
+                            'class' => 'required form-control col-sm-12 hidden-xs',
+                            'style' => 'width:100%; height:37px;'
+                        );
+                        $options = array();
+                        $options[''] = 'Select to Download';
+                        foreach ($download as $down) {                            
+                                $options[$down->PDFID] = $down->NAME_;                            
+                        }
+                        echo form_dropdown($data, $options);
+                        ?>    
+                    <p style="height:40px;">&nbsp;</p>
+                    <input type="submit" value="DOWNLOAD" class='btn btn-primary' style='float:right;'>
+                    <?php echo form_close(); ?>                                                            
+                    <p style="height:50px;">&nbsp;</p>
                     <hr>
-                    <p>&nbsp;</p>
                     <h4>External Links</h4>
                     <p style="color: #0099cc"><a href="http://edistrict.uk.gov.in" target="_blank"><i class="fa fa-arrow-circle-right"></i> Certificates</a></p>
                     <p style="color: #0099cc"><a href="http://devbhoomi.uk.gov.in" target="_blank"><i class="fa fa-arrow-circle-right"></i> Khata Khatauni</a></p>
