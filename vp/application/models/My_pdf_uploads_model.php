@@ -16,12 +16,25 @@ class My_pdf_uploads_model extends CI_Model{
 		$query = $this->db->get('b2_pdf');
 		return $query->result();
 	}
-	function uploadpdf($categ){
-		echo $name_ = $this->input->post('pdfName');
+	function getPdfDetail($categ, $name_){
+		if($name_ != 'ALL'){
+			if($categ == '3'){
+				$this->db->where('PDFID', $name_);
+				$this->db->where('USERNAME_', $this->session->userdata('user__'));
+			} else {
+				$this->db->where('PDFID', $name_);
+				$this->db->where('USERNAME_', $this->session->userdata('user__'));
+			}
+		}
+		$query = $this->db->get('b2_pdf');
+		//echo $this->db->last_query();
+		return $query->result();
+	}
+	function uploadpdf($categ, $name_){
+		$id = $this->input->post('txtID');
 
 		if($categ == '3'){
-			$cmb = $this->input->post('cmbpdfName');
-			if($cmb == 'New'){
+			if($id == 'New'){
 				$this->db->where('NAME_', $name_);
 				$query = $this->db->get('b2_pdf');
 				if($query->num_rows()!=0){
@@ -75,7 +88,7 @@ class My_pdf_uploads_model extends CI_Model{
 						$this->db->where('PDFID', $id_);
 						$query = $this->db->update('b2_pdf', $data);
 						if($query == true){
-							$msg = "Sussfully updated";
+							$msg = "Successfully updated";
 						} else {
 							$msg = "Something goes wrong. Please try again!!";
 						}

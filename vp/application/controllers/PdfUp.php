@@ -34,7 +34,12 @@ class PdfUp extends CI_Controller {
         }
     }
     function uploadPdf($categ){
-    	$data['message'] = $this->mpm->uploadpdf($categ);
+        $name_ = $this->input->post('pdfName');
+    	$data['message'] = $this->mpm->uploadpdf($categ, $name_);
     	echo json_encode($data);
+    }
+    function showPdfList($tip, $name_){
+        $data['selected_record'] = $this->mpm->getPdfDetail($tip, $name_);
+        echo json_encode($data);
     }
 }

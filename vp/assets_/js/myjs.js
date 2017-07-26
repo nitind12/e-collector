@@ -6,6 +6,7 @@ $(function(){
 	$( window ).on( "load", function(){
 		$('#patwari_list_here').change();
 		$('#patwari_list_for_villages_here').change();
+		$('#pdf_here').change(); 
 	});
 	$('body').on('click', '.patwariIDActiveInactive', function(){
 		var url_ = site_url_ + "/village/activeInactivePatwari/"+this.id;
@@ -782,36 +783,112 @@ $(function(){
 	//PDF upload
 
 	$('#cmbpdfName').change(function(){
-		if($('#cmbpdfName').val() != "New"){
-			$('#pdfName').prop('disabled',true);
-			$('#pdfName').val($('#cmbpdfName').val());			
-		} else {
-			$('#pdfName').removeAttr('disabled');
-			$('#pdfName').val("");
+		$('#pdf_here').html("");
+		$('#pdfName').prop('disabled', false);
+		$('#pdfName').val("");
+		var str = $('#cmbpdfName').val();
+		var arr_ = str.split("~");
+		if(arr_[1] == "New"){
 			$('#pdfName').focus();
+		} else {
+			$('#pdfName').val(arr_[1]);
+		}
+		$('#txtID').val(arr_[0]);
+		if(arr_[0] != 'New'){
+			$('#pdf_here').change();
 		}
 	});
+	$('#pdf_here').change(function(){
+		$('#pdfName').prop('disabled', false);
 
-	$('#frmpdfUp').on('submit',function(e){
-		e.preventDefault();
-		tip = $('#txtTip').val();
-		url_ = url_ = site_url_ + "/pdfUp/uploadPdf/"+tip;
-		data_ = new FormData($(this)[0]);
-		alert(data_);
-		$.ajax({
-			type: "POST",
-			url: url_,
-			data: data_,
-			async: false,
-	        cache: false,
-	        contentType: false,
-	        processData: false,
-			success: function(data){
-				var obj = JSON.parse(data);
-				alert(obj.message.msg_);
-			},error: function(xhr, status, error){
-				alert(xhr.responseText);
-	          }
-		});
+		if($('#pdfName').val() != ""){
+			name_ = $('#txtID').val();
+			tip = $('#txtTip').val();
+			url_ = url_ = site_url_ + "/pdfUp/showPdfList/"+encodeURIComponent(tip)+"/"+encodeURIComponent(name_);
+			$('#pdf_here').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
+			$.ajax({
+				type: "POST",
+				url: url_,
+				success: function(data){
+					// Show pdf for the selected item
+					var str_html='';
+					var obj = JSON.parse(data);
+					var len_ = obj.selected_record.length;
+					if(len_ != 0){
+						for(i=0; i<len_;i++){
+							if(obj.selected_record[i].PATH_ != ""){
+								str_html = str_html + '<div style="float: left; padding: 2px; width:auto;">';
+								str_html = str_html + '<div style="background: #f0f0f0; color: #900000; font-weight: bold; min-width: 100px; float: left; padding:5px; border-radius: 5px; border: #C0C0C0 solid 2px">';
+								str_html = str_html + '<a href="'+base_path+'/assets_/pdf_others/'+obj.selected_record[i].PATH_+'" target="_blank">';
+								str_html = str_html + '<img src="'+base_path+'/assets_/img/pdf.png" style="float: left" width="30"></i>';
+								str_html = str_html + '<span style="float: left">'+obj.selected_record[i].NAME_+'</span>';
+								str_html = str_html + '</a>'
+								str_html = str_html + '</div>';
+								str_html = str_html + '</div>';
+							}
+						}
+					}
+					// -------------------------------
+					$('#pdf_here').html(str_html);
+				}, error: function(xhr, status, error){
+					alert(xhr.responseText);
+		          }
+			});
+		} else {
+			$('#pdf_here').html("No file name found.");
+		}
 	});
+	$('#frmpdfUp').on('submit',function(e){
+		$('#pdfName').prop('disabled',false);
+		e.preventDefault();
+		if($('#pdfName').val() != "" && $('#txtpdffile').val() != ''){
+			tip = $('#txtTip').val();
+			url_ = url_ = site_url_ + "/pdfUp/uploadPdf/"+tip;
+			data_ = new FormData($(this)[0]);
+			$('#__reg_err_msg').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
+			$.ajax({
+				type: "POST",
+				url: url_,
+				data: data_,
+				async: false,
+		        cache: false,
+		        contentType: false,
+		        processData: false,
+				success: function(data){
+					var str_html='';
+					var obj = JSON.parse(data);
+					$('#__reg_err_msg').html(obj.message);
+					setTimeout(location.reload.bind(location), 1000);
+					//location.reload(true);
+				},error: function(xhr, status, error){
+					alert(xhr.responseText);
+		          }
+			});
+		} else {
+			$('#__reg_err_msg').html('X: Please enter the file name &amp; select the file.');
+		}
+	return false;
+	});
+
+
+	$('#txtpdffile').change(function () {
+        var file = this.files[0];
+        if (((file.size / 1024) > 5020) || (file.type != 'application/pdf')) {
+            $('#__reg_err_msg').css('background', '#fdfca1');
+            $('#__reg_err_msg').css('color', '#cf4343');
+            $('#__reg_err_msg').html(' File should be less than or equal to 5MB and must be (<b>pdf</b>) image file.');
+            $('#cmbpdfSubmit').val("Select correct file type &amp; Size...");
+            $('#cmbpdfSubmit').prop('disabled', true);
+        } else {
+            $('#__reg_err_msg').css('background', '#dcffab');
+            $('#__reg_err_msg').css('color', '#909090');
+            $('#__reg_err_msg').html('&nbsp;Selected picture is fine...');
+            $('#cmbpdfSubmit').val(" Update ");
+            $('#cmbpdfSubmit').prop('disabled', false);
+        }
+    });
+    $('#txtpdffile').click(function () {
+    	$('#__reg_err_msg').css('background', 'transparent');
+    	$('#__reg_err_msg').html("");
+    });
 });

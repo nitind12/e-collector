@@ -1,4 +1,5 @@
 <?php if($this->session->userdata('status__') == "ADMIN") { ?>
+
 <?php //echo date('d-m-Y g:i:s a', strtotime(date('H:i:s'))); ?>
 <div class="navbar navbar-inverse set-radius-zero" style="background-color: #4586d6">
     <div class="container">      
@@ -14,12 +15,13 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container" id="mycontainer">
 <div class="row">
     <div class="col-sm-12">&nbsp;</div>
     <div class="container">
             <div class="col-md-12">
                 <h4 class="page-head-line">Manage <?php echo $title_;?></h4>
+                <div style="overflow: hidden; color: #ff0000; font-weight: bold; font-style: italic; padding: 5px" id="__reg_err_msg"></div>
             </div>
             <?php echo form_open_multipart('pdfUp/', array('name' => 'frmpdfUp', 'id' => 'frmpdfUp', 'role' => 'form')); ?>
             <?php
@@ -34,8 +36,29 @@
                 );
                 echo form_input($data);
             ?>
+            <?php
+                if(count($forcombo) != 0){ 
+                    $r = $forcombo[0]; 
+                    $name_ = $r->NAME_;
+                    $pdfid = $r->PDFID;
+                } else {
+                    $name_ = '';
+                    $pdfid = '';
+                }
+            ?>
+            <?php
+                        $data = array(
+                            'type' => 'hidden',
+                            'required' => 'required',
+                            'class' => 'required form-control',
+                            'name' => 'txtID',
+                            'id' => 'txtID',
+                            'style' => 'width: 50px',
+                            'value' => $pdfid
+                        );
+                        echo form_input($data);
+                    ?>
             <?php if($this->session->userdata('opt') == '1' || $this->session->userdata('opt') == '2'){?>
-            <?php $r = $forcombo[0]; ?>
             <div class="col-md-2">
                 <div class="input-group">
                     <?php
@@ -43,28 +66,15 @@
                         	'type' => 'text',
                             'required' => 'required',
                             'class' => 'required form-control',
-                            'disabled' => 'disabled',
                             'name' => 'pdfName',
                             'id' => 'pdfName',
-                            'value' => $r->NAME_
+                            'value' => $name_
                         );
                         ?>
                         <span class="input-group-addon"><i class="glyphicon glyphicon-ok-circle"></i></span>
                         <?php
                         echo form_input($data);
                     ?>
-                    <?php
-		                $data = array(
-		                	'type' => 'hidden',
-		                    'required' => 'required',
-		                    'class' => 'required form-control',
-		                    'name' => 'txtID',
-		                    'id' => 'txtID',
-		                    'style' => 'width: 50px',
-		                    'value' => $r->PDFID
-		                );
-		                echo form_input($data);
-		            ?>
                 </div>
             </div>
             <?php } else { ?>
@@ -82,9 +92,10 @@
                         $options = array();
                         $options[''] = "Select";
                         foreach ($forcombo as $item) {
-                            $options[$item->NAME_] = $item->NAME_;
+                            $options[$item->PDFID."~".$item->NAME_] = $item->NAME_;
                         }
-                        $options["New"] = "New...";
+                        $options["New~New"] = "New...";
+                        $options["ALL~ALL"] = "ALL...";
                         ?>
                         <span class="input-group-addon"><i class="glyphicon glyphicon-chevron-down"></i></span>
                         <?php
@@ -100,7 +111,6 @@
                             'required' => 'required',
                             'placeholder'=>'Pdf Name',
                             'class' => 'required form-control',
-                            'disabled' => 'disabled',
                             'name' => 'pdfName',
                             'id' => 'pdfName',
                             'value' => ''
@@ -151,8 +161,8 @@
             <?php } ?>
             <?php echo form_close(); ?>
             <div class="col-sm-12" style="clear: both; padding: 5px"></div>
-            <div class="col-md-6" style="padding: 10px 10px 0px 10px">
-            	<label>PDF seleted for <span style="color: #0000ff">Circle Centres</span></label>
+            <div class="col-md-12" style="padding: 10px 10px 0px 10px">
+            	<label>PDF(s) for the seleted Item</label>
             	<div class="form-group" id="pdf_here">
             		Show PDF here...
             	 </div>
