@@ -8,8 +8,8 @@ $(function(){
 		$('#patwari_list_for_villages_here').change();
 	});
 	$('body').on('click', '.patwariIDActiveInactive', function(){
-		var url_ = site_url_ + "/patwari_village/activeInactivePatwari/"+this.id;
-		$('#load_here_edit_actinact').html('<img src="'+base_path+'/assets_/img/load.GIF" width="10" />');
+		var url_ = site_url_ + "/village/activeInactivePatwari/"+this.id;
+		$('#load_here_edit_actinact').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
 		$.ajax({
 			type: "POST",
 			url: url_,
@@ -31,8 +31,8 @@ $(function(){
 		});
 	});
 	$('body').on('click', '.VillageIDActiveInactive', function(){
-		var url_ = site_url_ + "/patwari_village/activeInactiveVillage/"+this.id;
-		$('#load_here_edit_actinact_village').html('<img src="'+base_path+'/assets_/img/load.GIF" width="10" />');
+		var url_ = site_url_ + "/village/activeInactiveVillage/"+this.id;
+		$('#load_here_edit_actinact_village').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
 		$.ajax({
 			type: "POST",
 			url: url_,
@@ -40,6 +40,7 @@ $(function(){
 				var obj = JSON.parse(data);
 				//$('#load_here_edit_actinact').html(obj.message.msg_);
 				$('#load_here_edit_actinact_village').html('');
+				$('#village_name_for_village').html('| -');
 				// affected ones
 				//$('#village_list_here').change();
 				//$('#patwari_list_for_villages_here').change();
@@ -53,8 +54,8 @@ $(function(){
 		});
 	});
 	$('body').on('click', '.patwariID', function(){
-		var url_ = site_url_ + "/patwari_village/getPatwari/"+this.id;
-		$('#load_here_edit_actinact').html('<img src="'+base_path+'/assets_/img/load.GIF" width="10" />');
+		var url_ = site_url_ + "/village/getPatwari/"+this.id;
+		$('#load_here_edit_actinact').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
 		$.ajax({
 			type: "POST",
 			url: url_,
@@ -85,8 +86,9 @@ $(function(){
 	$('#frmPatwariUpdate').submit(function(e){
 		e.preventDefault();
 		pid = $('#txtPID').val();
-		url_ = site_url_ + "/patwari_village/updatePatwari/"+pid;
+		url_ = site_url_ + "/village/updatePatwari/"+pid;
 		data_ = new FormData($(this)[0]);
+		$('#load_here_edit_actinact').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
 		$.ajax({
 			url: url_,
 			type: "POST",
@@ -117,7 +119,8 @@ $(function(){
 	    });
 	});
 	$('#patwari_list_here').change(function(){
-		url_ = site_url_ + "/patwari_village/getPatwaris";
+		url_ = site_url_ + "/village/getPatwaris";
+		$('#patwari_list_here').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
 		$.ajax({
 			url:url_,
 			type: "POST",
@@ -172,15 +175,16 @@ $(function(){
 				}
 				$('#patwari_list_here').html(str_html);
 			}, error: function(xhr, status, error){
-				$('#patwari_list_here').html("Some server error. Please try again !!");
+			    $('#patwari_list_here').html(xhr.responseText);
+				//$('#patwari_list_here').html("Some server error. Please try again !!");
 	        }
 	    });
 	});
 	$('#frmPatwari').submit(function(e){
 		e.preventDefault();
-		url_ = site_url_ + "/patwari_village/submitPatwari";
+		url_ = site_url_ + "/village/submitPatwari";
 		data_ = new FormData($(this)[0]);
-
+		$("#this_msg").html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
 		$.ajax({
 			url:url_,
 			type: "POST",
@@ -225,8 +229,8 @@ $(function(){
 		$(".pid_pallets").css("border","#f0f0f0 solid 1px");
 		$(pid_).css('border','#dd0379 solid 2px');
 
-		url_ = site_url_ + "/patwari_village/getVillages/"+data_[0];
-		
+		url_ = site_url_ + "/village/getVillages/"+data_[0];
+		$('#village_list_here').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
 		$.ajax({
 			type: "POST",
 			url: url_,
@@ -278,8 +282,8 @@ $(function(){
 		var pid_;
 		pid_ = $('#txtPatwariID').val();
 
-		url_ = site_url_ + "/patwari_village/getVillages/"+pid_;
-		
+		url_ = site_url_ + "/village/getVillages/"+pid_;
+		$('#village_list_here').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
 		$.ajax({
 			type: "POST",
 			url: url_,
@@ -330,8 +334,8 @@ $(function(){
 	$('#frmVillage').submit(function(){
 		if($('#txtPatwariID').val() != ""){
 			data_ = $('#frmVillage').serialize();
-			url_ = site_url_ + "/patwari_village/UpdateVillage";
-			$('#this_msg_for_village').html('Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" />');
+			url_ = site_url_ + "/village/UpdateVillage";
+			$('#this_msg_for_village').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
 
 			$.ajax({
 				type: "POST",
@@ -364,24 +368,26 @@ $(function(){
 	$('body').on('click', '.updateVillage', function(){
 		$('#this_msg_for_village').html("");
 		id = this.id;
-		$('.disableInputVillageArea').removeAttr('disabled');
+
 		if(id != "newVillage"){
 			str = id;
 			idarr = str.split("-");
 			name_ = idarr[1];
 			id = idarr[0];
 			$('#village_name_for_village').html('| -'+name_);
-			$('.disableInputVillageArea').addClass('orange_');
-			$('#cmbVillageSubmit').addClass('btn btn-danger');
-			$('#cmbVillageSubmit').val(" Update ");
 
-			url_ = site_url_ + "/patwari_village/getVillageData/"+id;
-
+			url_ = site_url_ + "/village/getVillageData/"+id;
+			$('#load_here_edit_actinact_village').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
 			$.ajax({
 				type: 'POST',
 				url: url_,
 				success: function(data){
 					var obj = JSON.parse(data);
+					$('.disableInputVillageArea').removeAttr('disabled');
+					$('.disableInputVillageArea').addClass('orange_');
+					$('#cmbVillageSubmit').addClass('btn btn-danger');
+					$('#cmbVillageSubmit').val(" Update ");
+
 					$('#txtDistrict').val(obj.village[0].DISTRICT);
 					$('#cmbTehsilForVillage').val(obj.village[0].TEHSIL);
 					$('#txtVillageName').val(obj.village[0].NAME_);
@@ -393,11 +399,13 @@ $(function(){
 					$('#txtAssemblyCons').val(obj.village[0].ASSEMBLY_CONS);
 					$('#txtPollingBoothName').val(obj.village[0].POLLING_BOOTH);
 					$('#txtRegularRevenuePolice').val(obj.village[0].REGULAR_REVENUE_POLICE);
+					$('#load_here_edit_actinact_village').html("");
 				}, error: function(xhr, status, error){
 					alert(error);
 		        }
 			})
 		} else {
+			$('.disableInputVillageArea').removeAttr('disabled');
 			name_ = "";
 			$('#village_name_for_village').html('| -'+name_);
 			$('#cmbVillageSubmit').removeClass('btn btn-danger');
@@ -416,7 +424,8 @@ $(function(){
 		$('.disableInputVillageArea').removeClass('orange_');
 	});
 	$('#village_list_here').change(function(){
-		url_ = site_url_ + "/patwari_village/getActivePatwaris";
+		url_ = site_url_ + "/village/getActivePatwaris";
+		$('#patwari_list_for_villages_here').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
 		$.ajax({
 			url:url_,
 			type: "POST",
@@ -464,7 +473,8 @@ $(function(){
 	    });
 	});
 	$('#patwari_list_for_villages_here').change(function(){
-		url_ = site_url_ + "/patwari_village/getActivePatwaris";
+		url_ = site_url_ + "/village/getActivePatwaris";
+		$('#patwari_list_for_villages_here').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
 		$.ajax({
 			url:url_,
 			type: "POST",
@@ -769,4 +779,39 @@ $(function(){
 		}
 	});
 	*/
+	//PDF upload
+
+	$('#cmbpdfName').change(function(){
+		if($('#cmbpdfName').val() != "New"){
+			$('#pdfName').prop('disabled',true);
+			$('#pdfName').val($('#cmbpdfName').val());			
+		} else {
+			$('#pdfName').removeAttr('disabled');
+			$('#pdfName').val("");
+			$('#pdfName').focus();
+		}
+	});
+
+	$('#frmpdfUp').on('submit',function(e){
+		e.preventDefault();
+		tip = $('#txtTip').val();
+		url_ = url_ = site_url_ + "/pdfUp/uploadPdf/"+tip;
+		data_ = new FormData($(this)[0]);
+		alert(data_);
+		$.ajax({
+			type: "POST",
+			url: url_,
+			data: data_,
+			async: false,
+	        cache: false,
+	        contentType: false,
+	        processData: false,
+			success: function(data){
+				var obj = JSON.parse(data);
+				alert(obj.message.msg_);
+			},error: function(xhr, status, error){
+				alert(xhr.responseText);
+	          }
+		});
+	});
 });

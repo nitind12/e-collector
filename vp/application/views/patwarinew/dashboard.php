@@ -22,6 +22,9 @@
         color:#000000; 
         padding: 2px
     }
+    span{
+        color: #ff0000;
+    }
 </style>
 <div class="navbar navbar-inverse set-radius-zero" style="background-color: #4586d6">
     <div class="container">      

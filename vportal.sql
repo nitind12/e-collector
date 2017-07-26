@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2017 at 12:50 PM
+-- Generation Time: Jul 26, 2017 at 05:04 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -101,7 +101,7 @@ INSERT INTO `a0_village` (`VILLAGEID`, `PID`, `NAME_`, `DISTRICT`, `KANOONGO_ARE
 (20, 21, 'nagla', 'Nainital', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '2017-07-25 05:27:21', 1, 'vandana'),
 (21, 28, 'Nagla', 'Nainital', '', '', '', '', '', '', '', '', '2017-07-25 10:28:35', 1, 'vandana'),
 (22, 27, 'Badaut', 'Nainital', '', '', '', '', '', '', '', '', '2017-07-25 10:29:10', 1, 'vandana'),
-(23, 27, 'harraut', 'Nainital', '', '', '', '', '', '', '', '', '2017-07-25 10:29:19', 0, 'vandana');
+(23, 27, 'harraut', 'Nainital', '', '', '', '', '', '', '', '', '2017-07-25 10:29:19', 1, 'vandana');
 
 -- --------------------------------------------------------
 
@@ -6868,6 +6868,30 @@ INSERT INTO `b1_revenue_map` (`MAPID`, `VILLAGEID`, `SHEETNO`, `MAP_PATH`, `USER
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `b2_pdf`
+--
+
+CREATE TABLE `b2_pdf` (
+  `PDFID` int(11) NOT NULL,
+  `NAME_` varchar(200) NOT NULL,
+  `PATH_` varchar(150) NOT NULL,
+  `USERNAME_` varchar(50) NOT NULL,
+  `STATUS_` tinyint(1) NOT NULL,
+  `DATE_` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `b2_pdf`
+--
+
+INSERT INTO `b2_pdf` (`PDFID`, `NAME_`, `PATH_`, `USERNAME_`, `STATUS_`, `DATE_`) VALUES
+(1, 'Circle Rates', '1.pdf', 'dmnainital', 1, '2017-07-25 21:05:04'),
+(2, 'Adhaar Centres', '2.pdf', 'dmnainital', 1, '2017-07-25 19:15:18'),
+(3, 'pop', '3.pdf', 'dmnainital', 1, '2017-07-25 20:58:25');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `c1_gallery_category`
 --
 
@@ -7228,6 +7252,12 @@ ALTER TABLE `b1_revenue_map`
   ADD KEY `VILLAGEID` (`VILLAGEID`);
 
 --
+-- Indexes for table `b2_pdf`
+--
+ALTER TABLE `b2_pdf`
+  ADD PRIMARY KEY (`PDFID`);
+
+--
 -- Indexes for table `c1_gallery_category`
 --
 ALTER TABLE `c1_gallery_category`
@@ -7443,6 +7473,11 @@ ALTER TABLE `a97_sdm_court_detail`
 --
 ALTER TABLE `b1_revenue_map`
   MODIFY `MAPID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1788;
+--
+-- AUTO_INCREMENT for table `b2_pdf`
+--
+ALTER TABLE `b2_pdf`
+  MODIFY `PDFID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `c1_gallery_category`
 --

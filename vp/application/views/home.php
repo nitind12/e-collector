@@ -68,7 +68,7 @@
         </div>        
         <div class="row">
             <?php if($this->session->userdata('status__') && $this->session->userdata('status__') == 'ADMIN'){?>
-            <div class="col-md-3 col-sm-3 col-xs-12">
+            <div class="col-md-2 col-sm-2 col-xs-12">
                 <div class="dashboard-div-wrapper bk-clr-two">
                     <i  class="fa fa-institution dashboard-div-icon" ></i>
                     <div class="progress progress-striped active">
@@ -76,11 +76,11 @@
                         </div>
 
                     </div>
-                    <h4>REVENUE COURT</h4>
+                    <h4>Revenue Court</h4>
                     <a href="<?PHP echo site_url('sdmcourt/index/view');?>" class="btn btn-default">ENTER</a>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-3 col-xs-12">
+            <div class="col-md-2 col-sm-2 col-xs-12">
                 <div class="dashboard-div-wrapper bk-clr-four">
                     <i  class="fa fa-camera dashboard-div-icon" ></i>
                     <div class="progress progress-striped active">
@@ -110,7 +110,7 @@
                         </div>
                     </div>
                     <h4>Circle Rates</h4>
-                    <a href="<?PHP echo site_url('#');?>" class="btn btn-default">ENTER</a>
+                    <a href="<?PHP echo site_url('PdfUp/up/1');?>" class="btn btn-default">ENTER</a>
                 </div>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-12">
@@ -121,7 +121,18 @@
                         </div>
                     </div>
                     <h4>Adhaar Centres</h4>
-                    <a href="<?PHP echo site_url('#');?>" class="btn btn-default">ENTER</a>
+                    <a href="<?PHP echo site_url('PdfUp/up/2');?>" class="btn btn-default">ENTER</a>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <div class="dashboard-div-wrapper bk-clr-one">
+                    <i  class="fa fa-book dashboard-div-icon" ></i>
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                        </div>
+                    </div>
+                    <h4>Downloads</h4>
+                    <a href="<?PHP echo site_url('PdfUp/up/3');?>" class="btn btn-default">ENTER</a>
                 </div>
             </div>
             <?php } else if($this->session->userdata('status__') && $this->session->userdata('status__') == 'SDM') { ?>
@@ -133,7 +144,7 @@
                         </div>
                     </div>
                     <h4>PATWARI BASTA</h4>
-                    <a href="<?PHP echo site_url('patwari_village');?>" class="btn btn-default">ENTER</a>
+                    <a href="<?PHP echo site_url('village');?>" class="btn btn-default">ENTER</a>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12">
