@@ -6,7 +6,7 @@ class Village extends CI_Controller {
 
     function __construct(){
         parent::__construct();
-        $this->load->model('my_patwari_village_model', 'pvm');
+        $this->load->model('my_village_model', 'pvm');
     }
 
     function index(){

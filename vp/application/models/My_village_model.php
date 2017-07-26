@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class My_patwari_village_model extends CI_Model{
+class My_village_model extends CI_Model{
 	function __construct(){
 		parent::__construct();
 	}
