@@ -63,9 +63,7 @@
                     $options = array();
                     $options['0'] = 'SELECT TEHSIL';
                     foreach ($Tehsil_name as $tehsilName) {
-                        if ($tehsilName->TEHSIL_NAME != 'x') {
-                            $options[$tehsilName->TEHSIL_NAME] = $tehsilName->TEHSIL_NAME;
-                        }
+                        $options[$tehsilName->TEHSILID] = $tehsilName->TEHSIL;
                     }
                     echo form_dropdown($data, $options);
                     ?>      
@@ -84,7 +82,7 @@
                     <p></p>
                     <input type="submit" value="SEARCH" class='btn btn-primary' style='float:right;'>
                     <?php echo form_close(); ?>    
-                     <div class="clearfix"></div>
+                    <div class="clearfix"></div>
                 </div>                
                 <div class="tech-btm">                       
                     <h4>Search Your Village by Name</h4>

@@ -24,16 +24,25 @@ class My_model extends CI_Model {
         return $query->result();
     }
 
-    function get_village_by_tehsil_($tehsilName) {
-        $this->db->select('a.*');
-        $this->db->where('a.STATUS', 1);
-        $this->db->where('b.TEHSIL_NAME', $tehsilName);
-        $this->db->from('a1_village a');
-        $this->db->order_by('a.NAME_', 'asc');
-        $this->db->join('a8_village_one_row_data b', 'a.VILLAGEID = b.VILLAGEID');
+    function getDistinctTehsil_new() {
+        $this->db->distinct();
+        $this->db->select('TEHSILID, TEHSIL');
+        $this->db->from('a0_patwari');
 
         $query = $this->db->get();
+        return $query->result();
+    }
 
+    function get_village_by_tehsil_($tehsilName) {
+        $this->db->select('b.*');                
+        $this->db->from('a0_patwari a');        
+        $this->db->join('a0_village b', 'a.PID = b.PID');
+        $this->db->where('a.TEHSILID', $tehsilName);
+        $this->db->order_by('b.NAME_', 'asc');
+        
+        $query = $this->db->get();
+       //$output= $this->db->last_query();
+       
         $output = "<option value='0'>SELECT VILLAGE</option>";
         foreach ($query->result() as $row) {
             $output .= "<option value='" . $row->VILLAGEID . "'>" . $row->NAME_ . "</option>";
@@ -469,18 +478,17 @@ class My_model extends CI_Model {
         return $query->result();
     }
 
-    function get_all_categories($id=0) {
+    function get_all_categories($id = 0) {
         if ($id != 0) {
             $this->db->where('CATEG_ID', $id);
         }
         $this->db->where('STATUS', 1);
-        $this->db->order_by('CATEG_ID', 'desc');
+        $this->db->order_by('CATEGORY', 'asc');
         $query = $this->db->get('c1_gallery_category');
         return $query->result();
     }
 
-    function get_all_pics($id=0) {
-                
+    function get_all_pics($id = 0) {
         if ($id != 0) {
             $this->db->where('CATEG_ID', $id);
         }
@@ -489,38 +497,41 @@ class My_model extends CI_Model {
         $query = $this->db->get('c2_gallery_picture');
         return $query->result();
     }
-    function get_all_pics_cat(){
+
+    function get_all_pics_cat() {
         $this->db->select('a.*, b.*');
-        $this->db->from('c1_gallery_category a');        
+        $this->db->from('c1_gallery_category a');
         $this->db->join('c2_gallery_picture b', 'a.CATEG_ID = b.CATEG_ID');
-        
+
         $this->db->where('a.STATUS', 1);
         $this->db->order_by('a.CATEG_ID', 'desc');
         $query = $this->db->get();
-        
+
         //echo $query->num_rows();
         //exit(0);
         return $query->result();
     }
-    
-    function get_whoswhoDept($limit, $start) {        
+
+    function get_whoswhoDept($limit, $start) {
         $this->db->where('STATUS', 1);
         $this->db->limit($limit, $start);
         $this->db->order_by('WW1ID', 'ASC');
         $query = $this->db->get('a0_whoswho1_department');
         return $query->result();
     }
-    function get_whoswhohome() {        
+
+    function get_whoswhohome() {
         $this->db->where('STATUS', 1);
         $this->db->order_by('WW2ID', 'ASC');
         $query = $this->db->get('a0_whoswho2_whome');
         return $query->result();
     }
-    function get_whoswhodetail() {        
+
+    function get_whoswhodetail() {
         $this->db->where('STATUS_', 1);
         $this->db->order_by('WW3ID', 'ASC');
         $query = $this->db->get('a0_whoswho3_whome_detail');
         return $query->result();
-    }        
+    }
 
 }

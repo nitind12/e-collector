@@ -16,6 +16,7 @@ function  fillVillages(dataCmb) {
         url: site_url_ + "/web/get_village_by_tehsil/" + dataCmb.value,
         type: 'GET',
     }).done(function (data) {
+        //alert(data);
         $j("#cmbVillage").html(data);
     });
 }

@@ -36,8 +36,8 @@ class Web extends CI_Controller {
     }
 
     public function searchDashboard() {
-        $data['village_name'] = $this->mm->getVillages();
-        $data['Tehsil_name'] = $this->mm->getDistinctTehsil();
+        //$data['village_name'] = $this->mm->getVillages();
+        $data['Tehsil_name'] = $this->mm->getDistinctTehsil_new();
         $data['menu'] = 2;
 
         $this->load->view('templates/header');
