@@ -115,23 +115,23 @@
             <div class="blo-top1">
                 <div class="tech-btm">    
                     <h4>Downloads</h4>                      
-                    <?php echo form_open('web/pdfDownload', array('name' => 'frmSelect', 'id' => 'frmSelect', 'role' => 'form', 'class' => 'form-inline', 'target'=> '_blank')); ?>                    
-                        <?php
-                        $data = array(
-                            'type' => 'text',
-                            'name' => 'cmbPdf',
-                            'id' => 'cmbPdf',
-                            'required' => 'required',
-                            'class' => 'required form-control col-sm-12 hidden-xs',
-                            'style' => 'width:100%; height:37px;'
-                        );
-                        $options = array();
-                        $options[''] = 'Select to Download';
-                        foreach ($download as $down) {                            
-                                $options[$down->PDFID] = $down->NAME_;                            
-                        }
-                        echo form_dropdown($data, $options);
-                        ?>    
+                    <?php echo form_open('web/pdfDownload', array('name' => 'frmSelect', 'id' => 'frmSelect', 'role' => 'form', 'class' => 'form-inline', 'target' => '_blank')); ?>                    
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'name' => 'cmbPdf',
+                        'id' => 'cmbPdf',
+                        'required' => 'required',
+                        'class' => 'required form-control col-sm-12',
+                        'style' => 'width:100%; height:37px;'
+                    );
+                    $options = array();
+                    $options[''] = 'Select to Download';
+                    foreach ($download as $down) {
+                        $options[$down->PDFID] = $down->NAME_;
+                    }
+                    echo form_dropdown($data, $options);
+                    ?>    
                     <p style="height:40px;">&nbsp;</p>
                     <input type="submit" value="DOWNLOAD" class='btn btn-primary' style='float:right;'>
                     <?php echo form_close(); ?>                                                            
