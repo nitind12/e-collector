@@ -86,28 +86,13 @@ class Web extends CI_Controller {
 
     public function searchVillage($villageID = 0) {
         $villageID = $this->mm->getVillageID_Search($villageID);
-
-        $data['village_Data'] = $this->mm->getVillageOneRowData($villageID);
-        $data['pensionerdetail'] = $this->mm->getPension_type();
-        $data['primarySchool'] = $this->mm->getPrimarySchool($villageID);
-        $data['middleSchool'] = $this->mm->getMiddleSchool($villageID);
-        $data['privateSchool'] = $this->mm->getPrivateSchool($villageID);
-        $data['collage'] = $this->mm->getCollage($villageID);
-        $data['university'] = $this->mm->getUniversity($villageID);
-        $data['mela'] = $this->mm->getMela($villageID);
-        $data['placesType'] = $this->mm->getTouristPlaceType();
-        $data['touristPlaces'] = $this->mm->getTouristPlaceDetail_villID($villageID);
-        $data['activityType'] = $this->mm->getTourismActivity($villageID);
-        $data['nearestTown'] = $this->mm->getNearestTown($villageID);
-        $data['bankType'] = $this->mm->getBankType();
-        $data['industryType'] = $this->mm->getIndustryType();
-        $data['helipadSite'] = $this->mm->getHelipadDetail($villageID);
-        $data['shelter'] = $this->mm->getShelter($villageID);
-
-        $data['village_name'] = $this->mm->getVillages();
+        
+        $data['village_Data'] = $this->mm->getVillageData($villageID);
+        
+        $data['menu'] = 2;
 
         $this->load->view('templates/header');
-        $this->load->view('templates/menu-village', $data);
+        $this->load->view('templates/menu', $data);
         $this->load->view('village', $data);
         $this->load->view('templates/footer', $data);
     }
@@ -116,26 +101,9 @@ class Web extends CI_Controller {
         $villageID = $this->mm->getVillageID_forTxtSearch();
         if ($villageID != 0) {
             $data['village_Data'] = $this->mm->getVillageOneRowData_textBox($villageID);
-            $data['pensionerdetail'] = $this->mm->getPension_type();
-            $data['primarySchool'] = $this->mm->getPrimarySchool($villageID);
-            $data['middleSchool'] = $this->mm->getMiddleSchool($villageID);
-            $data['privateSchool'] = $this->mm->getPrivateSchool($villageID);
-            $data['collage'] = $this->mm->getCollage($villageID);
-            $data['university'] = $this->mm->getUniversity($villageID);
-            $data['mela'] = $this->mm->getMela($villageID);
-            $data['placesType'] = $this->mm->getTouristPlaceType();
-            $data['touristPlaces'] = $this->mm->getTouristPlaceDetail_villID($villageID);
-            $data['activityType'] = $this->mm->getTourismActivity($villageID);
-            $data['nearestTown'] = $this->mm->getNearestTown($villageID);
-            $data['bankType'] = $this->mm->getBankType();
-            $data['industryType'] = $this->mm->getIndustryType();
-            $data['helipadSite'] = $this->mm->getHelipadDetail($villageID);
-            $data['shelter'] = $this->mm->getShelter($villageID);
-
-            $data['village_name'] = $this->mm->getVillages();
-
+            $data['menu'] = 2;
             $this->load->view('templates/header');
-            $this->load->view('templates/menu-village', $data);
+            $this->load->view('templates/menu', $data);
             $this->load->view('village', $data);
             $this->load->view('templates/footer', $data);
         } else {
@@ -169,26 +137,7 @@ class Web extends CI_Controller {
             $this->load->view('index', $data); //Load html view of search results  
         }
     }
-
-    function getPension_Detail($id_, $villID) {
-        $res_ = $this->mm->getPension_Detail_($id_, $villID);
-        echo ($res_);
-    }
-
-    function getTourist_Places_Detail($id_, $villID) {
-        $res_ = $this->mm->getTourist_Places_Detail_($id_, $villID);
-        echo ($res_);
-    }
-
-    function getBank_Detail($id_, $villID) {
-        $res_ = $this->mm->getBank_Detail_($id_, $villID);
-        echo ($res_);
-    }
-
-    function getIndustry_Detail($id_, $villID) {
-        $res_ = $this->mm->getIndustry_Detail_($id_, $villID);
-        echo ($res_);
-    }
+    
 
     function fillMapView($id_) {
         $data_to_ajax = $this->mm->fillMapView_($id_);

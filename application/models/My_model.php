@@ -57,14 +57,12 @@ class My_model extends CI_Model {
         return $villID;
     }
 
-    function getVillageOneRowData($villID) {
+    function getVillageData($villID) {
         if ($villID == 0) {
             $villID = $this->input->post('cmbVillage');
-        }
-        $this->db->select('a.NAME_,a.PIC,b.*');
-        $this->db->where('b.VILLAGEID', $villID);
-        $this->db->from('a8_village_one_row_data b');
-        $this->db->join('a1_village a', 'a.VILLAGEID = b.VILLAGEID');
+        }        
+        $this->db->where('VILLAGEID', $villID);
+        $this->db->from('a0_village');        
 
         $query = $this->db->get();
         return $query->result();
@@ -74,7 +72,7 @@ class My_model extends CI_Model {
         $villName = $this->input->post('id');
 
         $this->db->where('NAME_', $villName);
-        $this->db->from('a1_village');
+        $this->db->from('a0_village');
         $query = $this->db->get();
         if ($query->num_rows() != 0) {
             foreach ($query->result() as $row) {
@@ -87,296 +85,25 @@ class My_model extends CI_Model {
     }
 
     function getVillageOneRowData_textBox($villID) {
-        $this->db->select('a.NAME_,a.PIC,b.*');
-        $this->db->where('b.VILLAGEID', $villID);
-        $this->db->from('a8_village_one_row_data b');
-        $this->db->join('a1_village a', 'a.VILLAGEID = b.VILLAGEID');
+               
+        $this->db->where('VILLAGEID', $villID);
+        $this->db->from('a0_village');        
 
         $query = $this->db->get();
-        return $query->result();
+        return $query->result();        
     }
 
     function searchVillageAjax_($key) {
         $array = array();
         $this->db->select('*');
         $this->db->like('NAME_', $key);
-        $this->db->where('STATUS', 1);
+        $this->db->where('STATUS_', 1);
         $this->db->order_by('NAME_', 'asc');
-        $this->db->from('a1_village');
+        $this->db->from('a0_village');
 
         $query = $this->db->get();
         return $query->result();
-    }
-
-    function getPension_type() {
-        $this->db->where('STATUS', 1);
-        $this->db->select('*');
-        $this->db->group_by('PENSION_TYPE_NAME');
-        $this->db->from('a2_pension_pension_type');
-
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    function getPension_Detail_($id_, $villID) {
-        $data_ = '<table class="table table-striped table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Pensioner Name</th>
-                                                <th>Father/Husband</th>
-                                                <th>Father/Husband Name</th>
-                                                <th>Caste</th>
-                                                <th>Age</th>
-                                                <th>Pension Number</th>
-                                                <th>Approval Date</th>
-                                                <th>Amount</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>';
-
-        $this->db->where('PTID', $id_);
-        $this->db->where('VILLAGEID', $villID);
-        $this->db->where('STATUS', 1);
-        $rs = $this->db->get('a2_pension_pensioner_detail');
-        $pensionloop = 1;
-
-        if ($rs->num_rows() != 0) {
-            foreach ($rs->result() as $pensionitem) {
-                $data_ .= "<tr>";
-                $data_ .= "<td>$pensionloop</td>";
-                $data_ .= "<td>" . $pensionitem->NAME_ . "</td>";
-                $data_ .= "<td>" . $pensionitem->FH_TYPE . "</td>";
-                $data_ .= "<td>" . $pensionitem->FATHER_HUSBAND_NAME_ . "</td>";
-                $data_ .= "<td>" . $pensionitem->CAST_ . "</td>";
-                $data_ .= "<td>" . $pensionitem->DOB_AGE . "</td>";
-                $data_ .= "<td>" . $pensionitem->PENSION_NUMBER . "</td>";
-                $data_ .= "<td>" . $pensionitem->APPROVAL_DATE . "</td>";
-                $data_ .= "<td>" . $pensionitem->AMOUNT . "</td>";
-                $data_ .= "</tr>";
-            }
-        } else {
-            $data_ = "NO DATA IN THIS HEAD. PLEASE SELECT OTHER PENSION TYPE";
-        }
-        $data_.="</table>";
-        return $data_;
-    }
-
-    function getPrimarySchool($villid) {
-        $this->db->where('VILLAGEID', $villid);
-        $this->db->where('STATUS', 1);
-        $this->db->from('a5_school_primary');
-
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    function getMiddleSchool($villid) {
-        $this->db->where('VILLAGEID', $villid);
-        $this->db->where('STATUS', 1);
-        $this->db->from('a5_school_middle');
-
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    function getPrivateSchool($villid) {
-        $this->db->where('VILLAGEID', $villid);
-        $this->db->where('STATUS', 1);
-        $this->db->from('a5_school_private');
-
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    function getCollage($villid) {
-        $this->db->where('VILLAGEID', $villid);
-        $this->db->where('STATUS', 1);
-        $this->db->from('a5_school_higher_education_college');
-
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    function getUniversity($villid) {
-        $this->db->where('VILLAGEID', $villid);
-        $this->db->where('STATUS', 1);
-        $this->db->from('a5_school_higher_education_university');
-
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    function getMela($villid) {
-        $this->db->where('VILLAGEID', $villid);
-        $this->db->where('STATUS', 1);
-        $this->db->from('a4_local_mela');
-
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    function getTouristPlaceType() {
-        $this->db->where('STATUS', 1);
-        $this->db->from('a3_tourism_tourist_places_type');
-
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    function getTouristPlaceDetail_villID($villID) {
-        $this->db->where('VILLAGEID', $villID);
-        $this->db->where('STATUS', 1);
-        $query = $this->db->get('a3_tourism_tourist_places');
-
-        return $query->result();
-    }
-
-    function getTourist_Places_Detail_($id_, $villID) {
-        $data_ = '<table class="table table-striped table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Name</th>
-                                                <th>Photo</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>';
-
-        $this->db->where('TPTID', $id_);
-        $this->db->where('VILLAGEID', $villID);
-        $this->db->where('STATUS', 1);
-        $rs = $this->db->get('a3_tourism_tourist_places');
-        $touristloop = 1;
-
-        if ($rs->num_rows() != 0) {
-            foreach ($rs->result() as $touristitem) {
-                $data_ .= "<tr>";
-                $data_ .= "<td>$touristloop</td>";
-                $data_ .= "<td>" . $touristitem->TOURIST_PLACE . "</td>";
-                if ($touristitem->PIC != 'x') {
-                    $data_ .= "<td><img src=" . base_url('vp/assets_/pics/' . $touristitem->PIC) . " style='max-width: 150px' class='img-responsive' /></td>";
-                } else {
-                    $data_ .= "<td><img src=" . base_url('vp/assets_/pics/tourplace.jpg') . " style='max-width: 150px' class='img-responsive' /></td>";
-                }
-                $data_ .= "</tr>";
-            }
-        } else {
-            $data_ = "NO DATA IN THIS HEAD. PLEASE SELECT OTHER TOURIST TYPE";
-        }
-        $data_.="</table>";
-        return $data_;
-    }
-
-    function getTourismActivity($villid) {
-        $this->db->where('VILLAGEID', $villid);
-        $this->db->where('STATUS', 1);
-        $this->db->from('a3_tourism_tourism_activity_type');
-
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    function getNearestTown($villid) {
-        $this->db->where('VILLAGEID', $villid);
-        $this->db->where('STATUS', 1);
-        $this->db->from('a4_nearest_town');
-
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    function getBankType() {
-        $this->db->from('a6_bank_atm_type');
-
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    function getBank_Detail_($id_, $villID) {
-        $data_ = '<table class="table table-striped table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Name</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>';
-
-        $this->db->where('TYPE_', $id_);
-        $this->db->where('VILLAGEID', $villID);
-        $this->db->where('STATUS', 1);
-        $rs = $this->db->get('a6_bank_atm');
-        $bankloop = 1;
-
-        if ($rs->num_rows() != 0) {
-            foreach ($rs->result() as $bankitem) {
-                $data_ .= "<tr>";
-                $data_ .= "<td>$bankloop</td>";
-                $data_ .= "<td>" . $bankitem->NAME_ . "</td>";
-                $data_ .= "</tr>";
-            }
-        } else {
-            $data_ = "NO DATA IN THIS HEAD. PLEASE SELECT OTHER TYPE";
-        }
-        $data_.="</table>";
-        return $data_;
-    }
-
-    function getIndustryType() {
-        $this->db->from('a7_village_industry_type');
-
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    function getIndustry_Detail_($id_, $villID) {
-        $data_ = '<table class="table table-striped table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Industry Name</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>';
-
-        $this->db->where('INDUSTRY_TYPE', $id_);
-        $this->db->where('VILLAGEID', $villID);
-        $this->db->where('STATUS', 1);
-        $rs = $this->db->get('a7_village_industry');
-        $indloop = 1;
-
-        if ($rs->num_rows() != 0) {
-            foreach ($rs->result() as $inditem) {
-                $data_ .= "<tr>";
-                $data_ .= "<td>$indloop</td>";
-                $data_ .= "<td>" . $inditem->INDUSTRY . "</td>";
-                $data_ .= "</tr>";
-            }
-        } else {
-            $data_ = "NO DATA IN THIS HEAD. PLEASE SELECT OTHER TOURIST TYPE";
-        }
-        $data_.="</table>";
-        return $data_;
-    }
-
-    function getHelipadDetail($villid) {
-        $this->db->where('VILLAGEID', $villid);
-        $this->db->where('STATUS', 1);
-        $this->db->from('a7_proposed_halipad_detail');
-
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    function getShelter($villid) {
-        $this->db->where('VILLAGEID', $villid);
-        $this->db->where('STATUS', 1);
-        $this->db->from('a7_proposed_shelter_detail');
-
-        $query = $this->db->get();
-        return $query->result();
-    }
+    }     
 
     function fillMapView_($id_) {
         $data_ = '';

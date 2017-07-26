@@ -21,46 +21,6 @@ function  fillVillages(dataCmb) {
     });
 }
 
-function  fillPensionDetail(dataCmb, villID) {
-    $j("#pensionData").html('Loading...');
-    $j.ajax({
-        url: site_url_ + "/web/getPension_Detail/" + dataCmb.value + "/" + villID,
-        type: 'GET',
-    }).done(function (data) {
-        $j("#pensionData").html(data);
-    });
-}
-
-function  fillToursitPlaces(dataCmb, villID) {
-    $j("#touristPlacesData").html('Loading...');
-    $j.ajax({
-        url: site_url_ + "/web/getTourist_Places_Detail/" + dataCmb.value + "/" + villID,
-        type: 'GET',
-    }).done(function (data) {
-        $j("#touristPlacesData").html(data);
-    });
-}
-
-function  fillBankDetail(dataCmb, villID) {
-    $j("#bankData").html('Loading...');
-    $j.ajax({
-        url: site_url_ + "/web/getBank_Detail/" + dataCmb.value + "/" + villID,
-        type: 'GET',
-    }).done(function (data) {
-        $j("#bankData").html(data);
-    });
-}
-
-function  fillIndDetail(dataCmb, villID) {
-    $j("#indData").html('Loading...');
-    $j.ajax({
-        url: site_url_ + "/web/getIndustry_Detail/" + dataCmb.value + "/" + villID,
-        type: 'GET',
-    }).done(function (data) {
-        $j("#indData").html(data);
-    });
-}
-
 $(this).ready(function () {
     $("#id").autocomplete({
         minLength: 1,
