@@ -228,7 +228,7 @@ $(function(){
 		pid_ = '#PID_'+data_[0]+"_";
 		p_name = data_[1];
 		p_area = data_[2];
-		alert(str);
+
 		$('#txtPatwariID').val(data_[0]);
 		$('#patwari_name_for_village').html('| - '+p_name);
 		$('#patwari_area_for_village').html('| - '+p_area);
