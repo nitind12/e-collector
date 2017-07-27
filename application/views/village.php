@@ -50,7 +50,7 @@
                             <td style="color: #540000; width:50%;font-size:14px;">PATWARI</td><td><?php echo $homedata->pNAME; ?></h4></td>                            
                         </tr>
                         <tr>
-                            <td style="color: #540000; width:50%;font-size:14px;">PATWARI AREA</td><td><?php echo $homedata->GRAM_PANCHAYAT; ?></h4></td>                            
+                            <td style="color: #540000; width:50%;font-size:14px;">PATWARI AREA</td><td><?php echo $homedata->PATWARI_AREA; ?></h4></td>                            
                         </tr>
                         <tr>
                             <td style="color: #540000; width:50%;font-size:14px;">GRAM PANCHAYAT</td><td><?php echo $homedata->GRAM_PANCHAYAT; ?></h4></td>                            

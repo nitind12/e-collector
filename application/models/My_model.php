@@ -81,7 +81,7 @@ class My_model extends CI_Model {
        /* $this->db->where('VILLAGEID', $villID);
         $this->db->from('a0_village'); */
 
-        $this->db->select('a.*, b.NAME_ as pNAME, b.TEHSIL');
+        $this->db->select('a.*, b.NAME_ as pNAME, b.TEHSIL, b.PATWARI_AREA');
         $this->db->from('a0_village a');
         $this->db->join('a0_patwari b', 'a.PID = b.PID');
          $this->db->where('a.VILLAGEID', $villID);
