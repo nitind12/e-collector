@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2017 at 07:46 PM
+-- Generation Time: Jul 27, 2017 at 09:23 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -31,6 +31,7 @@ CREATE TABLE `a0_patwari` (
   `TEHSIL` varchar(150) NOT NULL,
   `TEHSILID` int(11) NOT NULL,
   `NAME_` varchar(100) NOT NULL,
+  `PATWARI_AREA` varchar(200) NOT NULL,
   `PHONE_` varchar(75) NOT NULL COMMENT 'Max 5 mobile no can be entered',
   `PHOTO_` varchar(50) NOT NULL,
   `STATUS_` tinyint(1) NOT NULL,
@@ -42,23 +43,25 @@ CREATE TABLE `a0_patwari` (
 -- Dumping data for table `a0_patwari`
 --
 
-INSERT INTO `a0_patwari` (`PID`, `TEHSIL`, `TEHSILID`, `NAME_`, `PHONE_`, `PHOTO_`, `STATUS_`, `DATE_`, `USERNAME_`) VALUES
-(1, 'Nainital', 1, 'Gunjan Mathur Ji', '9634944223', '1.jpg', 1, '2017-07-25 04:41:07', 'vandana'),
-(3, 'Nainital', 1, 'Amit Shah', '9410337554', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(6, 'Nainital', 1, 'Arjun Bisht', '9456554535', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(8, 'Nainital', 1, 'Bhuwan Chandra Bhandari', '9411043360', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(9, 'Nainital', 1, 'Ganga Datt Paladiya', '9411541065', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(11, 'Nainital', 1, 'Hem Paladiya ji', '9411541065', 'no-image.jpg', 1, '2017-07-25 04:41:46', 'vandana'),
-(12, 'Nainital', 1, 'Jagdish Chandra', '9675866502', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(13, 'Nainital', 1, 'Jagdish Chandra Arya', '9675866502', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(14, 'Nainital', 1, 'Lalit Mohan Goswami', '9411323362', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(15, 'Nainital', 1, 'Lokmani Arya', '9456378594', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(17, 'Nainital', 1, 'Om Prakash Arya', '9411787635', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(19, 'Nainital', 1, 'Radhe Singh Rana', '9412943330', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
-(21, 'Nainital', 1, 'Nitin Deepak', '9760020667', '21.jpg', 1, '2017-07-24 09:53:53', 'vandana'),
-(27, 'Nainital', 1, 'Harsh Wardhan Pant', '8192850007', '27.JPG', 1, '2017-07-23 04:31:39', 'vandana'),
-(28, 'Nainital', 1, 'Suraj Sanwal', '9874663210', 'no-image.jpg', 1, '2017-07-25 09:47:29', 'vandana'),
-(29, 'Koshyan Kutoli', 6, 'Pankaj Pant', '8529631478', 'no-image.jpg', 1, '2017-07-25 09:59:51', 'vandana');
+INSERT INTO `a0_patwari` (`PID`, `TEHSIL`, `TEHSILID`, `NAME_`, `PATWARI_AREA`, `PHONE_`, `PHOTO_`, `STATUS_`, `DATE_`, `USERNAME_`) VALUES
+(1, 'Nainital', 1, 'Gunjan Mathur Ji', '', '9634944223', '1.jpg', 1, '2017-07-25 04:41:07', 'vandana'),
+(3, 'Nainital', 1, 'Amit Shah', '', '9410337554', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(6, 'Nainital', 1, 'Arjun Bisht', '', '9456554535', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(8, 'Nainital', 1, 'Bhuwan Chandra Bhandari', '', '9411043360', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(9, 'Nainital', 1, 'Ganga Datt Paladiya', '', '9411541065', '9.jpg', 1, '2017-07-27 05:38:22', 'vandana'),
+(11, 'Nainital', 1, 'Hem Paladiya ji', '', '9411541065', 'no-image.jpg', 1, '2017-07-25 04:41:46', 'vandana'),
+(12, 'Nainital', 1, 'Jagdish Chandra', '', '9675866502', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(13, 'Nainital', 1, 'Jagdish Chandra Arya', '', '9675866502', '13.JPG', 1, '2017-07-27 04:52:20', 'vandana'),
+(14, 'Nainital', 1, 'Lalit Mohan Goswami', '', '9411323362', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(15, 'Nainital', 1, 'Lokmani Arya', '', '9456378594', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(17, 'Nainital', 1, 'Om Prakash Arya', '', '9411787635', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(19, 'Nainital', 1, 'Radhe Singh Rana', '', '9412943330', 'no-image.jpg', 1, '0000-00-00 00:00:00', 'vandana'),
+(21, 'Kaladhungi', 3, 'Nitin Deepak', '', '9760020667', '21.jpg', 1, '2017-07-27 04:51:56', 'vandana'),
+(27, 'Nainital', 1, 'Harsh Wardhan Pant', '', '8192850007', '27.JPG', 1, '2017-07-23 04:31:39', 'vandana'),
+(28, 'Nainital', 1, 'Suraj Sanwal', '', '9874663210', 'no-image.jpg', 1, '2017-07-25 09:47:29', 'vandana'),
+(29, 'Nainital', 1, 'Pankaj Pant', '', '8529631478', '29.JPG', 1, '2017-07-27 04:54:42', 'vandana'),
+(30, 'Dhari', 5, 'Naveen Tewari', 'Talli', '9966339999', '30.jpg', 1, '2017-07-27 07:04:45', 'vandana'),
+(31, 'Nainital', 1, 'Neeraj', 'mallital1', '9784563214', '31.jpg', 1, '2017-07-27 06:56:34', 'vandana');
 
 -- --------------------------------------------------------
 
@@ -3872,7 +3875,7 @@ INSERT INTO `a96_sdm_court` (`SNO`, `CASENO`, `REG_DATE`, `YEAR_`, `MONTH`, `TYP
 (79, '2008-22/48', '2008-06-19', '2008', '06', 'jktLo okn', '', 'flek;y', 'Deactivate DD', '', 'x', '', 'vandana', 81),
 (80, '2013-22/34', '2013-01-21', '2013', '01', 'jktLo okn', '', 'uxkjhxkao', 'Deactivate DD', '', 'x', '', 'vandana', 82),
 (81, '2015-52/1', '2015-06-18', '2015', '06', 'jktLo okn', '', 'egjkxkao', 'Deactivate DD', '', 'x', '', 'vandana', 83),
-(82, '1998-22/11', '1998-02-14', '1998', '02', 'jktLo okn', 'ftykf/kdkjh uSuhrky', 'pksiMk', 'Deactivate DD', '2017-07-23', 'x', '', 'vandana', 84),
+(82, '1998-22/11', '1998-02-14', '1998', '02', 'jktLo okn', 'miftykf/kdkjh uSuhrky', 'pksiMk', 'Deactivate DD', '2017-07-23', 'x', '', 'vandana', 84),
 (83, '2010-22/22', '2010-04-06', '2010', '04', 'jktLo okn', '', 'csyqok[kku', 'Deactivate DD', '', 'x', '', 'vandana', 85),
 (84, '2002-22/20', '2002-06-24', '2002', '06', 'jktLo okn', '', 'uxkjhxkao', 'Deactivate DD', '', 'x', '', 'vandana', 86),
 (85, '2003-22/2', '2003-03-03', '2003', '03', 'jktLo okn', 'miftykf/kdkjh@ijxuk eftLVsªV uSuhrky', 'ik.Msxkao', 'Deactivate DD', '', 'x', '', 'vandana', 87),
@@ -4541,7 +4544,7 @@ INSERT INTO `a97_sdm_court_detail` (`SNO`, `REF_SNO`, `CASENO`, `SUB_DIVISION`, 
 (81, 79, '2008-22/48', 'uSuhrky', 'uSuhrky', 'eYyh dqVkSyh', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'pUnu flg', 'ljdkj mRrjk[k.M ', '2017-11-05', 'i=koyh okLrs', '2017-05-10 10:13:25', 'vandana'),
 (82, 80, '2013-22/34', 'uSuhrky', 'uSuhrky', 'Hkokyh', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'jktho flg', 'ukjk;.k flg', '2017-11-05', '', '2017-05-10 10:13:25', 'vandana'),
 (83, 81, '2015-52/1', 'uSuhrky', 'uSuhrky', 'if\'peh N%[kkrk', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'nhoku flg', 'vejukFk flg', '2017-11-05', 'lquokbZ', '2017-05-10 10:13:25', 'vandana'),
-(84, 82, '1998-22/11', 'uSuhrky', 'rglhy uSuhrky', 'pksiMk', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'fd\'ku flg', 'mRrjk[k.M ljdkj', '', '', '2017-07-23 06:08:07', 'vandana'),
+(84, 82, '1998-22/11', 'uSuhrky', 'rglhy uSuhrky', 'pksiMk', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'fd\'ku flg', 'mRrjk[k.M ljdkj', '', '', '2017-07-27 05:00:26', 'vandana'),
 (85, 83, '2010-22/22', 'uSuhrky', 'uSuhrky', 'jkex<', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'txnh\'k flg', 'mRrjk[k.M ljdkj', '', '', '2017-05-10 10:13:25', 'vandana'),
 (86, 84, '2002-22/20', 'uSuhrky', 'uSuhrky', 'Hkokyh', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'lqjs\'k pUnz', 'vkbZ0bZ0lsQkbZ', '2017-04-25', 'lquokbZ', '2017-05-10 10:13:25', 'vandana'),
 (87, 85, '2003-22/2', 'uSuhrky', 'uSuhrky', 'ik.Msxkao', '', ';w-ih-T;sM-,-,y-vkj-,DV', '229 ch', 'lqHkk"k pUnz', 'vlye [kka vkfn', '2017-06-01', 'lk{;', '2017-05-10 10:13:25', 'vandana'),
@@ -7308,7 +7311,7 @@ ALTER TABLE `user_status`
 -- AUTO_INCREMENT for table `a0_patwari`
 --
 ALTER TABLE `a0_patwari`
-  MODIFY `PID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `PID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `a0_village`
 --
@@ -7318,7 +7321,7 @@ ALTER TABLE `a0_village`
 -- AUTO_INCREMENT for table `a0_village_info_master`
 --
 ALTER TABLE `a0_village_info_master`
-  MODIFY `INFO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `INFO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `a0_whoswho1_department`
 --

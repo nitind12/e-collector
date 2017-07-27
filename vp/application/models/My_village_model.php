@@ -36,8 +36,11 @@ class My_village_model extends CI_Model{
 	}
 
 	function submitPatwari(){
-		$tehsil_ = $this->input->post('cmbTehsilForVillage');
+		$tehsil_detail = explode("~",$this->input->post('cmbTehsilForVillage'));
+		$tehsil_ = $tehsil_detail[1];
+		$tehsil_id = $tehsil_detail[0];
 		$name_ = $this->input->post('txtpatwariName');
+		$p_area = $this->input->post('txtpatwariArea');
 		$phone_ = $this->input->post('txtpaContact');
 		$user = $this->session->userdata('user__');
 
@@ -48,9 +51,11 @@ class My_village_model extends CI_Model{
 		if($query->num_rows()!=0){
 			$data['message'] = array('res_'=>false, 'msg_'=>"<span style='padding: 3px; border-radius: 5px; background: #ffff00; color: #ff0000; font-weight: bold'>X: This Name and Contact combination is already exists.</span>");
 		} else {
-			$data = array(
+			$data = array(	
 				'TEHSIL'=>$tehsil_,
+				'TEHSILID'=>$tehsil_id,
 				'NAME_'=>$name_,
+				'PATWARI_AREA' => $p_area,
 				'PHONE_'=>$phone_,
 				'STATUS_'=>1,
 				'DATE_'=> date('Y-m-d H:i:s'),
@@ -96,8 +101,11 @@ class My_village_model extends CI_Model{
 		return $data;
 	}
 	function updatePatwari($pid){
-		$tehsil_ = $this->input->post('cmbTehsilForVillage_edit');
+		$tehsil_detail = explode("~",$this->input->post('cmbTehsilForVillage_edit'));
+		$tehsil_ = $tehsil_detail[1];
+		$tehsil_id = $tehsil_detail[0];
 		$name_ = $this->input->post('txtpatwariName_edit');
+		$p_area = $this->input->post('txtpatwariArea_edit');
 		$phone_ = $this->input->post('txtpaContact_edit');
 		$user = $this->session->userdata('user__');
 
@@ -114,7 +122,9 @@ class My_village_model extends CI_Model{
 			if($path_ != 'no-image.jpg'){
 				$data = array(
 					'TEHSIL'=>$tehsil_,
+					'TEHSILID'=>$tehsil_id,
 					'NAME_'=>$name_,
+					'PATWARI_AREA' => $p_area,
 					'PHONE_'=>$phone_,
 					'PHOTO_'=>$path_,
 					'DATE_'=> date('Y-m-d H:i:s'),
@@ -123,7 +133,9 @@ class My_village_model extends CI_Model{
 			} else {
 				$data = array(
 					'TEHSIL'=>$tehsil_,
+					'TEHSILID'=>$tehsil_id,
 					'NAME_'=>$name_,
+					'PATWARI_AREA' => $p_area,
 					'PHONE_'=>$phone_,
 					'DATE_'=> date('Y-m-d H:i:s'),
 					'USERNAME_'=>$user,

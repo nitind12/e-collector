@@ -86,10 +86,13 @@
                 <?php
                     echo form_input($data);
                 ?>
-                <label style="min-width: 60px; color: #000090">Patwari </label>
+                <label style="min-width: 82px; color: #000090">Patwari </label>
                 <label style="color: #dd0379" id="patwari_name_for_village">| -</label>
                 <br />
-                <label style="min-width: 60px; color: #000090">Village </label>
+                <label style="min-width: 82px; color: #000090">Patwari Area</label>
+                <label style="color: #dd0379" id="patwari_area_for_village">| -</label>
+                <br />
+                <label style="min-width: 82px; color: #000090">Village </label>
                 <label style="color: #dd0379" id="village_name_for_village">| -</label>
 			</div>
 			<div style="clear: both; padding: 5px"></div>
