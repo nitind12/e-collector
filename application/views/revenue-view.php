@@ -21,10 +21,10 @@
                         'id' => 'cmbTehsil',
                         'required' => 'required',
                          'style' => 'text-transform:uppercase; width: 100%;margin-bottom:20px;',
-                        'onchange' => 'fillVillages(this);'
+                        'onchange' => 'fillVillagesMap(this);'
                     );
                     $options = array();
-                    $options['0'] = 'SELECT TEHSIL';
+                    $options[''] = 'SELECT TEHSIL';
                     foreach ($Tehsil_name as $tehsilName) {
                         if ($tehsilName->TEHSIL_NAME != 'x') {
                             $options[$tehsilName->TEHSIL_NAME] = $tehsilName->TEHSIL_NAME;

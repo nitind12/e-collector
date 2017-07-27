@@ -43,7 +43,24 @@ class My_model extends CI_Model {
         $query = $this->db->get();
         //$output= $this->db->last_query();
 
-        $output = "<option value='0'>SELECT VILLAGE</option>";
+        $output = "<option value=''>SELECT VILLAGE</option>";
+        foreach ($query->result() as $row) {
+            $output .= "<option value='" . $row->VILLAGEID . "'>" . $row->NAME_ . "</option>";
+        }
+        return $output;
+    }
+    
+    function get_village_by_tehsil_m($tehsilName) {
+        $this->db->select('a.*');
+        $this->db->where('a.STATUS', 1);
+        $this->db->where('b.TEHSIL_NAME', $tehsilName);
+        $this->db->from('a1_village a');
+        $this->db->order_by('a.NAME_', 'asc');
+        $this->db->join('a8_village_one_row_data b', 'a.VILLAGEID = b.VILLAGEID');
+
+        $query = $this->db->get();
+
+        $output = "<option value=''>SELECT VILLAGE</option>";
         foreach ($query->result() as $row) {
             $output .= "<option value='" . $row->VILLAGEID . "'>" . $row->NAME_ . "</option>";
         }
@@ -61,9 +78,16 @@ class My_model extends CI_Model {
         if ($villID == 0) {
             $villID = $this->input->post('cmbVillage');
         }
-        $this->db->where('VILLAGEID', $villID);
-        $this->db->from('a0_village');
+       /* $this->db->where('VILLAGEID', $villID);
+        $this->db->from('a0_village'); */
 
+        $this->db->select('a.*, b.NAME_ as pNAME, b.TEHSIL');
+        $this->db->from('a0_village a');
+        $this->db->join('a0_patwari b', 'a.PID = b.PID');
+         $this->db->where('a.VILLAGEID', $villID);
+         
+        $this->db->order_by('a.NAME_', 'desc');
+               
         $query = $this->db->get();
         return $query->result();
     }

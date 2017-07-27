@@ -18,6 +18,12 @@
                     ?>
                     <table class="table table-striped table-bordered table-hover">
                         <tr>
+                            <td style="color: #540000; width:50%; font-size:14px;">DISTRICT</td><td><?php echo $homedata->DISTRICT; ?></h4></td>                            
+                        </tr>
+                        <tr>
+                            <td style="color: #540000; width:50%; font-size:14px;">TEHSIL AREA</td><td><?php echo $homedata->TEHSIL; ?></h4></td>                            
+                        </tr>
+                        <tr>
                             <td style="color: #540000; width:50%; font-size:14px;">KANOONGO AREA</td><td><?php echo $homedata->KANOONGO_AREA; ?></h4></td>                            
                         </tr>
                         <tr>
@@ -40,6 +46,12 @@
                 foreach ($village_Data as $homedata) {
                     ?>
                     <table class="table table-striped table-bordered table-hover">
+                        <tr>
+                            <td style="color: #540000; width:50%;font-size:14px;">PATWARI</td><td><?php echo $homedata->pNAME; ?></h4></td>                            
+                        </tr>
+                        <tr>
+                            <td style="color: #540000; width:50%;font-size:14px;">PATWARI AREA</td><td><?php echo $homedata->GRAM_PANCHAYAT; ?></h4></td>                            
+                        </tr>
                         <tr>
                             <td style="color: #540000; width:50%;font-size:14px;">GRAM PANCHAYAT</td><td><?php echo $homedata->GRAM_PANCHAYAT; ?></h4></td>                            
                         </tr>

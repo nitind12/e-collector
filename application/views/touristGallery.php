@@ -56,7 +56,7 @@
                                     ?></h3>
                             <?php } else { ?>
                             <h3 align="center" style="margin-bottom: 10px; color: #006699; font-weight: bold; text-shadow: 2px 2px 2px #cccccc; font-family: cursive;">
-                                Tourist Gallery
+                                Nainital and its Environs
                             </h3>
                             <?php } ?>
                             <?php if ($galID == 0) { ?>

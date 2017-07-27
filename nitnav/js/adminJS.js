@@ -21,6 +21,17 @@ function  fillVillages(dataCmb) {
     });
 }
 
+function  fillVillagesMap(dataCmb) {
+    $j("#cmbVillage").html('Loading...');
+    $j.ajax({
+        url: site_url_ + "/web/get_village_by_tehsil_forMap/" + dataCmb.value,
+        type: 'GET',
+    }).done(function (data) {
+        //alert(data);
+        $j("#cmbVillage").html(data);
+    });
+}
+
 $(this).ready(function () {
     $("#id").autocomplete({
         minLength: 1,

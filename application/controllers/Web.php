@@ -117,6 +117,12 @@ class Web extends CI_Controller {
         $res_ = $this->mm->get_village_by_tehsil_($tehsilName);
         echo $res_;
     }
+    
+    function get_village_by_tehsil_forMap($tehsilName) {
+        $res_ = $this->mm->get_village_by_tehsil_m($tehsilName);
+        echo $res_;
+    }
+    
 
     function searchVillageAjax() {
         $keyword = $this->input->post('term');
