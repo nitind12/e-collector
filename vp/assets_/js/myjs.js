@@ -23,6 +23,7 @@ $(function(){
 				$('#village_list_here').change();
 				$('#patwari_list_for_villages_here').change();
 				$('#patwari_name_for_village').html('| -');
+				$('#patwari_area_for_village').html('| -');
 				$('#cmbVillageReset').click();
 				// -------------
 			}, error: function(xhr, status, error){
@@ -64,8 +65,9 @@ $(function(){
 				var obj = JSON.parse(data);
 				if(obj.patwari.length != 0){
 					$('#editPatwari').css("display","block");
-					$('#cmbTehsilForVillage_edit').val(obj.patwari.TEHSIL);
+					$('#cmbTehsilForVillage_edit').val(obj.patwari.TEHSILID+"~"+obj.patwari.TEHSIL);
 					$('#txtpatwariName_edit').val(obj.patwari.NAME_);
+					$('#txtpatwariArea_edit').val(obj.patwari.PATWARI_AREA);
 					$('#txtpaContact_edit').val(obj.patwari.PHONE_);
 					$('#edit_photo_here').html("<img src='"+base_path+"/assets_/patwari_pics/"+obj.patwari.PHOTO_+"' width='50' />");
 					$('#txtPID').val(obj.patwari.PID);
@@ -102,6 +104,7 @@ $(function(){
 				var obj = JSON.parse(data);
 				if(obj.message.res_ == 'true'){
 					$('#txtpatwariName_edit').val('');
+					$('#txtpatwariArea_edit').val('');
 					$('#txtpaContact_edit').val('');
 					$('#txtpaPhoto_edit').val('');
 				}
@@ -221,11 +224,14 @@ $(function(){
 		$('#this_msg_for_village').html("");
 		var str;
 		str = this.id;
-		data_ = str.split("-");
+		data_ = str.split("~");
 		pid_ = '#PID_'+data_[0]+"_";
 		p_name = data_[1];
+		p_area = data_[2];
+		alert(str);
 		$('#txtPatwariID').val(data_[0]);
 		$('#patwari_name_for_village').html('| - '+p_name);
+		$('#patwari_area_for_village').html('| - '+p_area);
 		$('#vlist_').html("for "+p_name);
 		$(".pid_pallets").css("border","#f0f0f0 solid 1px");
 		$(pid_).css('border','#dd0379 solid 2px');
@@ -503,7 +509,7 @@ $(function(){
 					str_html = str_html + '<i class="glyphicon glyphicon-user"></i><span class="patwari_name_">&nbsp;'+obj.patwaris[i].NAME_+'</span>';
 					str_html = str_html + '</div>';
 					str_html = str_html + '<div style="float: right; padding: 0px;border: #000000 solid 0px;">';
-					str_html = str_html + '<a href="#" class="patwariIDForVillage" title="Call Patwari for Village Entry" id="'+obj.patwaris[i].PID+'-'+obj.patwaris[i].NAME_+'">';
+					str_html = str_html + '<a href="#" class="patwariIDForVillage" title="Call Patwari for Village Entry" id="'+obj.patwaris[i].PID+'~'+obj.patwaris[i].NAME_+'~'+obj.patwaris[i].PATWARI_AREA+'">';
 					str_html = str_html + '<i class="glyphicon glyphicon-share-alt"></i>';
 					str_html = str_html + '</a>';
 					str_html = str_html + '</div>';
