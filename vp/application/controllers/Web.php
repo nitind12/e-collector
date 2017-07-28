@@ -2066,6 +2066,11 @@ class Web extends CI_Controller {
         $result = $this->mm->delvillage($villid);
         redirect('web/patwariDasboard/');
     }
+
+    function news(){
+        $this->check_login();
+        redirect('newsevents');
+    }
     // Dynamic Ends Here
 
 
