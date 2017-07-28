@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2017 at 09:23 AM
+-- Generation Time: Jul 28, 2017 at 05:44 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -7017,6 +7017,33 @@ INSERT INTO `login` (`USERNAME`, `PASSWORD`, `USERSTATUS`, `STATUS`, `DATE_`, `N
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `newsevents`
+--
+
+CREATE TABLE `newsevents` (
+  `ID` int(11) NOT NULL,
+  `SUBJECT` varchar(200) NOT NULL,
+  `NEWS` text NOT NULL,
+  `PATH_ATTACH` varchar(150) NOT NULL,
+  `FONTJI` varchar(250) NOT NULL,
+  `DATE_` varchar(25) NOT NULL,
+  `TIME_` varchar(25) NOT NULL,
+  `STATUS` int(11) NOT NULL DEFAULT '1',
+  `USERNAME` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `newsevents`
+--
+
+INSERT INTO `newsevents` (`ID`, `SUBJECT`, `NEWS`, `PATH_ATTACH`, `FONTJI`, `DATE_`, `TIME_`, `STATUS`, `USERNAME`) VALUES
+(2, 'x', 'x', '2.png', 'Arial', '27/07/2017', '09:30:52pm', 0, 'nitin'),
+(3, 'a', 'a', '3.jpg', 'Arial', '27/07/2017', '09:38:41pm', 0, 'vandana'),
+(4, 'y', 'y', 'x', 'Arial', '27/07/2017', '09:43:35pm', 0, 'vandana');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_status`
 --
 
@@ -7298,6 +7325,13 @@ ALTER TABLE `login`
   ADD PRIMARY KEY (`USERNAME`);
 
 --
+-- Indexes for table `newsevents`
+--
+ALTER TABLE `newsevents`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `STATUS` (`STATUS`);
+
+--
 -- Indexes for table `user_status`
 --
 ALTER TABLE `user_status`
@@ -7507,6 +7541,11 @@ ALTER TABLE `c2_gallery_picture`
 --
 ALTER TABLE `c3_gallery_accomodation`
   MODIFY `ACCO_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `newsevents`
+--
+ALTER TABLE `newsevents`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `user_status`
 --
