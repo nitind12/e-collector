@@ -49,7 +49,7 @@ class My_model extends CI_Model {
         }
         return $output;
     }
-    
+
     function get_village_by_tehsil_m($tehsilName) {
         $this->db->select('a.*');
         $this->db->where('a.STATUS', 1);
@@ -78,16 +78,16 @@ class My_model extends CI_Model {
         if ($villID == 0) {
             $villID = $this->input->post('cmbVillage');
         }
-       /* $this->db->where('VILLAGEID', $villID);
-        $this->db->from('a0_village'); */
+        /* $this->db->where('VILLAGEID', $villID);
+          $this->db->from('a0_village'); */
 
         $this->db->select('a.*, b.NAME_ as pNAME, b.TEHSIL, b.PATWARI_AREA');
         $this->db->from('a0_village a');
         $this->db->join('a0_patwari b', 'a.PID = b.PID');
-         $this->db->where('a.VILLAGEID', $villID);
-         
+        $this->db->where('a.VILLAGEID', $villID);
+
         $this->db->order_by('a.NAME_', 'desc');
-               
+
         $query = $this->db->get();
         return $query->result();
     }
@@ -295,19 +295,90 @@ class My_model extends CI_Model {
     function get_pdf_to_download() {
         $pdfID = $this->input->post('cmbPdf');
         $this->db->select('PATH_');
-        $this->db->where('PDFID',$pdfID);
+        $this->db->where('PDFID', $pdfID);
         $query = $this->db->get('b2_pdf');
-        
+
         if ($query->num_rows() != 0) {
-            foreach ($query->result() as $row) {               
-                $data_ = $row->PATH_;               
+            foreach ($query->result() as $row) {
+                $data_ = $row->PATH_;
             }
         } else {
             $data_ = 'No Data';
         }
-        
+
         return $data_;
+    }
+
+    function get_newsdetail() {
+        $this->db->where('STATUS', 1);
+        $this->db->order_by('DATE_', 'DESC');
+        $query = $this->db->get('newsevents');
+        return $query->result();
+    }
+
+    function get_finalCases() {
+        $this->db->select('COURT_NAME, COUNT(CASENO) as totalcase');
+        $this->db->group_by('COURT_NAME');
+        $this->db->where('DISMISS_IN_DEFAULT', 'Deactivate DD');
+        $this->db->where('FINAL_ORDER_DATE<>', "");
+        $query = $this->db->get('a96_sdm_court');
+        return $query->result();
+    }
+
+    function get_pendingCases() {
+        $this->db->select('COURT_NAME, COUNT(CASENO) as totalcase');
+        $this->db->group_by('COURT_NAME');
+        $this->db->where('DISMISS_IN_DEFAULT', 'Deactivate DD');
+        $this->db->where('FINAL_ORDER_DATE', "");
+        $query = $this->db->get('a96_sdm_court');
+        return $query->result();
+    }
+
+    function get_disposedoffcases($startdate = 'x', $enddate = 'x') {
+        $this->db->select('a.COURT_NAME, COUNT(a.CASENO) as totalcase');
+        $this->db->from('a96_sdm_court a');
+        $this->db->join('a97_sdm_court_detail b', 'a.STATUS_ = b.SNO');
+        $this->db->where('a.DISMISS_IN_DEFAULT', "Activate DD");
+        if ($startdate != 'x') {
+            $this->db->where('a.REG_DATE >=', $startdate);
+        }
+        if ($enddate != 'x') {
+            $this->db->where('a.REG_DATE <=', $enddate);
+        }
+
+        $query = $this->db->get();
+        //echo $this->db->last_query();
+        return $query->result();
+    }
+
+    function get_todayscases() {
+        $this->db->select('a.COURT_NAME, COUNT(a.CASENO) as totalcase');
+        $this->db->from('a96_sdm_court a');
+        $this->db->join('a97_sdm_court_detail b', 'a.STATUS_ = b.SNO');
+        $this->db->where('b.NEXT_DATE', date('Y-m-d'));
+        $this->db->where('a.FINAL_ORDER_DATE', "");
+        $this->db->where('a.DISMISS_IN_DEFAULT', "Deactivate DD");
+        $query = $this->db->get();
+        //echo $this->db->last_query();
+        return $query->result();
+    }
+
+    function get_totalcases() {
+        $this->db->select('COURT_NAME, COUNT(CASENO) as totalcase');
+        $this->db->group_by('COURT_NAME');
+        $query = $this->db->get('a96_sdm_court');
         
+        return $query->result();
+    }
+
+    function get_AllCourt() {
+        $this->db->distinct('a.COURT');
+        $this->db->select('a.COURT');
+        $this->db->from('a95_court_master a');
+        $this->db->join('a96_sdm_court b', 'b.COURT_NAME=a.COURT');
+
+        $query = $this->db->get();
+        return $query->result();
     }
 
 }

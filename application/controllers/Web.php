@@ -12,10 +12,17 @@ class Web extends CI_Controller {
     public function index() {
         $data['menu'] = 1;
         $data['download'] = $this->mm->get_all_downloads();
+        $data['news'] = $this->mm->get_newsdetail();
+        $data['finalCase'] = $this->mm->get_finalCases();
+        $data['pendingCase'] = $this->mm->get_pendingCases();
+        $data['desposedCase'] = $this->mm->get_disposedoffcases();
+        $data['totalCase'] = $this->mm->get_totalcases();
+        $data['todaysCase'] = $this->mm->get_todayscases();
+        $data['allcourt'] = $this->mm->get_AllCourt();
 
         $this->load->view('templates/header');
         $this->load->view('templates/menu', $data);
-        $this->load->view('home');
+        $this->load->view('home', $data);
         $this->load->view('templates/footer');
     }
 

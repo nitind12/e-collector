@@ -15,12 +15,15 @@
 
         <script src="<?PHP echo base_url() . 'nitnav/js/jquery.1.4.3.min.js'; ?>"></script>       
         <script src="<?PHP echo base_url() . 'nitnav/js/jquery-ui.min.js'; ?>" type="text/javascript"></script> 
-
+        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
         <!-- animation-effect -->
 
         <script src="<?PHP echo base_url() . 'nitnav/js/adminJS.js'; ?>"></script>
-        <script src="<?PHP echo base_url() . 'nitnav/js/jquery.min.js'; ?>"></script>    
+        <script src="<?PHP echo base_url() . 'nitnav/js/jquery.min.js'; ?>"></script>            
+        <script src="<?PHP echo base_url() . 'nitnav/js/jquery.easing.min.js'; ?>"></script>
+        <script src="<?PHP echo base_url() . 'nitnav/js/jquery.easy-ticker.js'; ?>"></script>
+        
         <script language="javascript">
             var $j = jQuery.noConflict();
         </script>       
@@ -29,8 +32,7 @@
         <script src="<?PHP echo base_url() . 'nitnav/js/bootstrap.min.js'; ?>"></script>
         <script>
             new WOW().init();
-        </script>
-
+        </script>        
         <script type="text/javascript">
             site_url_ = "<?php echo site_url(); ?>";
             base_path = "<?php echo base_url(); ?>";
