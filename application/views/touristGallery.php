@@ -55,9 +55,9 @@
                                     }
                                     ?></h3>
                             <?php } else { ?>
-                            <h3 align="center" style="margin-bottom: 10px; color: #006699; font-weight: bold; text-shadow: 2px 2px 2px #cccccc; font-family: cursive;">
-                                Nainital and its Environs
-                            </h3>
+                                <h3 align="center" style="margin-bottom: 10px; color: #006699; font-weight: bold; text-shadow: 2px 2px 2px #cccccc; font-family: cursive;">
+                                    Nainital and its Environs
+                                </h3>
                             <?php } ?>
                             <?php if ($galID == 0) { ?>
                                 <div id="myCarousel1" class="carousel slide" data-ride="carousel">
@@ -94,6 +94,22 @@
                                                 <img src="<?PHP echo base_url() . 'vp/assets_/gallery/' . $AllgalPic->PIC_PATH; ?>" alt="" style="width: 100%;">
                                                 <div class="carousel-caption">
                                                     <h2 style="color:#f2f2f2; text-shadow: 1px 1px 2px #000;"><?php echo $AllgalPic->CATEGORY; ?></h2>
+                                                </div>
+                                                <div class="carousel-data" style="margin-bottom:100px;">
+                                                    <div style="margin-top: 50px;" id="short"><?php
+                                                        if ($AllgalPic->DESCR != '') {
+                                                            $string = strip_tags($AllgalPic->DESCR);
+                                                            if (strlen($string) > 100) {
+                                                                // truncate string
+                                                                $stringCut = substr($string, 0, 100);
+                                                                // make sure it ends in a word so assassinate doesn't become ass...                                            
+                                                                echo $stringCut . "... <span onClick='readMore()' style='color: blue'><br>Select the Particular Place to Read More</span>";
+                                                            } else{
+                                                                echo $string; 
+                                                            }                                                           
+                                                        }
+                                                        ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <?PHP
@@ -171,9 +187,12 @@
                                     if (strlen($string) > 100) {
                                         // truncate string
                                         $stringCut = substr($string, 0, 100);
-                                        // make sure it ends in a word so assassinate doesn't become ass...                                            
+                                        // make sure it ends in a word so assassinate doesn't become ass...   
+                                         echo $stringCut . "... <span onClick='readMore()' style='color: blue'>Read More</span>";
+                                    }else{
+                                        echo $string;
                                     }
-                                    echo $stringCut . "... <span onClick='readMore()' style='color: blue'>Read More</span>";
+                                   
                                 }
                                 ?>
                             </div>                                

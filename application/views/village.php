@@ -18,22 +18,14 @@
                     ?>
                     <table class="table table-striped table-bordered table-hover">
                         <tr>
-                            <td style="color: #540000; width:50%; font-size:14px;">DISTRICT</td><td><?php echo $homedata->DISTRICT; ?></h4></td>                            
+                            <td rowspan="3" width="150px"><img src="<?PHP echo base_url() . 'vp/assets_/patwari_pics/' . $homedata->PHOTO_; ?>" alt="<?php echo $homedata->NAME_; ?>" style="max-width: 140px;"></td>  
+                            <td><b>PATWARI NAME - </b><?php echo $homedata->pNAME; ?></td>
                         </tr>
                         <tr>
-                            <td style="color: #540000; width:50%; font-size:14px;">TEHSIL AREA</td><td><?php echo $homedata->TEHSIL; ?></h4></td>                            
-                        </tr>
+                            <td><b>PATWARI CONTACT - </b><?php echo $homedata->PHONE_; ?></td>
+                        </tr>                        
                         <tr>
-                            <td style="color: #540000; width:50%; font-size:14px;">KANOONGO AREA</td><td><?php echo $homedata->KANOONGO_AREA; ?></h4></td>                            
-                        </tr>
-                        <tr>
-                            <td style="color: #540000;font-size:14px;">NYAY PANCHAYAT</td><td><?php echo $homedata->NYAY_PANCHAYAT; ?></h4></td>                            
-                        </tr>
-                        <tr>
-                            <td style="color: #540000;font-size:14px;">PARLIAMENTARY CONSTITUENCY</td><td><?php echo $homedata->PARLIAMENTARY_CONS; ?></h4></td>                            
-                        </tr>
-                        <tr>
-                            <td style="color: #540000;font-size:14px;">POLLING BOOTH</td><td><?php echo $homedata->POLLING_BOOTH; ?></h4></td>                            
+                            <td><b>PATWARI AREA - </b><?php echo $homedata->PATWARIAREA; ?></td>
                         </tr>
                     </table>
                     <?php
@@ -47,22 +39,34 @@
                     ?>
                     <table class="table table-striped table-bordered table-hover">
                         <tr>
-                            <td style="color: #540000; width:50%;font-size:14px;">PATWARI</td><td><?php echo $homedata->pNAME; ?></h4></td>                            
+                            <td style="color: #540000; width:50%; font-size:14px;font-weight: bold;">DISTRICT</td><td><?php echo $homedata->DISTRICT; ?></h4></td>                            
                         </tr>
                         <tr>
-                            <td style="color: #540000; width:50%;font-size:14px;">PATWARI AREA</td><td><?php echo $homedata->PATWARI_AREA; ?></h4></td>                            
+                            <td style="color: #540000; font-size:14px;font-weight: bold;">TEHSIL AREA</td><td><?php echo $homedata->TEHSIL; ?></h4></td>                            
                         </tr>
                         <tr>
-                            <td style="color: #540000; width:50%;font-size:14px;">GRAM PANCHAYAT</td><td><?php echo $homedata->GRAM_PANCHAYAT; ?></h4></td>                            
+                            <td style="color: #540000; font-size:14px;font-weight: bold;">KANOONGO AREA</td><td><?php echo $homedata->KANOONGO_AREA; ?></h4></td>                            
                         </tr>
                         <tr>
-                            <td style="color: #540000;font-size:14px;">VAN PANCHAYAT</td><td><?php echo $homedata->VAN_PANCHAYAT; ?></h4></td>                            
+                            <td style="color: #540000; font-size:14px;font-weight: bold;">GRAM PANCHAYAT</td><td><?php echo $homedata->GRAM_PANCHAYAT; ?></h4></td>                            
                         </tr>
                         <tr>
-                            <td style="color: #540000;font-size:14px;">ASSEMBLY CONSTITUENCY</td><td><?php echo $homedata->ASSEMBLY_CONS; ?></h4></td>                            
+                            <td style="color: #540000;font-size:14px;font-weight: bold;">NYAY PANCHAYAT</td><td><?php echo $homedata->NYAY_PANCHAYAT; ?></h4></td>                            
                         </tr>
                         <tr>
-                            <td style="color: #540000;font-size:14px;">REGULAR/ REVENUE POLICE</td><td><?php echo $homedata->REGULAR_REVENUE_POLICE	; ?></h4></td>                            
+                            <td style="color: #540000;font-size:14px;font-weight: bold;">VAN PANCHAYAT</td><td><?php echo $homedata->VAN_PANCHAYAT; ?></h4></td>                            
+                        </tr>
+                        <tr>
+                            <td style="color: #540000;font-size:14px;font-weight: bold;">PARLIAMENTARY CONSTITUENCY</td><td><?php echo $homedata->PARLIAMENTARY_CONS; ?></h4></td>                            
+                        </tr>
+                        <tr>
+                            <td style="color: #540000;font-size:14px;font-weight: bold;">ASSEMBLY CONSTITUENCY</td><td><?php echo $homedata->ASSEMBLY_CONS; ?></h4></td>                            
+                        </tr>
+                        <tr>
+                            <td style="color: #540000;font-size:14px;font-weight: bold;">POLLING BOOTH</td><td><?php echo $homedata->POLLING_BOOTH; ?></h4></td>                            
+                        </tr>
+                        <tr>
+                            <td style="color: #540000;font-size:14px;font-weight: bold;">REGULAR/ REVENUE POLICE</td><td><?php echo $homedata->REGULAR_REVENUE_POLICE; ?></h4></td>                            
                         </tr>
                     </table>
                     <?php

@@ -133,7 +133,7 @@
                     </div>
 
                     <h3><a href="<?PHP echo site_url('web/aboutNainital'); ?>">Nainital - an Introduction</a></h3>
-                    <p align="justify">Ensconced snugly at an altitude of 1938 metres above sea level, Nainital has made a tryst with fame as a popular hill station. The ancient name of Naini Tal is Tri- Rishi Sarovar, after the three sages, Atri, Agastya and Pulaha. It is believed that they came here on a penitential pilgrimage while going to Mansarovar, the holy lake in Tibet. <a href="<?PHP echo site_url('web/aboutNainital'); ?>">Read more ...</a></p>
+                    <p align="justify">Ensconced snugly at an altitude of 1938 metres above sea level, Nainital has made a tryst with fame in being the country’s most popular hill station. Situated at (lat,long) the geological fault line between Naini-Sher Danda ridge and Ayarpatta block give Nainital its famous Naini lake.<br>The ancient name of Nainital is Tri- Rishi Sarovar, after the three sages, Atri, Agastya and Pulaha. It is believed that they came here on a penitential pilgrimage while going to Mansarovar, the holy lake in Tibet. On finding no water for drinking, they dug a large hole and siphoned water from Mansarovar with their divine powers. Thus the ancient Indians believed that a dip in the Naini Lake earned the same religious merit as a holy dip in the Mansarovar Lake. The second important religious reference to Nainital is as one of the 64 Shakti Peeths, i.e. centres of spiritual powers. <a href="<?PHP echo site_url('web/aboutNainital'); ?>">Read more ...</a></p>
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>
@@ -171,6 +171,9 @@
                     <p style="color: #0099cc"><a href="http://devbhoomi.uk.gov.in" target="_blank"><i class="fa fa-arrow-circle-right"></i> Khata Khatauni</a></p>
                     <p style="color: #0099cc"><a href="http://nainital.nic.in/" target="_blank"><i class="fa fa-arrow-circle-right"></i> District NIC website</a></p>
                     <p style="color: #0099cc"><a href="http://kunainital.ac.in/" target="_blank"><i class="fa fa-arrow-circle-right"></i> Kumaun University</a></p>
+                    <p style="color: #0099cc"><a href="http://corbettonline.uk.gov.in/" target="_blank"><i class="fa fa-arrow-circle-right"></i> Corbett Tiger Reserve</a></p>
+                    <p style="color: #0099cc"><a href="http://www.kmvn.gov.in/" target="_blank"><i class="fa fa-arrow-circle-right"></i> KMVN</a></p>
+                    <p style="color: #0099cc"><a href="http://highcourtofuttarakhand.gov.in/" target="_blank"><i class="fa fa-arrow-circle-right"></i> High Court, Nainital</a></p>
                 </div>
             </div>
         </div>

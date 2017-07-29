@@ -34,15 +34,15 @@ class My_model extends CI_Model {
     }
 
     function get_village_by_tehsil_($tehsilName) {
-        $this->db->select('b.*');
-        $this->db->from('a0_patwari a');
-        $this->db->join('a0_village b', 'a.PID = b.PID');
-        $this->db->where('a.TEHSILID', $tehsilName);
-        $this->db->order_by('b.NAME_', 'asc');
+        $this->db->select('a.*');
+        $this->db->from('a0_village a');
+        $this->db->join('a0_patwari_area b', 'a.PAID = b.PAID', 'left');
+        $this->db->join('a0_patwari c', 'b.PID = c.PID', 'left');
+        $this->db->where('c.TEHSILID', $tehsilName);
+        $this->db->order_by('a.NAME_', 'asc');
 
         $query = $this->db->get();
         //$output= $this->db->last_query();
-
         $output = "<option value=''>SELECT VILLAGE</option>";
         foreach ($query->result() as $row) {
             $output .= "<option value='" . $row->VILLAGEID . "'>" . $row->NAME_ . "</option>";
@@ -81,9 +81,11 @@ class My_model extends CI_Model {
         /* $this->db->where('VILLAGEID', $villID);
           $this->db->from('a0_village'); */
 
-        $this->db->select('a.*, b.NAME_ as pNAME, b.TEHSIL, b.PATWARI_AREA');
+        $this->db->select('a.*, b.PATWARIAREA, c.NAME_ as pNAME, c.TEHSIL,c.PHONE_,c.PHOTO_');
+        $this->db->select('a.*');
         $this->db->from('a0_village a');
-        $this->db->join('a0_patwari b', 'a.PID = b.PID');
+        $this->db->join('a0_patwari_area b', 'a.PAID = b.PAID', 'left');
+        $this->db->join('a0_patwari c', 'b.PID = c.PID', 'left');
         $this->db->where('a.VILLAGEID', $villID);
 
         $this->db->order_by('a.NAME_', 'desc');
@@ -109,7 +111,6 @@ class My_model extends CI_Model {
     }
 
     function getVillageOneRowData_textBox($villID) {
-
         $this->db->where('VILLAGEID', $villID);
         $this->db->from('a0_village');
 
@@ -367,7 +368,7 @@ class My_model extends CI_Model {
         $this->db->select('COURT_NAME, COUNT(CASENO) as totalcase');
         $this->db->group_by('COURT_NAME');
         $query = $this->db->get('a96_sdm_court');
-        
+
         return $query->result();
     }
 

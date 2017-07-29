@@ -11,6 +11,7 @@ function  loadgalleryView(dataCmb) {
 }
 
 function  fillVillages(dataCmb) {
+    //alert('hi');
     $j("#cmbVillage").html('Loading...');
     $j.ajax({
         url: site_url_ + "/web/get_village_by_tehsil/" + dataCmb.value,
