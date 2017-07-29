@@ -1,14 +1,14 @@
-<?php if($this->session->userdata('status__') == "SDM") { ?>
+<?php if($this->session->userdata('status__') == "ADMIN") { ?>
 <div class="navbar navbar-inverse set-radius-zero" style="background-color: #4586d6">
     <div class="container">      
         <div class="row">
             <div class="col-md-8 col-xs-12">
-                <h1 class="head">SDM NEWS PORTAL (<?php echo $this->session->userdata('user__'); 
+                <h1 class="head">DM NEWS PORTAL (<?php echo $this->session->userdata('user__'); 
                 ?>)</h1>
             </div>
             <div class="col-md-4" style="margin-top: 30px; text-align: right">
                 <a href="<?PHP echo site_url('web/'); ?>" style="font-size: 16px;color: #fff">
-                        Back to SDM Portal <i class="fa fa-sign-out"></i>
+                        Back to DM Portal <i class="fa fa-sign-out"></i>
                 </a>
             </div>
         </div>

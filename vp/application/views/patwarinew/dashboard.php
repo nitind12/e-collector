@@ -55,6 +55,8 @@
                     <ul class="nav nav-tabs" style="background: #f2f2f2; font-size: 17px;">
                         <li class="<?php if($patwari == 'active'){ echo 'active'; }?>"><a href="#patwari" data-toggle="tab"><i class="fa fa-address-card-o"></i> Patwari Section</a>
                         </li>
+                        <li class="<?php if($patwariarea == 'active'){ echo 'active'; }?>"><a href="#patwariarea" data-toggle="tab"><i class="fa fa-address-card-o"></i> Patwari Area Section</a>
+                        </li>
                         <li class="<?php if($village == 'active'){ echo 'active'; }?>"><a href="#village" data-toggle="tab"><i class="fa fa-desktop"></i> Village Section</a>
                         </li>
                     </ul>
@@ -66,6 +68,14 @@
 
                             <div class="panel">
                                 <?php $this->load->view('patwarinew/tabs/patwari.php'); ?>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade<?php if ($patwariarea != '') { echo " " . $patwariarea . " in"; } ?>" id="patwariarea">
+                            <h6>&nbsp;</h6>
+                            <!---View Case Detail-->
+
+                            <div class="panel">
+                                <?php $this->load->view('patwarinew/tabs/patwariarea.php'); ?>
                             </div>
                         </div>
                         <div class="tab-pane fade<?php if ($village != '') { echo " " . $village . " in"; } ?>" id="village">

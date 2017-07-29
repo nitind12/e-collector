@@ -12,6 +12,18 @@
 					);
 				echo form_open('', $data);
 			?>
+            <?php
+                    $data = array(
+                        'type' => 'hidden',
+                        'placeholder' => 'DISTT',
+                        'required' => 'required',
+                        'name' => 'txtDistrict',
+                        'id' => 'txtDistrict',
+                        'value' => 'Nainital',
+                    );?>
+                <?php
+                    echo form_input($data);
+                ?>
             <div class="input-group">
                 <?php
                     $data = array(
@@ -31,24 +43,6 @@
                     <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i> Tehsil</span>
                 <?php
                     echo form_dropdown($data, $options);
-                ?>
-            </div>
-            <div style="clear: both; padding: 5px"></div>
-            <div class="input-group">
-                <?php
-                    $data = array(
-                        'type' => 'text',
-                        'placeholder' => 'Patwari Area',
-                        'class' => 'required form-control',
-                        'required' => 'required',
-                        'name' => 'txtpatwariArea',
-                        'id' => 'txtpatwariArea',
-                        'value' => '',
-                        'class'=>"form-control"
-                    );?>
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
-                    <?php
-                    echo form_input($data);
                 ?>
             </div>
             <div style="clear: both; padding: 5px"></div>
@@ -157,24 +151,6 @@
                     <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i> Tehsil</span>
                 <?php
                     echo form_dropdown($data, $options);
-                ?>
-            </div>
-            <div style="clear: both; padding: 5px"></div>
-            <div class="input-group">
-                <?php
-                    $data = array(
-                        'type' => 'text',
-                        'placeholder' => 'Patwari Area',
-                        'class' => 'required form-control',
-                        'required' => 'required',
-                        'name' => 'txtpatwariArea_edit',
-                        'id' => 'txtpatwariArea_edit',
-                        'value' => '',
-                        'class'=>"form-control"
-                    );?>
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
-                    <?php
-                    echo form_input($data);
                 ?>
             </div>
             <div style="clear: both; padding: 5px"></div>

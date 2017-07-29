@@ -25,7 +25,16 @@
 			</div>
 			<div style="clear: both; padding: 5px"></div>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-2">
+			<label>Patwari Area List</label>
+			<hr />
+			<div class="input-group" style="width: 100%">
+				<div class="col-sm-12" style="overflow: auto; height: 450px; width: 100%" id="patwari_area_list_for_villages_here">
+				</div>
+			</div>
+			<div style="clear: both; padding: 5px"></div>
+		</div>
+		<div class="col-sm-2">
 			<label>Village's List <span id="vlist_"></span></label>
             <div id="load_here_edit_actinact_village" style="float: right"></div>
 			<hr />
@@ -34,8 +43,7 @@
 			</div>
 			<div style="clear: both; padding: 3px"></div>
 			<div class="input-group" style="width: 100%">
-				<div class="col-sm-12" style="overflow: auto; height: 450px; width: 100%; padding: 0px" id="village_list_here">
-				</div>
+				<div class="col-sm-12" style="overflow: auto; height: 450px; width: 100%; padding: 0px" id="village_list_here"></div>
 			</div>
 			<div style="clear: both; padding: 5px"></div>
 		</div>
@@ -51,14 +59,13 @@
 					);
 				echo form_open('', $data);
 			?>
-			<input type="hidden" id="patwari_id_for_village" name="patwari_id_for_village" />
 			<div class="input-group">
 				<?php
 					$data = array(
                         'type' => 'hidden',
-                        'required' => 'required',
-                        'name' => 'txtPatwariID',
-                        'id' => 'txtPatwariID',
+                        'placeholder' => 'PAID',
+                        'name' => 'txtPatwariAreaID_for_village',
+                        'id' => 'txtPatwariAreaID_for_village',
                         'value' => '',
                     );?>
                 <?php
@@ -67,6 +74,7 @@
                 <?php
 					$data = array(
                         'type' => 'hidden',
+                        'placeholder' => 'VID',
                         'required' => 'required',
                         'name' => 'txtVillageID',
                         'id' => 'txtVillageID',
@@ -75,25 +83,14 @@
                 <?php
                     echo form_input($data);
                 ?>
-                <?php
-					$data = array(
-                        'type' => 'hidden',
-                        'required' => 'required',
-                        'name' => 'txtDistrict',
-                        'id' => 'txtDistrict',
-                        'value' => 'Nainital',
-                    );?>
-                <?php
-                    echo form_input($data);
-                ?>
                 <label style="min-width: 82px; color: #000090">Patwari </label>
                 <label style="color: #dd0379" id="patwari_name_for_village">| -</label>
                 <br />
                 <label style="min-width: 82px; color: #000090">Patwari Area</label>
-                <label style="color: #dd0379" id="patwari_area_for_village">| -</label>
+                <label style="color: #018D34" id="patwari_area_for_village">| -</label>
                 <br />
                 <label style="min-width: 82px; color: #000090">Village </label>
-                <label style="color: #dd0379" id="village_name_for_village">| -</label>
+                <label style="color: #E24421" id="village_name_for_village">| -</label>
 			</div>
 			<div style="clear: both; padding: 5px"></div>
 			<div class="input-group">

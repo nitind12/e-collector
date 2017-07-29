@@ -2,8 +2,13 @@
     <div class="container">      
         <div class="row">
             <?php if($this->session->userdata('status__') == "ADMIN") { ?>
-            <div class="col-md-8 col-xs-12">
+            <div class="col-md-6 col-xs-12">
                 <h1 class="head">DM OFFICE - NAINITAL</h1>
+            </div>
+            <div class="col-md-2" style="margin-top: 30px; text-align: right">
+                 <a href="<?PHP echo site_url('web/news'); ?>" style="font-size: 20px;color: #fff">
+                    <i class="fa fa-newspaper-o"></i> News
+                </a>
             </div>
             <div class="col-md-1" style="margin-top: 30px; text-align: right">
                 <a href="<?PHP echo site_url('createsdm'); ?>">
@@ -21,13 +26,8 @@
                 </a>
             </div>
             <?php } else if($this->session->userdata('status__') == "SDM"){ ?>
-            <div class="col-md-6 col-xs-12">
+            <div class="col-md-8 col-xs-12">
                 <h1 class="head">SDM OFFICE</h1>
-            </div>
-            <div class="col-md-2" style="margin-top: 30px; text-align: right">
-                 <a href="<?PHP echo site_url('web/news'); ?>" style="font-size: 20px;color: #fff">
-                    <i class="fa fa-newspaper-o"></i> News
-                </a>
             </div>
             <div class="col-md-1" style="margin-top: 30px; text-align: right">
                 <a href="<?PHP echo site_url('Createuser'); ?>">

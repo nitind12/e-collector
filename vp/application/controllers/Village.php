@@ -12,6 +12,7 @@ class Village extends CI_Controller {
     function index(){
         $this->check_login();
     	$data['patwari'] = 'active';
+        $data['patwariarea'] = '';
         $data['village'] = '';
         $data['tehsilEnglish'] = $this->pvm->getTehsilMasterEnglish();
         $this->load->view('templates/header');
@@ -47,12 +48,30 @@ class Village extends CI_Controller {
         $data['message'] = $this->pvm->activeInactivePatwari($pid, $status);
         echo json_encode($data);
     }
+    function activeInactivePatwariArea($paid, $status){
+        $data['message'] = $this->pvm->activeInactivePatwariArea($paid, $status);
+        echo json_encode($data);   
+    }
     function getTehsilEnglish(){
         $data['tehsilEnglish'] = $this->pvm->getTehsilMasterEnglish();
         echo json_encode($data);
     }
-    function getVillages($pid=''){
-        $data['villages_'] = $this->pvm->getVillages($this->session->userdata('user__'), $pid);
+
+    function getPatwariAreas($pid=''){
+        $data['patwariAreas_'] = $this->pvm->getPatwariAreas($this->session->userdata('user__'), $pid);
+        echo json_encode($data);
+    }
+    
+     function getPatwariArea($paid=''){
+        $data['patwariArea_'] = $this->pvm->getPatwariArea($paid);
+        echo json_encode($data);
+    }
+    function UpdatepatwariArea(){
+        $data = $this->pvm->UpdatepatwariArea($this->session->userdata('user__'));
+        echo $data['msg_'];
+    }
+    function getVillages($paid=''){
+        $data['villages_'] = $this->pvm->getVillages($this->session->userdata('user__'), $paid);
         echo json_encode($data);
     }
     function UpdateVillage(){

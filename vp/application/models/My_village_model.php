@@ -40,9 +40,9 @@ class My_village_model extends CI_Model{
 		$tehsil_ = $tehsil_detail[1];
 		$tehsil_id = $tehsil_detail[0];
 		$name_ = $this->input->post('txtpatwariName');
-		$p_area = $this->input->post('txtpatwariArea');
 		$phone_ = $this->input->post('txtpaContact');
 		$user = $this->session->userdata('user__');
+		$dist = $this->input->post('txtDistrict');
 
 		$this->db->where('NAME_', $name_);
 		$this->db->where('PHONE_', $phone_);
@@ -52,10 +52,10 @@ class My_village_model extends CI_Model{
 			$data['message'] = array('res_'=>false, 'msg_'=>"<span style='padding: 3px; border-radius: 5px; background: #ffff00; color: #ff0000; font-weight: bold'>X: This Name and Contact combination is already exists.</span>");
 		} else {
 			$data = array(	
+				'DISTRICT'=> $dist,
 				'TEHSIL'=>$tehsil_,
 				'TEHSILID'=>$tehsil_id,
 				'NAME_'=>$name_,
-				'PATWARI_AREA' => $p_area,
 				'PHONE_'=>$phone_,
 				'STATUS_'=>1,
 				'DATE_'=> date('Y-m-d H:i:s'),
@@ -100,14 +100,37 @@ class My_village_model extends CI_Model{
 		}
 		return $data;
 	}
+
+	function activeInactivePatwariArea($paid, $status_){
+		$this->db->where('PAID', $paid);
+		if($status_ == 0){
+			$st = 1;
+		} else {
+			$st = 0;
+		}
+		$data = array(
+				'STATUS_'=> $st
+			);
+		$query = $this->db->update('a0_patwari_area', $data);
+		if($query == true){
+			if($st == 1){
+				$data = array('res_'=>true, 'msg_'=>'Patwari Area is active now.');
+			} else {
+				$data = array('res_'=>true, 'msg_'=>'Patwari Area is in-active now');
+			}
+		} else {
+			$data = array('res_'=>false, 'msg_'=>'Something goes wrong. Please try again.');
+		}
+		return $data;
+	}
 	function updatePatwari($pid){
 		$tehsil_detail = explode("~",$this->input->post('cmbTehsilForVillage_edit'));
 		$tehsil_ = $tehsil_detail[1];
 		$tehsil_id = $tehsil_detail[0];
 		$name_ = $this->input->post('txtpatwariName_edit');
-		$p_area = $this->input->post('txtpatwariArea_edit');
 		$phone_ = $this->input->post('txtpaContact_edit');
 		$user = $this->session->userdata('user__');
+		$dist = $this->input->post('txtDistrict');
 
 		$this->db->where('PID<>', $pid);
 		$this->db->where('NAME_', $name_);
@@ -121,10 +144,10 @@ class My_village_model extends CI_Model{
 
 			if($path_ != 'no-image.jpg'){
 				$data = array(
+					'DISTRICT'=> $dist,
 					'TEHSIL'=>$tehsil_,
 					'TEHSILID'=>$tehsil_id,
 					'NAME_'=>$name_,
-					'PATWARI_AREA' => $p_area,
 					'PHONE_'=>$phone_,
 					'PHOTO_'=>$path_,
 					'DATE_'=> date('Y-m-d H:i:s'),
@@ -132,10 +155,10 @@ class My_village_model extends CI_Model{
 					);
 			} else {
 				$data = array(
+					'DISTRICT'=> $dist,
 					'TEHSIL'=>$tehsil_,
 					'TEHSILID'=>$tehsil_id,
 					'NAME_'=>$name_,
-					'PATWARI_AREA' => $p_area,
 					'PHONE_'=>$phone_,
 					'DATE_'=> date('Y-m-d H:i:s'),
 					'USERNAME_'=>$user,
@@ -185,19 +208,68 @@ class My_village_model extends CI_Model{
 		$query = $this->db->get('a95_tehsil_master_english');
 		return $query->result();	
 	}
-	function getVillages($user, $pid=''){
+	function getVillages($user, $paid=''){
 		$this->db->order_by('VILLAGEID', 'desc');
+		$this->db->where('USERNAME_', $user);
+		if($paid != ''){
+			$this->db->where('PAID', $paid);
+		}
+		$query = $this->db->get('a0_village');
+		//echo $this->db->last_query();
+		return $query->result();
+	}
+
+	function getPatwariAreas($user, $pid){
+		$this->db->order_by('PAID', 'desc');
 		$this->db->where('USERNAME_', $user);
 		if($pid != ''){
 			$this->db->where('PID', $pid);
 		}
-		$query = $this->db->get('a0_village');
+		$query = $this->db->get('a0_patwari_area');
+		//echo $this->db->last_query();
 		return $query->result();
 	}
+	function getPatwariArea($paid){
+		$this->db->where('PAID', $paid);
+		$query = $this->db->get('a0_patwari_area');
+		return $query->result();
+	}
+	function UpdatepatwariArea($user){
+		$pid =  $this->input->post('txtPatwariID_');
+		$patwariArea = $this->input->post('txtPatwariArea');
+		$patwariAreaID = $this->input->post('txtPatwariAreaID');
 
+		if($patwariAreaID == 'newPatwariArea'){
+			$data = array(
+				'PID' => $pid,
+				'PATWARIAREA' => $patwariArea,
+				'DATE_' => date('Y-m-d H:i:s'),
+				'STATUS_' => 1,
+				'USERNAME_'=>$user
+				);
+			$query = $this->db->insert('a0_patwari_area', $data);
+			if($query == true){
+				$data['msg_'] = "Successfully submitted.";
+			} else {
+				$data['msg_'] = "Please try again.";
+			}
+		} else {
+			$data = array(
+				'PATWARIAREA' => $patwariArea,
+				'USERNAME_'=>$user
+				);
+			$this->db->where('PAID', $patwariAreaID);
+			$query = $this->db->update('a0_patwari_area', $data);
+			if($query == true){
+				$data['msg_'] = "Successfully updated.";
+			} else {
+				$data['msg_'] = "Please try again.";
+			}
+		}
+	}
 	function UpdateVillage($user){
 		$villageID = $this->input->post('txtVillageID');
-		$pid = $this->input->post('txtPatwariID');
+		$paid = $this->input->post('txtPatwariAreaID_for_village');
 		$villageName = $this->input->post('txtVillageName');
 		$KANOONGO_AREA = $this->input->post('txtKanoongoArea');
 		$GRAM_PANCHAYAT =  $this->input->post('txtGramPanchayat');
@@ -207,47 +279,10 @@ class My_village_model extends CI_Model{
 		$ASSEMBLY_CONS =  $this->input->post('txtAssemblyCons');
 		$POLLING_BOOTH =  $this->input->post('txtPollingBoothName');
 		$REGULAR_REVENUE_POLICE =  $this->input->post('txtRegularRevenuePolice');
-		$dist = $this->input->post('txtDistrict');
 
-		if($villageID == 'newVillage'){
-			/*
-			$this->db->where('TEHSIL', $tehsil_);
-			$this->db->where('NAME_', $villageName);
-			$this->db->where('USERNAME_', $user);
-			$query = $this->db->get('a0_village');
-			if($query->num_rows()!=0){
-				$data['msg_'] = "Village already exists!!";
-			} else {
-			*/
-			// Insert new Village
-				$data = array(
-					'PID' => $pid,
-					'NAME_' => $villageName,
-					'DISTRICT'=> $dist,
-					'KANOONGO_AREA'=>$KANOONGO_AREA,
-					'GRAM_PANCHAYAT'=>$GRAM_PANCHAYAT,
-					'NYAY_PANCHAYAT'=>$NYAY_PANCHAYAT,
-					'VAN_PANCHAYAT'=>$VAN_PANCHAYAT,
-					'PARLIAMENTARY_CONS'=>$PARLIAMENTARY_CONS,
-					'ASSEMBLY_CONS'=>$ASSEMBLY_CONS,
-					'POLLING_BOOTH'=>$POLLING_BOOTH,
-					'REGULAR_REVENUE_POLICE'=>$REGULAR_REVENUE_POLICE,
-					'DATE_' => date('Y-m-d H:i:s'),
-					'STATUS_' => 1,
-					'USERNAME_'=>$user
-					);
-				$query = $this->db->insert('a0_village', $data);
-				if($query == true){
-					$data['msg_'] = "Successfully submitted.";
-				} else {
-					$data['msg_'] = "Please try again.";
-				}
-			/*}*/
-			// ------------------
-		} else {
-			// Update Village
+		if($villageName != ''){
+			if($villageID == 'newVillage'){
 				/*
-				$this->db->where('VILLAGEID<>', $villageID);
 				$this->db->where('TEHSIL', $tehsil_);
 				$this->db->where('NAME_', $villageName);
 				$this->db->where('USERNAME_', $user);
@@ -256,9 +291,10 @@ class My_village_model extends CI_Model{
 					$data['msg_'] = "Village already exists!!";
 				} else {
 				*/
+				// Insert new Village
 					$data = array(
+						'PAID' => $paid,
 						'NAME_' => $villageName,
-						'DISTRICT'=> $dist,
 						'KANOONGO_AREA'=>$KANOONGO_AREA,
 						'GRAM_PANCHAYAT'=>$GRAM_PANCHAYAT,
 						'NYAY_PANCHAYAT'=>$NYAY_PANCHAYAT,
@@ -267,17 +303,55 @@ class My_village_model extends CI_Model{
 						'ASSEMBLY_CONS'=>$ASSEMBLY_CONS,
 						'POLLING_BOOTH'=>$POLLING_BOOTH,
 						'REGULAR_REVENUE_POLICE'=>$REGULAR_REVENUE_POLICE,
+						'DATE_' => date('Y-m-d H:i:s'),
+						'STATUS_' => 1,
 						'USERNAME_'=>$user
 						);
-					$this->db->where('VILLAGEID', $villageID);
-					$query = $this->db->update('a0_village', $data);
+					$query = $this->db->insert('a0_village', $data);
 					if($query == true){
-						$data['msg_'] = "Successfully updated.";
+						$data['msg_'] = "Successfully submitted.";
 					} else {
 						$data['msg_'] = "Please try again.";
 					}
-				/* } */
-			// --------------
+				/*}*/
+				// ------------------
+			} else {
+				// Update Village
+					/*
+					$this->db->where('VILLAGEID<>', $villageID);
+					$this->db->where('TEHSIL', $tehsil_);
+					$this->db->where('NAME_', $villageName);
+					$this->db->where('USERNAME_', $user);
+					$query = $this->db->get('a0_village');
+					if($query->num_rows()!=0){
+						$data['msg_'] = "Village already exists!!";
+					} else {
+					*/
+						$data = array(
+							'PAID' => $paid,
+							'NAME_' => $villageName,
+							'KANOONGO_AREA'=>$KANOONGO_AREA,
+							'GRAM_PANCHAYAT'=>$GRAM_PANCHAYAT,
+							'NYAY_PANCHAYAT'=>$NYAY_PANCHAYAT,
+							'VAN_PANCHAYAT'=>$VAN_PANCHAYAT,
+							'PARLIAMENTARY_CONS'=>$PARLIAMENTARY_CONS,
+							'ASSEMBLY_CONS'=>$ASSEMBLY_CONS,
+							'POLLING_BOOTH'=>$POLLING_BOOTH,
+							'REGULAR_REVENUE_POLICE'=>$REGULAR_REVENUE_POLICE,
+							'USERNAME_'=>$user
+							);
+						$this->db->where('VILLAGEID', $villageID);
+						$query = $this->db->update('a0_village', $data);
+						if($query == true){
+							$data['msg_'] = "Successfully updated.";
+						} else {
+							$data['msg_'] = "Please try again.";
+						}
+					/* } */
+				// --------------
+			}
+		} else {
+			$data['msg_'] = "Village Name Please.";
 		}
 		return $data;
 	}
