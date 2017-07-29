@@ -81,7 +81,7 @@ class My_model extends CI_Model {
         /* $this->db->where('VILLAGEID', $villID);
           $this->db->from('a0_village'); */
 
-        $this->db->select('a.*, b.PATWARIAREA, c.NAME_ as pNAME, c.TEHSIL,c.PHONE_,c.PHOTO_');
+        $this->db->select('a.*, b.PATWARIAREA, c.NAME_ as pNAME, c.TEHSIL,c.PHONE_,c.PHOTO_,c.DISTRICT');
         $this->db->select('a.*');
         $this->db->from('a0_village a');
         $this->db->join('a0_patwari_area b', 'a.PAID = b.PAID', 'left');
@@ -111,8 +111,14 @@ class My_model extends CI_Model {
     }
 
     function getVillageOneRowData_textBox($villID) {
-        $this->db->where('VILLAGEID', $villID);
-        $this->db->from('a0_village');
+        $this->db->select('a.*, b.PATWARIAREA, c.NAME_ as pNAME, c.TEHSIL,c.PHONE_,c.PHOTO_,c.DISTRICT');
+        $this->db->select('a.*');
+        $this->db->from('a0_village a');
+        $this->db->join('a0_patwari_area b', 'a.PAID = b.PAID', 'left');
+        $this->db->join('a0_patwari c', 'b.PID = c.PID', 'left');
+        $this->db->where('a.VILLAGEID', $villID);
+
+        $this->db->order_by('a.NAME_', 'desc');
 
         $query = $this->db->get();
         return $query->result();
