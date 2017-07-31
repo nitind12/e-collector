@@ -21,17 +21,15 @@
                         'id' => 'cmbTehsil',
                         'required' => 'required',
                          'style' => 'text-transform:uppercase; width: 100%;margin-bottom:20px;',
-                        'onchange' => 'fillVillagesMap(this);'
+                        'onchange' => 'fillVillages(this);'
                     );
                     $options = array();
                     $options[''] = 'SELECT TEHSIL';
                     foreach ($Tehsil_name as $tehsilName) {
-                        if ($tehsilName->TEHSIL_NAME != 'x') {
-                            $options[$tehsilName->TEHSIL_NAME] = $tehsilName->TEHSIL_NAME;
-                        }
+                        $options[$tehsilName->TEHSILID] = $tehsilName->TEHSIL;
                     }
                     echo form_dropdown($data, $options);
-                    ?>
+                    ?>     
                     <p style="height:10px;">&nbsp;</p>
                     <?php
                     $data = array(

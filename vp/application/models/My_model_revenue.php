@@ -8,18 +8,12 @@ class My_model_revenue extends CI_Model {
         parent::__construct();
     }
 
-    function getVillages($user__ = 'x') {
-        $this->db->order_by('USERNAME', 'asc');
-        $this->db->select('a.*, b.ONEROWID');
-        
-        $this->db->where('a.STATUS', 1);
-        $this->db->from('a1_village a');
-        $this->db->join('a8_village_one_row_data b', 'a.VILLAGEID = b.VILLAGEID');
-        $this->db->join('login c', 'a.USERNAME=c.USERNAME');
-        $this->db->where('c.UP_LINE', $user__);
+    function getVillages($user__ = 'x') {                        
+        $this->db->where('USERNAME_', $user__);
+        $this->db->order_by('NAME_', 'asc');
+        $query = $this->db->get('a0_village');
 
-        $query = $this->db->get();
-        //echo $this->db->last_query();
+       // echo $this->db->last_query();
         return $query->result();
     }
 
@@ -33,7 +27,7 @@ class My_model_revenue extends CI_Model {
         $query = $this->db->get();
 
         if ($query->num_rows() != 0) {
-            $this->session->set_flashdata('feed_msg_', "This Sheet Number Already uploded for village. Please try again with different sheet number!!!");                    
+            $this->session->set_flashdata('feed_msg_', "This Sheet Number Already uploded for village. Please try again with different sheet number!!!");
         } else {
             $config = array(
                 'upload_path' => './assets_/revenueMap',
@@ -49,7 +43,7 @@ class My_model_revenue extends CI_Model {
                 $path_ji = $this->upload->data();
                 $path_ = $path_ji['file_name'];
             } else {
-                $this->session->set_flashdata('feed_msg_', "Revenue Map should be less than or equal to 2100KB and must be in(<b>pdf</b>) format only.");    
+                $this->session->set_flashdata('feed_msg_', "Revenue Map should be less than or equal to 2100KB and must be in(<b>pdf</b>) format only.");
                 $path_ = 'x';
             }
 
@@ -62,14 +56,14 @@ class My_model_revenue extends CI_Model {
                     'USERNAME' => $this->session->userdata('user__'),
                     'STATUS' => 1
                 );
-                $query1=$this->db->insert('b1_revenue_map', $data);
-                if($query1){
-                    $this->session->set_flashdata('feed_msg_', "Map uploded Successfully");                    
-                }else{
-                    $this->session->set_flashdata('feed_msg_', "'Something goes wrong in server. Please try again !!!");         
+                $query1 = $this->db->insert('b1_revenue_map', $data);
+                if ($query1) {
+                    $this->session->set_flashdata('feed_msg_', "Map uploded Successfully");
+                } else {
+                    $this->session->set_flashdata('feed_msg_', "'Something goes wrong in server. Please try again !!!");
                 }
             }
-        }        
+        }
     }
 
     function fillMap_($id_) {

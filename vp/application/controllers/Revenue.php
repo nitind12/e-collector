@@ -10,7 +10,7 @@ class Revenue extends CI_Controller {
     }
 
     function index(){ 
-        $data['villages'] = $this->mmrevenue->getVillages($this->session->userdata('user__'));        
+        $data['villages'] = $this->mmrevenue->getVillages($this->session->userdata('user__'));
         $data['user'] = $this->session->userdata('user__');
         $this->load->view('templates/header');
         $this->load->view('revenue/home', $data);
