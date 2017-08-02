@@ -75,7 +75,7 @@
     <div class="container">      
         <div class="row">
             <div class="col-md-12 col-xs-12">
-                <h1 class="head" style="text-align: center">SDM COURT - Reports for DM</h1>
+                <h1 class="head" style="text-align: center">COURT - Reports for DM</h1>
             </div>
         </div>
     </div>

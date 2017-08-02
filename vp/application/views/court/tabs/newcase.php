@@ -404,6 +404,7 @@
                     $data = array(
                         'type' => 'text',
                         'placeholder' => 'Activate or Deactivate',
+                        'required' => 'required',
                         'class' => 'required form-control',
                         'name' => 'txtDismissInDefault',
                         'id' => 'txtDismissInDefault',

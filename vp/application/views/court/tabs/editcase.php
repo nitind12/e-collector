@@ -439,6 +439,7 @@
                     $data = array(
                         'type' => 'text',
                         'class' => 'required form-control',
+                        'required' => 'required',
                         'name' => 'txtDismissInDefault',
                         'id' => 'txtDismissInDefault',
                         'value' => $filedispatched

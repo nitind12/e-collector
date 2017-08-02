@@ -379,6 +379,7 @@
                         'type' => 'text',
                         'placeholder' => 'Activate or Deactivate',
                         'class' => 'required form-control',
+                        'required' => 'required',
                         'name' => 'txtDismissInDefault',
                         'id' => 'txtDismissInDefault',
                         'value' => $filedispatched

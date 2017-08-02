@@ -39,7 +39,13 @@
     <div class="container">      
         <div class="row">
             <div class="col-md-12 col-xs-12">
-                <h1 class="head" style="text-align: center">SDM COURT - Today's Cases</h1>
+                <h1 class="head" style="text-align: center">
+                    <?php if($this->session->userdata('status__') == "ADMIN"){?>
+                        DM COURT - Today's Cases
+                    <?php } else if($this->session->userdata('status__') == "SDM") {?>
+                        SDM COURT - Today's Cases
+                    <?php } ?>
+                </h1>
             </div>
         </div>
     </div>
