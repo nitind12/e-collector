@@ -9,9 +9,6 @@ class My_pdf_uploads_model extends CI_Model{
 	function getPdfName($condition = 'x'){
 		if($condition != 'x'){
 			$this->db->where('NAME_', $condition);
-		} else {
-			$this->db->where('NAME_<>',"Circle Rates");
-			$this->db->where('NAME_<>',"Adhaar Centres");
 		}
 		$query = $this->db->get('b2_pdf');
 		return $query->result();
@@ -98,26 +95,6 @@ class My_pdf_uploads_model extends CI_Model{
 				} else {
 					$msg = "Something goes wrong. Contact to Administrator!!";
 				}
-			}
-		} else {
-			$id_ = $this->input->post('txtID');
-			$path_ = $this->upload_pdf_file($id_);
-			if($path_ != 'x'){
-				$data = array(
-					'NAME_' => $name_,
-					'PATH_' => $path_,
-					'USERNAME_' => $this->session->userdata('user__'),
-					'DATE_' => date('Y-m-d H:i:s')
-					);
-				$this->db->where('PDFID', $id_);
-				$query = $this->db->update('b2_pdf', $data);
-				if($query == true){
-					$msg = "Sussfully updated";
-				} else {
-					$msg = "Something goes wrong. Please try again!!";
-				}
-			} else {
-				$msg = "Something goes wrong with file uploading. Please try again!!";
 			}
 		}
 

@@ -664,10 +664,10 @@ class My_court_model extends CI_Model{
 		$policearea = $this->input->post('txtPoliceArea');
 		if($court_ != 'x'){
 			if($actname == 'x' AND $section == 'x' AND $village == 'x' AND $patwariarea == 'x' AND $policearea == 'x'){
-				$this->db->select('a.COURT_NAME, a.REG_DATE, a.YEAR_, a.MONTH, a.TYPE_, a.VILLAGE, a.DISMISS_IN_DEFAULT, b.*');
+				$this->db->select('a.COURT_NAME, a.REG_DATE, a.YEAR_, a.MONTH, a.TYPE_, a.VILLAGE, a.DISMISS_IN_DEFAULT, a.FINAL_ORDER_DATE, b.*');
 				$this->db->from('a96_sdm_court a');
 				$this->db->join('a97_sdm_court_detail b', 'a.STATUS_ = b.SNO');
-				$this->db->where('a.SNO', 'xx');
+				$this->db->where('a.COURT_NAME', $court_);
 				$this->db->order_by('a.REG_DATE');
 				$this->db->order_by('a.SNO', 'asc');
 				$query = $this->db->get();
