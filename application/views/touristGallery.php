@@ -103,7 +103,7 @@
                                                                 // truncate string
                                                                 $stringCut = substr($string, 0, 100);
                                                                 // make sure it ends in a word so assassinate doesn't become ass...                                            
-                                                                echo $stringCut . "... <span onClick='readMore()' style='color: blue'><br>Select the Particular Place to Read More</span>";
+                                                                echo $stringCut . "... <span onClick='readMore()' style='color: blue'><br>Select the particular tourist place to read more about it</span>";
                                                             } else{
                                                                 echo $string; 
                                                             }                                                           

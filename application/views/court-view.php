@@ -18,7 +18,7 @@
                         'name' => 'cmbCourtName',
                         'id' => 'cmbCourtName',
                         'required' => 'required',
-                        'class' => 'hindiFont required form-control col-sm-12 hidden-xs',
+                        'class' => 'hindiFont required form-control col-sm-12',
                         'style' => 'width:100%; height:37px;'
                     );
                     $options = array();
@@ -30,26 +30,7 @@
                     }
                     echo form_dropdown($data, $options);
                     ?>
-
-                    <?php
-                    $data = array(
-                        'type' => 'text',
-                        'size' => '5',
-                        'name' => 'cmbCourtName',
-                        'id' => 'cmbCourtName',
-                        'required' => 'required',
-                        'class' => 'hindiFont required form-control col-sm-12 hidden-lg',
-                        'style' => 'width:100%; height:100%;'
-                    );
-                    $options = array();
-                    $options['0'] = 'dksVZ pqusa';
-                    foreach ($courtName as $court) {
-                        if ($court->COURT_NAME != 'x' && $court->COURT_NAME != '') {
-                            $options[$court->COURT_NAME] = $court->COURT_NAME;
-                        }
-                    }
-                    echo form_dropdown($data, $options);
-                    ?>
+                    
 
                     <p style="height:30px;">&nbsp;</p>
                     <?php

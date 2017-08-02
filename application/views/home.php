@@ -133,7 +133,8 @@
                     </div>
 
                     <h3><a href="<?PHP echo site_url('web/aboutNainital'); ?>">Nainital - an Introduction</a></h3>
-                    <p align="justify">Ensconced snugly at an altitude of 1938 metres above sea level, Nainital has made a tryst with fame in being the country’s most popular hill station. Situated at (lat,long) the geological fault line between Naini-Sher Danda ridge and Ayarpatta block give Nainital its famous Naini lake.<br>The ancient name of Nainital is Tri- Rishi Sarovar, after the three sages, Atri, Agastya and Pulaha. It is believed that they came here on a penitential pilgrimage while going to Mansarovar, the holy lake in Tibet. On finding no water for drinking, they dug a large hole and siphoned water from Mansarovar with their divine powers. Thus the ancient Indians believed that a dip in the Naini Lake earned the same religious merit as a holy dip in the Mansarovar Lake. The second important religious reference to Nainital is as one of the 64 Shakti Peeths, i.e. centres of spiritual powers. <a href="<?PHP echo site_url('web/aboutNainital'); ?>">Read more ...</a></p>
+                    <p align="justify">Ensconced snugly at an altitude of 1938 metres above sea level, Nainital has made a tryst with fame in being the country’s most popular hill station. Situated at (29.3803° N, 79.4636° E) the geological fault line between Naini-Sher Ka Danda ridge and Ayarpatta block give Nainital its famous Naini lake.</p>
+                    <p align="justify">The ancient name of Nainital is Tri- Rishi Sarovar, after the three sages, Atri, Agastya and Pulaha. It is believed that they came here on a penitential pilgrimage while going to Mansarovar, the holy lake in Tibet. On finding no water for drinking, they dug a large hole and siphoned water from Mansarovar with their divine powers. Thus the ancient Indians believed that a dip in the Naini Lake earned the same religious merit as a holy dip in the Mansarovar Lake. The second important religious <a href="<?PHP echo site_url('web/aboutNainital'); ?>">Read more ...</a></p>
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>
@@ -266,7 +267,7 @@
                                                     foreach ($desposedCase as $dofc) {
                                                         if ($dofc->COURT_NAME == $courtname->COURT) {
                                                             ?>
-                                                            <button class="btn btn-default" style="width:100%; text-align: left;margin-bottom: 5px;">Disposed-Off Cases <span class="badge" style="float:right;"><?php echo $dofc->totalcase; ?></span></button>
+                                                            <button class="btn btn-default" style="width:100%; text-align: left;margin-bottom: 5px;">Dismissed in Default <span class="badge" style="float:right;"><?php echo $dofc->totalcase; ?></span></button>
 
                                                         <?php }
                                                     }

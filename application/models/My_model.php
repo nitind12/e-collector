@@ -324,35 +324,33 @@ class My_model extends CI_Model {
     }
 
     function get_finalCases() {
-        $this->db->select('COURT_NAME, COUNT(CASENO) as totalcase');
-        $this->db->group_by('COURT_NAME');
-        $this->db->where('DISMISS_IN_DEFAULT', 'Deactivate DD');
-        $this->db->where('FINAL_ORDER_DATE<>', "");
-        $query = $this->db->get('a96_sdm_court');
+        $this->db->select('a.COURT_NAME, COUNT(a.CASENO) as totalcase');
+        $this->db->group_by('a.COURT_NAME');
+        $this->db->where('a.DISMISS_IN_DEFAULT', 'Deactivate DD');
+        $this->db->where('a.FINAL_ORDER_DATE<>', "");
+        $this->db->from('a96_sdm_court a');
+        $this->db->join('a97_sdm_court_detail b', 'a.SNO = b.REF_SNO');
+        $query = $this->db->get();
         return $query->result();
     }
 
     function get_pendingCases() {
-        $this->db->select('COURT_NAME, COUNT(CASENO) as totalcase');
-        $this->db->group_by('COURT_NAME');
-        $this->db->where('DISMISS_IN_DEFAULT', 'Deactivate DD');
-        $this->db->where('FINAL_ORDER_DATE', "");
-        $query = $this->db->get('a96_sdm_court');
+        $this->db->select('a.COURT_NAME, COUNT(a.CASENO) as totalcase');
+        $this->db->group_by('a.COURT_NAME');
+        $this->db->where('a.FINAL_ORDER_DATE', "");
+        $this->db->where('a.DISMISS_IN_DEFAULT', "Deactivate DD");
+        $this->db->from('a96_sdm_court a');
+        $this->db->join('a97_sdm_court_detail b', 'a.SNO = b.REF_SNO');
+        $query = $this->db->get();
+        //echo $this->db->last_query();
         return $query->result();
     }
 
-    function get_disposedoffcases($startdate = 'x', $enddate = 'x') {
+    function get_disposedoffcases() {
         $this->db->select('a.COURT_NAME, COUNT(a.CASENO) as totalcase');
         $this->db->from('a96_sdm_court a');
         $this->db->join('a97_sdm_court_detail b', 'a.STATUS_ = b.SNO');
         $this->db->where('a.DISMISS_IN_DEFAULT', "Activate DD");
-        if ($startdate != 'x') {
-            $this->db->where('a.REG_DATE >=', $startdate);
-        }
-        if ($enddate != 'x') {
-            $this->db->where('a.REG_DATE <=', $enddate);
-        }
-
         $query = $this->db->get();
         //echo $this->db->last_query();
         return $query->result();
@@ -361,7 +359,7 @@ class My_model extends CI_Model {
     function get_todayscases() {
         $this->db->select('a.COURT_NAME, COUNT(a.CASENO) as totalcase');
         $this->db->from('a96_sdm_court a');
-        $this->db->join('a97_sdm_court_detail b', 'a.STATUS_ = b.SNO');
+        $this->db->join('a97_sdm_court_detail b', 'a.SNO = b.REF_SNO');
         $this->db->where('b.NEXT_DATE', date('Y-m-d'));
         $this->db->where('a.FINAL_ORDER_DATE', "");
         $this->db->where('a.DISMISS_IN_DEFAULT', "Deactivate DD");
@@ -371,10 +369,12 @@ class My_model extends CI_Model {
     }
 
     function get_totalcases() {
-        $this->db->select('COURT_NAME, COUNT(CASENO) as totalcase');
-        $this->db->group_by('COURT_NAME');
-        $query = $this->db->get('a96_sdm_court');
-
+        $this->db->select('a.COURT_NAME, COUNT(a.SNO) as totalcase');
+        $this->db->group_by('a.COURT_NAME');
+        $this->db->from('a96_sdm_court a');
+        $this->db->join('a97_sdm_court_detail b', 'a.STATUS_=b.SNO');
+        $query = $this->db->get();
+        //echo $this->db->last_query();
         return $query->result();
     }
 
