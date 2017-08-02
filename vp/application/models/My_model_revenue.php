@@ -8,12 +8,12 @@ class My_model_revenue extends CI_Model {
         parent::__construct();
     }
 
-    function getVillages($user__ = 'x') {                        
+    function getVillages($user__ = 'x') {
         $this->db->where('USERNAME_', $user__);
         $this->db->order_by('NAME_', 'asc');
         $query = $this->db->get('a0_village');
 
-       // echo $this->db->last_query();
+        // echo $this->db->last_query();
         return $query->result();
     }
 
@@ -64,6 +64,7 @@ class My_model_revenue extends CI_Model {
                 }
             }
         }
+        return 'ok';
     }
 
     function fillMap_($id_) {

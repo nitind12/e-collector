@@ -23,7 +23,7 @@
             </div>
         </div>        
         <div class="row">
-            <?php echo form_open_multipart('Revenue/do_upload', array('name' => 'frmRevenue', 'id' => 'frmRevenue', 'role' => 'form', 'class' => 'form-inline', 'enctype' => 'multipart/form-data')); ?>
+            <?php echo form_open_multipart('', array('name' => 'frmRevenue', 'id' => 'frmRevenue', 'role' => 'form', 'class' => 'form-inline', 'enctype' => 'multipart/form-data')); ?>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group col-md-3 col-lg-3 col-xs-12">
                     <label>Select Village</label>                                            
@@ -78,7 +78,7 @@
                     ?>
                 </div>                   
 
-                <button type="submit" class="btn btn-primary col-sm-3" style="float:right;margin-top:33px;"><span class="glyphicon glyphicon-upload"></span> &nbsp;UPLOAD </button>
+                <input type="submit" onclick="upload_pdf();" class="btn btn-primary col-sm-3" style="float:right;margin-top:33px;" value="UPLOAD">
 
                 <?php echo form_close(); ?>
             </div>

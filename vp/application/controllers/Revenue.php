@@ -18,8 +18,8 @@ class Revenue extends CI_Controller {
     }    
     
     function do_upload(){
-        $this->mmrevenue->do_upload();
-        redirect('Revenue');
+        $data_to_ajax=$this->mmrevenue->do_upload();
+         echo $data_to_ajax;
     }
     
     
