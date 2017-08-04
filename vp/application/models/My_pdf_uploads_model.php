@@ -107,7 +107,7 @@ class My_pdf_uploads_model extends CI_Model{
             'upload_path' => './assets_/pdf_others',
             'allowed_types' => 'pdf',
             'overwrite' => TRUE,
-            'max_size' => 5200,
+            'max_size' => 10000,
             'file_name' => $id,
             'overwrite' => true
         );

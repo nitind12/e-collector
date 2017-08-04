@@ -294,7 +294,7 @@ class My_model extends CI_Model {
 
     function get_all_downloads() {
         $this->db->where('STATUS_', 1);
-        $this->db->order_by('PDFID', 'ASC');
+        $this->db->order_by('NAME_', 'ASC');
         $query = $this->db->get('b2_pdf');
         return $query->result();
     }

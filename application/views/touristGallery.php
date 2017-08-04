@@ -27,6 +27,7 @@
                     }
                     echo form_dropdown($data, $options);
                     ?>
+                    <p style="color:#0099cc" align="center">Select the particular tourist place to read more about it</p>
                     <?php echo form_close(); ?>                    
                     <div class="clearfix"></div>
                 </div>

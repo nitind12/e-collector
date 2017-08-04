@@ -172,62 +172,62 @@
                                                                         $i++
                                                                         ?>
                                                                         <tr>
-                                                                            <td>Sub Division</td>
-                                                                            <td class='hindiFont'><?php echo $caseitem->SUB_DIVISION; ?></td>
+                                                                            <td style="font-weight:bold; color: #4586d6">Sub Division</td>
+                                                                            <td class='hindiFont' style="color: #4586d6"><?php echo $caseitem->SUB_DIVISION; ?></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td>Tehsil</td>
-                                                                            <td class='hindiFont'><?php echo $caseitem->TEHSIL; ?></td>
+                                                                            <td style="font-weight:bold; color: #4586d6">Tehsil</td>
+                                                                            <td class='hindiFont' style="color: #4586d6"><?php echo $caseitem->TEHSIL; ?></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td>Patwari Area</td>
-                                                                            <td class='hindiFont'><?php echo $caseitem->PATWARI_AREA; ?></td>
+                                                                            <td style="font-weight:bold; color: #4586d6">Patwari Area</td>
+                                                                            <td class='hindiFont' style="color: #4586d6"><?php echo $caseitem->PATWARI_AREA; ?></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td>Police Area</td>
-                                                                            <td class='hindiFont'><?php echo $caseitem->POLICE_AREA; ?></td>
+                                                                            <td style="font-weight:bold; color: #4586d6">Police Area</td>
+                                                                            <td class='hindiFont' style="color: #4586d6"><?php echo $caseitem->POLICE_AREA; ?></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td>Act Name</td>
-                                                                            <td class='hindiFont'><?php echo $caseitem->ACT_NAME; ?></td>
+                                                                            <td style="font-weight:bold; color: #4586d6">Act Name</td>
+                                                                            <td class='hindiFont' style="color: #4586d6"><?php echo $caseitem->ACT_NAME; ?></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td>Section</td>
-                                                                            <td class='hindiFont'><?php echo $caseitem->SECTION; ?></td>
+                                                                            <td style="font-weight:bold; color: #4586d6">Section</td>
+                                                                            <td class='hindiFont' style="color: #4586d6"><?php echo $caseitem->SECTION; ?></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td>First Party</td>
-                                                                            <td class='hindiFont'><?php echo $caseitem->FIRST_PARTY; ?></td>
+                                                                            <td style="font-weight:bold; color: #4586d6">First Party</td>
+                                                                            <td class='hindiFont' style="color: #4586d6"><?php echo $caseitem->FIRST_PARTY; ?></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td>Second Party</td>
-                                                                            <td class='hindiFont'><?php echo $caseitem->SECOND_PARTY; ?></td>
+                                                                            <td style="font-weight:bold; color: #4586d6">Second Party</td>
+                                                                            <td class='hindiFont' style="color: #4586d6"><?php echo $caseitem->SECOND_PARTY; ?></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td>Next Date</td>
-                                                                            <td><?php echo date("d-m-Y", strtotime($caseitem->NEXT_DATE)) ?></td>
+                                                                            <td style="font-weight:bold; color: #4586d6">Next Date</td>
+                                                                            <td style="color: #4586d6"><?php echo date("d-m-Y", strtotime($caseitem->NEXT_DATE)) ?></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td>Scheduled for</td>
-                                                                            <td class='hindiFont'><?php echo $caseitem->SCHEDULED_FOR; ?></td>  
+                                                                            <td style="font-weight:bold; color: #4586d6">Scheduled for</td>
+                                                                            <td class='hindiFont' style="color: #4586d6"><?php echo $caseitem->SCHEDULED_FOR; ?></td>  
                                                                         </tr>
                                                                         <tr>    
-                                                                            <td>Final Order Date</td>
+                                                                            <td style="font-weight:bold; color: #4586d6">Final Order Date</td>
                                                                             <?php
                                                                             $x = date_parse($caseitem->FINAL_ORDER_DATE);
                                                                             ?>
-                                                                            <td><?php
+                                                                            <td style="color: #4586d6"><?php
                                                                                 if ($x['year'] == 0) {
                                                                                     echo "Pending";
                                                                                 }
                                                                                 ?></td>
                                                                         </tr>
                                                                         <tr>    
-                                                                            <td>File Dispatched</td>
+                                                                            <td style="font-weight:bold; color: #4586d6">File Dispatched</td>
                                                                             <?php
                                                                             $x = date_parse($caseitem->FILE_DISPATCHED_TO_RECORD_ROOM);
                                                                             ?>
-                                                                            <td>
+                                                                            <td style="color: #4586d6">
                                                                                 <?php
                                                                                 if ($x['year'] == 0) {
                                                                                     echo "Pending";

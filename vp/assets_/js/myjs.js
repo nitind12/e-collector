@@ -1377,7 +1377,7 @@ $(function(){
 
 	$('#txtpdffile').change(function () {
         var file = this.files[0];
-        if (((file.size / 1024) > 5020) || (file.type != 'application/pdf')) {
+        if (((file.size / 1024) > 10000) || (file.type != 'application/pdf')) {
             $('#__reg_err_msg').css('background', '#fdfca1');
             $('#__reg_err_msg').css('color', '#cf4343');
             $('#__reg_err_msg').html(' File should be less than or equal to 5MB and must be (<b>pdf</b>) image file.');
