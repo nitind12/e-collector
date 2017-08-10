@@ -62,6 +62,7 @@ class Sdmcourt extends CI_Controller {
 
             $this->pagination->initialize($config);
             $pageseg = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
+
             $data['forLoop']=$pageseg;
             $data['mastercases'] = $this->mcm->getMasterCases_pagination($config["per_page"], $pageseg);
             $data["links"] = $this->pagination->create_links(); 

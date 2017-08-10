@@ -1082,7 +1082,7 @@ $(function(){
 						} else {
 							$('#msg_').css({'padding':'20px'});
 							$('#msg_').html(data);	
-						}
+						} 
 					}
 					$('#frm_cpwd')[0].reset();
 				},
