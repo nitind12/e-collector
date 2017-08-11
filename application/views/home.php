@@ -258,7 +258,7 @@
                                                     foreach ($finalCase as $fc) {
                                                         if ($fc->COURT_NAME == $courtname->COURT) {
                                                             ?>
-                                                            <button class="btn btn-success" style="width:100%; text-align: left; margin-bottom: 5px;">Final Cases <span class="badge" style="float:right;"><?php echo $fc->totalcase; ?></span></button>
+                                                            <button class="btn btn-default" style="width:100%; text-align: left; margin-bottom: 5px;font-weight:bold">Final Cases <span class="badge" style="float:right;"><?php echo $fc->totalcase; ?></span></button>
                                                         <?php }
                                                     }
                                                     ?>
@@ -267,7 +267,7 @@
                                                     foreach ($desposedCase as $dofc) {
                                                         if ($dofc->COURT_NAME == $courtname->COURT) {
                                                             ?>
-                                                            <button class="btn btn-default" style="width:100%; text-align: left;margin-bottom: 5px;">Dismissed in Default <span class="badge" style="float:right;"><?php echo $dofc->totalcase; ?></span></button>
+                                                            <button class="btn btn-default" style="width:100%; text-align: left;margin-bottom: 5px;font-weight:bold">Dismissed in Default <span class="badge" style="float:right;"><?php echo $dofc->totalcase; ?></span></button>
 
                                                         <?php }
                                                     }
@@ -278,7 +278,7 @@
                                                     foreach ($pendingCase as $pc) {
                                                         if ($pc->COURT_NAME == $courtname->COURT) {
                                                             ?>
-                                                            <button class="btn btn-danger" style="width:100%; text-align: left;margin-bottom: 5px;">Pending Cases <span class="badge" style="float:right;"><?php echo $pc->totalcase; ?></span></button>
+                                                            <button class="btn btn-default" style="width:100%; text-align: left;margin-bottom: 5px;font-weight:bold">Pending Cases <span class="badge" style="float:right;"><?php echo $pc->totalcase; ?></span></button>
 
             <?php }
         }
@@ -289,7 +289,7 @@
                                                     foreach ($todaysCase as $toc) {
                                                         if ($toc->COURT_NAME == $courtname->COURT) {
                                                             ?>
-                                                            <button class="btn btn-success" style="width:100%; text-align: left;margin-bottom: 5px;">Todays Cases<span class="badge" style="float:right;"><?php echo $toc->totalcase; ?></span></button>
+                                                            <button class="btn btn-defaultdefault" style="width:100%; text-align: left;margin-bottom: 5px;font-weight:bold">Todays Cases<span class="badge" style="float:right;"><?php echo $toc->totalcase; ?></span></button>
                                                         <?php }
                                                     }
                                                     ?>
@@ -298,7 +298,7 @@
         foreach ($totalCase as $tc) {
             if ($tc->COURT_NAME == $courtname->COURT) {
                 ?>
-                                                            <button class="btn btn-success" style="width:100%; text-align: left">Total Cases<span class="badge" style="float:right;"><?php echo $tc->totalcase; ?></span></button>
+                                                            <button class="btn btn-default" style="width:100%; text-align: left;font-weight:bold">Total Cases<span class="badge" style="float:right;"><?php echo $tc->totalcase; ?></span></button>
 
             <?php }
         }
