@@ -382,9 +382,8 @@ class My_model extends CI_Model {
         $this->db->distinct('a.COURT');
         $this->db->select('a.COURT');
         $this->db->from('a95_court_master a');
-        $this->db->join('a96_sdm_court b', 'b.COURT_NAME=a.COURT');
-
-        $query = $this->db->get();
+        $this->db->join('a96_sdm_court b', 'b.COURT_NAME=a.COURT');      
+        $query = $this->db->get();        
         return $query->result();
     }
 

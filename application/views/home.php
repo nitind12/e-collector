@@ -246,8 +246,8 @@
                                                 echo 'item';
                                             }
                                             ?>">
-                                                <div class='col-sm-12' style="background: #4586d6; padding: 5px; color:#fff; font-weight:bold;text-align:center">
-                                                    <div class='col-md-12 hindiFont'>
+                                                <div class='col-sm-12' style="background: #f2f2f2; padding: 5px; color:#000; font-weight:bold;text-align:center">
+                                                    <div class='col-md-12 hindiFont' style="font-size:25px;">
                                                         <?php
                                                         echo $courtname->COURT;
                                                         ?>
@@ -325,7 +325,7 @@
                             } else {
                                 ?>
                                 <div class='col-md-12' style="background: #F94C4C; border:1px #F94C4C solid; border-radius: 8px; color:#fff; padding:5px;">
-                                    <i class="fa fa-info-circle fa-2x" aria-hidden="true"></i> NO DATA FOUND PLEASE SEARCH AGAIN WITH DIFFERENT CRITERIA
+                                    <i class="fa fa-info-circle fa-2x" aria-hidden="true"></i> NO DATA FOUND
                                 </div>
 <?php } ?>
                         </div>
@@ -347,7 +347,7 @@
             direction: 'up',
             easing: 'easeInOutBack',
             speed: 'slow',
-            interval: 5000,
+            interval: 8000,
             height: 'auto',
             visible: 2,
             mousePause: 0,
