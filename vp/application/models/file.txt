@@ -1,0 +1,21 @@
+ Volume in drive E is STORE
+ Volume Serial Number is AA40-10BD
+
+ Directory of E:\xampp\htdocs\e-collector\vp\application\models
+
+08/17/2017  04:30 PM    <DIR>          .
+08/17/2017  04:30 PM    <DIR>          ..
+08/17/2017  04:30 PM                 0 file.txt
+07/30/2017  03:22 AM               142 index.html
+08/02/2017  08:49 PM            26,701 My_court_model.php
+07/30/2017  03:22 AM            59,734 My_model.php
+07/30/2017  03:22 AM             3,752 My_model_create_sdm.php
+07/30/2017  03:22 AM             3,737 My_model_create_user.php
+07/30/2017  03:22 AM             5,627 My_model_gallery.php
+07/30/2017  03:22 AM             6,423 My_model_newsevents.php
+08/02/2017  08:49 PM             4,181 My_model_revenue.php
+08/09/2017  04:35 PM             3,583 My_pdf_uploads_model.php
+07/30/2017  03:22 AM            12,406 My_village_model.php
+07/30/2017  03:22 AM             3,384 My_whoswho_model.php
+              12 File(s)        129,670 bytes
+               2 Dir(s)  19,816,681,472 bytes free

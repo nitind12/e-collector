@@ -213,9 +213,27 @@
                     <?php
                     $data = array(
                         'type' => 'text',
+                        'placeholder' => 'Court',
                         'class' => 'required form-control hindiFont',
-                        'name' => 'txtSubDivision',
-                        'id' => 'txtSubDivision',
+                        'style' => 'width: 200px; background: #FFF195',
+                        'name' => 'txtForSubDivision_edit',
+                        'id' => 'txtForSubDivision_edit',
+                        'value' => ''
+                    );
+                    $options = array();
+                    $options[''] = "pqusa";
+                    foreach($subdiv_ as $itemsubdiv){
+                        $options[$itemsubdiv->SUB_DIV] = $itemsubdiv->SUB_DIV;
+                    }
+
+                    echo form_dropdown($data, $options, $subdiv);
+                    ?>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'required form-control hindiFont',
+                        'name' => 'txtSubDivision_edit',
+                        'id' => 'txtSubDivision_edit',
                         'value' => $subdiv
                     );
                     echo form_input($data);
@@ -384,9 +402,27 @@
                     <?php
                     $data = array(
                         'type' => 'text',
+                        'placeholder' => 'Court',
                         'class' => 'required form-control hindiFont',
-                        'name' => 'txtScheduledFor',
-                        'id' => 'txtScheduledFor',
+                        'style' => 'width: 200px; background: #FFF195',
+                        'name' => 'txtForScheduledFor_edit',
+                        'id' => 'txtForScheduledFor_edit',
+                        'value' => ''
+                    );
+                    $options = array();
+                    $options[''] = "pqusa";
+                    foreach($schedulefor_ as $itemschedulefor){
+                        $options[$itemschedulefor->SCHEDULE_FOR] = $itemschedulefor->SCHEDULE_FOR;
+                    }
+
+                    echo form_dropdown($data, $options, $scheduledfor);
+                    ?>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'required form-control hindiFont',
+                        'name' => 'txtScheduledFor_edit',
+                        'id' => 'txtScheduledFor_edit',
                         'style' => 'width: 200px; height: 65px',
                         'value' => $scheduledfor
                     );

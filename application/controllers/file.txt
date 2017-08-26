@@ -1,0 +1,12 @@
+ Volume in drive E is STORE
+ Volume Serial Number is AA40-10BD
+
+ Directory of E:\xampp\htdocs\e-collector\application\controllers
+
+08/17/2017  04:21 PM    <DIR>          .
+08/17/2017  04:21 PM    <DIR>          ..
+08/17/2017  04:21 PM                 0 file.txt
+07/30/2017  03:22 AM               142 index.html
+08/02/2017  11:43 AM             6,540 Web.php
+               3 File(s)          6,682 bytes
+               2 Dir(s)  19,816,697,856 bytes free

@@ -27,6 +27,8 @@ class Sdmcourt extends CI_Controller {
         $data['court_'] = $this->mcm->get_court();
         $data['section_'] = $this->mcm->get_section();
         $data['tehsil_'] = $this->mcm->get_tehsil();
+        $data['subdiv_'] = $this->mcm->get_subdiv();
+        $data['schedulefor_'] = $this->mcm->get_scheduled_for();
         // -----------
         $data['totalcases'] = $this->mcm->count_master_cases();
         $data['sdmcourtcases'] = $this->mcm->getCases($this->session->userdata('user__'));

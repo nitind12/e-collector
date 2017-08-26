@@ -1,0 +1,24 @@
+ Volume in drive E is STORE
+ Volume Serial Number is AA40-10BD
+
+ Directory of E:\xampp\htdocs\e-collector\application\views
+
+08/17/2017  04:20 PM    <DIR>          .
+08/17/2017  04:20 PM    <DIR>          ..
+08/02/2017  11:43 AM             8,038 aboutNainital.php
+08/09/2017  04:35 PM            20,341 court-view.php
+07/30/2017  03:22 AM               175 ePDF.php
+07/30/2017  03:22 AM    <DIR>          errors
+08/17/2017  04:20 PM                 0 files2.txt
+08/02/2017  11:43 AM            20,612 home.php
+07/30/2017  03:22 AM               142 index.html
+08/02/2017  11:43 AM             5,063 revenue-view.php
+07/30/2017  03:22 AM             8,745 searchVillage.php
+07/30/2017  03:22 AM    <DIR>          templates
+07/30/2017  03:22 AM             6,156 todayscases.php
+08/09/2017  04:35 PM            13,026 touristGallery.php
+07/30/2017  03:22 AM             1,001 uc.php
+07/30/2017  03:22 AM             5,224 village.php
+07/30/2017  03:22 AM             7,977 who-who.php
+              13 File(s)         96,500 bytes
+               4 Dir(s)  19,816,697,856 bytes free

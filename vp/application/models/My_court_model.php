@@ -241,7 +241,7 @@ class My_court_model extends CI_Model{
 		$type = $this->input->post('txteditType');
 		$court = $this->input->post('txtCourtEdit');
 		$village = $this->input->post('txtVillage');
-		$subdiv = trim($this->input->post('txtSubDivision'));
+		$subdiv = trim($this->input->post('txtSubDivision_edit'));
 		$tehsil = $this->input->post('txtTehsilEdit');
 		$patwariarea = $this->input->post('txtPatwariArea');
 		$policearea = $this->input->post('txtPoliceArea');
@@ -250,7 +250,7 @@ class My_court_model extends CI_Model{
 		$first_party = $this->input->post('txtFirstName');
 		$second_party = $this->input->post('txtSecondParty');
 		$next_date = $this->input->post('txtNextDate');
-		$scheduled_for = $this->input->post('txtScheduledFor');
+		$scheduled_for = $this->input->post('txtScheduledFor_edit');
 		$final_order_date = $this->input->post('txtFinalOrderDate');
 		//$finalOrder = $this->input->post('txtFinalOrder');
 		$file_dispatched_to_record_room = $this->input->post('txtFileDispatchedRecordRoom');
@@ -353,7 +353,7 @@ class My_court_model extends CI_Model{
 		$first_party = $this->input->post('txtFirstName');
 		$second_party = $this->input->post('txtSecondParty');
 		$next_date = $this->input->post('txtNextDate');
-		$scheduled_for = $this->input->post('txtScheduledFor');
+		$scheduled_for = $this->input->post('txtScheduledFor_newupdate');
 		$final_order_date = $this->input->post('txtFinalOrderDate');
 		//$finalOrder = $this->input->post('txtFinalOrder');
 		$file_dispatched_to_record_room = $this->input->post('txtFileDispatchedRecordRoom');
@@ -724,5 +724,13 @@ class My_court_model extends CI_Model{
 	function get_tehsil(){
 		$query = $this->db->get('a95_tehsil_master');
 		return $query->result();
+	}
+	function get_subdiv(){
+		$query = $this->db->get('a95_subdivision_master');
+		return $query->result();
+	}
+	function get_scheduled_for(){
+		$query = $this->db->get('a95_scheduledfor_master');
+		return $query->result();	
 	}
 }

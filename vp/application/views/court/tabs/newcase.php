@@ -174,6 +174,24 @@
                     <?php
                     $data = array(
                         'type' => 'text',
+                        'placeholder' => 'Court',
+                        'class' => 'required form-control hindiFont',
+                        'style' => 'width: 200px; background: #FFF195',
+                        'name' => 'txtForSubDivision',
+                        'id' => 'txtForSubDivision',
+                        'value' => ''
+                    );
+                    $options = array();
+                    $options[''] = "pqusa";
+                    foreach($subdiv_ as $itemsubdiv){
+                        $options[$itemsubdiv->SUB_DIV] = $itemsubdiv->SUB_DIV;
+                    }
+
+                    echo form_dropdown($data, $options, '');
+                    ?>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
                         'class' => 'required form-control hindiFont',
                         'name' => 'txtSubDivision',
                         'id' => 'txtSubDivision',
@@ -343,6 +361,24 @@
                 </div>
                 <div class="form-group col-md-3 col-lg-3 col-xs-12">
                     <label>Scheduled for</label><br />
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'placeholder' => 'Court',
+                        'class' => 'required form-control hindiFont',
+                        'style' => 'width: 200px; background: #FFF195',
+                        'name' => 'txtForScheduledFor',
+                        'id' => 'txtForScheduledFor',
+                        'value' => ''
+                    );
+                    $options = array();
+                    $options[''] = "pqusa";
+                    foreach($schedulefor_ as $itemschedulefor){
+                        $options[$itemschedulefor->SCHEDULE_FOR] = $itemschedulefor->SCHEDULE_FOR;
+                    }
+
+                    echo form_dropdown($data, $options, '');
+                    ?>
                     <?php
                     $data = array(
                         'type' => 'text',

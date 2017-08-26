@@ -1,0 +1,13 @@
+ Volume in drive E is STORE
+ Volume Serial Number is AA40-10BD
+
+ Directory of E:\xampp\htdocs\e-collector\vp\assets_\css
+
+08/17/2017  04:33 PM    <DIR>          .
+08/17/2017  04:33 PM    <DIR>          ..
+07/30/2017  03:23 AM           147,980 bootstrap.css
+08/17/2017  04:33 PM                 0 file.txt
+07/30/2017  03:23 AM            30,548 font-awesome.css
+07/30/2017  03:23 AM             6,460 style.css
+               4 File(s)        184,988 bytes
+               2 Dir(s)  19,816,677,376 bytes free

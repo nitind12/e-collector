@@ -320,9 +320,27 @@
                     <?php
                     $data = array(
                         'type' => 'text',
+                        'placeholder' => 'Court',
                         'class' => 'required form-control hindiFont',
-                        'name' => 'txtScheduledFor',
-                        'id' => 'txtScheduledFor',
+                        'style' => 'width: 200px; background: #FFF195',
+                        'name' => 'txtForScheduledFor_newupdate',
+                        'id' => 'txtForScheduledFor_newupdate',
+                        'value' => ''
+                    );
+                    $options = array();
+                    $options[''] = "pqusa";
+                    foreach($schedulefor_ as $itemschedulefor){
+                        $options[$itemschedulefor->SCHEDULE_FOR] = $itemschedulefor->SCHEDULE_FOR;
+                    }
+
+                    echo form_dropdown($data, $options, '');
+                    ?>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'required form-control hindiFont',
+                        'name' => 'txtScheduledFor_newupdate',
+                        'id' => 'txtScheduledFor_newupdate',
                         'style' => 'width: 200px; height: 65px',
                         'value' => $scheduledfor
                     );

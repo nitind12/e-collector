@@ -1275,6 +1275,53 @@ $(function(){
 		}
 	});
 
+	$('#txtForSubDivision_edit').change(function(){
+		if($('#txtForSubDivision_edit').val() != 'pqusa'){
+			$('#txtSubDivision_edit').val($('#txtForSubDivision_edit').val());
+		} else {
+			$('#txtSubDivision_edit').val('');
+			$('#txtSubDivision_edit').focus();
+		}
+	});
+	
+	$('#txtForSubDivision').change(function(){
+		if($('#txtForSubDivision').val() != 'pqusa'){
+			$('#txtSubDivision').val($('#txtForSubDivision').val());
+		} else {
+			$('#txtSubDivision').val('');
+			$('#txtSubDivision').focus();
+		}
+	});
+
+
+	$('#txtForScheduledFor_newupdate').change(function(){
+		if($('#txtForScheduledFor_newupdate').val() != 'pqusa'){
+			$('#txtScheduledFor_newupdate').val($('#txtForScheduledFor_newupdate').val());
+		} else {
+			$('#txtScheduledFor_newupdate').val('');
+			$('#txtScheduledFor_newupdate').focus();
+		}
+	});
+
+	$('#txtForScheduledFor_edit').change(function(){
+		if($('#txtForScheduledFor_edit').val() != 'pqusa'){
+			$('#txtScheduledFor_edit').val($('#txtForScheduledFor_edit').val());
+		} else {
+			$('#txtScheduledFor_edit').val('');
+			$('#txtScheduledFor_edit').focus();
+		}
+	});
+	
+	$('#txtForScheduledFor').change(function(){
+		if($('#txtForScheduledFor').val() != 'pqusa'){
+			$('#txtScheduledFor').val($('#txtForScheduledFor').val());
+		} else {
+			$('#txtScheduledFor').val('');
+			$('#txtScheduledFor').focus();
+		}
+	});
+
+
 	/*
 	$('#chkStatus').click(function(){ 
 		if($('#chkStatus').is(':checked')){
