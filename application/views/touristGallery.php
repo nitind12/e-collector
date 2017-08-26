@@ -1,7 +1,13 @@
-
+<div class="header-bottom">
+    <div class="container">
+        <div class="logo wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+            <h1><a href="#">Nainital and its Environs</a></h1>
+        </div>
+    </div>
+</div>
 <!-- banner -->
 <div class="technology">
-    <div class="container">
+    <div class="container-fluid">
         <div class="col-md-3">
             <div class="blo-top1">
                 <div class="tech-btm">
@@ -47,7 +53,6 @@
                 <!-- technology-top -->
                 <div class="wthree">
                     <div class="col-md-12 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-
                         <div class="tch-img">   
                             <?php if ($galID != 0) { ?>
                                 <h3 align="center" style="margin-bottom: 10px; color: #006699; font-weight: bold; text-shadow: 2px 2px 2px #cccccc; font-family: cursive;"> <?php
@@ -55,11 +60,7 @@
                                         echo $catName->CATEGORY;
                                     }
                                     ?></h3>
-                            <?php } else { ?>
-                                <h3 align="center" style="margin-bottom: 10px; color: #006699; font-weight: bold; text-shadow: 2px 2px 2px #cccccc; font-family: cursive;">
-                                    Nainital and its Environs
-                                </h3>
-                            <?php } ?>
+                            <?php }?>
                             <?php if ($galID == 0) { ?>
                                 <div id="myCarousel1" class="carousel slide" data-ride="carousel">
                                     <!-- Indicators -->
@@ -94,7 +95,10 @@
                                             ?>">
                                                 <img src="<?PHP echo base_url() . 'vp/assets_/gallery/' . $AllgalPic->PIC_PATH; ?>" alt="" style="width: 100%;">
                                                 <div class="carousel-caption">
-                                                    <h2 style="color:#f2f2f2; text-shadow: 1px 1px 2px #000;"><?php echo $AllgalPic->CATEGORY; ?></h2>
+                                                    <h2 style="color:#f2f2f2; text-shadow: 1px 1px 2px #000;color:#ffff00"><?php echo $AllgalPic->CATEGORY; ?></h2>                                                    
+                                                </div>                                                
+                                                <div style="position:absolute; right:100px;bottom:80px;">                                                    
+                                                    <p style="color:#f2f2f2; fot-size:10px; text-shadow: 1px 1px 2px #000; color:#ffff00">Pic Courtesy: <?php echo $AllgalPic->COURTESY; ?></p>
                                                 </div>
                                                 <div class="carousel-data" style="margin-bottom:100px;">
                                                     <div style="margin-top: 50px;" id="short"><?php
@@ -161,7 +165,9 @@
                                             }
                                             ?>">
                                                 <img src="<?PHP echo base_url() . 'vp/assets_/gallery/' . $galPic->PIC_PATH; ?>" alt="" style="width: 100%;">
-
+                                                <div style="position:absolute; right:100px;bottom:10px;">                                                    
+                                                    <p style="color:#f2f2f2; fot-size:10px; text-shadow: 1px 1px 2px #000; color:#ffff00">Pic Courtesy: <?php echo $galPic->COURTESY; ?></p>
+                                                </div>
                                             </div>
                                             <?PHP
                                             $i++;

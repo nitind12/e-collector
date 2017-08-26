@@ -20,8 +20,8 @@ class My_model_gallery extends CI_Model {
             'DESCR' => $this->input->post('txtDesc'),
             'STATUS' => 1,
         );
-        $query = $this->db->insert('c1_gallery_category', $data);        
-       
+        $query = $this->db->insert('c1_gallery_category', $data);
+
 
         if ($query == TRUE) {
             $bool_ = array('res_' => TRUE, 'msg_' => 'Tourist Place Feeded Successfully');
@@ -40,7 +40,7 @@ class My_model_gallery extends CI_Model {
         );
 
         $this->db->where('CATEG_ID', $id__);
-        $query = $this->db->update('c1_gallery_category', $data);        
+        $query = $this->db->update('c1_gallery_category', $data);
 
         if ($query == TRUE) {
             $bool_ = array('res_' => TRUE, 'msg_' => 'Tourist Place editted Successfully');
@@ -52,8 +52,8 @@ class My_model_gallery extends CI_Model {
 
     function deleteCategory_($id_) {
         $this->db->where('CATEG_ID', $id_);
-        $query=$this->db->delete('c1_gallery_category');
-        
+        $query = $this->db->delete('c1_gallery_category');
+
         if ($query == TRUE) {
             $bool_ = array('res_' => TRUE, 'msg_' => 'Tourist Place deleted Successfully');
         } else {
@@ -61,7 +61,7 @@ class My_model_gallery extends CI_Model {
         }
         return $bool_;
     }
-    
+
     function active_inactive_($id_, $status) {
         $data = array(
             'STATUS' => $status,
@@ -69,11 +69,11 @@ class My_model_gallery extends CI_Model {
         $this->db->where('CATEG_ID', $id_);
         $query = $this->db->update('c1_gallery_category', $data);
     }
-    
-    function getmCategoryData($id_){
+
+    function getmCategoryData($id_) {
         $this->db->where('CATEG_ID', $id_);
         $query = $this->db->get('c1_gallery_category');
-        
+
         if ($query->num_rows() != 0) {
             foreach ($query->result() as $row) {
                 $data_ = array('catID' => $row->CATEG_ID, 'category' => $row->CATEGORY, 'desc' => $row->DESCR);
@@ -84,7 +84,7 @@ class My_model_gallery extends CI_Model {
         $this->output->set_content_type('application/json');
         return json_encode($data_);
     }
-    
+
     public function do_upload() {
         $config['upload_path'] = './assets_/gallery';
         $config['allowed_types'] = 'jpg|jpeg|png';
@@ -101,14 +101,16 @@ class My_model_gallery extends CI_Model {
             foreach ($upload_data as $key => $value) {
 
                 $id_ = $this->input->post('txtCategory');
+                $courtesy = $this->input->post('txtCourtesy');
 
                 $image = $value['file_name'];
                 $name = preg_replace('/\\.[^.\\s]{3,4}$/', '', $value['file_name']);
 
                 $data = array(
                     'CATEG_ID' => $id_,
-                    'PIC_PATH' => $image,                    
-                    'STATUS'    => 1                    
+                    'PIC_PATH' => $image,
+                    'COURTESY' => $courtesy,
+                    'STATUS' => 1
                 );
                 $this->db->insert('c2_gallery_picture', $data);
             }
@@ -116,7 +118,7 @@ class My_model_gallery extends CI_Model {
         }
     }
 
-    function fillGallery($id_){
+    function fillGallery($id_) {
         $data_ = '';
         $uploadpath = base_url() . 'assets_/gallery/';
 
@@ -128,9 +130,9 @@ class My_model_gallery extends CI_Model {
                 $src = $uploadpath . $row->PIC_PATH;
                 $alt = $row->PIC_PATH;
                 $lid = $row->PIC_ID . 'g';
-                $data_ = $data_ .  "<li class='thumbnail' id='$lid'>
+                $data_ = $data_ . "<li class='thumbnail' id='$lid'>
                             <span id='$row->PIC_ID' class='btn btn-info btn-block btn-delete'><i class='glyphicon glyphicon-remove'></i>&nbsp;&nbsp;&nbsp;Delete</span>
-                            <img src='$src' alt='$alt' style='max-height:100px;'>";                
+                            <img src='$src' alt='$alt' style='max-height:100px;'>";
             }
         } else {
             $data_ = "<li class='thumbnail' style='color:red'>
@@ -142,17 +144,17 @@ class My_model_gallery extends CI_Model {
     function deleteimg($id) {
         $this->db->where('PIC_ID', $id);
         $query = $this->db->get('c2_gallery_picture');
-        
-        if($query->num_rows() != 0){
+
+        if ($query->num_rows() != 0) {
             $row = $query->row();
-            $bool_ = array('res_'=>TRUE, 'photo__' => $row->PIC_PATH);
+            $bool_ = array('res_' => TRUE, 'photo__' => $row->PIC_PATH);
 
             $this->db->where('PIC_ID', $id);
             $this->db->delete('c2_gallery_picture');
         } else {
-            $bool_ = array('res_'=>FALSE, 'photo__' => 'X');
+            $bool_ = array('res_' => FALSE, 'photo__' => 'X');
         }
         return $bool_;
     }
-        
+
 }

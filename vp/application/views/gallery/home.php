@@ -201,24 +201,40 @@
                                         'onchange' => 'loadgallery(this);'
                                     );
                                     $options = array();
-                                    $options[0] = 'Choose Category';
+                                    $options[''] = 'Choose Category';
                                     foreach ($existing as $item_) {
                                         $options[$item_->CATEG_ID] = $item_->CATEGORY;
                                     }
                                     echo form_dropdown($data, $options);
                                     ?>
-                                </div>
+                                </div>                               
 
-                                <div class="col-sm-12" style="margin-top:40px;">
+                                <div class="col-sm-12" style="margin-top:20px;">
                                     <div class="form-group">
                                         <?php
                                         $data = array(
                                             'type' => 'file',
                                             'autocomplete' => 'off',
+                                            'required' => 'required',
                                             'class' => 'required form-control',
                                             'name' => 'userfile',
                                             'id' => 'userfile',
                                             'value' => ''
+                                        );
+                                        echo form_input($data);
+                                        ?>
+                                    </div>
+                                    <div class="form-group">
+                                        <?php
+                                        $data = array(
+                                            'type' => 'text',
+                                            'autocomplete' => 'off',
+                                            'required' => 'required',
+                                            'placeholder' => 'Photo Courtesy',
+                                            'class' => 'required form-control',
+                                            'name' => 'txtCourtesy',
+                                            'id' => 'txtCourtesy',
+                                            'style' => 'color: #ff9000'
                                         );
                                         echo form_input($data);
                                         ?>
@@ -266,88 +282,88 @@
                     <div class="panel-heading">
                         <b>Add Accomodation to Selected Tourist Places</b>
                     </div>
-                    <!-- .panel-heading -->
-                    <!--div class="panel-body">
-                        <div class="row"> 
-                            <div class="col-sm-3">
-                                <?php echo form_open_multipart('gallery/Add_Accomo', array('name' => 'frmAddAccomo', 'id' => 'frmAddAccomo', 'role' => 'form', 'enctype' => 'multipart/form-data', 'method' => 'POST')); ?>                               
-                                <div class="form-group">
-                                    <label>Choose Place</label>
-                                    <?php
-                                    $data = array(
-                                        'class' => 'required form-control m-bot8',
-                                        'name' => 'txtCategory',
-                                        'id' => 'txtCategory',
-                                        'required' => 'required',
-                                        'onchange' => 'loadAccomo(this);'
-                                    );
-                                    $options = array();
-                                    $options[''] = 'Choose Category';
-                                    foreach ($existing as $item_) {
-                                        $options[$item_->CATEG_ID] = $item_->CATEGORY;
-                                    }
-                                    echo form_dropdown($data, $options);
-                                    ?>
-                                </div>
-                                <div class="form-group">
-                                    <label>Accomodation</label>
-                                    <?php
-                                    $data = array(
-                                        'type' => 'text',
-                                        'autocomplete' => 'off',
-                                        'required' => 'required',
-                                        'placeholder' => 'Name of Tourist Place',
-                                        'class' => 'required form-control',
-                                        'name' => 'txtAccomo',
-                                        'id' => 'txtAccomo',
-                                        'value' => ''
-                                    );
-                                    echo form_input($data);
-                                    ?>
-                                </div>
-                                <div class="form-group">
-                                    <label>Description (if any)</label>
-                                    <?php
-                                    $data = array(
-                                        'rows' => '5',
-                                        'autocomplete' => 'off',                                        
-                                        'placeholder' => 'Tourist Place Description',
-                                        'class' => 'required form-control',
-                                        'name' => 'txtAccDesc',
-                                        'id' => 'txtAccDesc',
-                                        'value' => ''
-                                    );
-                                    echo form_textarea($data);
-                                    ?>
-                                </div>                
-                                <button type="submit" class="btn btn-primary"> Submit </button>
+            <!-- .panel-heading -->
+            <!--div class="panel-body">
+                <div class="row"> 
+                    <div class="col-sm-3">
+            <?php echo form_open_multipart('gallery/Add_Accomo', array('name' => 'frmAddAccomo', 'id' => 'frmAddAccomo', 'role' => 'form', 'enctype' => 'multipart/form-data', 'method' => 'POST')); ?>                               
+                        <div class="form-group">
+                            <label>Choose Place</label>
+            <?php
+            $data = array(
+                'class' => 'required form-control m-bot8',
+                'name' => 'txtCategory',
+                'id' => 'txtCategory',
+                'required' => 'required',
+                'onchange' => 'loadAccomo(this);'
+            );
+            $options = array();
+            $options[''] = 'Choose Category';
+            foreach ($existing as $item_) {
+                $options[$item_->CATEG_ID] = $item_->CATEGORY;
+            }
+            echo form_dropdown($data, $options);
+            ?>
+                        </div>
+                        <div class="form-group">
+                            <label>Accomodation</label>
+            <?php
+            $data = array(
+                'type' => 'text',
+                'autocomplete' => 'off',
+                'required' => 'required',
+                'placeholder' => 'Name of Tourist Place',
+                'class' => 'required form-control',
+                'name' => 'txtAccomo',
+                'id' => 'txtAccomo',
+                'value' => ''
+            );
+            echo form_input($data);
+            ?>
+                        </div>
+                        <div class="form-group">
+                            <label>Description (if any)</label>
+            <?php
+            $data = array(
+                'rows' => '5',
+                'autocomplete' => 'off',
+                'placeholder' => 'Tourist Place Description',
+                'class' => 'required form-control',
+                'name' => 'txtAccDesc',
+                'id' => 'txtAccDesc',
+                'value' => ''
+            );
+            echo form_textarea($data);
+            ?>
+                        </div>                
+                        <button type="submit" class="btn btn-primary"> Submit </button>
 
+                    </div>
+            <?php echo form_close(); ?>
+                    <div class="col-sm-9">
+                        <div class="row clear-fix">
+                            <div class="col-md-12">
+                                <div id="response">
+
+                                </div>  
                             </div>
-                            <?php echo form_close(); ?>
-                            <div class="col-sm-9">
-                                <div class="row clear-fix">
-                                    <div class="col-md-12">
-                                        <div id="response">
+                        </div>
+                        <div class="row clear-fix">
+                            <div class="col-md-12">
+                                <div style="margin-top: 1%;">
+                                    <blockquote>
+                                        <ul class="list-inline" id="gallery">
 
-                                        </div>  
-                                    </div>
-                                </div>
-                                <div class="row clear-fix">
-                                    <div class="col-md-12">
-                                        <div style="margin-top: 1%;">
-                                            <blockquote>
-                                                <ul class="list-inline" id="gallery">
-
-                                                </ul>
-                                            </blockquote>
-                                        </div>  
-                                    </div>
-                                </div>
+                                        </ul>
+                                    </blockquote>
+                                </div>  
                             </div>
                         </div>
                     </div>
                 </div>
-            </div-->
+            </div>
+        </div>
+    </div-->
         </div>                
     </div>
 </div>
