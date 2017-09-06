@@ -144,7 +144,7 @@
         <div class="col-md-4">
             <div class="blo-top1">
                 <div class="tech-btm">
-                    <h4>Downloads</h4>
+                    <h4>Services</h4>
                     <?php echo form_open('web/pdfDownload', array('name' => 'frmSelect', 'id' => 'frmSelect', 'role' => 'form', 'class' => 'form-inline', 'target' => '_blank')); ?>
                     <?php
                     $data = array(

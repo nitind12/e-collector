@@ -22,7 +22,7 @@
                                     echo "dropdown active act";
                                 }else{echo "dropdown";}
                                 ?>">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-gears"></i> Services
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-gears"></i> Menu
                                         <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="<?PHP echo site_url('web/searchDashboard'); ?>"><i class="fa fa-empire"></i> Revenue Village</a></li>
