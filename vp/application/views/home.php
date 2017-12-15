@@ -30,9 +30,9 @@
                 <h1 class="head">SDM OFFICE</h1>
             </div>
             <div class="col-md-1" style="margin-top: 30px; text-align: right">
-                <a href="<?PHP echo site_url('Createuser'); ?>">
+                <!--a href="<?PHP echo site_url('Createuser'); ?>">
                     <span class="glyphicon glyphicon-user" style="font-size: 20px;color: #fff"></span>
-                </a>
+                </a-->
                 
             </div>
             <div class="col-md-1" style="margin-top: 30px; text-align: right">

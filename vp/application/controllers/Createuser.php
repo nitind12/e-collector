@@ -13,6 +13,7 @@ class Createuser extends CI_Controller {
     }
 
     function index(){
+        redirect('web');
     	$data['user___'] = $this->session->userdata('ussr_');
         $data['users_'] = $this->cu->get_all_users();
         

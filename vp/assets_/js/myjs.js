@@ -3,6 +3,12 @@ $(function(){
 	$('#new_pwd').focus(function(){$('#msg_').html('');});
 	$('#new_re-pwd').focus(function(){$('#msg_').html('');});
 
+	function toTitleCase(str) {
+	    return str.replace(/(?:^|\s)\w/g, function(match) {
+	        return match.toUpperCase();
+	    });
+	}
+
 	$( window ).on( "load", function(){
 		$('#patwari_list_here').change();
 		$('#patwari_list_for_patwariArea_here').change();

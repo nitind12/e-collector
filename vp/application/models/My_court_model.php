@@ -488,6 +488,7 @@ class My_court_model extends CI_Model{
 		//echo $this->db->last_query();
 		return $query->result();
 	}
+	
 	function todayscases(){
 		$this->db->select('a.REG_DATE, a.YEAR_, a.MONTH, a.TYPE_, a.VILLAGE, a.DISMISS_IN_DEFAULT, b.*');
 		$this->db->from('a96_sdm_court a');

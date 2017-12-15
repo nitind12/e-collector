@@ -136,7 +136,22 @@
                     <span class="input-group-addon" title="<?php echo $village_master[$i][1];?>" style="text-align: left; font-weight: bold; font-size: 11px;">
                     <?php echo $village_master[$i][1];?></span>
                 <?php
-                    echo form_input($data);
+                	if($village_master[$i][1] == 'Polling Booth Name'){
+                		$data = array(
+	                        'type' => 'text',
+	                        'class' => 'required form-control disableInputVillageArea',
+	                        'disabled'=>'disabled',
+	                        'name' => $village_master[$i][0],
+	                        'id' => $village_master[$i][0],
+	                        'value' => '',
+	                        'style' => 'height: 100px'
+	                    );
+                		echo form_textarea($data);
+
+                		echo "<br />(Please use (,) to seprate more than one poling booth)";
+                	} else {
+                		echo form_input($data);
+                	}
                 ?>
 			</div>
 			<div style="clear: both; padding: 5px"></div>

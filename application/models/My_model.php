@@ -340,7 +340,7 @@ class My_model extends CI_Model {
         $this->db->where('a.FINAL_ORDER_DATE', "");
         $this->db->where('a.DISMISS_IN_DEFAULT', "Deactivate DD");
         $this->db->from('a96_sdm_court a');
-        $this->db->join('a97_sdm_court_detail b', 'a.SNO = b.REF_SNO');
+        $this->db->join('a97_sdm_court_detail b', 'a.STATUS_ = b.SNO');
         $query = $this->db->get();
         //echo $this->db->last_query();
         return $query->result();
