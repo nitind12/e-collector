@@ -7,6 +7,9 @@ class Gallery extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('My_model_gallery', 'mmgallery');
+        if(! $this->session->userdata('user__')){
+            redirect('web/login');
+        }
     }
 
     function index() {
