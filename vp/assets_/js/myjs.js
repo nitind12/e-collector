@@ -38,7 +38,7 @@ $(function(){
 				// -------------
 			}, error: function(xhr, status, error){
 				//$('#load_here_edit_actinact').html(error);
-				$('#load_here_edit_actinact').html("<span style='font-size: 10px; background: #ffff00; padding: 3px; border-radius: 5px'>X: Server Error!!. Please trya again.</span>");
+				$('#load_here_edit_actinact').html("<span style='font-size: 10px; background: #ffff00; padding: 3px; border-radius: 5px'>X: Server Error!!. Please try again.</span>");
 	        }
 		});
 	});
@@ -62,7 +62,7 @@ $(function(){
 				// -------------
 			}, error: function(xhr, status, error){
 				//$('#load_here_edit_actinact').html(error);
-				$('#load_here_edit_patwari').html("<span style='font-size: 10px; background: #ffff00; padding: 3px; border-radius: 5px'>X: Server Error!!. Please trya again.</span>");
+				$('#load_here_edit_patwari').html("<span style='font-size: 10px; background: #ffff00; padding: 3px; border-radius: 5px'>X: Server Error!!. Please try again.</span>");
 	        }
 		});
 	});
@@ -85,7 +85,7 @@ $(function(){
 				// -------------
 			}, error: function(xhr, status, error){
 				//$('#load_here_edit_actinact').html(error);
-				$('#load_here_edit_actinact_village').html("<span style='font-size: 10px; background: #ffff00; padding: 3px; border-radius: 5px'>X: Server Error!!. Please trya again.</span>");
+				$('#load_here_edit_actinact_village').html("<span style='font-size: 10px; background: #ffff00; padding: 3px; border-radius: 5px'>X: Server Error!!. Please try again.</span>");
 	        }
 		});
 	});
@@ -115,7 +115,7 @@ $(function(){
 				$('#load_here_edit_actinact').html('');
 			}, error: function(xhr, status, error){
 				//$('#load_here_edit_actinact').html(error);
-				$('#load_here_edit_actinact').html("<span style='background: #ffff00; padding: 3px; border-radius: 5px'>Server Error!!. Please trya again.</span>");
+				$('#load_here_edit_actinact').html("<span style='background: #ffff00; padding: 3px; border-radius: 5px'>Server Error!!. Please try again.</span>");
 	        }
 		});
 	});
@@ -161,9 +161,13 @@ $(function(){
 	$('#patwari_list_here').change(function(){
 		url_ = site_url_ + "/village/getPatwaris";
 		$('#patwari_list_here').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
+		data_ = 'csrf_test_name='+ document.frmPatwari.csrf_test_name.value;
+		alert(data_);
+		//xhr.setRequestHeader('X-CSRF-Token', csrf_token);
 		$.ajax({
 			url:url_,
 			type: "POST",
+			data: data_,
 			success: function(data){
 				var obj = JSON.parse(data);
 				var str_html = '';
@@ -332,7 +336,7 @@ $(function(){
 	$('#frmPatwariArea').submit(function(){
 		if($('#txtPatwariID_').val() != ""){
 			data_ = $('#frmPatwariArea').serialize();
-
+			alert(data_);
 			url_ = site_url_ + "/village/UpdatePatwariArea";
 			$('#this_msg_for_patwari_area').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
 

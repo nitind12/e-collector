@@ -22,7 +22,6 @@ class Revenue extends CI_Controller {
          echo $data_to_ajax;
     }
     
-    
     function fillMap($id_) {
         $data_to_ajax = $this->mmrevenue->fillMap_($id_);
         echo $data_to_ajax;
