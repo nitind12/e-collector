@@ -20,8 +20,18 @@
 			<label>Patwari's List</label>
 			<hr />
 			<div class="input-group" style="width: 100%">
+				<?php
+                    $data = array(
+                        'name' => 'frmPatwariList_for_villages', 
+                        'id' => 'frmPatwariList_for_villages', 
+                        'role' => 'form', 
+                        'class' => 'form-group'
+                        );
+                    echo form_open('', $data);
+                ?>
 				<div class="col-sm-12" style="overflow: auto; height: 450px; width: 100%" id="patwari_list_for_villages_here">
 				</div>
+				<?php echo form_close(); ?>
 			</div>
 			<div style="clear: both; padding: 5px"></div>
 		</div>

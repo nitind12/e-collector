@@ -31,7 +31,7 @@ class My_village_model extends CI_Model{
 			$this->db->where('USERNAME_', $user);
 		}
 		$query = $this->db->get('a0_patwari');
-
+		$this->db->last_query();
 		return $query->row();
 	}
 
@@ -136,6 +136,7 @@ class My_village_model extends CI_Model{
 		$this->db->where('NAME_', $name_);
 		$this->db->where('PHONE_', $phone_);
 		$query = $this->db->get('a0_patwari');
+		echo $this->db->last_query();
 
 		if($query->num_rows()!=0){
 			$data['message'] = array('res_'=>false, 'msg_'=>"<span style='padding: 3px; border-radius: 5px; background: #ffff00; color: #ff0000; font-weight: bold'>X: Already exists.</span>");

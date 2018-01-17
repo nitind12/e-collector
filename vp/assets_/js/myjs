@@ -16,7 +16,7 @@ $(function(){
 	$('body').on('click', '.patwariIDActiveInactive', function(){
 		var url_ = site_url_ + "/village/activeInactivePatwari/"+this.id;
 		$('#load_here_edit_actinact').html('<span>Loading <img src="'+base_path+'/assets_/img/load.GIF" width="10" /></span>');
-		var csrf = $("#frmPatwariList input[name~='csrf_test_name']").val();
+		var csrf = $("#frmPatwariList input[name~='csrf_test_name']").val();;
 		$.ajax({
 			type: "POST",
 			url: url_,

@@ -2071,6 +2071,7 @@ class Web extends CI_Controller {
         $this->check_login();
         redirect('newsevents');
     }
+
     // Dynamic Ends Here
 
 

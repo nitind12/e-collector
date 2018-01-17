@@ -17,7 +17,6 @@ date_default_timezone_set('Asia/Kolkata');
 | environments.
 |
 */
-date_default_timezone_set("Asia/Kolkata");
 
 $config['base_url'] = 'http://localhost/e-collector/vp';
 define('_ROOT_URL_', 'http://localhost/e-collector');
@@ -312,7 +311,7 @@ $config['cache_query_string'] = FALSE;
 | http://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '@#$NITIN123@#$NAVEEN';
+$config['encryption_key'] = '$%#$%nitinq342$%naveen';
 
 /*
 |--------------------------------------------------------------------------
@@ -460,7 +459,7 @@ $config['csrf_exclude_uris'] = array();
 | by the output class.  Do not 'echo' any values with compression enabled.
 |
 */
-$config['compress_output'] = TRUE;
+$config['compress_output'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------

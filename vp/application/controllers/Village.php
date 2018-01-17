@@ -25,6 +25,9 @@ class Village extends CI_Controller {
         }
     }
     function getPatwaris(){
+        if($this->input->server('REQUEST_METHOD') == 'POST'){
+            $data = $this->getnewtoken();
+        }
         $data['patwaris'] = $this->pvm->getPatwaris($this->session->userdata('user__'));
         echo json_encode($data);
     }
@@ -33,14 +36,23 @@ class Village extends CI_Controller {
         echo json_encode($data);   
     }
     function getPatwari($pid){
+        if($this->input->server('REQUEST_METHOD') == 'POST'){
+            $data = $this->getnewtoken();
+        }
         $data['patwari'] = $this->pvm->getPatwari($pid, $this->session->userdata('user__'));
         echo json_encode($data);
     }
     function submitPatwari(){
+        if($this->input->server('REQUEST_METHOD') == 'POST'){
+            $data = $this->getnewtoken();
+        }
         $data = $this->pvm->submitPatwari();
         echo json_encode($data);
     }
     function updatePatwari($pid){
+        if($this->input->server('REQUEST_METHOD') == 'POST'){
+            $data = $this->getnewtoken();
+        }
         $data = $this->pvm->updatePatwari($pid);
         echo json_encode($data);
     }
@@ -49,6 +61,9 @@ class Village extends CI_Controller {
         echo json_encode($data);
     }
     function activeInactivePatwariArea($paid, $status){
+        if($this->input->server('REQUEST_METHOD') == 'POST'){
+            $data = $this->getnewtoken();
+        }
         $data['message'] = $this->pvm->activeInactivePatwariArea($paid, $status);
         echo json_encode($data);   
     }
@@ -85,6 +100,11 @@ class Village extends CI_Controller {
     function activeInactiveVillage($vid, $status){
         $data['message'] = $this->pvm->activeInactiveVillage($vid, $status);
         echo json_encode($data);
+    }
+    function getnewtoken(){
+        $data['token'] = $this->security->get_csrf_token_name();
+        $data['hash'] = $this->security->get_csrf_hash(); 
+        return $data;
     }
 
 }
