@@ -125,13 +125,13 @@
     </div>
 </div>
 
-<div class="col-sm-5" id="editCat" style="display:none; position:absolute;">
+<!--div class="col-sm-5" id="editCat" style="display:none; position:absolute;">
     <div class="panel panel-default" style="height:350px;overflow: auto">
         <div class="panel-heading" style="background:#E13300; color:#ffffff">
             <b>Edit Annual Report here...</b>
         </div>
     </div>
-</div>
+</div-->
 
 <div class="col-lg-6">
     <div class="panel panel-default" style="height:300px;overflow:auto">
@@ -147,28 +147,38 @@
                             $attrib_ = array(
                                 'class' => 'form-horizontal',
                                 'name' => 'frmManageSDMs',
-                                'id' => 'frmManageSDMs',
+                                'id' => 'frmManageSDMs'
                             );
                             ?>
-                            <?php echo form_open('', $attrib_); ?>
+                            <?php echo form_open('createsdm/modify/', $attrib_); ?>
                             <?php if (count($users_) != 0) { ?>
                                 <?php foreach ($users_ as $item_) { ?>
                                     <tr>
                                         <td style="width:5%">
-                                            <?PHP if ($item_->STATUS == 1) { ?>
-                                                <a href="<?php echo site_url('createsdm/active_inactive/' . $item_->USERNAME . '/0'); ?>"><img src="<?php echo base_url('assets_/img/active.png'); ?>"></a>
-                                            <?PHP } else { ?>
-                                                <a href="<?php echo site_url('createsdm/active_inactive/' . $item_->USERNAME . '/1'); ?>"><img src="<?php echo base_url('assets_/img/inactive.png'); ?>"></a>
-                                            <?PHP } ?>
+                                            <?php if ($item_->STATUS == 1) { ?>
+                                                <a href="#" class="modify_user" id="<?php echo $item_->USERNAME."~".'0';?>"><img src="<?php echo base_url('assets_/img/active.png'); ?>"></a>
+                                            <?php } else { ?>
+                                                <a href="#" class="modify_user" id="<?php echo $item_->USERNAME.'~'.'1';?>"><img src="<?php echo base_url('assets_/img/inactive.png'); ?>"></a>
+                                            <?php } ?>
                                         </td>
                                         <td style="width:25%"><a href="#" target="_blank"><?php echo $item_->USERNAME; ?></a></td>
                                         <td style="width:50%"><a href="#" target="_blank"><?php echo $item_->NAME_; ?></a></td>
                                         <td align="right" style="width:20%">
-                                            <!--a href="<?php echo site_url('createsdm/editsdm/' . $item_->USERNAME); ?>" class="btn btn-primary"><i class='fa fa-pencil-square-o'></i></a-->  
-                                            <a href="<?php echo site_url('createsdm/deletesdm/' . $item_->USERNAME); ?>" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                            <a href="#" id="<?php echo $item_->USERNAME."~".'del';?>" class="btn btn-danger modify_user"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
                                 <?php } ?>
+                                <?php
+                                    $data = array(
+                                        'type'  => 'hidden',
+                                        'autocomplete' => 'off',
+                                        'required' => 'required',
+                                        'class' => 'required form-control',
+                                        'name' => 'txtHidden',
+                                        'id' => 'txtHidden'
+                                    );
+                                    echo form_input($data);
+                                ?>
                             <?php } else { ?>
                                 <tr>
                                     <th style="color: #0000ff">No data found...</th>

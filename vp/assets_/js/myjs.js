@@ -1473,4 +1473,10 @@ $(function(){
     	$('#__reg_err_msg').css('background', 'transparent');
     	$('#__reg_err_msg').html("");
     });
+    $('body').on('click', '.modify_user', function(){
+    	if(this.id != ''){
+    		$('#txtHidden').val(this.id);
+    		$('#frmManageSDMs').submit();
+    	}
+    });
 });

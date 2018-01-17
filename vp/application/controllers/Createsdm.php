@@ -31,9 +31,19 @@ class Createsdm extends CI_Controller {
         redirect('createsdm');
     }
 
-    function active_inactive($username, $block){
-        $result = $this->cu->active_inactive($username, $block);
-        $this->session->set_flashdata('feed_msg_', $result['msg_']);
+    function modify(){
+        if($this->input->server('REQUEST_METHOD') == 'POST'){
+            $str = explode('~', $this->input->post('txtHidden'));
+            $USERNAME = $str[0];
+            $STATUS = $str[1];
+            if($STATUS != 'del'){
+                $result = $this->cu->active_inactive($USERNAME, $STATUS);
+                $this->session->set_flashdata('feed_msg_', $result['msg_']);
+            } else {
+                $result = $this->cu->delete_sdm($USERNAME);
+                $this->session->set_flashdata('msg_delete_', $result['msg_']);        
+            }
+        }
         redirect('createsdm');
     }
     
