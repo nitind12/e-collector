@@ -26,8 +26,10 @@ class Createsdm extends CI_Controller {
     }
     
     function create_sdm(){
-        $result = $this->cu->create_sdm();
-        $this->session->set_flashdata('feed_msg_', $result['msg_']);
+        if($this->input->server('REQUEST_METHOD') == 'POST'){
+            $result = $this->cu->create_sdm();
+            $this->session->set_flashdata('feed_msg_', $result['msg_']);
+        }
         redirect('createsdm');
     }
 
@@ -44,12 +46,6 @@ class Createsdm extends CI_Controller {
                 $this->session->set_flashdata('msg_delete_', $result['msg_']);        
             }
         }
-        redirect('createsdm');
-    }
-    
-    function deletesdm($username){
-    	$result = $this->cu->delete_sdm($username);
-        $this->session->set_flashdata('msg_delete_', $result['msg_']);
         redirect('createsdm');
     }
 
