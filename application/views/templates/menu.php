@@ -65,7 +65,7 @@
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content col-sm-9" style="background: #fff; float:right">
+            <div class="modal-content col-sm-9" style="background: #fff; float:left">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4>Login with Admin Account</h4>
@@ -110,6 +110,7 @@
                         echo form_input($data);
                         ?>
                     </div>
+                    <div class="g-recaptcha form-group" data-sitekey="6Ld4VkEUAAAAAGYLHje5s2T6FLSgcj6_TGSvzjne"></div>
                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> &nbsp;Log Me In </button>
                     <?php echo form_close(); ?>
                 </div>

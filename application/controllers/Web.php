@@ -178,6 +178,5 @@ class Web extends CI_Controller {
         $data['urlPath'] = base_url() . 'vp/assets_/pdf_others/'. $pdfPath;
        
         $this->load->view('ePDF', $data);
-    }
-
+    }    
 }
