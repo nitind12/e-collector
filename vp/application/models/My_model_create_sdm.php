@@ -12,7 +12,6 @@ class My_model_create_sdm extends CI_Model {
         if($this->session->userdata('pwd_count') <= 3){
             $old_pwd = $this->input->post('old_pwd');
             $new_pwd = $this->input->post('new_pwd');
-
             $this->db->where('USERNAME', $this->session->userdata('user__'));
             $this->db->where('PASSWORD', $old_pwd);
             $query = $this->db->get('login');
@@ -51,7 +50,7 @@ class My_model_create_sdm extends CI_Model {
     }
     function create_sdm(){
         $USERSTATUS = $this->input->post('txtUsername');
-        $pwd_ = $this->input->post('txtpwd');
+        $pwd_ = $this->input->post('txtPwd');
         $STATUSed = $this->input->post('txtStatus');
         $name_ = $this->input->post('txtName');
 	

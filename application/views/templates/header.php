@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<?php echo $this->encryption->decrypt('lf8KxhqW6VFEDuku+6f2Zh5eAdFQRGf/uCq8G4WvxDOCbZLyqvB2Y6ZeWXnjhBYHWDHlpvdBBwrT3SafJ01OZw==');?>
 <html>
     <head>
         <title>e-collector Nainital</title>

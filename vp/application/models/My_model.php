@@ -15,7 +15,7 @@ class My_model extends CI_Model{
 		$this->db->from('login a');
 		$this->db->join('user_status b', 'a.USERSTATUS = b.STATUSID');
 		$query = $this->db->get();
-		//echo $this->db->last_query(); die();
+		echo $this->db->last_query(); die();
 		if($query->num_rows() != 0){
 			$row = $query->row();
 

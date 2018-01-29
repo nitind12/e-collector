@@ -33,9 +33,9 @@ class Web extends CI_Controller {
     }
 
     function checkAuthentication() {
-        $this->form_validation->set_rules('g-recaptcha-response', 'Captcha', 'callback_recaptcha');
+        //$this->form_validation->set_rules('g-recaptcha-response', 'Captcha', 'callback_recaptcha');
 
-        if ($this->form_validation->run() === FALSE) {                        
+        if (0/*$this->form_validation->run() === FALSE*/) {                        
             $page_ = 'web/login';
         } else {
             $result = $this->mm->authenticate();
