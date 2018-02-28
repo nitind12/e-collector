@@ -4,6 +4,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class My_model extends CI_Model {
 
+    function authenticate(){
+        $user = $this->input->post('txtUsr');
+        $pwd = $this->input->post('txtPwd');
+        /*
+        $this->db->select('a.USERNAME, b.USERSTATUS, b.PATH_');
+        $this->db->where('a.USERNAME', $user);
+        $this->db->where('a.PASSWORD', $pwd);
+        $this->db->where('a.STATUS', 1);
+        $this->db->where('b.STATUS', 1);
+        $this->db->from('login a');
+        $this->db->join('user_status b', 'a.USERSTATUS = b.STATUSID');
+        $query = $this->db->get();
+        */
+        $sql = "select a.USERNAME, b.USERSTATUS, b.PATH_ from login a join user_status b on a.USERSTATUS = b.STATUSID where a.USERNAME = '".$user."' AND a.PASSWORD = password('".$pwd."') AND a.STATUS = 1 AND b.STATUS = 1";
+        $query = $this->db->query($sql);
+        if($query->num_rows() != 0){
+            $row = $query->row();
+
+            // Below PATH_ is directly related to ADMIN or USER as per login credentials
+            $result = array('res_' => true, 'path_' => $row->PATH_); // returnable
+            // -------------------------------------------------------------------------
+
+            $this->session->set_userdata('user__', $row->USERNAME);
+            $this->session->set_userdata('status__', $row->USERSTATUS);
+
+            //$this->session->set_flashdata('_msgall_', 'Welcome '.$row->USERNAME);
+        } else {
+            $result = array('res_' => false, 'path_' => 'web/login'); // returnable
+            $this->session->set_flashdata('_msgall_', 'X: Please fill login credentials correctly !!! ');
+        }
+
+        return $result;
+    }
+    
     function getVillages() {
         $this->db->where('a.STATUS', 1);
         $this->db->order_by('a.NAME_', 'asc');

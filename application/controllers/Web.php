@@ -179,4 +179,24 @@ class Web extends CI_Controller {
        
         $this->load->view('ePDF', $data);
     }    
+
+    function checkAuthentication() {
+        //$this->form_validation->set_rules('g-recaptcha-response', 'Captcha', 'callback_recaptcha');
+
+        if (0/*$this->form_validation->run() === FALSE*/) {                        
+            $page_ = 'web/login';
+        } else {
+            $result = $this->mm->authenticate();
+            
+            if ($result['res_'] == true) {
+                $page_ = SUB_ADMIN. '/'. $result['path_'];
+            } else {
+                $page_ = 'web';//$result['path_'];
+            }
+        }
+        
+        //echo $page_;
+        //exit(0);
+        redirect($page_);
+    }
 }

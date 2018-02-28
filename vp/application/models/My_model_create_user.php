@@ -12,18 +12,24 @@ class My_model_create_user extends CI_Model {
         if($this->session->userdata('pwd_count') <= 3){
             $old_pwd = $this->input->post('old_pwd');
             $new_pwd = $this->input->post('new_pwd');
-
+            /*
             $this->db->where('USERNAME', $this->session->userdata('user__'));
             $this->db->where('PASSWORD', $old_pwd);
             $query = $this->db->get('login');
+            */
+
+            $query = $this->db->query('select USERNAME from login where USERNAME = "'.$this->session->userdata('user__').'" AND PASSWORD = password('.$old_pwd.')');
 
             if($query->num_rows() != 0){
+                /*
                 $data = array(
                     'PASSWORD' => $new_pwd
                 );
                 $this->db->where('USERNAME', $this->session->userdata('user__'));
                 $this->db->where('PASSWORD', $old_pwd);
                 $query = $this->db->update('login', $data);
+                */
+                $query = $this->db->query("update login set PASSWORD = password('".$new_pwd."') where USERNAME = '".$this->session->userdata('user__')."' AND PASSWORD = password('".$old_pwd."')");
 
                 $bool_ = array('res_'=>TRUE, 'msg_' => 'good');
                 $this->session->unset_userdata('pwd_count');
@@ -54,7 +60,8 @@ class My_model_create_user extends CI_Model {
         $pwd_ = $this->input->post('txtpwd');
         $STATUSed = $this->input->post('txtStatus');
         $name_ = $this->input->post('txtName');
-	
+
+        /*
         $data = array(
             'USERNAME' => $USERSTATUS,
             'PASSWORD' => $pwd_,
@@ -63,11 +70,11 @@ class My_model_create_user extends CI_Model {
             'NAME_' => $name_,
             'UP_LINE' => $this->session->userdata('user__')
         );
-
+        */
         $bool_ = $this->check_user($USERSTATUS);
 
         if($bool_['res_'] == TRUE){
-            $query = $this->db->insert('login', $data);
+            $query = $this->db->query("insert into login (USERNAME, PASSWORD, USERSTATUS, STATUS, NAME_, UP_LINE) values ('".$USERSTATUS."', password('".$pwd_."'), '2', '".$STATUSed."', '".$name_."', '".$this->session->userdata('user__')."')");
             if($query == TRUE){
                 $bool_ = array('res_'=>TRUE, 'msg_'=>'New User Created');
             } else {

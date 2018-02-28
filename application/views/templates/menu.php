@@ -77,7 +77,7 @@
                         </div>
                     <?php } ?>
                     <br />
-                    <?php echo form_open(SUB_ADMIN . '/web/checkAuthentication', array('name' => 'frmLogin', 'id' => 'frmLogin', 'role' => 'form')); ?>
+                    <?php echo form_open(SUB_ADMIN.'/web/checkAuthentication', array('name' => 'frmLogin', 'id' => 'frmLogin', 'role' => 'form')); ?>
                     <div class="form-group">
                         <label>Username</label>
                         <?php
