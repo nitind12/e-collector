@@ -38,6 +38,6 @@
             site_url_ = "<?php echo site_url(); ?>";
             base_path = "<?php echo base_url(); ?>";
         </script>
-        <!-- //animation-effect -->        
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <!-- //animation-effect -->                
+        <?php echo $this->recaptcha->getScriptTag();?>
     </head>

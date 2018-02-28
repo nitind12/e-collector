@@ -110,7 +110,7 @@
                         echo form_input($data);
                         ?>
                     </div>
-                    <div class="g-recaptcha form-group" data-sitekey="6Ld4VkEUAAAAAGYLHje5s2T6FLSgcj6_TGSvzjne"></div>
+                    <?php echo $this->recaptcha->getWidget();?>
                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> &nbsp;Log Me In </button>
                     <?php echo form_close(); ?>
                 </div>
