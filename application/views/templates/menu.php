@@ -77,7 +77,7 @@
                         </div>
                     <?php } ?>
                     <br />
-                    <?php echo form_open(SUB_ADMIN.'/web/checkAuthentication', array('name' => 'frmLogin', 'id' => 'frmLogin', 'role' => 'form')); ?>
+                    <?php echo form_open(SUB_ADMIN . '/web/checkAuthentication', array('name' => 'frmLogin', 'id' => 'frmLogin', 'role' => 'form')); ?>
                     <div class="form-group">
                         <label>Username</label>
                         <?php
@@ -110,7 +110,7 @@
                         echo form_input($data);
                         ?>
                     </div>
-                    <?php echo $this->recaptcha->getWidget();?>
+                    <div class="g-recaptcha form-group" data-sitekey="6Ld4VkEUAAAAAGYLHje5s2T6FLSgcj6_TGSvzjne"></div>
                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> &nbsp;Log Me In </button>
                     <?php echo form_close(); ?>
                 </div>

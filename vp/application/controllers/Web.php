@@ -33,26 +33,49 @@ class Web extends CI_Controller {
     }
 
     function checkAuthentication() {
-        $recaptcha = $this->input->post('g-recaptcha-response');
-        if (!empty($recaptcha)) {
-            $response = $this->recaptcha->verifyResponse($recaptcha);
-            if (isset($response['success']) && $response['success'] === true) {
-                $result = $this->mm->authenticate();
+        $this->form_validation->set_rules('g-recaptcha-response', 'Captcha', 'callback_recaptcha');
 
-                if ($result['res_'] == true) {
-                    $page_ = $result['path_'];
-                } else {
-                    $page_ = $result['path_'];
-                    $this->session->set_flashdata('_msgall_', 'X: Please fill login credentials correctly !!! ');
-                }
+        if ($this->form_validation->run() === FALSE) {
+            $this->session->set_flashdata('_msgall_', '1The CAPTCHA field is telling me that you are a robot. Please check the recaptcha field and try again?');
+            $page_ = 'web/login';
+        } else {
+            $result = $this->mm->authenticate();
+
+            if ($result['res_'] == true) {
+                $page_ = $result['path_'];
             } else {
-                $this->session->set_flashdata('_msgall_', '1The CAPTCHA field is telling me that you are a robot. Please check the recaptcha field and try again?');
-                $page_ = 'web/login';
+                $page_ = $result['path_'];
+                $this->session->set_flashdata('_msgall_', 'X: Please fill login credentials correctly !!! ');
             }
         }
-        
+        echo $this->session->flashdata('_msgall_');
+        echo $page_;
+        die();
         redirect($page_);
     }
+    
+    public function recaptcha($str = '') {
+        $google_url = "https://www.google.com/recaptcha/api/siteverify";
+        $secret = '6Ld4VkEUAAAAAIoOQLj8Kpn8Kr7GddShpU-0yKVw';
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $url = $google_url . "?secret=" . $secret . "&response=" . $str . "&remoteip=" . $ip;
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 10);
+        curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16");
+        $res = curl_exec($curl);
+        curl_close($curl);
+        $res = json_decode($res, true);
+        //reCaptcha success check
+        if ($res['success']) {
+            return TRUE;
+        } else {
+            $this->session->set_flashdata('_msgall_', 'The CAPTCHA field is telling me that you are a robot. Please check the recaptcha field and try again?');
+            return FALSE;
+        }
+    }
+
 
     function logout() {
         $this->session->unset_userdata('user__');
@@ -2123,5 +2146,4 @@ class Web extends CI_Controller {
         redirect('newsevents');
     }
 
-    // Dynamic Ends Here    
 }

@@ -1,5 +1,4 @@
 <!DOCTYPE HTML>
-<?php //echo $this->encryption->decrypt('lf8KxhqW6VFEDuku+6f2Zh5eAdFQRGf/uCq8G4WvxDOCbZLyqvB2Y6ZeWXnjhBYHWDHlpvdBBwrT3SafJ01OZw==');?>
 <html>
     <head>
         <title>e-collector Nainital</title>
@@ -38,6 +37,6 @@
             site_url_ = "<?php echo site_url(); ?>";
             base_path = "<?php echo base_url(); ?>";
         </script>
-        <!-- //animation-effect -->                
-        <?php echo $this->recaptcha->getScriptTag();?>
+        <!-- //animation-effect -->        
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>

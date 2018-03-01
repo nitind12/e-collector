@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','session', 'email','pagination','form_validation', 'encrypt','recaptcha');
+$autoload['libraries'] = array('database','session', 'email','pagination','form_validation', 'encrypt');
 
 /*
 | -------------------------------------------------------------------
@@ -97,7 +97,7 @@ $autoload['helper'] = array('url', 'form', 'security');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array('recaptcha');
+$autoload['config'] = array();
 
 /*
 | -------------------------------------------------------------------
