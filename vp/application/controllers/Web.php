@@ -36,7 +36,7 @@ class Web extends CI_Controller {
         $this->form_validation->set_rules('g-recaptcha-response', 'Captcha', 'callback_recaptcha');
 
         if ($this->form_validation->run() === FALSE) {
-            $this->session->set_flashdata('_msgall_', '1The CAPTCHA field is telling me that you are a robot. Please check the recaptcha field and try again?');
+            $this->session->set_flashdata('_msgall_', 'The CAPTCHA field is telling me that you are a robot. Please check the recaptcha field and try again?');
             $page_ = 'web/login';
         } else {
             $result = $this->mm->authenticate();
